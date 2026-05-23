@@ -10,10 +10,13 @@ import {
   Sparkles, 
   Search, 
   ArrowRight,
-  ShieldCheck
+  ShieldCheck,
+  ExternalLink,
+  Youtube,
+  BookOpen
 } from "lucide-react";
 
-// 신체 부위 탭 정보 정의 (신규 카테고리 추가)
+// 신체 부위 탭 정보 정의
 const bodyParts = [
   { id: "all", label: "전체보기" },
   { id: "neck", label: "목 (거북목)" },
@@ -24,6 +27,35 @@ const bodyParts = [
   { id: "hip", label: "고관절 (사타구니)" },
   { id: "knee", label: "무릎 (관절염)" },
   { id: "ankle", label: "발목 (접지름)" }
+];
+
+// 추천 유튜브 채널 정보 정의
+const youtubeChannels = [
+  {
+    name: "문쌤의 물리치료실",
+    description: "현직 물리치료사가 알려주는 과학적인 관절 스트레칭 및 디스크 재활 전문 채널",
+    url: "https://www.youtube.com/@moonssem/videos"
+  },
+  {
+    name: "힙으뜸",
+    description: "필라테스 기반의 홈트레이닝, 골반 교정 및 코어 강화 운동의 대명사 채널",
+    url: "https://www.youtube.com/@euddeume"
+  },
+  {
+    name: "모멘트핏 록샘",
+    description: "바른 자세 유지와 기초 체력 증진, 부상 없는 데일리 다이어트 운동 가이드",
+    url: "https://www.youtube.com/@momentfit"
+  },
+  {
+    name: "데스런",
+    description: "맨몸 운동의 교본으로 관절에 부담을 주지 않으면서 정교한 바디 정렬을 돕는 트레이닝 채널",
+    url: "https://www.youtube.com/@deslun_yoonhyunyong"
+  },
+  {
+    name: "마선호",
+    description: "바른 자세 웨이트 트레이닝과 유쾌하게 배우는 부위별 근력 강화 요령 채널",
+    url: "https://www.youtube.com/@Masunho"
+  }
 ];
 
 export default function Home() {
@@ -38,18 +70,14 @@ export default function Home() {
     return matchesPart && matchesSearch;
   });
 
-  // 대표적이고 명확한 3열 배치 구성 분할 로직 (사용자 정렬 기준)
-  // 1열: 목, 허리
+  // 열별 고정 데이터 분할
   const col1Diseases = filteredDiseases.filter(d => d.part === "neck" || d.part === "waist");
-  // 2열: 어깨, 팔꿈치, 손목
   const col2Diseases = filteredDiseases.filter(d => d.part === "shoulder" || d.part === "elbow" || d.part === "wrist");
-  // 3열: 고관절, 무릎, 발목
   const col3Diseases = filteredDiseases.filter(d => d.part === "hip" || d.part === "knee" || d.part === "ankle");
 
-  // 총 결과가 있는지 체크
   const hasResults = filteredDiseases.length > 0;
 
-  // 임시 최신 블로그 목록 (AI 연동 전, 레이아웃 확인용 예시 데이터)
+  // 임시 최신 블로그 목록
   const sampleBlogs = [
     {
       id: "sample-1",
@@ -67,7 +95,6 @@ export default function Home() {
     }
   ];
 
-  // 카드 렌더링 헬퍼 함수
   const renderCard = (disease: typeof diseasesData[0]) => (
     <div
       key={disease.id}
@@ -101,7 +128,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      {/* 1. 영웅(Hero) 섹션: 핵심 가치 제안 */}
+      {/* 1. 영웅(Hero) 섹션 */}
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 py-16 text-white sm:py-24">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(13,148,136,0.15),transparent)] pointer-events-none" />
         
@@ -134,7 +161,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. 자가진단 및 관절별 검색 카테고리 (이원화 타겟 여정 반영) */}
+      {/* 2. 자가진단 및 관절별 검색 카테고리 */}
       <section className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-5 mb-8">
           <div>
@@ -147,7 +174,6 @@ export default function Home() {
             </p>
           </div>
           
-          {/* 타겟 안내 배너 */}
           <div className="mt-4 md:mt-0 flex items-center gap-2 text-xs text-teal-700 bg-teal-50 px-3 py-1.5 rounded-lg border border-teal-100">
             <ShieldCheck className="h-4 w-4" />
             <span>기초 체력 증진 및 예방을 위한 운동도 준비되어 있어요!</span>
@@ -197,7 +223,76 @@ export default function Home() {
         )}
       </section>
 
-      {/* 3. 최근 AI 재활 블로그 목록 섹션 */}
+      {/* 🌟 3. 추천 사이트 및 공식 유튜브 채널 추천 영역 (신규 추가) */}
+      <section className="bg-slate-50 border-y border-slate-200 py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="grid gap-8 lg:grid-cols-3">
+            {/* 공식 운영 네이버 블로그 카드 */}
+            <div className="lg:col-span-1 flex flex-col justify-between rounded-3xl bg-white border border-slate-200 p-6 shadow-sm hover:shadow-md transition duration-300">
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
+                    Naver Blog
+                  </span>
+                  <BookOpen className="h-5 w-5 text-emerald-600" />
+                </div>
+                <h3 className="mt-5 text-xl font-bold text-slate-900">cholinus 공식 블로그</h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-500">
+                  웹사이트 운영자가 직접 수집하고 기록하는 깊이 있는 건강 관련 지식과 일상 속 자세 교정 꿀팁, 일지들을 네이버 블로그에서 만나보세요.
+                </p>
+              </div>
+              <div className="mt-8">
+                <a
+                  href="https://blog.naver.com/cholinus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 py-3 text-sm font-semibold text-white transition shadow-md shadow-emerald-600/10"
+                >
+                  공식 블로그 방문하기
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+
+            {/* 추천 유튜브 채널 리스트 */}
+            <div className="lg:col-span-2 rounded-3xl bg-white border border-slate-200 p-6 shadow-sm">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
+                <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                  <Youtube className="h-5 w-5 text-red-600" />
+                  물리치료 & 재활 추천 유튜브 채널
+                </h3>
+                <span className="text-[10px] text-slate-400">※ 무단 복제가 아닌 공식 큐레이션 채널입니다.</span>
+              </div>
+              
+              <div className="space-y-4 max-h-[300px] overflow-y-auto pr-1">
+                {youtubeChannels.map((channel, index) => (
+                  <a
+                    key={index}
+                    href={channel.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-100 transition duration-200 group"
+                  >
+                    <div className="flex-1 pr-4">
+                      <h4 className="text-sm font-bold text-slate-900 group-hover:text-red-600 transition flex items-center gap-1.5">
+                        {channel.name}
+                      </h4>
+                      <p className="mt-1 text-xs text-slate-500 leading-relaxed line-clamp-1">
+                        {channel.description}
+                      </p>
+                    </div>
+                    <span className="text-slate-400 group-hover:text-red-500 transition">
+                      <ExternalLink className="h-4 w-4 shrink-0" />
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. 최근 AI 재활 블로그 목록 섹션 */}
       <section className="bg-slate-100 py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex items-center justify-between border-b border-slate-200 pb-5 mb-8">
