@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* 메인 색상 시스템 */
+  --background: #f8fafc; /* 연한 블루그레이 배경 */
+  --foreground: #0f172a; /* 짙은 슬레이트 텍스트 */
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  
+  --primary: #0f172a; /* 신뢰감 있는 딥 인디고 */
+  --primary-foreground: #ffffff;
+  
+  --secondary: #0d9488; /* 활기찬 메디컬 틸 (Teal/Mint) */
+  --secondary-foreground: #ffffff;
+  
+  --accent: #f59e0b; /* 쿠팡 링크 등의 포인트를 위한 앰버 오렌지 */
+  --accent-foreground: #ffffff;
+  
+  --muted: #64748b;
+  --muted-foreground: #94a3b8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-card: var(--card-bg);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 척추/관절 신체 지도 및 인터랙션용 스타일 */
+.body-part-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.body-part-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -8px rgba(13, 148, 136, 0.2);
+}
+
+/* 쿠팡 파트너스 맥락형 광고 박스 스타일 */
+.coupang-ad-box {
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
+  border: 2px solid #0d9488;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 10px 15px -3px rgba(13, 148, 136, 0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.coupang-ad-box:hover {
+  transform: scale(1.01);
+}
+
+/* 구글 애드센스 홀더 스타일 (사용자 친화적 가이드 포함) */
+.adsense-placeholder {
+  background: #f1f5f9;
+  border: 1px dashed #cbd5e1;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 1.5rem 0;
 }

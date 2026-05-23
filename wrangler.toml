@@ -1,0 +1,5 @@
+# Cloudflare Pages 배포를 위한 랭글러 설정서
+name = "my_page"
+
+# Next.js 정적 내보내기(export) 결과물이 쌓이는 폴더 이름입니다.
+pages_build_output_dir = "out"
