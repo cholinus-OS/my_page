@@ -4,7 +4,7 @@ import { ShoppingBag, ExternalLink } from "lucide-react";
 const productDatabase: Record<string, { name: string; desc: string; url: string }> = {
   "거북목": {
     name: "경추 메모리폼 경추베개 (자세 교정용)",
-    desc: "C자 목 커브를 유지해 주어 수면 중 목과 어깨의 긴장을 풀어주는 인체공학적 경추베개입니다.",
+    desc: "C자 목 커브를 유지해 주어 수면 중 목 and 어깨의 긴장을 풀어주는 인체공학적 경추베개입니다.",
     url: "https://link.coupang.com/a/sample-neck-pillow"
   },
   "허리디스크": {
@@ -26,6 +26,21 @@ const productDatabase: Record<string, { name: string; desc: string; url: string 
     name: "손목 지지용 인체공학 버티컬 마우스",
     desc: "손목이 비틀어지지 않는 각도로 장시간 컴퓨터 사용 시 발생하는 저림과 피로를 근본적으로 해결합니다.",
     url: "https://link.coupang.com/a/sample-vertical-mouse"
+  },
+  "고관절": {
+    name: "골반 및 고관절 지지 압박 보호대 (좌우 공용)",
+    desc: "허벅지와 엉덩이 깊은 곳 고관절 부위를 균형 있게 가압하여 마찰과 통증을 경감하고 골반을 안정시킵니다.",
+    url: "https://link.coupang.com/a/sample-hip-support"
+  },
+  "팔꿈치": {
+    name: "테니스 엘보 통증 방지 팔꿈치 압박 밴드 스트랩",
+    desc: "외측 상과 힘줄 부위를 단단하게 압박 고정하여 힘이 가해질 때 팔꿈치 힘줄의 찢김과 통증을 예방합니다.",
+    url: "https://link.coupang.com/a/sample-elbow-strap"
+  },
+  "발목": {
+    name: "고탄력 8자 스트랩 발목 보호대 아대",
+    desc: "발목 꺾임을 물리적으로 단단히 지탱해 주어 자주 접지르고 꺾이는 만성 발목 불안정증 환자의 보행을 돕습니다.",
+    url: "https://link.coupang.com/a/sample-ankle-wrap"
   }
 };
 

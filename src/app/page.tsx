@@ -9,19 +9,21 @@ import {
   Activity, 
   Sparkles, 
   Search, 
-  PlusCircle, 
   ArrowRight,
   ShieldCheck
 } from "lucide-react";
 
-// 신체 부위 탭 정보 정의
+// 신체 부위 탭 정보 정의 (신규 카테고리 추가)
 const bodyParts = [
   { id: "all", label: "전체보기" },
   { id: "neck", label: "목 (거북목)" },
   { id: "waist", label: "허리 (디스크)" },
   { id: "shoulder", label: "어깨 (오십견)" },
+  { id: "elbow", label: "팔꿈치 (엘보)" },
+  { id: "wrist", label: "손목 (저림증)" },
+  { id: "hip", label: "고관절 (사타구니)" },
   { id: "knee", label: "무릎 (관절염)" },
-  { id: "wrist", label: "손목 (저림증)" }
+  { id: "ankle", label: "발목 (접지름)" }
 ];
 
 export default function Home() {
@@ -35,6 +37,17 @@ export default function Home() {
                           d.summary.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesPart && matchesSearch;
   });
+
+  // 대표적이고 명확한 3열 배치 구성 분할 로직 (사용자 정렬 기준)
+  // 1열: 목, 허리
+  const col1Diseases = filteredDiseases.filter(d => d.part === "neck" || d.part === "waist");
+  // 2열: 어깨, 팔꿈치, 손목
+  const col2Diseases = filteredDiseases.filter(d => d.part === "shoulder" || d.part === "elbow" || d.part === "wrist");
+  // 3열: 고관절, 무릎, 발목
+  const col3Diseases = filteredDiseases.filter(d => d.part === "hip" || d.part === "knee" || d.part === "ankle");
+
+  // 총 결과가 있는지 체크
+  const hasResults = filteredDiseases.length > 0;
 
   // 임시 최신 블로그 목록 (AI 연동 전, 레이아웃 확인용 예시 데이터)
   const sampleBlogs = [
@@ -54,11 +67,42 @@ export default function Home() {
     }
   ];
 
+  // 카드 렌더링 헬퍼 함수
+  const renderCard = (disease: typeof diseasesData[0]) => (
+    <div
+      key={disease.id}
+      className="body-part-card flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+    >
+      <div>
+        <div className="flex items-center justify-between">
+          <span className="inline-block rounded-md bg-teal-50 px-2.5 py-1 text-xs font-semibold text-teal-700">
+            {disease.partName}
+          </span>
+          <span className="flex items-center text-[10px] text-slate-400 gap-1">
+            <Flame className="h-3 w-3 text-red-500" /> 통증 완화 코스
+          </span>
+        </div>
+        <h3 className="mt-4 text-lg font-bold text-slate-900">{disease.name}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-slate-500 line-clamp-3">
+          {disease.summary}
+        </p>
+      </div>
+      <div className="mt-6 pt-4 border-t border-slate-100">
+        <Link
+          href={`/disease/${disease.id}`}
+          className="inline-flex w-full items-center justify-center gap-1 rounded-xl bg-slate-950 py-3 text-sm font-medium text-white transition hover:bg-teal-700"
+        >
+          재활 운동법 보러 가기
+          <ChevronRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </div>
+  );
+
   return (
     <div className="flex flex-col">
       {/* 1. 영웅(Hero) 섹션: 핵심 가치 제안 */}
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 py-16 text-white sm:py-24">
-        {/* 뒤 배경 디자인 요소 */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(13,148,136,0.15),transparent)] pointer-events-none" />
         
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
@@ -80,7 +124,7 @@ export default function Home() {
               <Search className="ml-3 h-5 w-5 text-slate-400" />
               <input
                 type="text"
-                placeholder="어디가 아프신가요? (예: 허리, 거북목)"
+                placeholder="어디가 아프신가요? (예: 고관절, 허리, 발목)"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-transparent py-2 pl-2 pr-4 text-sm text-white placeholder-slate-400 outline-none"
@@ -103,7 +147,7 @@ export default function Home() {
             </p>
           </div>
           
-          {/* 타겟 2 (예방용) 안내 배너 */}
+          {/* 타겟 안내 배너 */}
           <div className="mt-4 md:mt-0 flex items-center gap-2 text-xs text-teal-700 bg-teal-50 px-3 py-1.5 rounded-lg border border-teal-100">
             <ShieldCheck className="h-4 w-4" />
             <span>기초 체력 증진 및 예방을 위한 운동도 준비되어 있어요!</span>
@@ -127,39 +171,23 @@ export default function Home() {
           ))}
         </div>
 
-        {/* 질환 목록 카드 그리드 */}
-        {filteredDiseases.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredDiseases.map((disease) => (
-              <div
-                key={disease.id}
-                className="body-part-card flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="inline-block rounded-md bg-teal-50 px-2.5 py-1 text-xs font-semibold text-teal-700">
-                      {disease.partName}
-                    </span>
-                    <span className="flex items-center text-[10px] text-slate-400 gap-1">
-                      <Flame className="h-3 w-3 text-red-500" /> 통증 완화 코스
-                    </span>
-                  </div>
-                  <h3 className="mt-4 text-lg font-bold text-slate-900">{disease.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-500 line-clamp-3">
-                    {disease.summary}
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-slate-100">
-                  <Link
-                    href={`/disease/${disease.id}`}
-                    className="inline-flex w-full items-center justify-center gap-1 rounded-xl bg-slate-950 py-3 text-sm font-medium text-white transition hover:bg-teal-700"
-                  >
-                    재활 운동법 보러 가기
-                    <ChevronRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            ))}
+        {/* 질환 목록 3열 그리드 (강제 열 배치) */}
+        {hasResults ? (
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* 1열: 목, 허리 */}
+            <div className="flex flex-col gap-6">
+              {col1Diseases.map((d) => renderCard(d))}
+            </div>
+
+            {/* 2열: 어깨, 팔꿈치, 손목 */}
+            <div className="flex flex-col gap-6">
+              {col2Diseases.map((d) => renderCard(d))}
+            </div>
+
+            {/* 3열: 고관절, 무릎, 발목 */}
+            <div className="flex flex-col gap-6">
+              {col3Diseases.map((d) => renderCard(d))}
+            </div>
           </div>
         ) : (
           <div className="text-center py-12 rounded-2xl border border-dashed border-slate-300 bg-slate-100/50">
