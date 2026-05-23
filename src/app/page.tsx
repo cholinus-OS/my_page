@@ -128,9 +128,13 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      {/* 1. 영웅(Hero) 섹션 */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 py-16 text-white sm:py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(13,148,136,0.15),transparent)] pointer-events-none" />
+      {/* 1. 영웅(Hero) 섹션: 푸른 하늘과 초록 언덕 배경 적용 */}
+      <section 
+        className="relative overflow-hidden py-20 text-white sm:py-28 bg-cover bg-center" 
+        style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+      >
+        {/* 가독성 확보를 위한 반투명 슬레이트 오버레이 레이어 */}
+        <div className="absolute inset-0 bg-slate-950/45 pointer-events-none" />
         
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-teal-500/10 px-4 py-1.5 text-xs font-semibold text-teal-400 border border-teal-500/20">
