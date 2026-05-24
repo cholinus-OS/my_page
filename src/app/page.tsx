@@ -13,20 +13,22 @@ import {
   ShieldCheck,
   ExternalLink,
   Youtube,
-  BookOpen
+  BookOpen,
+  Hand,
+  Footprints
 } from "lucide-react";
 
-// 신체 부위 탭 정보 정의
+// 신체 부위 소분류 탭 정보 정의
 const bodyParts = [
   { id: "all", label: "전체보기" },
-  { id: "neck", label: "목 (거북목)" },
-  { id: "waist", label: "허리 (디스크)" },
-  { id: "shoulder", label: "어깨 (오십견)" },
-  { id: "elbow", label: "팔꿈치 (엘보)" },
-  { id: "wrist", label: "손목 (저림증)" },
-  { id: "hip", label: "고관절 (사타구니)" },
-  { id: "knee", label: "무릎 (관절염)" },
-  { id: "ankle", label: "발목 (접지름)" }
+  { id: "neck", label: "목 (거북목·디스크)" },
+  { id: "waist", label: "허리 (디스크·전위증)" },
+  { id: "shoulder", label: "어깨 (회전근개·오십견)" },
+  { id: "elbow", label: "팔꿈치 (엘보·터널)" },
+  { id: "wrist", label: "손목 (터널·손가락)" },
+  { id: "hip", label: "고관절 (충돌·괴사)" },
+  { id: "knee", label: "무릎 (관절염·인대)" },
+  { id: "ankle", label: "발목 (염좌·불안정증)" }
 ];
 
 // 추천 유튜브 채널 정보 정의
@@ -70,10 +72,10 @@ export default function Home() {
     return matchesPart && matchesSearch;
   });
 
-  // 열별 고정 데이터 분할
-  const col1Diseases = filteredDiseases.filter(d => d.part === "neck" || d.part === "waist");
-  const col2Diseases = filteredDiseases.filter(d => d.part === "shoulder" || d.part === "elbow" || d.part === "wrist");
-  const col3Diseases = filteredDiseases.filter(d => d.part === "hip" || d.part === "knee" || d.part === "ankle");
+  // 대분류 3열 구성 분할 로직 (척추 / 상지 / 하지)
+  const col1Diseases = filteredDiseases.filter(d => d.mainCategory === "spine");
+  const col2Diseases = filteredDiseases.filter(d => d.mainCategory === "upper");
+  const col3Diseases = filteredDiseases.filter(d => d.mainCategory === "lower");
 
   const hasResults = filteredDiseases.length > 0;
 
@@ -98,7 +100,7 @@ export default function Home() {
   const renderCard = (disease: typeof diseasesData[0]) => (
     <div
       key={disease.id}
-      className="body-part-card flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+      className="body-part-card flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:border-teal-500/20"
     >
       <div>
         <div className="flex items-center justify-between">
@@ -106,21 +108,21 @@ export default function Home() {
             {disease.partName}
           </span>
           <span className="flex items-center text-[10px] text-slate-400 gap-1">
-            <Flame className="h-3 w-3 text-red-500" /> 통증 완화 코스
+            <Flame className="h-3 w-3 text-red-500" /> 자가 체크
           </span>
         </div>
-        <h3 className="mt-4 text-lg font-bold text-slate-900">{disease.name}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-slate-500 line-clamp-3">
+        <h3 className="mt-4 text-base font-bold text-slate-900 leading-tight">{disease.name}</h3>
+        <p className="mt-2 text-xs leading-relaxed text-slate-500 line-clamp-3">
           {disease.summary}
         </p>
       </div>
-      <div className="mt-6 pt-4 border-t border-slate-100">
+      <div className="mt-5 pt-4 border-t border-slate-100">
         <Link
           href={`/disease/${disease.id}`}
-          className="inline-flex w-full items-center justify-center gap-1 rounded-xl bg-slate-950 py-3 text-sm font-medium text-white transition hover:bg-teal-700"
+          className="inline-flex w-full items-center justify-center gap-1 rounded-xl bg-slate-950 py-2.5 text-xs font-semibold text-white transition hover:bg-teal-700"
         >
-          재활 운동법 보러 가기
-          <ChevronRight className="h-4 w-4" />
+          원인 및 자가 체크 알아보기
+          <ChevronRight className="h-3.5 w-3.5" />
         </Link>
       </div>
     </div>
@@ -128,25 +130,24 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      {/* 1. 영웅(Hero) 섹션: 푸른 하늘과 초록 언덕 배경 적용 */}
+      {/* 1. 영웅(Hero) 섹션 */}
       <section 
         className="relative overflow-hidden py-20 text-white sm:py-28 bg-cover bg-center" 
         style={{ backgroundImage: "url('/hero-bg.jpg')" }}
       >
-        {/* 가독성 확보를 위한 반투명 슬레이트 오버레이 레이어 */}
         <div className="absolute inset-0 bg-slate-950/45 pointer-events-none" />
         
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-teal-500/10 px-4 py-1.5 text-xs font-semibold text-teal-400 border border-teal-500/20">
             <Sparkles className="h-3 w-3" />
-            100% 무료 맞춤형 홈 재활 운동 가이드
+            100% 무료 맞춤형 홈 재활 자가진단 사전
           </span>
           <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-5xl">
             하루 한 동작, <br className="sm:hidden" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-300">통증 없는 건강한 관절</span> 만들기
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-base text-slate-300 sm:text-lg">
-            물리치료사와 대학병원의 검증된 자료를 기반으로 개발된 안전한 스트레칭과 재활 꿀팁을 지금 확인하세요.
+            관절 통증으로 병원을 찾기 전, 부위별 세부 질환의 정확한 원인과 나도 해당되는지 체크할 수 있는 증상 진단 가이드를 확인하세요.
           </p>
 
           {/* 간편 검색바 */}
@@ -155,7 +156,7 @@ export default function Home() {
               <Search className="ml-3 h-5 w-5 text-slate-400" />
               <input
                 type="text"
-                placeholder="어디가 아프신가요? (예: 고관절, 허리, 발목)"
+                placeholder="관절 통증이나 질환명을 입력하세요 (예: 목디스크)"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-transparent py-2 pl-2 pr-4 text-sm text-white placeholder-slate-400 outline-none"
@@ -174,23 +175,23 @@ export default function Home() {
               관절별 통증 사전
             </h2>
             <p className="mt-1 text-sm text-slate-500">
-              현재 통증이나 이상을 느끼는 부위를 눌러 관련 질환과 재활법을 알아보세요.
+              통증이나 이상을 느끼는 부위를 소분류 탭에서 선택하시면, 대분류(척추·상지·하지) 열에서 정밀 매칭됩니다.
             </p>
           </div>
           
           <div className="mt-4 md:mt-0 flex items-center gap-2 text-xs text-teal-700 bg-teal-50 px-3 py-1.5 rounded-lg border border-teal-100">
             <ShieldCheck className="h-4 w-4" />
-            <span>기초 체력 증진 및 예방을 위한 운동도 준비되어 있어요!</span>
+            <span>24가지 척추 및 주요 관절 부위 자가체크 가이드가 제공됩니다.</span>
           </div>
         </div>
 
-        {/* 신체 부위 선택 탭 */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        {/* 신체 부위 소분류 선택 탭 */}
+        <div className="flex flex-wrap gap-2 mb-10">
           {bodyParts.map((part) => (
             <button
               key={part.id}
               onClick={() => setSelectedPart(part.id)}
-              className={`rounded-full px-5 py-2 text-sm font-medium transition duration-200 ${
+              className={`rounded-full px-4 py-2 text-xs font-semibold transition duration-200 ${
                 selectedPart === part.id
                   ? "bg-slate-900 text-white shadow-md shadow-slate-900/10"
                   : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
@@ -201,22 +202,64 @@ export default function Home() {
           ))}
         </div>
 
-        {/* 질환 목록 3열 그리드 (강제 열 배치) */}
+        {/* 24종 질환 목록 3열 대분류 구조화 렌더링 */}
         {hasResults ? (
-          <div className="grid gap-6 md:grid-cols-3">
-            {/* 1열: 목, 허리 */}
-            <div className="flex flex-col gap-6">
-              {col1Diseases.map((d) => renderCard(d))}
+          <div className="grid gap-8 md:grid-cols-3">
+            {/* 1열: 척추 (목, 허리) */}
+            <div className="flex flex-col gap-6 rounded-2xl bg-slate-100/50 p-4 border border-slate-200/50">
+              <div className="flex items-center gap-2 border-b border-slate-200 pb-3 mb-2 px-1">
+                <div className="rounded-lg bg-indigo-100 p-1.5 text-indigo-700">
+                  <Activity className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900">척추 관절</h3>
+                  <p className="text-[10px] text-slate-500">목 뼈 · 등 · 허리 요추 정렬 관련 질환</p>
+                </div>
+              </div>
+              
+              {col1Diseases.length > 0 ? (
+                col1Diseases.map((d) => renderCard(d))
+              ) : (
+                <div className="text-center py-8 text-xs text-slate-400">해당 없음</div>
+              )}
             </div>
 
-            {/* 2열: 어깨, 팔꿈치, 손목 */}
-            <div className="flex flex-col gap-6">
-              {col2Diseases.map((d) => renderCard(d))}
+            {/* 2열: 상지 관절 (어깨, 팔꿈치, 손목) */}
+            <div className="flex flex-col gap-6 rounded-2xl bg-slate-100/50 p-4 border border-slate-200/50">
+              <div className="flex items-center gap-2 border-b border-slate-200 pb-3 mb-2 px-1">
+                <div className="rounded-lg bg-teal-100 p-1.5 text-teal-700">
+                  <Hand className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900">상지 관절</h3>
+                  <p className="text-[10px] text-slate-500">어깨 견관절 · 엘보 팔꿈치 · 손목 및 손가락</p>
+                </div>
+              </div>
+              
+              {col2Diseases.length > 0 ? (
+                col2Diseases.map((d) => renderCard(d))
+              ) : (
+                <div className="text-center py-8 text-xs text-slate-400">해당 없음</div>
+              )}
             </div>
 
-            {/* 3열: 고관절, 무릎, 발목 */}
-            <div className="flex flex-col gap-6">
-              {col3Diseases.map((d) => renderCard(d))}
+            {/* 3열: 하지 관절 (고관절, 무릎, 발목) */}
+            <div className="flex flex-col gap-6 rounded-2xl bg-slate-100/50 p-4 border border-slate-200/50">
+              <div className="flex items-center gap-2 border-b border-slate-200 pb-3 mb-2 px-1">
+                <div className="rounded-lg bg-emerald-100 p-1.5 text-emerald-700">
+                  <Footprints className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900">하지 관절</h3>
+                  <p className="text-[10px] text-slate-500">고관절 · 무릎 슬관절 · 발목 인대 및 족부</p>
+                </div>
+              </div>
+              
+              {col3Diseases.length > 0 ? (
+                col3Diseases.map((d) => renderCard(d))
+              ) : (
+                <div className="text-center py-8 text-xs text-slate-400">해당 없음</div>
+              )}
             </div>
           </div>
         ) : (
@@ -227,7 +270,7 @@ export default function Home() {
         )}
       </section>
 
-      {/* 3. 최근 AI 재활 블로그 목록 섹션 (중간으로 이동) */}
+      {/* 3. 최근 AI 재활 블로그 목록 섹션 */}
       <section className="bg-slate-100 py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex items-center justify-between border-b border-slate-200 pb-5 mb-8">
@@ -281,7 +324,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🌟 4. 추천 사이트 및 공식 유튜브 채널 추천 영역 (하단으로 이동) */}
+      {/* 4. 추천 사이트 및 공식 유튜브 채널 추천 영역 */}
       <section className="bg-slate-50 border-t border-slate-200 py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-8 lg:grid-cols-3">
