@@ -139,10 +139,10 @@ export default function CoupangLink({ keyword }: CoupangLinkProps) {
           className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 px-4 py-3 text-white shadow-md shadow-amber-500/10 transition-all shrink-0 min-w-[110px] h-[72px] text-center"
         >
           <div className="flex flex-col items-center justify-center">
-            {/* 최저가 (3글자, 자간 좁게) */}
-            <span className="text-xs font-black tracking-tighter leading-none">최저가</span>
-            {/* 확인 (2글자, 자간을 0.5em 넓혀서 3글자 폭과 시각적 길이를 정밀하게 맞춤) */}
-            <span className="text-xs font-black tracking-[0.5em] pl-[0.5em] mt-1.5 leading-none">확인</span>
+            {/* 최저가 (3글자, 자간 좁게, 글자 크기 확대) */}
+            <span className="text-sm font-black tracking-tighter leading-none">최저가</span>
+            {/* 확인 (2글자, 자간 비례 확대 유지, 글자 크기 확대) */}
+            <span className="text-sm font-black tracking-[0.5em] pl-[0.5em] mt-1.5 leading-none">확인</span>
           </div>
           <ExternalLink className="h-3.5 w-3.5 shrink-0" />
         </a>
