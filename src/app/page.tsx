@@ -22,7 +22,7 @@ import {
 const bodyParts = [
   { id: "all", label: "전체보기" },
   { id: "neck", label: "목 (거북목·디스크)" },
-  { id: "waist", label: "허리 (디스크·전위증)" },
+  { id: "waist", label: "허리 (디스크·협착증·전위증)" },
   { id: "shoulder", label: "어깨 (회전근개·오십견)" },
   { id: "elbow", label: "팔꿈치 (엘보·터널)" },
   { id: "wrist", label: "손목 (터널·손가락)" },
@@ -181,7 +181,7 @@ export default function Home() {
           
           <div className="mt-4 md:mt-0 flex items-center gap-2 text-xs text-teal-700 bg-teal-50 px-3 py-1.5 rounded-lg border border-teal-100">
             <ShieldCheck className="h-4 w-4" />
-            <span>24가지 척추 및 주요 관절 부위 자가체크 가이드가 제공됩니다.</span>
+            <span>25가지 척추 및 주요 관절 부위 자가체크 가이드가 제공됩니다.</span>
           </div>
         </div>
 
