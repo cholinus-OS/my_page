@@ -136,10 +136,15 @@ export default function CoupangLink({ keyword }: CoupangLinkProps) {
           href={product.url}
           target="_blank"
           rel="nofollow noopener noreferrer"
-          className="inline-flex items-center gap-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-amber-500/10 transition-all w-full sm:w-auto justify-center"
+          className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 px-4 py-3 text-white shadow-md shadow-amber-500/10 transition-all shrink-0 min-w-[110px] h-[72px] text-center"
         >
-          최저가 확인
-          <ExternalLink className="h-4 w-4" />
+          <div className="flex flex-col items-center justify-center">
+            {/* 최저가 (3글자, 자간 좁게) */}
+            <span className="text-xs font-black tracking-tighter leading-none">최저가</span>
+            {/* 확인 (2글자, 자간을 0.5em 넓혀서 3글자 폭과 시각적 길이를 정밀하게 맞춤) */}
+            <span className="text-xs font-black tracking-[0.5em] pl-[0.5em] mt-1.5 leading-none">확인</span>
+          </div>
+          <ExternalLink className="h-3.5 w-3.5 shrink-0" />
         </a>
       </div>
       <p className="mt-3 text-[10px] text-slate-400 text-right">
