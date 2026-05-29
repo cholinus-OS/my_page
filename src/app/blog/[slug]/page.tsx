@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import AdSense from "@/components/AdSense";
 import { ChevronLeft, Calendar, Tag } from "lucide-react";
+import type { Metadata } from "next";
 
 interface BlogDetailPageProps {
   params: Promise<{
@@ -13,6 +14,35 @@ interface BlogDetailPageProps {
 }
 
 export const dynamicParams = false;
+
+export async function generateMetadata({ params }: BlogDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  if (slug === "placeholder") {
+    return {
+      title: "블로그 준비 중 | 재활 안내",
+      description: "새로운 재활 소식이 곧 등록될 예정입니다."
+    };
+  }
+  
+  const post = getPostData(slug);
+  if (!post) {
+    return {
+      title: "글을 찾을 수 없습니다 | 재활 안내",
+      description: "요청하신 글이 존재하지 않습니다."
+    };
+  }
+
+  return {
+    title: `${post.title} | 재활 안내`,
+    description: post.summary,
+    openGraph: {
+      title: post.title,
+      description: post.summary,
+      type: "article",
+      url: `https://cholinus-exerciseismedicine.dev/blog/${slug}`,
+    }
+  };
+}
 
 export async function generateStaticParams() {
   const posts = getSortedPostsData();

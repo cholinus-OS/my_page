@@ -4,9 +4,16 @@ import Header from "@/components/Header";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "바른관절 헬프센터 | 척추·관절 재활 운동 가이드",
-  description: "허리디스크, 거북목, 무릎 관절염 통증 완화를 위한 전문 물리치료 및 맞춤형 자가 재활 스트레칭 운동 정보를 무료로 확인하세요.",
+  title: "관절 척추 관련 정보 | 재활 안내",
+  description: "우리 몸의 최적의 상태를 유지하기 위한 재활 운동에 대한 정보를 매일 업데이트합니다.",
   keywords: ["허리디스크 운동", "거북목 교정", "무릎 관절염 재활", "물리치료 스트레칭", "자세 교정"],
+  openGraph: {
+    title: "관절 척추 관련 정보 | 재활 안내",
+    description: "우리 몸의 최적의 상태를 유지하기 위한 재활 운동에 대한 정보를 매일 업데이트합니다.",
+    type: "website",
+    locale: "ko_KR",
+    url: "https://cholinus-exerciseismedicine.dev",
+  },
 };
 
 export default function RootLayout({
