@@ -30,7 +30,7 @@ jobs:
       - name: 4. Gemini AI 블로그 자동 생성 스크립트 구동
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: node src/scripts/generate-post.js
+        run: node scripts/generate-blog-post.js
 
       - name: 5. 새로 생성된 포스트 파일을 저장소에 저장 (Commit & Push)
         run: |
@@ -38,7 +38,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
           # 변경사항 확인
-          git add src/content/posts/
+          git add .
           
           # 커밋할 내용이 있는 경우에만 커밋 진행 (오류 방지)
           if git diff --cached --quiet; then
