@@ -304,7 +304,7 @@ export default function Home() {
                     <span className="text-teal-600 font-medium">{blog.category}</span>
                   </div>
                   <h3 className="mt-3 text-lg font-bold text-slate-900 hover:text-teal-600 transition">
-                    <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
+                    <Link href="/blog">{blog.title}</Link>
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-500 line-clamp-2">
                     {blog.summary}
@@ -312,7 +312,7 @@ export default function Home() {
                 </div>
                 <div className="mt-4 pt-4 border-t border-slate-100 flex justify-end">
                   <Link
-                    href={`/blog/${blog.id}`}
+                    href="/blog"
                     className="inline-flex items-center gap-1 text-xs font-semibold text-teal-600 hover:underline"
                   >
                     자세히 읽기 <ChevronRight className="h-3 w-3" />
