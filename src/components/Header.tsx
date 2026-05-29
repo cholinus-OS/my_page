@@ -10,6 +10,10 @@ export default function Header() {
           <span>바른관절 <span className="text-teal-600 font-semibold">헬프센터</span></span>
         </Link>
         
+        <div className="hidden md:block text-base md:text-lg font-black tracking-widest bg-gradient-to-r from-rose-500 via-purple-600 to-teal-500 bg-clip-text text-transparent select-none">
+          Exercise Is Medicine..!
+        </div>
+        
         <nav className="flex items-center gap-6">
           <Link 
             href="/" 
