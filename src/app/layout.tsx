@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: "우리 몸의 최적의 상태를 유지하기 위한 재활 운동에 대한 정보를 매일 업데이트합니다.",
     type: "website",
     locale: "ko_KR",
-    url: "https://cholinus-exerciseismedicine.dev",
+    url: "https://cholinus-exerciseismedicine.com",
   },
 };
 
@@ -32,13 +32,13 @@ export default function RootLayout({
         "@type": "ListItem",
         "position": 1,
         "name": "홈",
-        "item": "https://cholinus-exerciseismedicine.dev"
+        "item": "https://cholinus-exerciseismedicine.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "재활 블로그",
-        "item": "https://cholinus-exerciseismedicine.dev/blog"
+        "item": "https://cholinus-exerciseismedicine.com/blog"
       }
     ]
   };
@@ -47,7 +47,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "관절 척추 재활 정보",
-    "url": "https://cholinus-exerciseismedicine.dev",
+    "url": "https://cholinus-exerciseismedicine.com",
     "description": "우리 몸의 최적의 상태를 유지하기 위한 재활 운동에 대한 정보"
   };
 

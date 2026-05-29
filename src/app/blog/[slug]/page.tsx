@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
       title: post.title,
       description: post.summary,
       type: "article",
-      url: `https://cholinus-exerciseismedicine.dev/blog/${slug}`,
+      url: `https://cholinus-exerciseismedicine.com/blog/${slug}`,
     }
   };
 }

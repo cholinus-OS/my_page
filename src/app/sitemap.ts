@@ -5,7 +5,7 @@ import path from "path";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://cholinus-exerciseismedicine.dev";
+  const baseUrl = "https://cholinus-exerciseismedicine.com";
 
   // 모든 블로그 글 URL 추가를 위해 content/posts 폴더 스캔
   const postsDir = path.join(process.cwd(), "src/content/posts");
