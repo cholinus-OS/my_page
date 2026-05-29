@@ -21,8 +21,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // 구글 애드센스 ID 가져오기
+  // 구글 애드센스 및 애널리틱스 ID 가져오기
   const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID;
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -61,6 +62,25 @@ export default function RootLayout({
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
             crossOrigin="anonymous"
           />
+        )}
+        {/* 구글 애널리틱스 (GA4) 스크립트 등록 */}
+        {gaId && gaId !== "나중에_입력" && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${gaId}');
+                `,
+              }}
+            />
+          </>
         )}
       </head>
       <body className="flex min-h-full flex-col bg-slate-50 text-slate-900">
