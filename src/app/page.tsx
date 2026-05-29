@@ -14,6 +14,11 @@ import {
 // 추천 유튜브 채널 정보 정의
 const youtubeChannels = [
   {
+    name: "정형외과 김진구 교수",
+    description: "대한민국 정형외과 무릎 치료의 명의, 스포츠 의학 및 무릎 관절염 예방·재활의 최고 권위자 공식 채널",
+    url: "https://www.youtube.com/@Dr_KimJinGoo"
+  },
+  {
     name: "문쌤의 물리치료실",
     description: "현직 물리치료사가 알려주는 과학적인 관절 스트레칭 및 디스크 재활 전문 채널",
     url: "https://www.youtube.com/@moonssem/videos"
