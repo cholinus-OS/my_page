@@ -24,6 +24,33 @@ export default function RootLayout({
   // 구글 애드센스 ID 가져오기
   const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID;
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "홈",
+        "item": "https://cholinus-exerciseismedicine.dev"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "재활 블로그",
+        "item": "https://cholinus-exerciseismedicine.dev/blog"
+      }
+    ]
+  };
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "관절 척추 재활 정보",
+    "url": "https://cholinus-exerciseismedicine.dev",
+    "description": "우리 몸의 최적의 상태를 유지하기 위한 재활 운동에 대한 정보"
+  };
+
   return (
     <html lang="ko" className="h-full">
       <head>
@@ -38,6 +65,14 @@ export default function RootLayout({
         )}
       </head>
       <body className="flex min-h-full flex-col bg-slate-50 text-slate-900">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <Header />
         
         {/* 메인 콘텐츠 영역 */}

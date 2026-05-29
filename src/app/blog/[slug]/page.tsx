@@ -83,8 +83,28 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "datePublished": post.date,
+    "description": post.summary,
+    "author": {
+      "@type": "Organization",
+      "name": "바른관절 헬프센터"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "바른관절 헬프센터"
+    }
+  };
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* 뒤로가기 버튼 */}
       <div className="mb-6">
         <Link

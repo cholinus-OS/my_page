@@ -49,8 +49,40 @@ export default function Home() {
   // 실제 마크다운 데이터베이스에서 최신 글 2개 가져오기
   const latestPosts = getSortedPostsData().slice(0, 2);
 
+  const eventJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "관절 척추 바른자세 재활 세미나",
+    "startDate": "2026-06-15T19:00:00+09:00",
+    "endDate": "2026-06-15T21:00:00+09:00",
+    "location": {
+      "@type": "Place",
+      "name": "온라인 생중계 (바른관절 헬프센터)"
+    },
+    "description": "허리디스크 및 무릎 관절염 예방을 위한 올바른 홈 스트레칭 강좌"
+  };
+
+  const govServiceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "GovernmentService",
+    "name": "노인 무릎 인공관절 수술비 지원",
+    "description": "저소득층 어르신의 무릎 관절염 치료 지원을 위한 보건복지부 인공관절 수술비 지원 혜택",
+    "provider": {
+      "@type": "GovernmentOrganization",
+      "name": "보건복지부"
+    }
+  };
+
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(govServiceJsonLd) }}
+      />
       {/* 1. 영웅(Hero) 섹션 */}
       <section 
         className="relative overflow-hidden py-20 text-white sm:py-28 bg-cover bg-center" 
