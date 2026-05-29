@@ -82,14 +82,14 @@ export default function Home() {
   // 임시 최신 블로그 목록
   const sampleBlogs = [
     {
-      id: "sample-1",
+      id: "2026-05-23-turtle-neck-stretch",
       title: "매일 아침 3분, 거북목 탈출을 돕는 필수 스트레칭 3가지",
       summary: "하루 종일 컴퓨터 모니터를 보며 굳어버린 목과 어깨 근육을 단 3분 만에 부드럽게 풀어주는 안전한 재활 스트레칭 방법을 소개합니다.",
       date: "2026.05.23",
       category: "목 재활"
     },
     {
-      id: "sample-2",
+      id: "2026-05-22-lumbar-disk-walking",
       title: "허리 디스크 환자가 반드시 피해야 할 나쁜 앉기 자세와 걷기 운동법",
       summary: "허리에 가장 부담이 큰 앉기 자세를 수정하고, 요추 디스크의 C자 곡선을 지키면서 척추 기립근을 기르는 안전한 보행 전략을 배웁니다.",
       date: "2026.05.22",
