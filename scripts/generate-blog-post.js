@@ -152,11 +152,14 @@ FILENAME: ${todayStr}-keyword`;
     const filenameMatch = responseText.match(/FILENAME:\s*([^\s\n]+)/i);
     let filename = `${todayStr}-${latestDisease.id || "post"}.md`;
     if (filenameMatch) {
-      let matchedName = filenameMatch[1].trim();
-      if (!matchedName.endsWith(".md")) {
-        matchedName += ".md";
+      let matchedName = filenameMatch[1].trim().replace(/^['"]|['"]$/g, ""); // 따옴표 제거
+      const safeFilenameRegex = /^[a-zA-Z0-9\.\-_]+$/;
+      if (safeFilenameRegex.test(matchedName)) {
+        if (!matchedName.endsWith(".md")) {
+          matchedName += ".md";
+        }
+        filename = matchedName;
       }
-      filename = matchedName;
     }
 
     // 타이틀 추출
