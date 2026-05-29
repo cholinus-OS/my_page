@@ -6,6 +6,7 @@ import Link from "next/link";
 import AdSense from "@/components/AdSense";
 import { ChevronLeft, Calendar, Tag } from "lucide-react";
 import type { Metadata } from "next";
+import CoupangBanner from "@/components/CoupangBanner";
 
 interface BlogDetailPageProps {
   params: Promise<{
@@ -143,6 +144,9 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             {post.content}
           </ReactMarkdown>
         </div>
+
+        {/* 🛍️ 쿠팡 파트너스 추천 배너 */}
+        <CoupangBanner />
 
         {/* 태그 영역 */}
         {post.tags.length > 0 && (
