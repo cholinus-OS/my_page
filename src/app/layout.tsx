@@ -54,13 +54,12 @@ export default function RootLayout({
   return (
     <html lang="ko" className="h-full">
       <head>
-        {/* 구글 애드센스 스크립트 등록 (ID가 설정되어 있는 경우에만 실행됨) */}
+        {/* 구글 애드센스 스크립트 등록 (네이티브 script 태그로 구글 크롤러 소유권 확인율 극대화) */}
         {adsenseId && (
-          <Script
+          <script
             async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
             crossOrigin="anonymous"
-            strategy="afterInteractive"
           />
         )}
       </head>
