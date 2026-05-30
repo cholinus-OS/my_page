@@ -135,6 +135,22 @@ export default async function DiseasePage({ params }: PageProps) {
             />
           </div>
         )}
+        {disease.id === "golf-elbow" && (
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/golf-elbow-detail.jpg" 
+              alt="내측 상과염 (골프 엘보) 해부도" 
+              className="w-full sm:w-1/2 h-auto rounded-2xl border border-slate-200 object-cover"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/tennis-elbow-detail.jpg" 
+              alt="외측 상과염 (테니스 엘보) 해부도" 
+              className="w-full sm:w-1/2 h-auto rounded-2xl border border-slate-200 object-cover"
+            />
+          </div>
+        )}
       </div>
 
       {/* 💰 애드센스 상단 광고 */}
