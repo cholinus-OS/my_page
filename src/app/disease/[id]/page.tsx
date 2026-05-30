@@ -259,6 +259,22 @@ export default async function DiseasePage({ params }: PageProps) {
             />
           </div>
         )}
+        {disease.id === "avn-hip" && (
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/avn-hip-detail.jpg" 
+              alt="대퇴골두 무혈성 괴사 혈액 공급 해부도" 
+              className="w-full sm:w-1/2 h-auto rounded-2xl border border-slate-200 object-cover"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/avn-hip-arthritis.jpg" 
+              alt="고관절 관절염 해부도" 
+              className="w-full sm:w-1/2 h-auto rounded-2xl border border-slate-200 object-cover"
+            />
+          </div>
+        )}
       </div>
 
       {/* 💰 애드센스 상단 광고 */}
