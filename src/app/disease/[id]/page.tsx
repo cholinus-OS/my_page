@@ -74,6 +74,22 @@ export default async function DiseasePage({ params }: PageProps) {
             />
           </div>
         )}
+        {disease.id === "cervical-herniation" && (
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/cervical-radiculopathy.jpg" 
+              alt="경추 신경근병증 해부도" 
+              className="w-full sm:w-1/2 h-auto rounded-2xl border border-slate-200 object-cover"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/cervical-herniation-detail.jpg" 
+              alt="경추 디스크 탈출증 해부도" 
+              className="w-full sm:w-1/2 h-auto rounded-2xl border border-slate-200 object-cover"
+            />
+          </div>
+        )}
         {/* 특정 질환 설명 하단에 해부학 일러스트 그림 삽입 */}
         {disease.id === "rotator-cuff-tear" && (
           <div className="mt-6 w-full">
