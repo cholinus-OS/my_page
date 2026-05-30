@@ -23,6 +23,7 @@ interface DiseaseDictionaryProps {
 
 const bodyParts = [
   { id: "all", label: "전체보기" },
+  { id: "systemic", label: "전신 (골다공증·류마티스·통풍)" },
   { id: "neck", label: "목 (거북목·디스크)" },
   { id: "waist", label: "허리 (디스크·협착증·전위증)" },
   { id: "shoulder", label: "어깨 (회전근개·오십견)" },
@@ -44,7 +45,7 @@ export default function DiseaseDictionary({ diseases }: DiseaseDictionaryProps) 
     return matchesPart && matchesSearch;
   });
 
-  const col1Diseases = filteredDiseases.filter(d => d.mainCategory === "spine");
+  const col1Diseases = filteredDiseases.filter(d => d.mainCategory === "spine" || d.mainCategory === "systemic");
   const col2Diseases = filteredDiseases.filter(d => d.mainCategory === "upper");
   const col3Diseases = filteredDiseases.filter(d => d.mainCategory === "lower");
 
@@ -141,8 +142,8 @@ export default function DiseaseDictionary({ diseases }: DiseaseDictionaryProps) 
                 <Activity className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-slate-900">척추 관절</h3>
-                <p className="text-[10px] text-slate-500">목 뼈 · 등 · 허리 요추 정렬 관련 질환</p>
+                <h3 className="text-sm font-bold text-slate-900">척추 및 전신 질환</h3>
+                <p className="text-[10px] text-slate-500">목·허리 정렬 및 골다공증·류마티스·통풍</p>
               </div>
             </div>
             
