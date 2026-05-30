@@ -99,6 +99,16 @@ export default async function DiseasePage({ params }: PageProps) {
             />
           </div>
         )}
+        {disease.id === "shoulder-instability" && (
+          <div className="mt-6 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/shoulder-instability.jpg" 
+              alt="다발성 어깨 불안정증 해부도" 
+              className="w-full h-auto rounded-2xl border border-slate-200"
+            />
+          </div>
+        )}
       </div>
 
       {/* 💰 애드센스 상단 광고 */}
