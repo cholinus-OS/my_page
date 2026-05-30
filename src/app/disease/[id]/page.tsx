@@ -126,6 +126,16 @@ export default async function DiseasePage({ params }: PageProps) {
             />
           </div>
         )}
+        {disease.id === "spinal-stenosis" && (
+          <div className="mt-6 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/spinal-stenosis.jpg" 
+              alt="척추간 협착증 해부도" 
+              className="w-full h-auto rounded-2xl border border-slate-200"
+            />
+          </div>
+        )}
         {/* 특정 질환 설명 하단에 해부학 일러스트 그림 삽입 */}
         {disease.id === "rotator-cuff-tear" && (
           <div className="mt-6 w-full">
