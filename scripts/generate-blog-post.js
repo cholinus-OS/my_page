@@ -24,9 +24,6 @@ async function generatePost() {
     process.exit(1);
   }
 
-  // 새로 추가된 최신 데이터(배열의 마지막 항목) 확인
-  const latestDisease = diseases[diseases.length - 1];
-
   // 2. 기존 포스트 확인
   if (!fs.existsSync(postsDir)) {
     fs.mkdirSync(postsDir, { recursive: true });
@@ -36,15 +33,24 @@ async function generatePost() {
     return fs.readFileSync(path.join(postsDir, file), "utf8");
   });
 
-  // 이미 같은 name으로 글이 있는지 확인
-  const isAlreadyWritten = existingPostContents.some(content => {
-    return content.includes(latestDisease.name);
-  });
+  // 아직 작성되지 않은 첫 번째 질환 데이터 찾기
+  let targetDisease = null;
+  for (const disease of diseases) {
+    const isAlreadyWritten = existingPostContents.some(content => {
+      return content.includes(disease.name);
+    });
+    if (!isAlreadyWritten) {
+      targetDisease = disease;
+      break;
+    }
+  }
 
-  if (isAlreadyWritten) {
-    console.log("이미 작성된 글입니다");
+  if (!targetDisease) {
+    console.log("모든 질환에 대한 블로그 글이 이미 작성되었습니다!");
     process.exit(0);
   }
+
+  const latestDisease = targetDisease;
 
   // 3. Gemini API 설정
   const apiKey = process.env.GEMINI_API_KEY;
@@ -148,19 +154,8 @@ FILENAME: ${todayStr}-keyword`;
     
     const responseText = data.candidates[0].content.parts[0].text;
 
-    // 파일명 추출
-    const filenameMatch = responseText.match(/FILENAME:\s*([^\s\n]+)/i);
+    // 파일명 지정 (질환 ID 기반으로 일관되게 생성)
     let filename = `${todayStr}-${latestDisease.id || "post"}.md`;
-    if (filenameMatch) {
-      let matchedName = filenameMatch[1].trim().replace(/^['"]|['"]$/g, ""); // 따옴표 제거
-      const safeFilenameRegex = /^[a-zA-Z0-9\.\-_]+$/;
-      if (safeFilenameRegex.test(matchedName)) {
-        if (!matchedName.endsWith(".md")) {
-          matchedName += ".md";
-        }
-        filename = matchedName;
-      }
-    }
 
     // 타이틀 추출
     const titleMatch = responseText.match(/\[타이틀\]:\s*([^\n]+)/i);
