@@ -315,6 +315,16 @@ export default async function DiseasePage({ params }: PageProps) {
             />
           </div>
         )}
+        {disease.id === "meniscus-tear" && (
+          <div className="mt-6 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/meniscus-tear.jpg" 
+              alt="반월상 연골판 파열 해부도" 
+              className="w-full h-auto rounded-2xl border border-slate-200"
+            />
+          </div>
+        )}
       </div>
 
       {/* 💰 애드센스 상단 광고 */}
