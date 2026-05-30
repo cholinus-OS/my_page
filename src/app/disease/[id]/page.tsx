@@ -125,6 +125,16 @@ export default async function DiseasePage({ params }: PageProps) {
             />
           </div>
         )}
+        {disease.id === "cubital-tunnel" && (
+          <div className="mt-6 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/cubital-tunnel.jpg" 
+              alt="팔꿈치 터널 증후군 해부도" 
+              className="w-full h-auto rounded-2xl border border-slate-200"
+            />
+          </div>
+        )}
       </div>
 
       {/* 💰 애드센스 상단 광고 */}
