@@ -335,6 +335,16 @@ export default async function DiseasePage({ params }: PageProps) {
             />
           </div>
         )}
+        {disease.id === "ankle-instability" && (
+          <div className="mt-6 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/ankle-instability.png" 
+              alt="만성 발목 불안정증 해부도" 
+              className="w-full h-auto rounded-2xl border border-slate-200"
+            />
+          </div>
+        )}
       </div>
 
       {/* 💰 애드센스 상단 광고 */}
