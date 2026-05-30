@@ -58,6 +58,17 @@ export default async function DiseasePage({ params }: PageProps) {
         <p className="mt-5 text-base leading-relaxed text-slate-600 text-justify">
           {disease.description}
         </p>
+        {/* 특정 질환 설명 하단에 해부학 일러스트 그림 삽입 */}
+        {disease.id === "rotator-cuff-tear" && (
+          <div className="mt-6 overflow-hidden rounded-2xl border border-slate-100 bg-slate-50 flex justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/rotator-cuff-tear.jpg" 
+              alt="회전근개 파열 해부도" 
+              className="max-w-full h-auto object-contain max-h-[450px]"
+            />
+          </div>
+        )}
       </div>
 
       {/* 💰 애드센스 상단 광고 */}
