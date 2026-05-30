@@ -91,12 +91,18 @@ export default async function DiseasePage({ params }: PageProps) {
           </div>
         )}
         {disease.id === "lumbar-herniation" && (
-          <div className="mt-6 w-full">
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
               src="/lumbar-herniation.jpg" 
-              alt="허리 디스크 해부도" 
-              className="w-full h-auto rounded-2xl border border-slate-200"
+              alt="디스크 팽윤 해부도" 
+              className="w-full sm:w-1/2 h-auto rounded-2xl border border-slate-200 object-cover"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/lumbar-herniation-detail.jpg" 
+              alt="요추 디스크 탈출증 해부도" 
+              className="w-full sm:w-1/2 h-auto rounded-2xl border border-slate-200 object-cover"
             />
           </div>
         )}
