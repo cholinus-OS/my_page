@@ -58,6 +58,22 @@ export default async function DiseasePage({ params }: PageProps) {
         <p className="mt-5 text-base leading-relaxed text-slate-600 text-justify">
           {disease.description}
         </p>
+        {disease.id === "turtle-neck" && (
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/straight-neck-detail.jpg" 
+              alt="일자목 정렬 해부도" 
+              className="w-full sm:w-1/2 h-auto rounded-2xl border border-slate-200 object-cover"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/turtle-neck-detail.jpg" 
+              alt="거북목 증후군 해부도" 
+              className="w-full sm:w-1/2 h-auto rounded-2xl border border-slate-200 object-cover"
+            />
+          </div>
+        )}
         {/* 특정 질환 설명 하단에 해부학 일러스트 그림 삽입 */}
         {disease.id === "rotator-cuff-tear" && (
           <div className="mt-6 w-full">
