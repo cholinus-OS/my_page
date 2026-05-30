@@ -90,6 +90,16 @@ export default async function DiseasePage({ params }: PageProps) {
             />
           </div>
         )}
+        {disease.id === "lumbar-herniation" && (
+          <div className="mt-6 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/lumbar-herniation.jpg" 
+              alt="허리 디스크 해부도" 
+              className="w-full h-auto rounded-2xl border border-slate-200"
+            />
+          </div>
+        )}
         {disease.id === "opll" && (
           <div className="mt-6 w-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
