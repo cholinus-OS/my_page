@@ -9,15 +9,15 @@ export default function CoupangBanner() {
 
   return (
     <div className="my-8 rounded-2xl border border-orange-100 bg-orange-50/30 p-6 text-center shadow-sm">
+      <p className="mb-3 text-[10px] text-red-500 font-semibold">
+        ※ 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받을 수 있습니다.
+      </p>
       <span className="inline-flex items-center gap-1 rounded bg-orange-50 px-2.5 py-0.5 text-[10px] font-semibold text-orange-600">
         쿠팡 파트너스 추천
       </span>
       <h3 className="mt-3 text-sm sm:text-base font-bold text-slate-900 leading-tight">
         관절 및 척추 관리에 도움을 주는 자문단 선정 추천 기기 및 보호대
       </h3>
-      <p className="mt-2 text-[11px] leading-relaxed text-slate-400">
-        ※ 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받을 수 있습니다.
-      </p>
       <div className="mt-4">
         <a
           href={`https://link.coupang.com/a/${partnerId}`}
