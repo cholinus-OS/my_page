@@ -78,6 +78,16 @@ export default async function DiseasePage({ params }: PageProps) {
             />
           </div>
         )}
+        {disease.id === "gout" && (
+          <div className="mt-6 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/gout-detail.jpg" 
+              alt="통풍 발 관절의 병리학적 변화와 발병 과정 해부도" 
+              className="w-full h-auto rounded-2xl border border-slate-200"
+            />
+          </div>
+        )}
         {disease.id === "turtle-neck" && (
           <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
