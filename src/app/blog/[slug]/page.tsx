@@ -146,7 +146,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         </div>
 
         {/* 🛍️ 쿠팡 파트너스 추천 배너 */}
-        <CoupangBanner />
+        <CoupangBanner postCategory={post.category} postTags={post.tags} postSlug={post.slug} />
 
         {/* 태그 영역 */}
         {post.tags.length > 0 && (

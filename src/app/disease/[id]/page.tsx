@@ -403,9 +403,9 @@ export default async function DiseasePage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* 💰 쿠팡 파트너스 맞춤형 상품 매칭 */}
+      {/* 🛍️ 쿠팡 파트너스 맞춤형 상품 매칭 */}
       <div className="mt-8">
-        <CoupangLink keyword={disease.keyword} />
+        <CoupangLink keyword={disease.keyword} diseaseId={disease.id} />
       </div>
 
       {/* 💰 애드센스 하단 광고 */}
