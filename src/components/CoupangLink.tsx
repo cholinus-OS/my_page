@@ -118,6 +118,9 @@ export default function CoupangLink({ keyword }: CoupangLinkProps) {
 
   return (
     <div className="coupang-ad-box border-dashed">
+      <p className="mb-3 text-[10px] text-red-500 font-semibold">
+        ※ 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+      </p>
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-start gap-3">
           <div className="mt-1 rounded-lg bg-teal-100 p-2 text-teal-600 sm:mt-0">
@@ -147,9 +150,6 @@ export default function CoupangLink({ keyword }: CoupangLinkProps) {
           <ExternalLink className="h-3.5 w-3.5 shrink-0" />
         </a>
       </div>
-      <p className="mt-3 text-[10px] text-slate-400 text-right">
-        ※ 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
-      </p>
     </div>
   );
 }
