@@ -58,6 +58,16 @@ export default async function DiseasePage({ params }: PageProps) {
         <p className="mt-5 text-base leading-relaxed text-slate-600 text-justify">
           {disease.description}
         </p>
+        {disease.id === "osteoporosis" && (
+          <div className="mt-6 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/osteoporosis-detail.png" 
+              alt="골다공증 손 뼈의 변화 해부도" 
+              className="w-full h-auto rounded-2xl border border-slate-200"
+            />
+          </div>
+        )}
         {disease.id === "turtle-neck" && (
           <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
