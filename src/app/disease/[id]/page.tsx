@@ -68,6 +68,16 @@ export default async function DiseasePage({ params }: PageProps) {
             />
           </div>
         )}
+        {disease.id === "rheumatoid-arthritis" && (
+          <div className="mt-6 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/rheumatoid-arthritis-detail.jpg" 
+              alt="류마티스 관절염 주요 병리 메커니즘 및 진행 단계 해부도" 
+              className="w-full h-auto rounded-2xl border border-slate-200"
+            />
+          </div>
+        )}
         {disease.id === "turtle-neck" && (
           <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
