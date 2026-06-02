@@ -14,6 +14,11 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     url: "https://cholinus-exerciseismedicine.com",
   },
+  verification: {
+    other: {
+      "naver-site-verification": ["99442813d39bc5e4084de2796dd65657c2226df7"],
+    },
+  },
 };
 
 export default function RootLayout({
