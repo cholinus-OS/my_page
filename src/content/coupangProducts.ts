@@ -40,7 +40,7 @@ export const partnerProducts: CoupangProduct[] = [
     id: "eb9aMcAk9c",
     name: "리브스포 코어 전신운동 케틀벨",
     desc: "척추 주변 코어 근육과 전신의 뼈 자극 운동에 탁월하여 골다공증 예방과 전신 근력 강화에 최적화된 운동 도구입니다.",
-    keywords: ["골다공증", "전신", "osteoporosis"]
+    keywords: ["골다공증", "전신", "osteoporosis", "근감소증", "sarcopenia"]
   },
   {
     id: "ecstGVLFqD",

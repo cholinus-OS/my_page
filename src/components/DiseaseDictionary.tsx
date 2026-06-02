@@ -23,7 +23,7 @@ interface DiseaseDictionaryProps {
 
 const bodyParts = [
   { id: "all", label: "전체보기" },
-  { id: "systemic", label: "전신 (골다공증·류마티스·통풍)" },
+  { id: "systemic", label: "전신 (골다공증·류마티스·통풍·근감소증)" },
   { id: "neck", label: "목 (거북목·디스크)" },
   { id: "waist", label: "허리 (디스크·협착증·전위증)" },
   { id: "shoulder", label: "어깨 (회전근개·오십견)" },
@@ -143,7 +143,7 @@ export default function DiseaseDictionary({ diseases }: DiseaseDictionaryProps) 
               </div>
               <div>
                 <h3 className="text-sm font-bold text-slate-900">척추 및 전신 질환</h3>
-                <p className="text-[10px] text-slate-500">목·허리 정렬 및 골다공증·류마티스·통풍</p>
+                <p className="text-[10px] text-slate-500">목·허리 정렬 및 골다공증·류마티스·통풍·근감소증</p>
               </div>
             </div>
             
