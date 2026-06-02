@@ -6,7 +6,8 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold text-slate-900 transition hover:opacity-80">
-          <Activity className="h-6 w-6 text-teal-600 animate-pulse" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.png" alt="바른관절 헬프센터 로고" className="h-8 w-8 object-contain" />
           <span>바른관절 <span className="text-teal-600 font-semibold">헬프센터</span></span>
         </Link>
         

@@ -106,7 +106,9 @@ export default function RootLayout({
 
         {/* 푸터 영역 */}
         <footer className="border-t border-slate-200 bg-white py-8">
-          <div className="mx-auto max-w-6xl px-4 text-center text-sm text-slate-500 sm:px-6">
+          <div className="mx-auto max-w-6xl px-4 text-center text-sm text-slate-500 sm:px-6 flex flex-col items-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.png" alt="바른관절 헬프센터 로고" className="h-10 w-10 object-contain mb-3" />
             <p className="font-semibold text-slate-700">바른관절 헬프센터</p>
             <p className="mt-2 text-xs leading-relaxed text-slate-400">
               본 사이트에서 제공하는 정보는 교육적 및 일반 정보 제공용입니다. 전문 의료인의 진단, 진료 및 치료를 대신할 수 없습니다.<br />
