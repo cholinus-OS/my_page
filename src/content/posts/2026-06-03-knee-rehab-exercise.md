@@ -6,11 +6,11 @@ category: 정보
 tags: [무릎통증, 무릎재활, 대퇴사두근, 슬관절운동, 관절염]
 ---
 
-![무릎 근력강화 운동 1](/knee-rehab-exercise-01.jpg)
+![무릎 근력강화 운동 1](/knee-rehab-new-01.jpg)
 
-![무릎 근력강화 운동 2](/knee-rehab-exercise-02.jpg)
+![무릎 근력강화 운동 2](/knee-rehab-new-02.jpg)
 
-![무릎 근력강화 운동 3](/knee-rehab-exercise-03.jpg)
+![무릎 근력강화 운동 3](/knee-rehab-new-03.jpg)
 
 ---
 
