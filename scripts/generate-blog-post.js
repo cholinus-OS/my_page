@@ -45,9 +45,26 @@ async function generatePost() {
     }
   }
 
+  // [미배포 방지 대비책]: 모든 질환이 소진되면, 가장 오래된 포스트의 질환을 새로운 각도에서 재작성(리라이팅)하도록 순환합니다.
   if (!targetDisease) {
-    console.log("모든 질환에 대한 블로그 글이 이미 작성되었습니다!");
-    process.exit(0);
+    console.log("모든 질환에 대한 블로그 글이 작성되었습니다. 미발행 일을 방지하기 위해 순환 리라이팅을 진행합니다.");
+    const postDates = postFiles.map(file => {
+      const datePart = file.substring(0, 10);
+      return { file, date: new Date(datePart) };
+    }).sort((a, b) => a.date - b.date);
+
+    if (postDates.length > 0) {
+      const oldestContent = fs.readFileSync(path.join(postsDir, postDates[0].file), "utf8");
+      for (const disease of diseases) {
+        if (oldestContent.includes(disease.name)) {
+          targetDisease = { ...disease, isRewriting: true };
+          break;
+        }
+      }
+    }
+    if (!targetDisease) {
+      targetDisease = { ...diseases[0], isRewriting: true };
+    }
   }
 
   const latestDisease = targetDisease;
@@ -115,6 +132,7 @@ ${constraints}
 
 # [Input Variable]
 - 세부 주제어: ${topic}
+${latestDisease.isRewriting ? "- 특이사항: 이 질환에 대해 이전에 작성된 이력이 있습니다. 기존 글과 내용이 겹치지 않게, 이번에는 홈트레이닝 재활 가이드나 실생활 속 예방법 위주의 새로운 관점으로 완벽히 다르게 작성해 주세요." : ""}
 
 # [Output Format]
 반드시 아래 정의된 템플릿 구조만 출력하고, 앞뒤로 "네, 알겠습니다" 등 AI의 불필요한 인사말이나 서론은 일절 제외하라.
@@ -125,26 +143,47 @@ ${constraints}
 
 FILENAME: ${todayStr}-keyword`;
 
-  // 4. Gemini API 호출
+  // 4. Gemini API 호출 (간헐적 네트워크 장애 대비 3회 자동 재시도 로직 탑재)
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        contents: [{
-          parts: [{
-            text: prompt
-          }]
-        }]
-      })
-    });
+  let response;
+  let attempts = 3;
+  let success = false;
 
-    if (!response.ok) {
-      throw new Error(`Gemini API 호출 실패 (HTTP 상태 코드: ${response.status})`);
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+              text: prompt
+            }]
+          }]
+        })
+      });
+
+      if (response.ok) {
+        success = true;
+        break;
+      }
+      console.warn(`Gemini API attempt ${attempt} failed with status: ${response.status}`);
+    } catch (err) {
+      console.warn(`Gemini API attempt ${attempt} connection failed: ${err.message}`);
+    }
+
+    if (attempt < attempts) {
+      console.log("3초 후 API 재시도를 진행합니다...");
+      await new Promise(resolve => setTimeout(resolve, 3000));
+    }
+  }
+
+  try {
+    if (!success || !response) {
+      throw new Error(`Gemini API 호출 실패 (최대 ${attempts}회 시도 실패)`);
     }
 
     const data = await response.json();
