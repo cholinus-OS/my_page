@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import diseasesData from "@/content/diseases/data.json";
 import CoupangLink from "@/components/CoupangLink";
 import AdSense from "@/components/AdSense";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { 
   ArrowLeft, 
   CheckCircle2, 
@@ -55,9 +57,11 @@ export default async function DiseasePage({ params }: PageProps) {
         <h1 className="mt-4 text-2xl font-black text-slate-900 sm:text-3xl">
           {disease.name}
         </h1>
-        <p className="mt-5 text-base leading-relaxed text-slate-600 text-justify">
-          {disease.description}
-        </p>
+        <div className="mt-5 text-base leading-relaxed text-slate-600 text-justify prose max-w-none">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {disease.description}
+          </ReactMarkdown>
+        </div>
         {disease.id === "sarcopenia" && (
           <div className="mt-6 w-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
