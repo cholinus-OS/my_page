@@ -243,6 +243,24 @@ export default function Home() {
                   </a>
                 ))}
               </div>
+
+              {/* 🚂 Exercise Is Medicine. 기차 흐름 애니메이션 추가 */}
+              <div className="mt-6 overflow-hidden w-full relative whitespace-nowrap bg-slate-50 py-4 rounded-2xl border border-slate-100/60 select-none">
+                <style>{`
+                  @keyframes trainMarquee {
+                    0% { transform: translateX(100%); }
+                    100% { transform: translateX(-100%); }
+                  }
+                `}</style>
+                <div 
+                  className="inline-block text-2xl sm:text-3xl font-black bg-gradient-to-r from-rose-500 via-purple-600 to-teal-500 bg-clip-text text-transparent tracking-widest"
+                  style={{
+                    animation: 'trainMarquee 15s linear infinite',
+                  }}
+                >
+                  Exercise Is Medicine.
+                </div>
+              </div>
             </div>
           </div>
         </div>
