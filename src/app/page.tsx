@@ -183,7 +183,18 @@ export default function Home() {
                 </div>
                 <h3 className="mt-5 text-xl font-bold text-slate-900">cholinus 공식 블로그</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-500">
-                  웹사이트 운영자가 직접 수집하고 기록하는 깊이 있는 건강 관련 지식과 일상 속 자세 교정 꿀팁, 일지들을 네이버 블로그에서 만나보세요.
+                  웹사이트 운영자가 직접 수집하고 기록하는 깊이 있는 건강 관련 지식과 일상 속 자세 교정 꿀팁을 공유합니다.
+                </p>
+                <div className="my-4 w-full">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src="/blog-banner.jpg" 
+                    alt="cholinus 공식 블로그 배너 일러스트" 
+                    className="w-full h-auto rounded-2xl border border-slate-200"
+                  />
+                </div>
+                <p className="text-sm leading-relaxed text-slate-500">
+                  재활에 도움이 되는 다양한 운동 일지들과 유용한 노하우들을 공식 네이버 블로그에서 생생하게 만나보세요.
                 </p>
               </div>
               <div className="mt-8">
