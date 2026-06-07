@@ -385,6 +385,22 @@ export default async function DiseasePage({ params }: PageProps) {
             />
           </div>
         )}
+        {disease.id === "hallux-valgus" && (
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/hallux-valgus-1.jpg" 
+              alt="무지외반증1" 
+              className="w-full sm:w-1/2 h-auto rounded-2xl border border-slate-200 object-cover"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/hallux-valgus-2.jpg" 
+              alt="무지외반증2" 
+              className="w-full sm:w-1/2 h-auto rounded-2xl border border-slate-200 object-cover"
+            />
+          </div>
+        )}
       </div>
 
       {/* 💰 애드센스 상단 광고 */}
