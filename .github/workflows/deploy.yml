@@ -37,6 +37,8 @@ jobs:
 
       - name: 5. Build Project
         run: npm run build
+        env:
+          NEXT_PUBLIC_PEXELS_API_KEY: ${{ secrets.NEXT_PUBLIC_PEXELS_API_KEY }}
 
       - name: 6. Deploy to Cloudflare Pages
         run: npx wrangler pages deploy out --project-name=cholinus-exerciseismedicine
