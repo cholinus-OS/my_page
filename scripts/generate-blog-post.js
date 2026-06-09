@@ -217,6 +217,12 @@ FILENAME: ${todayStr}-keyword`;
       bodyContent = bodyContent.replace(/^---\n/, "").trim();
     }
 
+    // Pexels 이미지 실시간 조회 (질환의 키워드로 검색)
+    const pexelsPhotos = await getPexelsImages(latestDisease.keyword || latestDisease.name);
+
+    // 본문 내용 중간에 이미지 자동 삽입
+    const updatedBodyContent = insertImagesIntoMarkdown(bodyContent, pexelsPhotos, latestDisease.name);
+
     // Frontmatter 생성
     const tags = [latestDisease.partName, latestDisease.mainCategoryName, "재활", "통증", latestDisease.keyword].filter(Boolean);
     const finalContent = `---
@@ -227,7 +233,7 @@ category: 정보
 tags: [${tags.join(", ")}]
 ---
 
-${bodyContent}`;
+${updatedBodyContent}`;
 
     // 파일 생성
     const finalPath = path.join(postsDir, filename);
@@ -240,4 +246,86 @@ ${bodyContent}`;
   }
 }
 
+/**
+ * Pexels API로부터 키워드와 연관된 고화질 이미지를 가져오는 함수입니다.
+ */
+async function getPexelsImages(keyword) {
+  const pexelsKey = process.env.NEXT_PUBLIC_PEXELS_API_KEY;
+  if (!pexelsKey || pexelsKey === "YOUR_PEXELS_API_KEY_HERE") {
+    console.log("Pexels API Key가 없거나 예시 상태이므로 이미지 검색을 건너뜁니다.");
+    return [];
+  }
+
+  // 1차 시도: 한글 키워드, 2차 시도: 관련 운동 영어 키워드, 3차 시도: 일반 재활 영어 키워드
+  const searchQueries = [keyword, "stretching exercise", "physical therapy"];
+
+  for (const query of searchQueries) {
+    try {
+      console.log(`Pexels 이미지 검색 시도 중... (검색어: ${query})`);
+      const searchUrl = `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=2`;
+      
+      const res = await fetch(searchUrl, {
+        headers: {
+          Authorization: pexelsKey
+        }
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.photos && data.photos.length > 0) {
+          console.log(`Pexels에서 성공적으로 '${query}' 관련 이미지를 ${data.photos.length}장 찾았습니다.`);
+          return data.photos.map(p => ({
+            // 정적 빌드 핫링크 깨짐 방지를 위해 주소 뒤의 쿼리스트링(?auto=compress 등)을 잘라냅니다.
+            url: p.src.large.split('?')[0],
+            photographer: p.photographer,
+            photographerUrl: p.photographer_url,
+            alt: p.alt || `${keyword} 관련 재활 이미지`
+          }));
+        }
+      } else {
+        console.warn(`Pexels API 응답이 원활하지 않습니다. 상태 코드: ${res.status}`);
+      }
+    } catch (err) {
+      console.warn(`Pexels API 조회 실패 (검색어: ${query}):`, err.message);
+    }
+  }
+
+  console.log("Pexels에서 조건에 맞는 이미지를 찾지 못했습니다.");
+  return [];
+}
+
+/**
+ * 마크다운 본문 내용의 ## 소제목 밑에 사진들을 순서대로 배치하는 헬퍼 함수입니다.
+ */
+function insertImagesIntoMarkdown(body, photos, keyword) {
+  if (!photos || photos.length === 0) return body;
+
+  const lines = body.split('\n');
+  let photoIndex = 0;
+  const resultLines = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    resultLines.push(line);
+
+    // '## ' 소제목을 만났고 아직 끼워 넣을 사진이 남았을 경우 그 아랫줄에 삽입
+    if (line.startsWith('## ') && photoIndex < photos.length) {
+      const photo = photos[photoIndex];
+      const imageMarkdown = `\n![${photo.alt}](${photo.url})\n*(출처: Pexels / 사진 제공: [${photo.photographer}](${photo.photographerUrl}))*\n`;
+      resultLines.push(imageMarkdown);
+      photoIndex++;
+    }
+  }
+
+  // 만약 본문에 ## 소제목이 아예 없어서 사진이 배치되지 않은 경우, 글 맨 첫 부분에 강제로 1장을 넣어줍니다.
+  if (photoIndex === 0 && photos.length > 0) {
+    const photo = photos[0];
+    const imageMarkdown = `\n![${photo.alt}](${photo.url})\n*(출처: Pexels / 사진 제공: [${photo.photographer}](${photo.photographerUrl}))*\n`;
+    resultLines.unshift(imageMarkdown);
+  }
+
+  return resultLines.join('\n');
+}
+
 generatePost();
+
