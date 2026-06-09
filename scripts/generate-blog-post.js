@@ -386,11 +386,21 @@ function insertImagesIntoMarkdown(body, photos, keyword) {
     }
   }
 
-  // 만약 본문에 ## 소제목이 아예 없어서 사진이 배치되지 않은 경우, 글 맨 첫 부분에 강제로 1장을 넣어줍니다.
+  // 본문에 소제목이 아예 없어서 단 1장도 삽입되지 않은 특수한 경우, 본문 첫 머리에 1번째 대표 이미지를 주입해 줍니다.
   if (photoIndex === 0 && photos.length > 0) {
     const photo = photos[0];
     const imageMarkdown = `\n![${photo.alt}](${photo.url})\n*(출처: Pexels / 사진 제공: [${photo.photographer}](${photo.photographerUrl}))*\n`;
     resultLines.unshift(imageMarkdown);
+    photoIndex++;
+  }
+
+  // 소제목 개수가 부족해 아직 주입되지 못하고 남은 이미지가 있는 경우(예: 소제목이 1개뿐일 때의 2번째 이미지 등),
+  // 남은 이미지와 출처를 본문 가장 하단에 추가하여 누락을 완벽히 방지합니다.
+  while (photoIndex < photos.length) {
+    const photo = photos[photoIndex];
+    const imageMarkdown = `\n\n![${photo.alt}](${photo.url})\n*(출처: Pexels / 사진 제공: [${photo.photographer}](${photo.photographerUrl}))*\n`;
+    resultLines.push(imageMarkdown);
+    photoIndex++;
   }
 
   return resultLines.join('\n');
