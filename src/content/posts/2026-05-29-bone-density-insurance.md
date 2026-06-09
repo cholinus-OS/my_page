@@ -4,7 +4,7 @@ date: 2026-05-29
 summary: 골다공증 예방의 첫걸음인 골밀도 검사의 건강보험 급여 대상 조건과 검사 주기, 추적검사 인정 기준을 알기 쉽게 정리해 드립니다.
 category: 정보
 tags: [골밀도검사, 골다공증, 건강보험급여, 뼈건강, 의료비절약]
-thumbnail: "https://images.pexels.com/photos/13176451/pexels-photo-13176451.jpeg"
+thumbnail: "https://images.pexels.com/photos/8376182/pexels-photo-8376182.jpeg"
 ---
 
 안녕하세요! 뼈 건강을 지키는 가장 기본적이면서도 중요한 검사, 바로 **골밀도(골다공증) 검사**에 대해 들어보셨나요? 나이가 들거나 폐경을 맞이하면 뼈가 서서히 약해지면서 골다공증 위험이 급격히 올라가게 됩니다. 

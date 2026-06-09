@@ -4,7 +4,7 @@ date: 2026-06-03
 summary: 무릎 관절염이나 수술 후 회복 치료 중 통증이 있더라도 무릎 주변 근육을 유지하기 위해 반드시 실천해야 하는 필수 재활 운동 가이드입니다.
 category: 정보
 tags: [무릎통증, 무릎재활, 대퇴사두근, 슬관절운동, 관절염]
-thumbnail: "https://images.pexels.com/photos/30483052/pexels-photo-30483052.jpeg"
+thumbnail: "https://images.pexels.com/photos/20860603/pexels-photo-20860603.jpeg"
 ---
 
 ![무릎 근력강화 운동 1](/knee-rehab-new-01.jpg)

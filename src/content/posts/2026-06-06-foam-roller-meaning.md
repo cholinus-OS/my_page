@@ -4,7 +4,7 @@ date: 2026-06-06
 summary: 뻐근한 몸을 시원하게 풀어주고 근육을 감싸는 근막을 이완시켜 주는 필수 홈트레이닝 도구인 폼롤러의 의학적 의미와 효과적인 활용 가이드입니다.
 category: 정보
 tags: [폼롤러, 근막이완, 스트레칭, 홈트레이닝, 자세교정]
-thumbnail: "https://images.pexels.com/photos/33744726/pexels-photo-33744726.jpeg"
+thumbnail: "https://images.pexels.com/photos/20890282/pexels-photo-20890282.jpeg"
 ---
 
 안녕하세요! 여러분의 건강한 관절과 뼈 건강을 지켜드리는 바른관절 헬프센터입니다. 혹시 집 거실 구석에 굴러다니는 원기둥 모양의 스펀지 도구, **폼롤러(Foam Roller)**가 있으신가요? 

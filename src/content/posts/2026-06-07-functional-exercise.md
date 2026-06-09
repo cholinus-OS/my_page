@@ -4,7 +4,7 @@ date: 2026-06-07
 summary: 우리 몸 본연의 움직임 기능을 되살려 부상을 예방하고, 전신의 근력과 가동성을 조화롭게 발달시키는 기능성 운동 가이드입니다.
 category: 정보
 tags: [기능성운동, 자세교정, 부상예방, 코어강화, 홈트레이닝]
-thumbnail: "https://images.pexels.com/photos/35376433/pexels-photo-35376433.jpeg"
+thumbnail: "https://images.pexels.com/photos/18986400/pexels-photo-18986400.jpeg"
 ---
 
 안녕하세요! 여러분의 건강한 관절과 통증 없는 움직임을 지켜드리는 바른관절 헬프센터입니다. 혹시 헬스장에서 무거운 덤벨을 들고 특정 부위의 근육을 우람하게 키우는 운동만 반복하고 계시진 않나요? 

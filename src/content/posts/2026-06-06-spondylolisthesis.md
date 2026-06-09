@@ -4,7 +4,7 @@ date: 2026-06-06
 summary: 위쪽 척추뼈가 아래쪽 척추뼈보다 앞으로 미끄러져 나가 어긋나 있는 상태입니다.
 category: 정보
 tags: [허리, 척추, 재활, 통증, 허리보호대]
-thumbnail: "https://images.pexels.com/photos/29606418/pexels-photo-29606418.jpeg"
+thumbnail: "https://images.pexels.com/photos/4506109/pexels-photo-4506109.jpeg"
 ---
 
 허리 아픈데 다리까지 저릿? 척추전방전위증, 방치 말고 이렇게 관리하세요!

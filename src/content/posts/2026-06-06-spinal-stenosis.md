@@ -4,7 +4,7 @@ date: 2026-06-06
 summary: 척추 신경 통로가 좁아져 신경이 눌리고, 조금만 걸어도 다리가 쥐나듯 저려 쉬어 가야 하는 질환입니다.
 category: 정보
 tags: [허리, 척추, 재활, 통증, 허리보호대]
-thumbnail: "https://images.pexels.com/photos/29606418/pexels-photo-29606418.jpeg"
+thumbnail: "https://images.pexels.com/photos/5793794/pexels-photo-5793794.jpeg"
 ---
 
 걷다 쉬었다 반복? '척추관 협착증' 의심 증상부터 통증 완화 운동법까지

@@ -4,7 +4,7 @@ date: 2026-06-06
 summary: 허리와 목의 통증을 줄이고 코어 근육을 가장 효과적으로 강화할 수 있는 필라테스의 기본 자세인 척추중립(Neutral Spine) 가이드입니다.
 category: 정보
 tags: [척추중립, 필라테스, 자세교정, 허리통증, 코어운동]
-thumbnail: "https://images.pexels.com/photos/27376659/pexels-photo-27376659.jpeg"
+thumbnail: "https://images.pexels.com/photos/36833351/pexels-photo-36833351.jpeg"
 ---
 
 안녕하세요! 여러분의 소중한 허리와 척추 건강을 지켜드리는 바른관절 헬프센터입니다. 혹시 평소에 서 있거나 의자에 앉아 있을 때 허리가 뻐근하거나 찌릿한 느낌을 받아본 적이 있으신가요? 

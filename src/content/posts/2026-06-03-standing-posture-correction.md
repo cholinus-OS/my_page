@@ -4,7 +4,7 @@ date: 2026-06-03
 summary: 서 있을 때 잘못된 자세와 체형 불균형을 바로잡아 척추, 골반, 무릎 관절을 건강하게 지켜주는 서 있는 자세교정 가이드입니다.
 category: 정보
 tags: [자세교정, 올바른자세, 체형교정, 척추건강, 자세교정운동]
-thumbnail: "https://images.pexels.com/photos/37244580/pexels-photo-37244580.jpeg"
+thumbnail: "https://images.pexels.com/photos/20860615/pexels-photo-20860615.jpeg"
 ---
 
 안녕하세요! 여러분의 바르고 건강한 뼈 건강을 지켜드리는 바른관절 헬프센터입니다. 혹시 대중교통을 기다리거나 서 있을 때 자신도 모르게 한쪽 다리에만 체중을 싣는 **"짝다리"**를 짚고 계시지 않으신가요? 

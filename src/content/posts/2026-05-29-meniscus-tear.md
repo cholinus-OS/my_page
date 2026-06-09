@@ -4,7 +4,7 @@ date: 2026-05-29
 summary: 무릎 뼈 사이에서 완충 작용을 하는 반달 모양의 섬유성 연골판이 찢어지는 부상입니다.
 category: 정보
 tags: [무릎, 하지 관절, 재활, 통증, 무릎보호대]
-thumbnail: "https://images.pexels.com/photos/27376664/pexels-photo-27376664.jpeg"
+thumbnail: "https://images.pexels.com/photos/20860607/pexels-photo-20860607.jpeg"
 ---
 
 ## 무릎 속 작은 연골판, 당신의 일상을 위협하고 있지는 않나요?

@@ -4,7 +4,7 @@ date: 2026-05-29
 summary: 팔꿈치 안쪽 돌출된 뼈 주변의 힘줄에 무리가 가 염증과 미세 손상이 일어나는 질환입니다.
 category: 정보
 tags: [팔꿈치, 상지 관절, 재활, 통증, 팔꿈치보호대]
-thumbnail: "https://images.pexels.com/photos/27376661/pexels-photo-27376661.jpeg"
+thumbnail: "https://images.pexels.com/photos/37453429/pexels-photo-37453429.jpeg"
 ---
 
 팔꿈치 안쪽 찌릿 통증? '골프 엘보' 자가진단부터 완화 운동까지!

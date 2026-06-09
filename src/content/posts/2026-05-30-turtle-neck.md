@@ -4,7 +4,7 @@ date: 2026-05-30
 summary: 목 뼈의 C자 곡선이 상실되어 거북이처럼 목이 앞으로 마중 나가는 자세 변형 질환입니다.
 category: 정보
 tags: [목, 척추, 재활, 통증, 거북목]
-thumbnail: "https://images.pexels.com/photos/11022520/pexels-photo-11022520.jpeg"
+thumbnail: "https://images.pexels.com/photos/8076121/pexels-photo-8076121.jpeg"
 ---
 
 뻐근한 목, 어깨 통증 해결사! 거북목 & 일자목 완벽 가이드

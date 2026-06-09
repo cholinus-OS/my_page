@@ -4,7 +4,7 @@ date: 2026-06-09
 summary: 어깨 관절을 둘러싼 주머니(관절낭)가 염증으로 굳어져 팔이 사방으로 안 움직이는 상태입니다.
 category: 정보
 tags: [어깨, 상지 관절, 재활, 통증, 어깨보호대]
-thumbnail: "https://images.pexels.com/photos/8600449/pexels-photo-8600449.jpeg"
+thumbnail: "https://images.pexels.com/photos/5793792/pexels-photo-5793792.jpeg"
 ---
 
 어깨 통증으로 밤잠 설치시나요? 오십견(유착성 관절낭염) 원인과 하루 10분 자가 회복 스트레칭

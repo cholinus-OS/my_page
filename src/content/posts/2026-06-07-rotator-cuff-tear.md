@@ -4,7 +4,7 @@ date: 2026-06-07
 summary: 어깨를 감싸는 4개의 회전근 힘줄 중 일부가 닳거나 찢어지는 질환입니다.
 category: 정보
 tags: [어깨, 상지 관절, 재활, 통증, 어깨관절]
-thumbnail: "https://images.pexels.com/photos/34262661/pexels-photo-34262661.jpeg"
+thumbnail: "https://images.pexels.com/photos/8219157/pexels-photo-8219157.jpeg"
 ---
 
 어깨 회전근개 파열, 방치하면 수술까지? 내 어깨 건강 지키는 법

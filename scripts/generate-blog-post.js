@@ -252,7 +252,30 @@ ${updatedBodyContent}`;
 }
 
 /**
- * Pexels API로부터 키워드와 연관된 고화질 이미지를 가져오는 함수입니다.
+ * 기존 작성된 모든 글의 썸네일 이미지 주소를 모아서 중복 방지용 집합을 반환합니다.
+ */
+function getUsedThumbnails() {
+  const postsDir = path.join(process.cwd(), "src/content/posts");
+  const used = new Set();
+  if (!fs.existsSync(postsDir)) return used;
+
+  try {
+    const files = fs.readdirSync(postsDir).filter(f => f.endsWith(".md"));
+    for (const file of files) {
+      const content = fs.readFileSync(path.join(postsDir, file), "utf8");
+      const match = content.match(/thumbnail:\s*"([^"]+)"/);
+      if (match) {
+        used.add(match[1]);
+      }
+    }
+  } catch (e) {
+    console.warn("기존 썸네일 주소 모음 수집 중 오류:", e.message);
+  }
+  return used;
+}
+
+/**
+ * Pexels API로부터 키워드와 연관된 고화질 이미지를 중복 없이 가져오는 함수입니다.
  */
 async function getPexelsImages(keyword) {
   const pexelsKey = process.env.NEXT_PUBLIC_PEXELS_API_KEY;
@@ -261,13 +284,42 @@ async function getPexelsImages(keyword) {
     return [];
   }
 
-  // 1차 시도: 한글 키워드, 2차 시도: 관련 운동 영어 키워드, 3차 시도: 일반 재활 영어 키워드
-  const searchQueries = [keyword, "stretching exercise", "physical therapy"];
+  // 1. 이미 사용 중인 썸네일 URL 리스트 수집
+  const usedImages = getUsedThumbnails();
+
+  // 2. 한글 검색 품질 극대화를 위한 영어 매핑 딕셔너리
+  const krEnMap = {
+    "거북목": "neck stretching computer laptop",
+    "목디스크": "neck pain stretch therapy",
+    "허리디스크": "back stretch core exercise yoga",
+    "무릎": "knee joint exercise stretch",
+    "어깨": "shoulder stretch physical therapy",
+    "팔꿈치": "elbow massage rehabilitation stretch",
+    "발목": "ankle physical therapy brace",
+    "골밀도": "elderly health exercise doctor",
+    "폼롤러": "foam roller stretching massage roll",
+    "필라테스": "pilates core spine stretch yoga",
+    "자세교정": "good standing posture spine align",
+    "안벅지": "thigh fitness stretching workout",
+    "필라테스 호흡법": "pilates breathing yoga mat trainer",
+    "무릎통증": "knee joint exercise stretch",
+    "자세교정": "good standing posture spine align",
+    "척추중립": "pilates core spine stretch yoga",
+    "척추": "back spine core physical therapy",
+    "목": "neck posture laptop check",
+    "허리": "back stretch core exercise yoga",
+    "목운동": "pilates exercise yoga back stretching",
+    "기능성운동": "functional fitness training workout"
+  };
+
+  const englishQuery = krEnMap[keyword] || keyword;
+  const searchQueries = [englishQuery, "stretching exercise", "physical therapy"];
 
   for (const query of searchQueries) {
     try {
       console.log(`Pexels 이미지 검색 시도 중... (검색어: ${query})`);
-      const searchUrl = `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=2`;
+      // 중복 방지를 위해 10장 넉넉하게 불러와 대조합니다.
+      const searchUrl = `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=10`;
       
       const res = await fetch(searchUrl, {
         headers: {
@@ -278,24 +330,36 @@ async function getPexelsImages(keyword) {
       if (res.ok) {
         const data = await res.json();
         if (data.photos && data.photos.length > 0) {
-          console.log(`Pexels에서 성공적으로 '${query}' 관련 이미지를 ${data.photos.length}장 찾았습니다.`);
-          return data.photos.map(p => ({
-            // 정적 빌드 핫링크 깨짐 방지를 위해 주소 뒤의 쿼리스트링(?auto=compress 등)을 잘라냅니다.
-            url: p.src.large.split('?')[0],
-            photographer: p.photographer,
-            photographerUrl: p.photographer_url,
-            alt: p.alt || `${keyword} 관련 재활 이미지`
-          }));
+          const matchedPhotos = [];
+          for (const p of data.photos) {
+            const cleanUrl = p.src.large.split('?')[0];
+            // 다른 글에서 사용된 적이 없는 고유 이미지인 경우만 추출
+            if (!usedImages.has(cleanUrl)) {
+              matchedPhotos.push({
+                url: cleanUrl,
+                photographer: p.photographer,
+                photographerUrl: p.photographer_url,
+                alt: p.alt || `${keyword} 관련 재활 이미지`
+              });
+              // 글 하나당 2장의 이미지를 가져옵니다.
+              if (matchedPhotos.length >= 2) break;
+            }
+          }
+
+          if (matchedPhotos.length > 0) {
+            console.log(`Pexels에서 성공적으로 중복 없는 '${query}' 관련 이미지를 ${matchedPhotos.length}장 확보했습니다.`);
+            return matchedPhotos;
+          }
         }
       } else {
-        console.warn(`Pexels API 응답이 원활하지 않습니다. 상태 코드: ${res.status}`);
+        console.warn(`Pexels API 응답 지연. 상태 코드: ${res.status}`);
       }
     } catch (err) {
       console.warn(`Pexels API 조회 실패 (검색어: ${query}):`, err.message);
     }
   }
 
-  console.log("Pexels에서 조건에 맞는 이미지를 찾지 못했습니다.");
+  console.log("Pexels에서 중복되지 않은 이미지를 찾지 못했습니다.");
   return [];
 }
 
