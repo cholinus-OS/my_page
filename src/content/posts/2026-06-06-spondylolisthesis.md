@@ -22,6 +22,10 @@ thumbnail: "https://images.pexels.com/photos/4506109/pexels-photo-4506109.jpeg"
 
 ## 내 척추가 미끄러지고 있다고요? 척추전방전위증의 원인과 전조증상
 
+![From above back view of crop orthopedist in uniform and eyewear examining back of slim faceless female in casual clothes sitting on examination couch in doctor office](https://images.pexels.com/photos/4506111/pexels-photo-4506111.jpeg)
+*(출처: Pexels / 사진 제공: [www.kaboompics.com](https://www.pexels.com/@karola-g))*
+
+
 **척추전방전위증**은 말 그대로 **위쪽 척추뼈가 아래쪽 척추뼈보다 앞으로 미끄러져 나가 어긋나 있는 상태**를 의미합니다. 우리 몸의 기둥 역할을 하는 척추는 여러 개의 척추뼈가 쌓여 견고하게 지지되어야 하지만, 이 질환은 척추뼈의 정렬이 흐트러지면서 문제가 발생합니다. 그럼 왜 이런 현상이 발생하는 걸까요?
 
 ### 척추전방전위증, 왜 생기는 걸까요?

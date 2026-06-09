@@ -48,3 +48,7 @@ thumbnail: "https://images.pexels.com/photos/9288130/pexels-photo-9288130.jpeg"
 또한 목을 뒤로 젖히거나 꺾어 올릴 때, 억지로 많이 올라가려고 머리를 휙 꺾지 않아야 합니다. 시선은 가볍게 사선 바닥이나 정면을 바라보며, 정수리 끝이 위로 부드럽게 길어진다는 느낌으로 **통증이 없는 안전한 범위 내에서** 서서히 늘려주세요.
 
 매일 꾸준한 필라테스 동작으로 가뿐하고 가벼운 목과 등을 가꾸어 보세요! 다음에도 실생활에 유용한 쉽고 건강한 정보로 찾아뵙겠습니다. 감사합니다! 😊👍
+
+
+![Woman using foam roller for back stretch in a ballet studio, promoting wellness and flexibility.](https://images.pexels.com/photos/8933832/pexels-photo-8933832.jpeg)
+*(출처: Pexels / 사진 제공: [Anastasia  Shuraeva](https://www.pexels.com/@anastasia-shuraeva))*

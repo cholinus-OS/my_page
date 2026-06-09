@@ -47,3 +47,7 @@ thumbnail: "https://images.pexels.com/photos/20860603/pexels-photo-20860603.jpeg
 * **의사의 진단 우선**: 만약 무릎 인대 수술을 받은 지 얼마 되지 않았다면, 반드시 주치의의 허락 하에 보조기를 착용한 상태로 조심히 진행하셔야 안전합니다.
 
 무릎의 아픔에 지지 않고 가벼운 누운 자세의 근육 조이기부터 차근차근 시작해보세요. 근육이 강해질수록 신기하게도 무릎의 통증은 서서히 줄어들게 될 것입니다. 여러분의 쾌유를 언제나 응원합니다! 감사합니다. 😊👍
+
+
+![A physiotherapist assists a patient with leg stretching exercises on a treatment table.](https://images.pexels.com/photos/20860582/pexels-photo-20860582.jpeg)
+*(출처: Pexels / 사진 제공: [Funkcinės Terapijos Centras](https://www.pexels.com/@funkcines-terapijos-centras-927573878))*

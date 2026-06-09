@@ -38,6 +38,10 @@ thumbnail: "https://images.pexels.com/photos/4506166/pexels-photo-4506166.jpeg"
 
 ## 장비 없이 집에서 끝내는 회전근개 건염 완화 및 예방 스트레칭 3가지
 
+![Therapist guiding a woman in a stretching exercise indoors, focusing on physical therapy.](https://images.pexels.com/photos/5793800/pexels-photo-5793800.jpeg)
+*(출처: Pexels / 사진 제공: [Yan Krukau](https://www.pexels.com/@yankrukov))*
+
+
 염증 초기의 회전근개 건염은 무리한 근력 운동보다는 좁아진 어깨 공간을 늘려주고, 굳어진 힘줄의 유연성을 회복시키는 부드러운 스트레칭이 가장 훌륭한 치료법이 됩니다. 집이나 사무실에서 별도의 도구 없이 즉시 실천해 볼 수 있는 안전한 동작들을 소개해 드립니다.
 
 ### 1. 시계추 운동 (Pendulum Exercise)

@@ -19,6 +19,10 @@ thumbnail: "https://images.pexels.com/photos/20860607/pexels-photo-20860607.jpeg
 
 ## 무릎의 댐퍼, 반월상 연골판은 왜 찢어지고 어떻게 아파올까요?
 
+![Close-up view of a person using electrical stimulation pads on the knee for therapy.](https://images.pexels.com/photos/30483052/pexels-photo-30483052.jpeg)
+*(출처: Pexels / 사진 제공: [Cansu Hangül](https://www.pexels.com/@cansu-hangul-464804780))*
+
+
 무릎 관절은 허벅지 뼈(대퇴골)와 정강이 뼈(경골)가 만나는 복잡한 구조로 이루어져 있습니다. 이 두 뼈 사이에는 반달 모양의 연골 조직이 있는데, 이것이 바로 **반월상 연골판**입니다. 내측과 외측에 각각 하나씩 위치하며, 무릎에 가해지는 충격을 흡수하고 분산시켜 뼈끼리 직접 부딪히는 것을 막아주는 '댐퍼' 또는 '쿠션' 역할을 합니다. 또한, 무릎 관절의 안정성을 높이고 윤활 작용에도 기여하죠.
 
 ### 반월상 연골판 파열은 어떻게 발생할까요?

@@ -59,3 +59,7 @@ thumbnail: "https://images.pexels.com/photos/20890282/pexels-photo-20890282.jpeg
 또한, 롤링을 할 때 **아픔을 참으려고 숨을 흡! 하고 참으시면 안 됩니다.** 아프다고 힘을 잔뜩 주면 근육이 긴장해 이완 효과가 떨어집니다. 아플수록 입으로 숨을 후~ 하고 길게 뱉으며 온몸의 긴장을 지긋이 풀어주시는 것이 폼롤러 마사지의 핵심입니다.
 
 처음 하실 때는 너무 딱딱한 재질(EPP)보다는 조금 부드럽고 말랑한 재질(EVA)의 폼롤러로 아프지 않은 범위 내에서 가볍게 시작해 보세요. 하루 5분, 폼롤러와 함께 피로가 싹 풀리는 편안한 하루를 보내시길 바랍니다. 다음에도 유용한 건강 이야기로 찾아뵙겠습니다. 감사합니다! 😊👍
+
+
+![Person using a black foam roller for leg exercise on a gray background.](https://images.pexels.com/photos/20890283/pexels-photo-20890283.jpeg)
+*(출처: Pexels / 사진 제공: [Nadin Sh](https://www.pexels.com/@nadin-sh-78971847))*

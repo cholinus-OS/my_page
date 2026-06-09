@@ -19,6 +19,10 @@ thumbnail: "https://images.pexels.com/photos/4534640/pexels-photo-4534640.jpeg"
 
 ## 허리 디스크, 왜 생기고 어떤 신호를 보낼까요?
 
+![Woman in a bridge pose practicing yoga indoors, showcasing exercise and flexibility.](https://images.pexels.com/photos/11889762/pexels-photo-11889762.jpeg)
+*(출처: Pexels / 사진 제공: [Tatiana Sozutova](https://www.pexels.com/@sozutova))*
+
+
 우리 척추는 뼈와 뼈 사이에 충격을 흡수하는 말랑한 젤리 같은 구조물, 바로 **추간판(디스크)**이 존재합니다. 이 추간판은 바깥쪽의 단단한 섬유륜과 안쪽의 부드러운 수핵으로 이루어져 있는데요. 잘못된 자세나 무리한 활동, 노화 등으로 인해 섬유륜이 손상되면서 안에 있던 **수핵이 밖으로 밀려나와 주변의 신경을 압박하는 상태**를 우리는 **'요추 추간판 탈출증'**, 즉 허리 디스크라고 부릅니다. 이 압박된 신경은 염증을 유발하고, 그 결과 허리 통증은 물론 신경이 지배하는 다리까지 저리고 아픈 증상을 만들어냅니다.
 
 ### 허리 디스크, 혹시 나도? 자가진단 체크리스트

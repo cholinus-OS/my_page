@@ -47,3 +47,7 @@ thumbnail: "https://images.pexels.com/photos/20860615/pexels-photo-20860615.jpeg
 어깨의 힘을 툭 빼고 턱은 목 쪽으로 가볍게 당긴 채, 정수리 위에서 가상의 실이 나를 하늘 방향으로 가볍게 잡아당긴다는 느낌으로 **자연스럽고 편안하게 척추를 세워주시는 것**이 정답입니다. 자세를 바로잡을 때 숨을 참지 마시고 편안하게 코로 마시고 입으로 내쉬는 호흡을 유지해 주세요.
 
 길을 걷다가 멈춰 서서 신호를 대기할 때, 양 발에 체중을 고르게 5:5로 싣는 아주 작은 습관 하나만 시작하셔도 골반 건강을 튼튼하게 지킬 수 있습니다. 오늘 하루도 척추 건강하게 곧게 서는 하루 보내시길 바랍니다! 감사합니다! 😊👍
+
+
+![Senior couple standing on yoga mats indoors, focusing on health and fitness.](https://images.pexels.com/photos/7500325/pexels-photo-7500325.jpeg)
+*(출처: Pexels / 사진 제공: [Mikhail Nilov](https://www.pexels.com/@mikhail-nilov))*

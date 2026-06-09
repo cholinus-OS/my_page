@@ -47,3 +47,7 @@ thumbnail: "https://images.pexels.com/photos/8456107/pexels-photo-8456107.jpeg"
 특히 아랫배(코어)에 지긋이 힘을 주어 엉덩이가 뒤로 쑥 빠지거나 몸통이 앞뒤로 팽이처럼 흔들리지 않도록 고정하는 것이 핵심입니다. 동작 중 꼬리뼈 주변이나 골반 앞쪽에 찌릿한 아픔이 느껴진다면 바로 멈추고 각도를 낮추거나 충분한 휴식을 취해주세요.
 
 하루 5분, 꾸준한 안벅지 운동과 함께 걸음걸이도 한층 가뿐해지고 통증 없는 튼튼한 하체를 만들어 보세요! 다음에도 실생활에 유용한 건강 정보를 가지고 찾아오겠습니다. 감사합니다! 😊👍
+
+
+![Caucasian woman in sportswear stretches on gym floor, showcasing flexibility and fitness.](https://images.pexels.com/photos/7991955/pexels-photo-7991955.jpeg)
+*(출처: Pexels / 사진 제공: [Annushka  Ahuja](https://www.pexels.com/@annushka-ahuja))*

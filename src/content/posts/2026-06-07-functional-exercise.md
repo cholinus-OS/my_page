@@ -50,3 +50,7 @@ thumbnail: "https://images.pexels.com/photos/18986400/pexels-photo-18986400.jpeg
 또한 동작 중 무릎이 안쪽으로 무너지거나 허리가 과도하게 꺾이지 않는지 늘 주의해야 합니다. 만약 특정 동작을 할 때 관절 깊은 곳에서 찌릿한 아픔이나 뻑뻑하게 찝히는 듯한 통증이 느껴진다면 바로 중단하고, 동작 범위를 낮추거나 전문가의 조언을 얻어 천천히 단계를 밟아가셔야 합니다.
 
 매일 꾸준한 기능성 움직임 연습으로 한결 가볍고 부드러워진 몸을 체감해 보세요! 다음에도 실생활에 유용한 쉽고 유익한 건강 이야기로 찾아뵙겠습니다. 감사합니다! 😊👍
+
+
+![Side view full length muscular determined African American sportsman with naked torso flipping heavy truck tire in dark modern studio](https://images.pexels.com/photos/5611633/pexels-photo-5611633.jpeg)
+*(출처: Pexels / 사진 제공: [Sukh Winder](https://www.pexels.com/@sukh-winder-3740393))*

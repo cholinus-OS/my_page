@@ -52,3 +52,7 @@ thumbnail: "https://images.pexels.com/photos/36833351/pexels-photo-36833351.jpeg
 누웠을 때 **허리 뒤에 손바닥 하나가 지긋이 들어갈 정도의 아슬아슬한 공간**이 유지되도록 골반 평평한 뼈(ASIS와 치골의 평행)를 조절하고, 어깨나 턱이 하늘로 솟아오르지 않게 편안하게 고정해 주세요.
 
 하루 3분, 누워서 골반을 부드럽게 앞뒤로 움직이며 나만의 가장 편안한 척추중립 위치를 찾아보세요. 훨씬 더 탄탄하고 통증 없는 하루를 시작할 수 있습니다. 다음에도 더욱 건강한 척추 정렬 팁으로 찾아뵙겠습니다. 감사합니다! 😊👍
+
+
+![Two women exercising with a foam roller on yoga mats indoors, promoting health and wellness.](https://images.pexels.com/photos/4587699/pexels-photo-4587699.jpeg)
+*(출처: Pexels / 사진 제공: [Anna Shvets](https://www.pexels.com/@shvetsa))*

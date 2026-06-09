@@ -44,3 +44,7 @@ thumbnail: "https://images.pexels.com/photos/8846512/pexels-photo-8846512.jpeg"
 ---
 *본 포스팅은 아래의 원본 블로그 글을 바탕으로 작성되었습니다.*
 *   [원문 네이버 블로그 바로가기](https://blog.naver.com/cholinus/224300814734)
+
+
+![Man in blue shirt stretching indoors, focusing on rehabilitation and fitness.](https://images.pexels.com/photos/6111623/pexels-photo-6111623.jpeg)
+*(출처: Pexels / 사진 제공: [Kampus Production](https://www.pexels.com/@kampus))*

@@ -56,3 +56,7 @@ thumbnail: "https://images.pexels.com/photos/7900674/pexels-photo-7900674.jpeg"
 
 ### 💡 통풍 및 거북목 예방을 위한 작은 습관
 스트레칭도 중요하지만 컴퓨터 모니터의 높이를 눈높이에 맞추고, 50분 일한 뒤에는 반드시 10분간 일어나 가볍게 어깨를 돌려주는 습관을 들여보세요. 당신의 목이 훨씬 가볍고 편안해질 것입니다!
+
+
+![Woman with eyeglasses stretching on sofa using laptop, exuding relaxation and comfort.](https://images.pexels.com/photos/17775084/pexels-photo-17775084.jpeg)
+*(출처: Pexels / 사진 제공: [Gülşah Aydoğan](https://www.pexels.com/@gulsahaydgn))*

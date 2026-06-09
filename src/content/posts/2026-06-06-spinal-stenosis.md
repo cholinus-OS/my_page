@@ -21,6 +21,10 @@ thumbnail: "https://images.pexels.com/photos/5793794/pexels-photo-5793794.jpeg"
 
 ## 왜 자꾸 다리가 저릴까요? 척추관 협착증의 원인과 주요 증상
 
+![A physiotherapist assists a patient in stretching exercises indoors.](https://images.pexels.com/photos/20860622/pexels-photo-20860622.jpeg)
+*(출처: Pexels / 사진 제공: [Funkcinės Terapijos Centras](https://www.pexels.com/@funkcines-terapijos-centras-927573878))*
+
+
 척추관 협착증은 말 그대로 우리 몸의 기둥인 척추뼈 내부에 있는 **척추관(Spinal Canal)**이라는 신경 통로가 좁아지면서, 그 안을 지나가는 **신경(Spinal Nerves)**을 압박하여 통증을 유발하는 질환입니다. 마치 수도관이 낡아 이물질이 끼고 녹슬면서 물이 잘 흐르지 못하는 상황과 비슷하다고 생각하시면 됩니다.
 
 **### 척추관 협착증, 왜 생기는 걸까요?**

@@ -47,3 +47,7 @@ thumbnail: "https://images.pexels.com/photos/4587404/pexels-photo-4587404.jpeg"
 특히 평소 혈압이 높으신 분들이나 임산부분들은 숨을 강하게 멈추는 동작을 절대로 삼가시고, 아프거나 불편한 느낌이 드신다면 즉시 동작을 멈추고 편안한 평소 호흡으로 돌아와 휴식을 취하셔야 합니다.
 
 매일 아침이나 주무시기 전 5분씩만 이 가이드를 켜두고 호흡을 연습하셔도 하루의 피로가 싹 가시고 코어 근육이 튼튼해지는 것을 느낄 수 있으실 겁니다. 오늘도 바르고 건강한 하루 보내세요! 감사합니다. 😊👍
+
+
+![Two women practicing yoga in a gym using foam rollers, enhancing fitness and flexibility.](https://images.pexels.com/photos/4587697/pexels-photo-4587697.jpeg)
+*(출처: Pexels / 사진 제공: [Anna Shvets](https://www.pexels.com/@shvetsa))*

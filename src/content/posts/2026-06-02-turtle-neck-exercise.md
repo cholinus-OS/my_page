@@ -47,3 +47,7 @@ thumbnail: "https://images.pexels.com/photos/20860625/pexels-photo-20860625.jpeg
 스트레칭 동작을 따라 할 때는 **아프지 않은 범위까지만** 몸을 조심히 움직여야 합니다. 지나치게 욕심을 부려 힘껏 목을 늘리거나 당기면 오히려 목 근육이 더 강하게 수축해서 통증이 심해질 수 있습니다. 특히 고개를 움직일 때 팔이나 손끝이 찌릿찌릿 저려오는 척추 신경 자극 증세가 느껴지신다면 즉시 중단하고 전문 의료진의 진단을 받으셔야 합니다.
 
 가벼운 5분 스트레칭과 함께 오늘 하루도 가뿐하고 시원하게 보내시길 바랍니다! 다음에도 건강에 도움을 주는 유익한 이야기로 찾아오겠습니다. 감사합니다. 😊👍
+
+
+![Person stretching on a yoga mat with assistance indoors. Exercise and wellness concept.](https://images.pexels.com/photos/6973123/pexels-photo-6973123.jpeg)
+*(출처: Pexels / 사진 제공: [Mikhail Nilov](https://www.pexels.com/@mikhail-nilov))*

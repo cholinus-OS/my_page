@@ -70,3 +70,7 @@ thumbnail: "https://images.pexels.com/photos/8376182/pexels-photo-8376182.jpeg"
 ---
 
 나이와 성별 조건에 부합하시거나 평소 관절이나 기저질환으로 약물을 오래 드시는 분들이라면, 이번 기회에 뼈 건강 지도표를 꼼꼼하게 점검하고 가까운 병원을 찾아 골밀도 검사 상담을 받아보시기를 적극 추천해 드립니다! 아프기 전에 미리 챙기는 것이 가장 훌륭한 건강 예방법이니까요.
+
+
+![Serious mature male doctor in medical uniform standing with stethoscope and notebook while talking on smartphone in clinic corridor](https://images.pexels.com/photos/4173244/pexels-photo-4173244.jpeg)
+*(출처: Pexels / 사진 제공: [Gustavo Fring](https://www.pexels.com/@gustavo-fring))*

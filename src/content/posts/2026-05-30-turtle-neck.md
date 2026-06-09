@@ -24,6 +24,10 @@ thumbnail: "https://images.pexels.com/photos/8076121/pexels-photo-8076121.jpeg"
 
 ## 거북목 증후군, 왜 생기고 어떤 증상을 보일까요?
 
+![Bearded man in casual blue shirt working on laptop while sitting on a cozy couch at home.](https://images.pexels.com/photos/7563476/pexels-photo-7563476.jpeg)
+*(출처: Pexels / 사진 제공: [VAZHNIK](https://www.pexels.com/@vazhnik))*
+
+
 우리의 건강한 목뼈는 옆에서 봤을 때 부드러운 **'C자 곡선'**을 이루고 있습니다. 이 C자 곡선은 스프링처럼 충격을 흡수하고 머리 무게를 분산시키는 중요한 역할을 합니다. 하지만 잘못된 자세가 반복되면 이 C자 곡선이 사라져 **'일자목'**이 되거나, 심지어 **'역C자형'**으로 변형되어 목이 앞으로 쭉 빠져나오는 **'거북목 증후군'**이 됩니다.
 
 ### ### 거북목 증후군의 주요 발생 원인

@@ -46,3 +46,7 @@ thumbnail: "https://images.pexels.com/photos/4506113/pexels-photo-4506113.jpeg"
 
 ### 💡 보너스 예방 팁
 허리 통증의 80%는 일상 속 의자에 앉는 습관에서 비롯됩니다. 의자에 앉을 때 등을 꼿꼿이 세우기 어렵거나 나도 모르게 구부정해진다면, 허리의 C자 전만 곡선을 받쳐주는 기능성 허리 보호대나 등받이 쿠션을 적극 활용해 보세요. 물리적으로 허리가 굽는 것을 막아주어 일상 속 통증 방지에 무척 유용합니다!
+
+
+![Close-up of a woman's hands gripping her painful back while outdoors.](https://images.pexels.com/photos/7298686/pexels-photo-7298686.jpeg)
+*(출처: Pexels / 사진 제공: [Kindel Media](https://www.pexels.com/@kindelmedia))*
