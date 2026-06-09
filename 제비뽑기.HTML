@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결제 룰렛 게임</title>
+    <style>
+        /* CSS: UI 및 애니메이션 스타일링 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+        #roulette-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 30px auto;
+        }
+        /* 12시 방향 포인터 (삼각형) */
+        .pointer {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 30px solid #dc3545;
+            z-index: 10;
+        }
+        canvas {
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            /* 부드러운 회전 애니메이션 효과 적용 */
+            transition: transform 3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>누가 결제할까? 룰렛 게임</h2>
+    
+    <div class="input-group">
+        <input type="text" id="names" placeholder="이름을 쉼표로 구분해 입력 (예: 김철수, 이영희, 박지민)" value="김철수, 이영희, 박지민, 최동훈">
+        <button onclick="initRoulette()">룰렛 생성</button>
+    </div>
+    
+    <button onclick="spinRoulette()">🎯 룰렛 돌리기</button>
+
+    <div id="roulette-container">
+        <div class="pointer"></div>
+        <canvas id="roulette" width="300" height="300"></canvas>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        // JavaScript: 룰렛 생성 및 연산 로직
+        const canvas = document.getElementById('roulette');
+        const ctx = canvas.getContext('2d');
+        let names = [];
+        let currentRotation = 0;
+        let isSpinning = false;
+
+        // 시각적 구분을 위한 색상 배열
+        const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F06292', '#AED581', '#FFD54F'];
+
+        // 룰렛 렌더링 함수
+        function initRoulette() {
+            // 입력값 처리 및 공백 제거
+            const inputText = document.getElementById('names').value;
+            names = inputText.split(',').map(name => name.trim()).filter(name => name !== '');
+            
+            if (names.length < 2) {
+                alert('룰렛을 돌리려면 최소 2명 이상의 이름을 입력해야 합니다.');
+                return;
+            }
+
+            // 초기화
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const arcCount = names.length;
+            const arcAngle = Math.PI * 2 / arcCount;
+
+            for (let i = 0; i < arcCount; i++) {
+                // 부채꼴(영역) 그리기
+                ctx.beginPath();
+                ctx.fillStyle = colors[i % colors.length];
+                ctx.moveTo(150, 150); // 중심점 이동
+                ctx.arc(150, 150, 150, i * arcAngle, (i + 1) * arcAngle);
+                ctx.fill();
+                
+                // 경계선 그리기
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = "#fff";
+                ctx.stroke();
+
+                // 텍스트(이름) 추가
+                ctx.save();
+                ctx.translate(150, 150);
+                // 텍스트를 영역의 중앙에 배치하기 위해 각도 회전
+                ctx.rotate(i * arcAngle + arcAngle / 2);
+                ctx.fillStyle = "#fff";
+                ctx.font = "bold 16px 'Segoe UI'";
+                ctx.textAlign = "right";
+                ctx.fillText(names[i], 130, 5); // 중심에서 바깥쪽으로 텍스트 배치
+                ctx.restore();
+            }
+
+            // 회전 상태 초기화
+            currentRotation = 0;
+            canvas.style.transition = 'none';
+            canvas.style.transform = `rotate(0deg)`;
+            document.getElementById('result').innerText = '';
+            isSpinning = false;
+        }
+
+        // 룰렛 회전 및 결과 도출 함수
+        function spinRoulette() {
+            if (isSpinning || names.length < 2) return;
+            isSpinning = true;
+            document.getElementById('result').innerText = '회전 중...';
+
+            // 최소 10바퀴(3600도) 이상 회전 + 무작위 추가 회전(0~359도)
+            const randomSpinAngle = Math.floor(Math.random() * 360);
+            const totalSpinAngle = 3600 + randomSpinAngle;
+            
+            currentRotation += totalSpinAngle;
+
+            // CSS 애니메이션 적용
+            canvas.style.transition = 'transform 3s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            canvas.style.transform = `rotate(${currentRotation}deg)`;
+
+            // 애니메이션 종료(3초) 후 결과 계산
+            setTimeout(() => {
+                // 1. 현재 회전 각도를 360으로 나눈 나머지 계산
+                const normalizedRotation = currentRotation % 360;
+                
+                // 2. 포인터가 12시 방향(-90도 위치)에 있으므로, 역산하여 당첨 각도 계산
+                // 캔버스의 시작점(0도)은 3시 방향임. 
+                let winningAngle = (270 - normalizedRotation) % 360;
+                if (winningAngle < 0) winningAngle += 360;
+
+                // 3. 인덱스 도출
+                const arcAngleDegree = 360 / names.length;
+                const winnerIndex = Math.floor(winningAngle / arcAngleDegree);
+
+                // 결과 출력
+                document.getElementById('result').innerText = `🎉 당첨자: ${names[winnerIndex]} 🎉`;
+                isSpinning = false;
+            }, 3000);
+        }
+
+        // 스크립트 로드 시 최초 1회 실행
+        initRoulette();
+    </script>
+</body>
+</html>

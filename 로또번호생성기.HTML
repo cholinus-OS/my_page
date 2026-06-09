@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프리미엄 로또 번호 생성기</title>
+    <style>
+        /* CSS: 구조 및 디자인 정의 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+            padding: 30px;
+            color: #333;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+            transition: background-color 0.2s;
+            margin-bottom: 30px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        /* 5개 게임을 담는 전체 컨테이너 */
+        #lotto-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 구별된 창(개별 게임 카드) 스타일 */
+        .game-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* 게임 라벨 (예: A, B, C...) */
+        .game-label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 15px;
+            color: #555;
+            min-width: 30px;
+        }
+
+        /* 번호 공(Ball)의 동일한 크기 및 기본 스타일 */
+        .ball {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            box-shadow: inset -2px -2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* 플러스 기호 */
+        .plus-sign {
+            font-size: 24px;
+            font-weight: bold;
+            color: #888;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>🎰 프리미엄 로또 번호 생성기</h2>
+    <button onclick="generateLottoGames()">5게임 자동 생성</button>
+    
+    <div id="lotto-container">
+        </div>
+
+    <script>
+        // JavaScript: 로또 번호 생성 알고리즘 및 DOM 제어
+
+        // 숫자에 따른 색상 결정 함수 (실제 로또 색상 기준 반영)
+        function getBallColor(number) {
+            if (number <= 10) return '#fbc531'; // 노랑
+            if (number <= 20) return '#00a8ff'; // 파랑
+            if (number <= 30) return '#e84118'; // 빨강
+            if (number <= 40) return '#7f8fa6'; // 회색
+            return '#4cd137'; // 녹색
+        }
+
+        // 1게임(7개 번호) 생성 함수
+        function generateSingleGame() {
+            const numbers = [];
+            
+            // 중복 없는 난수 7개 추출 (1~45)
+            while (numbers.length < 7) {
+                const randomNum = Math.floor(Math.random() * 45) + 1;
+                if (!numbers.includes(randomNum)) {
+                    numbers.push(randomNum);
+                }
+            }
+
+            // 앞의 6개는 기본 번호 (오름차순 정렬)
+            const mainNumbers = numbers.slice(0, 6).sort((a, b) => a - b);
+            // 7번째는 보너스 번호
+            const bonusNumber = numbers[6];
+
+            return { mainNumbers, bonusNumber };
+        }
+
+        // 5게임 일괄 생성 및 화면 출력 함수
+        function generateLottoGames() {
+            const container = document.getElementById('lotto-container');
+            container.innerHTML = ''; // 기존 결과 초기화
+            
+            const labels = ['A', 'B', 'C', 'D', 'E'];
+
+            // 5회 반복하여 게임 생성
+            for (let i = 0; i < 5; i++) {
+                const gameData = generateSingleGame();
+                
+                // 개별 게임 창(Card) 생성
+                const gameCard = document.createElement('div');
+                gameCard.className = 'game-card';
+
+                // 라벨 추가 (A, B, C...)
+                const labelElement = document.createElement('div');
+                labelElement.className = 'game-label';
+                labelElement.textContent = labels[i];
+                gameCard.appendChild(labelElement);
+
+                // 기본 번호 6개 렌더링
+                gameData.mainNumbers.forEach(num => {
+                    const ball = document.createElement('div');
+                    ball.className = 'ball';
+                    ball.style.backgroundColor = getBallColor(num);
+                    ball.textContent = num;
+                    gameCard.appendChild(ball);
+                });
+
+                // 플러스(+) 기호 추가
+                const plus = document.createElement('div');
+                plus.className = 'plus-sign';
+                plus.textContent = '+';
+                gameCard.appendChild(plus);
+
+                // 보너스 번호 1개 렌더링
+                const bonusBall = document.createElement('div');
+                bonusBall.className = 'ball';
+                bonusBall.style.backgroundColor = getBallColor(gameData.bonusNumber);
+                bonusBall.textContent = gameData.bonusNumber;
+                gameCard.appendChild(bonusBall);
+
+                // 완성된 카드를 컨테이너에 삽입
+                container.appendChild(gameCard);
+            }
+        }
+
+        // 스크립트 로드 시 최초 1회 빈 화면 대신 결과를 바로 보여줌
+        generateLottoGames();
+    </script>
+</body>
+</html>
