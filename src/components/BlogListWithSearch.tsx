@@ -11,6 +11,7 @@ interface PostItem {
   summary: string;
   category?: string;
   tags?: string[];
+  thumbnail?: string;
 }
 
 interface BlogListWithSearchProps {
@@ -70,51 +71,66 @@ export default function BlogListWithSearch({ initialPosts }: BlogListWithSearchP
           {filteredPosts.map((post) => (
             <article 
               key={post.slug}
-              className="group relative flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md hover:border-teal-500/30"
+              className="group relative flex flex-col-reverse sm:flex-row justify-between gap-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md hover:border-teal-500/30"
             >
-              <div>
-                <div className="flex items-center gap-3 text-xs">
-                  {post.category && (
-                    <span className="inline-flex items-center gap-1 rounded bg-teal-50 px-2 py-1 font-semibold text-teal-700">
-                      {post.category}
-                    </span>
-                  )}
-                  <span className="flex items-center gap-1 text-slate-400">
-                    <Calendar className="h-3 w-3" />
-                    {post.date}
-                  </span>
-                </div>
-                
-                <h2 className="mt-4 text-xl font-bold text-slate-900 group-hover:text-teal-600 transition">
-                  <Link href={`/blog/${post.slug}`} className="focus:outline-none">
-                    <span className="absolute inset-0" aria-hidden="true" />
-                    {post.title}
-                  </Link>
-                </h2>
-                
-                <p className="mt-3 text-sm leading-relaxed text-slate-500">
-                  {post.summary}
-                </p>
-
-                {/* 태그 리스트 */}
-                {post.tags && post.tags.length > 0 && (
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {post.tags.map((tag) => (
-                      <span 
-                        key={tag} 
-                        className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-2xs font-medium text-slate-600"
-                      >
-                        #{tag}
+              {/* 왼쪽 텍스트 설명 영역 */}
+              <div className="flex-grow flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-3 text-xs">
+                    {post.category && (
+                      <span className="inline-flex items-center gap-1 rounded bg-teal-50 px-2 py-1 font-semibold text-teal-700">
+                        {post.category}
                       </span>
-                    ))}
+                    )}
+                    <span className="flex items-center gap-1 text-slate-400">
+                      <Calendar className="h-3 w-3" />
+                      {post.date}
+                    </span>
                   </div>
-                )}
+                  
+                  <h2 className="mt-4 text-xl font-bold text-slate-900 group-hover:text-teal-600 transition">
+                    <Link href={`/blog/${post.slug}`} className="focus:outline-none">
+                      <span className="absolute inset-0 z-0" aria-hidden="true" />
+                      {post.title}
+                    </Link>
+                  </h2>
+                  
+                  <p className="mt-3 text-sm leading-relaxed text-slate-500 line-clamp-2 sm:line-clamp-3">
+                    {post.summary}
+                  </p>
+  
+                  {/* 태그 리스트 */}
+                  {post.tags && post.tags.length > 0 && (
+                    <div className="mt-4 flex flex-wrap gap-1.5 relative z-10">
+                      {post.tags.map((tag) => (
+                        <span 
+                          key={tag} 
+                          className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-2xs font-medium text-slate-600"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+  
+                <div className="mt-6 flex items-center text-xs font-semibold text-teal-600 relative z-10">
+                  <span>글 읽기</span>
+                  <ChevronRight className="h-4 w-4 transform group-hover:translate-x-1 transition duration-200" />
+                </div>
               </div>
 
-              <div className="mt-6 flex items-center justify-end text-xs font-semibold text-teal-600">
-                <span>글 읽기</span>
-                <ChevronRight className="h-4 w-4 transform group-hover:translate-x-1 transition duration-200" />
-              </div>
+              {/* 오른쪽 썸네일 이미지 영역 (모바일은 상단, PC는 우측 정렬) */}
+              {post.thumbnail && (
+                <div className="w-full sm:w-48 sm:h-32 aspect-[16/9] sm:aspect-auto rounded-2xl overflow-hidden bg-slate-50 flex-shrink-0 relative z-10 border border-slate-100/60 shadow-2xs">
+                  <img
+                    src={post.thumbnail}
+                    alt={`${post.title} 썸네일`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+              )}
             </article>
           ))}
         </div>

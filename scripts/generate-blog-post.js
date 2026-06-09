@@ -223,6 +223,9 @@ FILENAME: ${todayStr}-keyword`;
     // 본문 내용 중간에 이미지 자동 삽입
     const updatedBodyContent = insertImagesIntoMarkdown(bodyContent, pexelsPhotos, latestDisease.name);
 
+    // 썸네일로 쓸 첫 번째 이미지 URL 추출
+    const thumbnailVal = pexelsPhotos.length > 0 ? pexelsPhotos[0].url : "";
+
     // Frontmatter 생성
     const tags = [latestDisease.partName, latestDisease.mainCategoryName, "재활", "통증", latestDisease.keyword].filter(Boolean);
     const finalContent = `---
@@ -231,9 +234,11 @@ date: ${todayStr}
 summary: ${latestDisease.summary}
 category: 정보
 tags: [${tags.join(", ")}]
+thumbnail: "${thumbnailVal}"
 ---
 
 ${updatedBodyContent}`;
+
 
     // 파일 생성
     const finalPath = path.join(postsDir, filename);

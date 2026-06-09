@@ -12,6 +12,7 @@ export interface PostData {
   category: string;
   tags: string[];
   content: string;
+  thumbnail?: string;
 }
 
 // 날짜 포맷 YYYY-MM-DD 변환 함수
@@ -52,6 +53,7 @@ export function getSortedPostsData(): PostData[] {
         category: data.category || "일반",
         tags: Array.isArray(data.tags) ? data.tags : [],
         content: matterResult.content,
+        thumbnail: data.thumbnail || "",
       };
     });
 
@@ -85,5 +87,6 @@ export function getPostData(slug: string): PostData | null {
     category: data.category || "일반",
     tags: Array.isArray(data.tags) ? data.tags : [],
     content: matterResult.content,
+    thumbnail: data.thumbnail || "",
   };
 }
