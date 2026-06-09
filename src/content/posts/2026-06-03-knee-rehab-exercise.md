@@ -7,6 +7,11 @@ tags: [무릎통증, 무릎재활, 대퇴사두근, 슬관절운동, 관절염]
 thumbnail: "https://images.pexels.com/photos/20860603/pexels-photo-20860603.jpeg"
 ---
 
+![Close-up of a physiotherapist massaging a patient's knee during therapy.](https://images.pexels.com/photos/20860603/pexels-photo-20860603.jpeg)
+*(출처: Pexels / 사진 제공: [Funkcinės Terapijos Centras](https://www.pexels.com/@funkcines-terapijos-centras-927573878))*
+
+
+
 ![무릎 근력강화 운동 1](/knee-rehab-new-01.jpg)
 
 ![무릎 근력강화 운동 2](/knee-rehab-new-02.jpg)

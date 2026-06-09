@@ -7,6 +7,11 @@ tags: [거북목, 목디스크, 자세교정, 스트레칭, 거북목운동]
 thumbnail: "https://images.pexels.com/photos/20860625/pexels-photo-20860625.jpeg"
 ---
 
+![Experienced physiotherapist helps patient stretch leg in a modern clinic setting, focusing on rehabilitation.](https://images.pexels.com/photos/20860625/pexels-photo-20860625.jpeg)
+*(출처: Pexels / 사진 제공: [Funkcinės Terapijos Centras](https://www.pexels.com/@funkcines-terapijos-centras-927573878))*
+
+
+
 안녕하세요! 여러분의 건강한 관절을 지켜드리는 바른관절 헬프센터입니다. 혹시 컴퓨터나 스마트폰을 보다가 자신도 모르게 목을 앞으로 길게 쭉 빼고 있는 모습을 발견하지 않으셨나요? 
 
 최근 현대인들의 고질병 중 하나인 **거북목 증후군**은 단순히 보기에만 좋지 않은 것을 넘어, 목 뼈에 엄청난 과부하를 주어 심한 경우 목 디스크(경추 추간판 탈출증)까지 유발하게 됩니다. 

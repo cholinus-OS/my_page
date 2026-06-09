@@ -7,6 +7,11 @@ tags: [폼롤러, 근막이완, 스트레칭, 홈트레이닝, 자세교정]
 thumbnail: "https://images.pexels.com/photos/20890282/pexels-photo-20890282.jpeg"
 ---
 
+![A close-up shot of a foot on a foam roller, illustrating physiotherapy and exercise.](https://images.pexels.com/photos/20890282/pexels-photo-20890282.jpeg)
+*(출처: Pexels / 사진 제공: [Nadin Sh](https://www.pexels.com/@nadin-sh-78971847))*
+
+
+
 안녕하세요! 여러분의 건강한 관절과 뼈 건강을 지켜드리는 바른관절 헬프센터입니다. 혹시 집 거실 구석에 굴러다니는 원기둥 모양의 스펀지 도구, **폼롤러(Foam Roller)**가 있으신가요? 
 
 요즘은 홈트레이닝 필수품으로 집집마다 하나씩 가지고 있지만, 정확히 폼롤러가 우리 몸에 어떤 의미가 있고 어떤 원리로 도움을 주는지 제대로 알고 계시는 분은 드뭅니다. 단지 "문지르면 시원하니까" 쓰는 것을 넘어, 폼롤러가 가진 진짜 의미를 알면 운동과 회복 효과를 훨씬 극대화할 수 있습니다.

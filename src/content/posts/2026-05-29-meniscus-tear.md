@@ -9,6 +9,10 @@ thumbnail: "https://images.pexels.com/photos/20860607/pexels-photo-20860607.jpeg
 
 ## 무릎 속 작은 연골판, 당신의 일상을 위협하고 있지는 않나요?
 
+![Detailed image of a physiotherapy session focusing on knee massage treatment.](https://images.pexels.com/photos/20860607/pexels-photo-20860607.jpeg)
+*(출처: Pexels / 사진 제공: [Funkcinės Terapijos Centras](https://www.pexels.com/@funkcines-terapijos-centras-927573878))*
+
+
 걸을 때마다 무릎이 시큰거리고, 계단을 오르내릴 때마다 찌릿한 통증이 느껴지시나요? 운동하다 무릎을 접질린 후부터 왠지 모르게 무릎이 불안하고 힘이 빠지는 경험을 해보셨을 겁니다. 이런 불편함은 우리의 평범한 일상을 송두리째 흔들어 놓을 수 있습니다.
 
 잠깐 스치는 통증이라 여기고 대수롭지 않게 넘긴다면, 문제는 더욱 커질 수 있습니다. 무릎 뼈 사이에서 충격을 흡수하고 관절을 안정시키는 중요한 역할을 하는 **반월상 연골판**은 한 번 손상되면 자연적으로 치유되기 어렵고, 방치할 경우 **퇴행성 관절염**으로 이어질 가능성이 매우 높습니다. 지금 이 순간부터 무릎 건강을 위한 작은 관심과 노력이 필요합니다. 무릎 통증의 주범으로 꼽히는 **반월상 연골판 파열**에 대해 정확히 이해하고, 조기에 적절히 대처하는 것이 건강한 무릎을 지키는 가장 현명한 길입니다.

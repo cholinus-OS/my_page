@@ -18,6 +18,10 @@ thumbnail: "https://images.pexels.com/photos/4506166/pexels-photo-4506166.jpeg"
 
 ## 팔을 들어 올릴 때 스치는 통증, 회전근개 건염의 원인과 전조증상
 
+![Crop unrecognizable orthopedist in uniform and wristwatch supporting shoulder and reached arm of faceless female patient with resistance band in doctor office](https://images.pexels.com/photos/4506166/pexels-photo-4506166.jpeg)
+*(출처: Pexels / 사진 제공: [www.kaboompics.com](https://www.pexels.com/@karola-g))*
+
+
 어깨 관절은 우리 몸에서 유일하게 360도 회전이 가능한 가장 자유로운 관절입니다. 이 불안정하면서도 유연한 관절을 안정적으로 잡아주는 역할을 하는 것이 바로 **회전근개(Rotator Cuff)**라 불리는 4개의 힘줄(극상근, 극하근, 소원근, 견갑하근)입니다. 이 힘줄들이 어깨뼈를 단단히 감싸고 있어 우리가 팔을 자유롭게 움직일 수 있습니다.
 
 **회전근개 건염**은 이 힘줄들에 반복적인 스트레스가 가해지면서 미세한 손상이 누적되고, 힘줄 자체에 염증과 붓기가 생기는 질환을 뜻합니다. 주로 팔을 머리 위로 자주 올리는 직업군이나 배드민턴, 골프, 수영 같은 어깨 사용량이 많은 운동을 즐길 때 발생하기 쉽습니다. 

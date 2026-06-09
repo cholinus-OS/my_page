@@ -7,6 +7,11 @@ tags: [척추중립, 필라테스, 자세교정, 허리통증, 코어운동]
 thumbnail: "https://images.pexels.com/photos/36833351/pexels-photo-36833351.jpeg"
 ---
 
+![Adult man performing Pilates exercise on reformer in bright fitness studio.](https://images.pexels.com/photos/36833351/pexels-photo-36833351.jpeg)
+*(출처: Pexels / 사진 제공: [Paulina Vargas](https://www.pexels.com/@paulina-vargas-490121449))*
+
+
+
 안녕하세요! 여러분의 소중한 허리와 척추 건강을 지켜드리는 바른관절 헬프센터입니다. 혹시 평소에 서 있거나 의자에 앉아 있을 때 허리가 뻐근하거나 찌릿한 느낌을 받아본 적이 있으신가요? 
 
 우리가 척추 통증에서 벗어나기 위해 가장 먼저 배워야 하는 핵심 자세가 있습니다. 바로 필라테스나 모든 웨이트 트레이닝의 뼈대가 되는 **"척추중립(Neutral Spine)"** 상태입니다. 

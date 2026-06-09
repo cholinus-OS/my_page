@@ -12,6 +12,10 @@ thumbnail: "https://images.pexels.com/photos/5793792/pexels-photo-5793792.jpeg"
 
 ## 어깨를 가두는 침묵의 감옥, 유착성 관절낭염을 방치하면 안 되는 이유
 
+![A therapist assists a woman with arm stretching during a physical therapy session in a bright, indoor setting.](https://images.pexels.com/photos/5793792/pexels-photo-5793792.jpeg)
+*(출처: Pexels / 사진 제공: [Yan Krukau](https://www.pexels.com/@yankrukov))*
+
+
 ![어깨 통증을 호소하는 모습](https://images.pexels.com/photos/8600449/pexels-photo-8600449.jpeg)
 *(출처: Pexels / 사진 제공: [Towfiqu barbhuiya](https://www.pexels.com/@towfiqu-barbhuiya-3440682))*
 

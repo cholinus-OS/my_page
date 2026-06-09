@@ -11,6 +11,10 @@ thumbnail: "https://images.pexels.com/photos/37453429/pexels-photo-37453429.jpeg
 ---
 ## 팔꿈치 안쪽 찌릿한 통증, 혹시 '골프 엘보'이신가요?
 
+![A therapist is performing stretching therapy on a patient in a clinic setting, focusing on arm and shoulder mobility.](https://images.pexels.com/photos/37453429/pexels-photo-37453429.jpeg)
+*(출처: Pexels / 사진 제공: [Media Dung](https://www.pexels.com/@dungmedia))*
+
+
 아침에 커피잔을 들 때, 컴퓨터 마우스를 잡을 때, 심지어 아이를 안을 때조차 팔꿈치 안쪽에서 시큰거리고 찌릿한 통증이 느껴지시나요? 처음에는 대수롭지 않게 생각하고 ‘좀 쉬면 괜찮겠지’ 하고 넘기기 쉽지만, 이런 통증을 방치하다가는 일상생활에 심각한 불편함을 초래하는 **만성 질환**으로 이어질 수 있습니다. 특히 팔꿈치 안쪽 통증의 대표적인 원인 중 하나인 **내측 상과염**, 즉 **골프 엘보(Golfers' Elbow)**는 이름처럼 골프 선수에게만 찾아오는 희귀한 질환이 아닙니다.
 
 우리 주변에서 흔히 발생하며, 한 번 시작되면 섬세한 손목과 팔꿈치 사용이 필요한 모든 동작에서 통증을 유발하여 삶의 질을 크게 떨어뜨릴 수 있습니다. 팔꿈치 통증으로 더 이상 고통받지 않고 건강한 삶을 되찾기 위해서는, 지금부터 이 골프 엘보의 원인을 정확히 이해하고, 일상에서 쉽게 실천할 수 있는 올바른 관리법을 통해 건강한 팔꿈치를 되찾는 여정을 함께 시작해야 합니다. 이 글이 여러분의 팔꿈치 건강을 위한 첫걸음이 되기를 바랍니다.

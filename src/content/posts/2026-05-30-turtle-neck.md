@@ -12,6 +12,10 @@ thumbnail: "https://images.pexels.com/photos/8076121/pexels-photo-8076121.jpeg"
 
 ## 자꾸만 앞으로 나가는 목, 혹시 당신의 이야기인가요?
 
+![Businesswoman massaging neck while working on laptop, highlighting self-care and wellbeing.](https://images.pexels.com/photos/8076121/pexels-photo-8076121.jpeg)
+*(출처: Pexels / 사진 제공: [MART  PRODUCTION](https://www.pexels.com/@mart-production))*
+
+
 장시간 스마트폰을 들여다보거나 컴퓨터 앞에 앉아 있다 보면, 자신도 모르게 목이 앞으로 쭉 빠져나와 거북이처럼 변해버린 모습을 발견할 때가 있으실 겁니다. 처음에는 그저 가벼운 불편함으로 여기고 넘기기 쉽지만, 이 **'거북목 증후군'**은 단순한 자세 문제를 넘어 만성적인 통증과 심각한 건강 문제로 이어질 수 있는 경고 신호입니다.
 
 머리 무게는 생각보다 무거워서, 건강한 C자형 목이 이 하중을 효율적으로 분산합니다. 하지만 목이 1cm 앞으로 빠질 때마다 목뼈에는 2~3kg의 하중이 더해진다고 합니다. 목이 5cm만 앞으로 나와도 무려 10kg 이상의 무게를 더 짊어지게 되는 셈이죠. 어깨와 목 주변 근육은 이런 과도한 부담을 홀로 감당하느라 매일같이 긴장하고 경직됩니다. 이러한 상태가 지속되면 목과 어깨의 만성적인 통증은 물론, 두통, 손 저림, 심지어 디스크 질환으로까지 발전할 수 있습니다.
