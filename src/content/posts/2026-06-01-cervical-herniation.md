@@ -4,6 +4,7 @@ date: 2026-06-01
 summary: 목 뼈 사이의 연골(디스크)이 밀려 나와 어깨와 팔로 가는 신경을 압박하는 질환입니다.
 category: 정보
 tags: [목, 척추, 재활, 통증, 목디스크]
+thumbnail: "https://images.pexels.com/photos/11022520/pexels-photo-11022520.jpeg"
 ---
 
 찌릿한 목 통증, 혹시 목 디스크? 예방부터 관리까지 전문가 가이드

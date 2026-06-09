@@ -4,6 +4,7 @@ date: 2026-06-08
 summary: 어깨 힘줄에 반복적인 스트레스가 가해져 힘줄 자체에 염증과 붓기가 생기는 질환입니다.
 category: 정보
 tags: [어깨, 상지 관절, 재활, 통증, 어깨스트레칭밴드]
+thumbnail: "https://images.pexels.com/photos/34262661/pexels-photo-34262661.jpeg"
 ---
 
 팔 올릴 때 욱신거리는 어깨 통증, 오십견 아닌 '회전근개 건염' 원인과 통증 완화 스트레칭 3가지

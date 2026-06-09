@@ -4,6 +4,7 @@ date: 2026-06-05
 summary: 허리 뼈 사이의 수핵이 흘러나와 다리로 내려가는 신경을 자극하여 저림과 통증을 일으킵니다.
 category: 정보
 tags: [허리, 척추, 재활, 통증, 허리디스크]
+thumbnail: "https://images.pexels.com/photos/29606418/pexels-photo-29606418.jpeg"
 ---
 
 허리 디스크, 방치하면 삶의 질이 무너집니다: 지금 바로 시작하는 건강한 허리 지키는 법

@@ -4,6 +4,7 @@ date: 2026-05-29
 summary: 발목 인대가 헐거워져 툭하면 쉽게 삐고 걸을 때 덜컹거리는 불안감을 느끼는 상태입니다.
 category: 정보
 tags: [발목, 하지 관절, 재활, 통증, 발목아대]
+thumbnail: "https://images.pexels.com/photos/30483060/pexels-photo-30483060.jpeg"
 ---
 
 툭하면 삐끗하는 내 발목, 만성 발목 불안정증 자가진단부터 재활까지
