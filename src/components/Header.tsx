@@ -28,6 +28,12 @@ export default function Header() {
           >
             재활 블로그
           </Link>
+          <Link 
+            href="/break" 
+            className="text-sm font-medium text-slate-600 transition hover:text-teal-600"
+          >
+            쉬어가기
+          </Link>
         </nav>
       </div>
     </header>
