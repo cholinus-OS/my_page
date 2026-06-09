@@ -7,7 +7,8 @@ import {
   RotateCcw, 
   Clock, 
   Coffee,
-  Sparkles
+  Sparkles,
+  Gamepad2
 } from "lucide-react";
 
 interface LottoGame {
@@ -16,7 +17,7 @@ interface LottoGame {
 }
 
 export default function BreakPage() {
-  const [activeTab, setActiveTab] = useState<"timer" | "lotto" | "roulette">("timer");
+  const [activeTab, setActiveTab] = useState<"timer" | "lotto" | "roulette" | "tetris">("timer");
 
   // --- 1. 스트레칭 타이머 상태 관리 ---
   const [timeLeft, setTimeLeft] = useState(60); // 기본 1분(60초)
@@ -206,6 +207,408 @@ export default function BreakPage() {
     }
   }, [activeTab]);
 
+  // --- 4. 테트리스 상태 관리 ---
+  const tetrisCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const nextCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [tetrisScore, setTetrisScore] = useState(0);
+  const [tetrisLevel, setTetrisLevel] = useState(1);
+  const [tetrisLines, setTetrisLines] = useState(0);
+  const [tetrisGameOver, setTetrisGameOver] = useState(false);
+  const [tetrisPaused, setTetrisPaused] = useState(false);
+  const [tetrisStarted, setTetrisStarted] = useState(false);
+
+  const gameStateRef = useRef({
+    board: Array.from({ length: 20 }, () => Array(10).fill(0)),
+    piece: null as any,
+    nextPiece: null as any,
+    score: 0,
+    level: 1,
+    lines: 0,
+    dropCounter: 0,
+    dropInterval: 1000,
+    lastTime: 0,
+    isPaused: false,
+    isGameOver: false,
+    isStarted: false,
+  });
+
+  const TETRIS_COLORS = [
+    null, "#00FFFF", "#0000FF", "#FFA500", "#FFFF00", "#00FF00", "#800080", "#FF0000"
+  ];
+  
+  const TETRIS_SHAPES = [
+    [],
+    [[0,0,0,0], [1,1,1,1], [0,0,0,0], [0,0,0,0]], // I
+    [[2,0,0], [2,2,2], [0,0,0]], // J
+    [[0,0,3], [3,3,3], [0,0,0]], // L
+    [[4,4], [4,4]], // O
+    [[0,5,5], [5,5,0], [0,0,0]], // S
+    [[0,6,0], [6,6,6], [0,0,0]], // T
+    [[7,7,0], [0,7,7], [0,0,0]]  // Z
+  ];
+
+  const createTetrisPiece = () => {
+    const typeId = Math.floor(Math.random() * 7) + 1;
+    return {
+      matrix: JSON.parse(JSON.stringify(TETRIS_SHAPES[typeId])),
+      x: Math.floor(10 / 2) - Math.floor(TETRIS_SHAPES[typeId][0].length / 2),
+      y: 0,
+      type: typeId
+    };
+  };
+
+  const collideTetris = (board: number[][], piece: any) => {
+    const m = piece.matrix;
+    for (let y = 0; y < m.length; ++y) {
+      for (let x = 0; x < m[y].length; ++x) {
+        if (m[y][x] !== 0 &&
+           (board[y + piece.y] && board[y + piece.y][x + piece.x]) !== 0) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  const drawTetris = () => {
+    const canvas = tetrisCanvasRef.current;
+    const nextCanvas = nextCanvasRef.current;
+    if (!canvas || !nextCanvas) return;
+
+    const ctx = canvas.getContext("2d");
+    const nextCtx = nextCanvas.getContext("2d");
+    if (!ctx || !nextCtx) return;
+
+    const state = gameStateRef.current;
+
+    // 메인 보드 채우기
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.save();
+    ctx.scale(30, 30);
+
+    // 고정된 보드 그리기
+    state.board.forEach((row, y) => {
+      row.forEach((value, x) => {
+        if (value !== 0) {
+          ctx.fillStyle = TETRIS_COLORS[value] as string;
+          ctx.fillRect(x, y, 1, 1);
+          ctx.lineWidth = 0.05;
+          ctx.strokeStyle = "#000";
+          ctx.strokeRect(x, y, 1, 1);
+        }
+      });
+    });
+
+    // 움직이는 블록 그리기
+    if (state.piece) {
+      // 고스트 피스(낙하 지점 예측)
+      const ghost = { matrix: state.piece.matrix, x: state.piece.x, y: state.piece.y };
+      while (!collideTetris(state.board, ghost)) {
+        ghost.y++;
+      }
+      ghost.y--;
+
+      ghost.matrix.forEach((row: number[], y: number) => {
+        row.forEach((value, x) => {
+          if (value !== 0) {
+            ctx.fillStyle = "rgba(255, 255, 255, 0.2)";
+            ctx.fillRect(x + ghost.x, y + ghost.y, 1, 1);
+            ctx.lineWidth = 0.05;
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
+            ctx.strokeRect(x + ghost.x, y + ghost.y, 1, 1);
+          }
+        });
+      });
+
+      // 실물 피스
+      state.piece.matrix.forEach((row: number[], y: number) => {
+        row.forEach((value, x) => {
+          if (value !== 0) {
+            ctx.fillStyle = TETRIS_COLORS[value] as string;
+            ctx.fillRect(x + state.piece.x, y + state.piece.y, 1, 1);
+            ctx.lineWidth = 0.05;
+            ctx.strokeStyle = "#000";
+            ctx.strokeRect(x + state.piece.x, y + state.piece.y, 1, 1);
+          }
+        });
+      });
+    }
+
+    ctx.restore();
+
+    // 다음 블록 미리보기 캔버스 그리기
+    nextCtx.fillStyle = "#333";
+    nextCtx.fillRect(0, 0, nextCanvas.width, nextCanvas.height);
+    if (state.nextPiece) {
+      const offsetX = (4 - state.nextPiece.matrix[0].length) / 2;
+      const offsetY = (4 - state.nextPiece.matrix.length) / 2;
+      nextCtx.save();
+      nextCtx.scale(30, 30);
+
+      state.nextPiece.matrix.forEach((row: number[], y: number) => {
+        row.forEach((value, x) => {
+          if (value !== 0) {
+            nextCtx.fillStyle = TETRIS_COLORS[value] as string;
+            nextCtx.fillRect(x + offsetX, y + offsetY, 1, 1);
+            nextCtx.lineWidth = 0.05;
+            nextCtx.strokeStyle = "#000";
+            nextCtx.strokeRect(x + offsetX, y + offsetY, 1, 1);
+          }
+        });
+      });
+
+      nextCtx.restore();
+    }
+  };
+
+  const animationIdRef = useRef<number | null>(null);
+
+  const updateTetris = (time = 0) => {
+    const state = gameStateRef.current;
+    if (state.isPaused || state.isGameOver || !state.isStarted) return;
+
+    const deltaTime = time - state.lastTime;
+    state.lastTime = time;
+    state.dropCounter += deltaTime;
+
+    if (state.dropCounter > state.dropInterval) {
+      state.piece.y++;
+      if (collideTetris(state.board, state.piece)) {
+        state.piece.y--;
+        // 보드에 병합
+        state.piece.matrix.forEach((row: number[], y: number) => {
+          row.forEach((value, x) => {
+            if (value !== 0) {
+              state.board[y + state.piece.y][x + state.piece.x] = value;
+            }
+          });
+        });
+        
+        // 새 조각 생성
+        if (!state.nextPiece) state.nextPiece = createTetrisPiece();
+        state.piece = state.nextPiece;
+        state.nextPiece = createTetrisPiece();
+
+        // 줄 소거
+        let rowCount = 0;
+        outer: for (let y = state.board.length - 1; y >= 0; --y) {
+          for (let x = 0; x < state.board[y].length; ++x) {
+            if (state.board[y][x] === 0) continue outer;
+          }
+          const row = state.board.splice(y, 1)[0].fill(0);
+          state.board.unshift(row);
+          ++y;
+          rowCount++;
+        }
+
+        if (rowCount > 0) {
+          const lineScores = [0, 100, 300, 500, 800];
+          state.score += lineScores[rowCount] * state.level;
+          state.lines += rowCount;
+          state.level = Math.floor(state.lines / 10) + 1;
+          state.dropInterval = Math.max(100, 1000 - (state.level - 1) * 100);
+          
+          setTetrisScore(state.score);
+          setTetrisLines(state.lines);
+          setTetrisLevel(state.level);
+        }
+
+        if (collideTetris(state.board, state.piece)) {
+          state.isGameOver = true;
+          setTetrisGameOver(true);
+        }
+      }
+      state.dropCounter = 0;
+    }
+
+    drawTetris();
+    animationIdRef.current = requestAnimationFrame(updateTetris);
+  };
+
+  const startTetris = () => {
+    const state = gameStateRef.current;
+    state.board = Array.from({ length: 20 }, () => Array(10).fill(0));
+    state.score = 0;
+    state.level = 1;
+    state.lines = 0;
+    state.dropInterval = 1000;
+    state.dropCounter = 0;
+    state.isGameOver = false;
+    state.isPaused = false;
+    state.isStarted = true;
+
+    setTetrisScore(0);
+    setTetrisLevel(1);
+    setTetrisLines(0);
+    setTetrisGameOver(false);
+    setTetrisPaused(false);
+    setTetrisStarted(true);
+
+    state.nextPiece = createTetrisPiece();
+    state.piece = state.nextPiece;
+    state.nextPiece = createTetrisPiece();
+
+    if (animationIdRef.current) cancelAnimationFrame(animationIdRef.current);
+    state.lastTime = performance.now();
+    updateTetris(state.lastTime);
+  };
+
+  const togglePauseTetris = () => {
+    const state = gameStateRef.current;
+    if (state.isGameOver || !state.isStarted) return;
+
+    state.isPaused = !state.isPaused;
+    setTetrisPaused(state.isPaused);
+
+    if (!state.isPaused) {
+      state.lastTime = performance.now();
+      updateTetris(state.lastTime);
+    } else {
+      if (animationIdRef.current) cancelAnimationFrame(animationIdRef.current);
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const state = gameStateRef.current;
+      if (activeTab !== "tetris" || !state.isStarted || state.isPaused || state.isGameOver) return;
+
+      let keyHandled = false;
+
+      switch (e.keyCode) {
+        case 37: // Left
+          state.piece.x--;
+          if (collideTetris(state.board, state.piece)) {
+            state.piece.x++;
+          }
+          keyHandled = true;
+          break;
+        case 39: // Right
+          state.piece.x++;
+          if (collideTetris(state.board, state.piece)) {
+            state.piece.x--;
+          }
+          keyHandled = true;
+          break;
+        case 40: // Down (Soft drop)
+          state.piece.y++;
+          if (collideTetris(state.board, state.piece)) {
+            state.piece.y--;
+          }
+          state.dropCounter = 0;
+          keyHandled = true;
+          break;
+        case 38: // Up (Rotate)
+          const pos = state.piece.x;
+          let offset = 1;
+          for (let y = 0; y < state.piece.matrix.length; ++y) {
+            for (let x = 0; x < y; ++x) {
+              [state.piece.matrix[x][y], state.piece.matrix[y][x]] = [state.piece.matrix[y][x], state.piece.matrix[x][y]];
+            }
+          }
+          state.piece.matrix.forEach((row: number[]) => row.reverse());
+
+          while (collideTetris(state.board, state.piece)) {
+            state.piece.x += offset;
+            offset = -(offset + (offset > 0 ? 1 : -1));
+            if (offset > state.piece.matrix[0].length) {
+              // undo
+              state.piece.matrix.forEach((row: number[]) => row.reverse());
+              for (let y = 0; y < state.piece.matrix.length; ++y) {
+                for (let x = 0; x < y; ++x) {
+                  [state.piece.matrix[x][y], state.piece.matrix[y][x]] = [state.piece.matrix[y][x], state.piece.matrix[x][y]];
+                }
+              }
+              state.piece.x = pos;
+              break;
+            }
+          }
+          keyHandled = true;
+          break;
+        case 32: // Space (Hard drop)
+          while (!collideTetris(state.board, state.piece)) {
+            state.piece.y++;
+          }
+          state.piece.y--;
+          
+          state.piece.matrix.forEach((row: number[], y: number) => {
+            row.forEach((value, x) => {
+              if (value !== 0) {
+                state.board[y + state.piece.y][x + state.piece.x] = value;
+              }
+            });
+          });
+          
+          if (!state.nextPiece) state.nextPiece = createTetrisPiece();
+          state.piece = state.nextPiece;
+          state.nextPiece = createTetrisPiece();
+
+          let rowCount = 0;
+          outer: for (let y = state.board.length - 1; y >= 0; --y) {
+            for (let x = 0; x < state.board[y].length; ++x) {
+              if (state.board[y][x] === 0) continue outer;
+            }
+            const row = state.board.splice(y, 1)[0].fill(0);
+            state.board.unshift(row);
+            ++y;
+            rowCount++;
+          }
+
+          if (rowCount > 0) {
+            const lineScores = [0, 100, 300, 500, 800];
+            state.score += lineScores[rowCount] * state.level;
+            state.lines += rowCount;
+            state.level = Math.floor(state.lines / 10) + 1;
+            state.dropInterval = Math.max(100, 1000 - (state.level - 1) * 100);
+            
+            setTetrisScore(state.score);
+            setTetrisLines(state.lines);
+            setTetrisLevel(state.level);
+          }
+
+          if (collideTetris(state.board, state.piece)) {
+            state.isGameOver = true;
+            setTetrisGameOver(true);
+          }
+          
+          state.dropCounter = 0;
+          keyHandled = true;
+          break;
+      }
+
+      if (keyHandled) {
+        e.preventDefault();
+        drawTetris();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (activeTab === "tetris") {
+      const timer = setTimeout(() => {
+        drawTetris();
+      }, 50);
+      return () => {
+        clearTimeout(timer);
+        if (animationIdRef.current) cancelAnimationFrame(animationIdRef.current);
+      };
+    } else {
+      const state = gameStateRef.current;
+      if (state.isStarted && !state.isPaused && !state.isGameOver) {
+        state.isPaused = true;
+        setTetrisPaused(true);
+      }
+      if (animationIdRef.current) cancelAnimationFrame(animationIdRef.current);
+    }
+  }, [activeTab]);
+
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
       {/* 🌿 헤더 영역 */}
@@ -219,7 +622,7 @@ export default function BreakPage() {
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-sm text-slate-500">
           컴퓨터 앞을 벗어나 잠시 쉬어가세요. <br className="hidden sm:inline" />
-          스트레칭 타이머와 재미 삼아 해보는 로또 번호 생성기, 제비뽑기를 즐겨보세요!
+          스트레칭 타이머, 로또 번호 생성기, 제비뽑기와 신나는 테트리스 게임을 즐겨보세요!
         </p>
       </div>
 
@@ -255,6 +658,17 @@ export default function BreakPage() {
           }`}
         >
           🎯 제비뽑기 (룰렛)
+        </button>
+        <button
+          onClick={() => setActiveTab("tetris")}
+          className={`flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold transition ${
+            activeTab === "tetris"
+              ? "bg-teal-600 text-white shadow-sm"
+              : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+          }`}
+        >
+          <Gamepad2 className="h-3.5 w-3.5" />
+          테트리스 게임
         </button>
       </div>
 
@@ -395,7 +809,7 @@ export default function BreakPage() {
                     <div
                       style={{ backgroundColor: getBallColor(game.bonusNumber) }}
                       className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-inner"
-                    >
+                      >
                       {game.bonusNumber}
                     </div>
                   </div>
@@ -467,6 +881,93 @@ export default function BreakPage() {
             >
               🎯 룰렛 돌리기
             </button>
+          </div>
+        </section>
+      )}
+
+      {/* 🎮 탭 4: 테트리스 게임 */}
+      {activeTab === "tetris" && (
+        <section className="flex flex-col rounded-3xl bg-white border border-slate-200 p-6 shadow-sm">
+          <div className="flex items-center gap-2 border-b border-slate-100 pb-4 mb-6 justify-center">
+            <h2 className="text-xl font-bold text-slate-900">🎮 고급 테트리스 프로</h2>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+            {/* 메인 게임 보드 */}
+            <div className="relative">
+              <canvas
+                ref={tetrisCanvasRef}
+                width="300"
+                height="600"
+                className="bg-black border-2 border-slate-800 rounded-xl shadow-md"
+              />
+              {tetrisGameOver && (
+                <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center rounded-xl">
+                  <div className="text-red-500 text-3xl font-black tracking-widest mb-4 animate-pulse">GAME OVER</div>
+                  <button
+                    onClick={startTetris}
+                    className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-xl transition shadow-md"
+                  >
+                    다시 하기
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* 사이드바 정보 패널 */}
+            <div className="w-full md:w-[150px] flex flex-col gap-4">
+              <div className="bg-slate-50 border border-slate-100 p-4 rounded-xl text-center">
+                <p className="text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">NEXT</p>
+                <div className="flex justify-center">
+                  <canvas
+                    ref={nextCanvasRef}
+                    width="120"
+                    height="120"
+                    className="bg-slate-800 border border-slate-700 rounded-lg"
+                  />
+                </div>
+              </div>
+
+              <div className="bg-slate-50 border border-slate-100 p-3 rounded-xl text-center">
+                <p className="text-2xs font-semibold text-slate-400 uppercase tracking-wider">SCORE</p>
+                <span className="text-xl font-extrabold text-teal-600">{tetrisScore}</span>
+              </div>
+
+              <div className="bg-slate-50 border border-slate-100 p-3 rounded-xl text-center">
+                <p className="text-2xs font-semibold text-slate-400 uppercase tracking-wider">LEVEL</p>
+                <span className="text-xl font-extrabold text-teal-600">{tetrisLevel}</span>
+              </div>
+
+              <div className="bg-slate-50 border border-slate-100 p-3 rounded-xl text-center">
+                <p className="text-2xs font-semibold text-slate-400 uppercase tracking-wider">LINES</p>
+                <span className="text-xl font-extrabold text-teal-600">{tetrisLines}</span>
+              </div>
+
+              <div className="flex flex-col gap-2 mt-2">
+                <button
+                  onClick={startTetris}
+                  className="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-2.5 rounded-xl transition text-sm shadow-sm"
+                >
+                  {tetrisStarted ? "새 게임" : "게임 시작"}
+                </button>
+                {tetrisStarted && !tetrisGameOver && (
+                  <button
+                    onClick={togglePauseTetris}
+                    className="w-full bg-slate-850 hover:bg-slate-700 text-white font-bold py-2.5 rounded-xl transition text-sm"
+                  >
+                    {tetrisPaused ? "계속하기" : "일시정지"}
+                  </button>
+                )}
+              </div>
+
+              <div className="bg-slate-50 border border-slate-100 p-3 rounded-xl text-slate-400 leading-relaxed text-[10px]">
+                <p className="font-bold text-slate-500 mb-1">⌨️ 조작법:</p>
+                <p>← → : 좌우 이동</p>
+                <p>↑ : 블록 회전</p>
+                <p>↓ : 소프트 드롭</p>
+                <p>Space : 하드 드롭</p>
+              </div>
+            </div>
           </div>
         </section>
       )}
