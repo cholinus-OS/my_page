@@ -132,32 +132,51 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-2">
             {latestPosts.length > 0 ? (
               latestPosts.map((blog) => (
-                <div
+                <article
                   key={blog.slug}
-                  className="flex flex-col justify-between rounded-2xl bg-white p-6 shadow-sm border border-slate-100 hover:shadow-md transition duration-200"
+                  className="group relative flex flex-col-reverse sm:flex-row justify-between gap-4 rounded-2xl bg-white p-6 shadow-sm border border-slate-100 hover:shadow-md transition duration-200"
                 >
-                  <div>
-                    <div className="flex items-center gap-2 text-xs text-slate-400">
-                      <span>{blog.date.replace(/-/g, ".")}</span>
-                      <span>•</span>
-                      <span className="text-teal-600 font-medium">{blog.category}</span>
+                  {/* 왼쪽 텍스트 설명 영역 */}
+                  <div className="flex-grow flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center gap-2 text-xs text-slate-400">
+                        <span>{blog.date.replace(/-/g, ".")}</span>
+                        <span>•</span>
+                        <span className="text-teal-600 font-medium">{blog.category}</span>
+                      </div>
+                      <h3 className="mt-3 text-lg font-bold text-slate-900 group-hover:text-teal-600 transition">
+                        <Link href={`/blog/${blog.slug}`} className="focus:outline-none">
+                          <span className="absolute inset-0 z-0" aria-hidden="true" />
+                          {blog.title}
+                        </Link>
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-500 line-clamp-2">
+                        {blog.summary}
+                      </p>
                     </div>
-                    <h3 className="mt-3 text-lg font-bold text-slate-900 hover:text-teal-600 transition">
-                      <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-500 line-clamp-2">
-                      {blog.summary}
-                    </p>
+                    <div className="mt-4 pt-4 border-t border-slate-100 flex justify-end relative z-10">
+                      <Link
+                        href={`/blog/${blog.slug}`}
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-teal-600 hover:underline"
+                      >
+                        자세히 읽기 <ChevronRight className="h-3 w-3" />
+                      </Link>
+                    </div>
                   </div>
-                  <div className="mt-4 pt-4 border-t border-slate-100 flex justify-end">
-                    <Link
-                      href={`/blog/${blog.slug}`}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-teal-600 hover:underline"
-                    >
-                      자세히 읽기 <ChevronRight className="h-3 w-3" />
-                    </Link>
-                  </div>
-                </div>
+
+                  {/* 오른쪽 썸네일 이미지 영역 (모바일은 상단, PC는 우측 정렬) */}
+                  {blog.thumbnail && (
+                    <div className="w-full sm:w-32 sm:h-24 aspect-[16/9] sm:aspect-auto rounded-xl overflow-hidden bg-slate-50 flex-shrink-0 relative z-10 border border-slate-100/60 shadow-2xs">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={blog.thumbnail}
+                        alt={`${blog.title} 썸네일`}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                </article>
               ))
             ) : (
               <div className="col-span-2 text-center py-12 bg-white rounded-2xl border border-dashed border-slate-200 text-slate-500 text-sm">
