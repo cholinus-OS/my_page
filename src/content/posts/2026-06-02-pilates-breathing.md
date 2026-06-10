@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/4587404/pexels-photo-4587404.jpeg"
 ![A woman wearing sportswear relaxing on a yoga mat indoors, reflecting calmness and fitness focus.](https://images.pexels.com/photos/4587404/pexels-photo-4587404.jpeg)
 *(출처: Pexels / 사진 제공: [Anna Shvets](https://www.pexels.com/@shvetsa))*
 
-
-
 안녕하세요! 여러분의 건강하고 아름다운 관절을 지켜드리는 바른관절 헬프센터입니다. 혹시 필라테스를 처음 시작하실 때 "숨을 마시고, 내쉬세요"라는 강사님의 말에 오히려 몸이 뻣뻣하게 굳거나 호흡이 꼬였던 경험이 있으신가요? 
 
 필라테스에서 **호흡**은 동작의 절반 이상을 차지할 만큼 아주 중요합니다. 단순히 숨을 쉬는 것을 넘어, 호흡을 통해 몸의 중심부 근육(코어 근육)을 안전하게 지탱하고 척추를 보호하기 때문입니다. 
@@ -48,6 +46,3 @@ thumbnail: "https://images.pexels.com/photos/4587404/pexels-photo-4587404.jpeg"
 
 매일 아침이나 주무시기 전 5분씩만 이 가이드를 켜두고 호흡을 연습하셔도 하루의 피로가 싹 가시고 코어 근육이 튼튼해지는 것을 느낄 수 있으실 겁니다. 오늘도 바르고 건강한 하루 보내세요! 감사합니다. 😊👍
 
-
-![Two women practicing yoga in a gym using foam rollers, enhancing fitness and flexibility.](https://images.pexels.com/photos/4587697/pexels-photo-4587697.jpeg)
-*(출처: Pexels / 사진 제공: [Anna Shvets](https://www.pexels.com/@shvetsa))*

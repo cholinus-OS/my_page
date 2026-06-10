@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/9288130/pexels-photo-9288130.jpeg"
 ![Asian women exercising on Pilates arcs in a gym for fitness and flexibility.](https://images.pexels.com/photos/9288130/pexels-photo-9288130.jpeg)
 *(출처: Pexels / 사진 제공: [Nicholas Fu](https://www.pexels.com/@n1ch01as))*
 
-
-
 안녕하세요! 여러분의 건강한 관절과 올바른 척추 자세를 지켜드리는 바른관절 헬프센터입니다. 혹시 매일 장시간 컴퓨터를 보거나 스마트폰을 하느라 목덜미가 묵직하고, 날개뼈 안쪽 등이 뻐근하지 않으신가요?
 
 현대인의 대표적인 고질병인 **굽은 등(라운드 숄더)**과 **거북목**은 단순히 겉보기에만 구부정해 보이는 것이 아닙니다. 등이 구부러지면 목 뼈(경추)가 앞으로 튀어나오면서 머리 무게를 분산하지 못하고, 목과 어깨 주변 근육이 끊임없이 비명을 지르게 됩니다.
@@ -49,6 +47,3 @@ thumbnail: "https://images.pexels.com/photos/9288130/pexels-photo-9288130.jpeg"
 
 매일 꾸준한 필라테스 동작으로 가뿐하고 가벼운 목과 등을 가꾸어 보세요! 다음에도 실생활에 유용한 쉽고 건강한 정보로 찾아뵙겠습니다. 감사합니다! 😊👍
 
-
-![Woman using foam roller for back stretch in a ballet studio, promoting wellness and flexibility.](https://images.pexels.com/photos/8933832/pexels-photo-8933832.jpeg)
-*(출처: Pexels / 사진 제공: [Anastasia  Shuraeva](https://www.pexels.com/@anastasia-shuraeva))*

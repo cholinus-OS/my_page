@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/36833351/pexels-photo-36833351.jpeg
 ![Adult man performing Pilates exercise on reformer in bright fitness studio.](https://images.pexels.com/photos/36833351/pexels-photo-36833351.jpeg)
 *(출처: Pexels / 사진 제공: [Paulina Vargas](https://www.pexels.com/@paulina-vargas-490121449))*
 
-
-
 안녕하세요! 여러분의 소중한 허리와 척추 건강을 지켜드리는 바른관절 헬프센터입니다. 혹시 평소에 서 있거나 의자에 앉아 있을 때 허리가 뻐근하거나 찌릿한 느낌을 받아본 적이 있으신가요? 
 
 우리가 척추 통증에서 벗어나기 위해 가장 먼저 배워야 하는 핵심 자세가 있습니다. 바로 필라테스나 모든 웨이트 트레이닝의 뼈대가 되는 **"척추중립(Neutral Spine)"** 상태입니다. 
@@ -53,6 +51,3 @@ thumbnail: "https://images.pexels.com/photos/36833351/pexels-photo-36833351.jpeg
 
 하루 3분, 누워서 골반을 부드럽게 앞뒤로 움직이며 나만의 가장 편안한 척추중립 위치를 찾아보세요. 훨씬 더 탄탄하고 통증 없는 하루를 시작할 수 있습니다. 다음에도 더욱 건강한 척추 정렬 팁으로 찾아뵙겠습니다. 감사합니다! 😊👍
 
-
-![Two women exercising with a foam roller on yoga mats indoors, promoting health and wellness.](https://images.pexels.com/photos/4587699/pexels-photo-4587699.jpeg)
-*(출처: Pexels / 사진 제공: [Anna Shvets](https://www.pexels.com/@shvetsa))*

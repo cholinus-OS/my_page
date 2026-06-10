@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/8846512/pexels-photo-8846512.jpeg"
 ![A man uses a resistance band for arm exercises in a bright indoor setting.](https://images.pexels.com/photos/8846512/pexels-photo-8846512.jpeg)
 *(출처: Pexels / 사진 제공: [MART  PRODUCTION](https://www.pexels.com/@mart-production))*
 
-
-
 안녕하세요! 혹시 팔꿈치 안쪽이나 바깥쪽이 시큰거리고 아파서 고생하고 계시나요? 파스를 붙이고 병원에서 주사를 맞아도 그때뿐, 다시 물건을 들거나 마우스를 쥐면 찌릿하게 올라오는 통증 때문에 힘드셨을 텐데요. 오늘은 팔꿈치 통증을 뿌리 뽑기 위한 관절 역학 기반의 정밀 재활 가이드라인을 소개해 드릴게요!
 
 우선 우리가 알아야 할 것은, 팔꿈치 통증이 단순히 팔꿈치만의 문제가 아니라는 점이에요. 팔꿈치는 손에서부터 어깨, 그리고 척추로 이어지는 힘의 통로 역할을 합니다. 손이나 목, 어깨가 제 역할을 하지 못하면 모든 부담이 고스란히 팔꿈치에 쏟아져 '힘의 전달 실패'로 이어지게 되죠. 
@@ -45,6 +43,3 @@ thumbnail: "https://images.pexels.com/photos/8846512/pexels-photo-8846512.jpeg"
 *본 포스팅은 아래의 원본 블로그 글을 바탕으로 작성되었습니다.*
 *   [원문 네이버 블로그 바로가기](https://blog.naver.com/cholinus/224300814734)
 
-
-![Man in blue shirt stretching indoors, focusing on rehabilitation and fitness.](https://images.pexels.com/photos/6111623/pexels-photo-6111623.jpeg)
-*(출처: Pexels / 사진 제공: [Kampus Production](https://www.pexels.com/@kampus))*

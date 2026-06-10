@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/20860603/pexels-photo-20860603.jpeg
 ![Close-up of a physiotherapist massaging a patient's knee during therapy.](https://images.pexels.com/photos/20860603/pexels-photo-20860603.jpeg)
 *(출처: Pexels / 사진 제공: [Funkcinės Terapijos Centras](https://www.pexels.com/@funkcines-terapijos-centras-927573878))*
 
-
-
 ![무릎 근력강화 운동 1](/knee-rehab-new-01.jpg)
 
 ![무릎 근력강화 운동 2](/knee-rehab-new-02.jpg)
@@ -48,6 +46,3 @@ thumbnail: "https://images.pexels.com/photos/20860603/pexels-photo-20860603.jpeg
 
 무릎의 아픔에 지지 않고 가벼운 누운 자세의 근육 조이기부터 차근차근 시작해보세요. 근육이 강해질수록 신기하게도 무릎의 통증은 서서히 줄어들게 될 것입니다. 여러분의 쾌유를 언제나 응원합니다! 감사합니다. 😊👍
 
-
-![A physiotherapist assists a patient with leg stretching exercises on a treatment table.](https://images.pexels.com/photos/20860582/pexels-photo-20860582.jpeg)
-*(출처: Pexels / 사진 제공: [Funkcinės Terapijos Centras](https://www.pexels.com/@funkcines-terapijos-centras-927573878))*

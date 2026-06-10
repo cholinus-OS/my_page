@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/20860615/pexels-photo-20860615.jpeg
 ![A physiotherapist assisting a patient with back pain in an indoor clinic setting.](https://images.pexels.com/photos/20860615/pexels-photo-20860615.jpeg)
 *(출처: Pexels / 사진 제공: [Funkcinės Terapijos Centras](https://www.pexels.com/@funkcines-terapijos-centras-927573878))*
 
-
-
 안녕하세요! 여러분의 바르고 건강한 뼈 건강을 지켜드리는 바른관절 헬프센터입니다. 혹시 대중교통을 기다리거나 서 있을 때 자신도 모르게 한쪽 다리에만 체중을 싣는 **"짝다리"**를 짚고 계시지 않으신가요? 
 
 서 있는 자세는 우리 몸의 정렬을 보여주는 가장 정직한 거울입니다. 하지만 많은 분들이 짝다리를 짚거나 배를 앞으로 내밀고 어깨를 굽히는(스웨이백) 편안하지만 몸에는 치명적인 나쁜 자세로 서 계시곤 합니다. 잘못된 서 있는 자세가 오랫동안 지속되면 골반이 한쪽으로 틀어지고 척추 측만증이나 골반 통증, 심한 경우 무릎 퇴행성 관절염까지 유발할 수 있습니다.
@@ -48,6 +46,3 @@ thumbnail: "https://images.pexels.com/photos/20860615/pexels-photo-20860615.jpeg
 
 길을 걷다가 멈춰 서서 신호를 대기할 때, 양 발에 체중을 고르게 5:5로 싣는 아주 작은 습관 하나만 시작하셔도 골반 건강을 튼튼하게 지킬 수 있습니다. 오늘 하루도 척추 건강하게 곧게 서는 하루 보내시길 바랍니다! 감사합니다! 😊👍
 
-
-![Senior couple standing on yoga mats indoors, focusing on health and fitness.](https://images.pexels.com/photos/7500325/pexels-photo-7500325.jpeg)
-*(출처: Pexels / 사진 제공: [Mikhail Nilov](https://www.pexels.com/@mikhail-nilov))*

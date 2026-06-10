@@ -15,12 +15,10 @@ thumbnail: "https://images.pexels.com/photos/4506166/pexels-photo-4506166.jpeg"
 
 하지만 어깨 통증을 가벼운 근육통으로 치부하고 방치하는 것은 매우 위험합니다. 뼈와 힘줄이 계속해서 마찰을 일으키는 상태를 내버려 두면, 결국 어깨를 움직이는 핵심 힘줄이 완전히 끊어지는 회전근개 파열로 이어져 수술대에 올라야 하는 상황을 초래할 수 있기 때문입니다. 소중한 어깨 건강을 지키기 위해 지금 당장 내 어깨가 보내는 신호에 귀를 기울여야 하는 이유입니다.
 
-
 ## 팔을 들어 올릴 때 스치는 통증, 회전근개 건염의 원인과 전조증상
 
 ![Crop unrecognizable orthopedist in uniform and wristwatch supporting shoulder and reached arm of faceless female patient with resistance band in doctor office](https://images.pexels.com/photos/4506166/pexels-photo-4506166.jpeg)
 *(출처: Pexels / 사진 제공: [www.kaboompics.com](https://www.pexels.com/@karola-g))*
-
 
 어깨 관절은 우리 몸에서 유일하게 360도 회전이 가능한 가장 자유로운 관절입니다. 이 불안정하면서도 유연한 관절을 안정적으로 잡아주는 역할을 하는 것이 바로 **회전근개(Rotator Cuff)**라 불리는 4개의 힘줄(극상근, 극하근, 소원근, 견갑하근)입니다. 이 힘줄들이 어깨뼈를 단단히 감싸고 있어 우리가 팔을 자유롭게 움직일 수 있습니다.
 
@@ -35,12 +33,7 @@ thumbnail: "https://images.pexels.com/photos/4506166/pexels-photo-4506166.jpeg"
 *   **동작의 제한:** 무거운 물건을 들어 올리기 힘들고, 바지 뒷주머니에 손을 넣거나 등 뒤의 옷 지퍼를 올리는 등 손을 등 뒤로 돌리는 동작이 유독 뻐근하고 어려워집니다.
 *   **어깨 내 마찰음:** 팔을 움직일 때 어깨 관절 내부에서 사각거리는 서걱거림이나 무언가 덜컥하고 걸리는 듯한 마찰음이 느껴집니다.
 
-
 ## 장비 없이 집에서 끝내는 회전근개 건염 완화 및 예방 스트레칭 3가지
-
-![Therapist guiding a woman in a stretching exercise indoors, focusing on physical therapy.](https://images.pexels.com/photos/5793800/pexels-photo-5793800.jpeg)
-*(출처: Pexels / 사진 제공: [Yan Krukau](https://www.pexels.com/@yankrukov))*
-
 
 염증 초기의 회전근개 건염은 무리한 근력 운동보다는 좁아진 어깨 공간을 늘려주고, 굳어진 힘줄의 유연성을 회복시키는 부드러운 스트레칭이 가장 훌륭한 치료법이 됩니다. 집이나 사무실에서 별도의 도구 없이 즉시 실천해 볼 수 있는 안전한 동작들을 소개해 드립니다.
 
@@ -72,7 +65,6 @@ thumbnail: "https://images.pexels.com/photos/4506166/pexels-photo-4506166.jpeg"
 모든 스트레칭은 '시원한 자극'을 느끼는 선에서 멈추어야 합니다. 만약 동작을 따라 하던 도중 어깨 끝을 바늘로 콕콕 찌르는 듯한 날카로운 통증이 느껴진다면 힘줄이 뼈에 강하게 부딪히고 있다는 적신호이므로 즉시 동작을 중단하셔야 합니다. 
 
 특히, 본인의 힘으로 팔을 아예 위로 들어 올릴 수 없고 남이 팔을 들어 올려 주었다가 손을 놓았을 때 팔이 힘없이 툭 떨어지는 증상이 있으신 분들은 단순 건염이 아닌 힘줄이 완전히 파열된 상태일 수 있으므로 이러한 자가 스트레칭을 절대 하셔서는 안 되며 즉시 전문의를 찾아야 합니다.
-
 
 ## 작은 움직임의 변화가 평생 쓰는 튼튼한 어깨를 만듭니다
 

@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/8376182/pexels-photo-8376182.jpeg"
 ![Surprised elderly doctor wearing lab coat and stethoscope indoors.](https://images.pexels.com/photos/8376182/pexels-photo-8376182.jpeg)
 *(출처: Pexels / 사진 제공: [Tima Miroshnichenko](https://www.pexels.com/@tima-miroshnichenko))*
 
-
-
 안녕하세요! 뼈 건강을 지키는 가장 기본적이면서도 중요한 검사, 바로 **골밀도(골다공증) 검사**에 대해 들어보셨나요? 나이가 들거나 폐경을 맞이하면 뼈가 서서히 약해지면서 골다공증 위험이 급격히 올라가게 됩니다. 
 
 하지만 많은 분들이 "골밀도 검사는 비용이 비싸지 않을까?" 하고 걱정하시며 검사를 차일피일 미루곤 하십니다. 사실 우리나라 건강보험 제도는 뼈 건강에 적신호가 켜졌거나 고위험군에 해당하는 분들을 위해 **골밀도 검사 건강보험 급여 혜택**을 든든하게 지원하고 있답니다! 
@@ -71,6 +69,3 @@ thumbnail: "https://images.pexels.com/photos/8376182/pexels-photo-8376182.jpeg"
 
 나이와 성별 조건에 부합하시거나 평소 관절이나 기저질환으로 약물을 오래 드시는 분들이라면, 이번 기회에 뼈 건강 지도표를 꼼꼼하게 점검하고 가까운 병원을 찾아 골밀도 검사 상담을 받아보시기를 적극 추천해 드립니다! 아프기 전에 미리 챙기는 것이 가장 훌륭한 건강 예방법이니까요.
 
-
-![Serious mature male doctor in medical uniform standing with stethoscope and notebook while talking on smartphone in clinic corridor](https://images.pexels.com/photos/4173244/pexels-photo-4173244.jpeg)
-*(출처: Pexels / 사진 제공: [Gustavo Fring](https://www.pexels.com/@gustavo-fring))*

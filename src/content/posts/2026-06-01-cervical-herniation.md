@@ -41,9 +41,6 @@ thumbnail: "https://images.pexels.com/photos/5793654/pexels-photo-5793654.jpeg"
 
 ## 더 이상 참지 마세요! 목 디스크 예방 및 완화를 위한 실천 팁
 
-![Side view of a man holding his neck in pain against a black background.](https://images.pexels.com/photos/7298882/pexels-photo-7298882.jpeg)
-*(출처: Pexels / 사진 제공: [Kindel Media](https://www.pexels.com/@kindelmedia))*
-
 목 디스크는 한 번 손상되면 완벽하게 회복하기 어려운 만큼, 평소의 예방과 꾸준한 관리가 매우 중요합니다. 일상생활에서 쉽게 실천할 수 있는 바른 자세 유지법과 간단한 스트레칭을 통해 소중한 목 건강을 지켜보세요.
 
 ### 1. 바른 자세 유지하기: 목에 가해지는 부담 줄이기

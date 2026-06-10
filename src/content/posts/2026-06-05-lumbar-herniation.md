@@ -14,14 +14,9 @@ thumbnail: "https://images.pexels.com/photos/4534640/pexels-photo-4534640.jpeg"
 ![A woman practicing yoga indoors, engaging in a healthy lifestyle with focus.](https://images.pexels.com/photos/4534640/pexels-photo-4534640.jpeg)
 *(출처: Pexels / 사진 제공: [Vlada Karpovich](https://www.pexels.com/@vlada-karpovich))*
 
-
 어느 날 갑자기 허리가 삐끗하고, 엉덩이부터 다리까지 저릿한 통증이 느껴져 앉아있기도, 서 있기도 힘드셨던 적 있으신가요? 많은 분들이 일시적인 피로나 근육통이라고 생각하고 대수롭지 않게 넘기시곤 합니다. 하지만 이렇게 시작된 가벼운 통증은 **'허리 디스크(요추 추간판 탈출증)'**의 시작일 수 있으며, 방치할 경우 만성 통증으로 발전하여 잠 못 이루는 밤, 자유롭지 못한 움직임, 심지어는 대소변 장애와 같은 심각한 합병증으로까지 이어질 수 있습니다. 우리 몸의 기둥인 허리가 무너지면 일상생활은 물론 정신적인 건강까지도 위협받을 수 있기에, 지금 이 순간부터 허리 건강 관리는 선택이 아닌 필수입니다. 오늘 이 글을 통해 허리 디스크의 정확한 이해와 함께 일상에서 실천할 수 있는 효과적인 관리법을 알아보시고, 다시 한번 활력 넘치는 삶을 되찾으시길 바랍니다.
 
 ## 허리 디스크, 왜 생기고 어떤 신호를 보낼까요?
-
-![Woman in a bridge pose practicing yoga indoors, showcasing exercise and flexibility.](https://images.pexels.com/photos/11889762/pexels-photo-11889762.jpeg)
-*(출처: Pexels / 사진 제공: [Tatiana Sozutova](https://www.pexels.com/@sozutova))*
-
 
 우리 척추는 뼈와 뼈 사이에 충격을 흡수하는 말랑한 젤리 같은 구조물, 바로 **추간판(디스크)**이 존재합니다. 이 추간판은 바깥쪽의 단단한 섬유륜과 안쪽의 부드러운 수핵으로 이루어져 있는데요. 잘못된 자세나 무리한 활동, 노화 등으로 인해 섬유륜이 손상되면서 안에 있던 **수핵이 밖으로 밀려나와 주변의 신경을 압박하는 상태**를 우리는 **'요추 추간판 탈출증'**, 즉 허리 디스크라고 부릅니다. 이 압박된 신경은 염증을 유발하고, 그 결과 허리 통증은 물론 신경이 지배하는 다리까지 저리고 아픈 증상을 만들어냅니다.
 

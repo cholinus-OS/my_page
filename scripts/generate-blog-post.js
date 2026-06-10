@@ -341,8 +341,8 @@ async function getPexelsImages(keyword) {
                 photographerUrl: p.photographer_url,
                 alt: p.alt || `${keyword} 관련 재활 이미지`
               });
-              // 글 하나당 2장의 이미지를 가져옵니다.
-              if (matchedPhotos.length >= 2) break;
+              // 글 하나당 1장의 대표 이미지(썸네일 겸 본문 삽입용)를 가져옵니다.
+              if (matchedPhotos.length >= 1) break;
             }
           }
 

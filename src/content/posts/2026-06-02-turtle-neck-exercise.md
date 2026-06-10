@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/20860625/pexels-photo-20860625.jpeg
 ![Experienced physiotherapist helps patient stretch leg in a modern clinic setting, focusing on rehabilitation.](https://images.pexels.com/photos/20860625/pexels-photo-20860625.jpeg)
 *(출처: Pexels / 사진 제공: [Funkcinės Terapijos Centras](https://www.pexels.com/@funkcines-terapijos-centras-927573878))*
 
-
-
 안녕하세요! 여러분의 건강한 관절을 지켜드리는 바른관절 헬프센터입니다. 혹시 컴퓨터나 스마트폰을 보다가 자신도 모르게 목을 앞으로 길게 쭉 빼고 있는 모습을 발견하지 않으셨나요? 
 
 최근 현대인들의 고질병 중 하나인 **거북목 증후군**은 단순히 보기에만 좋지 않은 것을 넘어, 목 뼈에 엄청난 과부하를 주어 심한 경우 목 디스크(경추 추간판 탈출증)까지 유발하게 됩니다. 
@@ -48,6 +46,3 @@ thumbnail: "https://images.pexels.com/photos/20860625/pexels-photo-20860625.jpeg
 
 가벼운 5분 스트레칭과 함께 오늘 하루도 가뿐하고 시원하게 보내시길 바랍니다! 다음에도 건강에 도움을 주는 유익한 이야기로 찾아오겠습니다. 감사합니다. 😊👍
 
-
-![Person stretching on a yoga mat with assistance indoors. Exercise and wellness concept.](https://images.pexels.com/photos/6973123/pexels-photo-6973123.jpeg)
-*(출처: Pexels / 사진 제공: [Mikhail Nilov](https://www.pexels.com/@mikhail-nilov))*

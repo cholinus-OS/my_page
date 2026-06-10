@@ -16,16 +16,11 @@ thumbnail: "https://images.pexels.com/photos/14569654/pexels-photo-14569654.jpeg
 ![Detailed close-up of a foot in an orthopedic brace, highlighting post-injury recovery.](https://images.pexels.com/photos/14569654/pexels-photo-14569654.jpeg)
 *(출처: Pexels / 사진 제공: [Towfiqu barbhuiya](https://www.pexels.com/@towfiqu-barbhuiya-3440682))*
 
-
 일상생활 속에서 아무것도 없는 평평한 길을 걷다가도 갑자기 발목이 삐끗하거나, 계단을 내려올 때 발목이 힘없이 덜컹거리는 불안감을 느껴보신 적 있으신가요? 심지어는 발을 헛디딘 것도 아닌데 발목이 저절로 안쪽으로 접질리는 듯한 아찔한 경험을 하기도 합니다. 많은 분들이 "그냥 발목을 잘못 디딘 것 뿐이야", "원래 내 발목이 좀 약해"라고 생각하며 가볍게 넘기곤 하지만, 이러한 작은 불편함들이 **'만성 발목 불안정증'**의 위험 신호일 수 있습니다.
 
 만성 발목 불안정증은 단순히 자주 삐끗하는 것을 넘어, 삶의 질을 현저히 떨어뜨리는 주범이 될 수 있습니다. 만약 지금의 불안정한 상태를 방치한다면, 발목 연골의 손상으로 이어져 조기 관절염으로 발전하거나 다른 부위의 통증까지 유발할 수 있습니다. 건강한 발목은 우리 몸의 균형을 잡고 일상 활동의 기본이 되는 중요한 주춧돌과 같습니다. 더 늦기 전에 나의 발목 상태를 점검하고, 적극적인 관리와 예방을 시작해야 하는 이유가 바로 여기에 있습니다. 오늘 이 글을 통해 여러분의 소중한 발목 건강을 지키는 현명한 방법을 함께 찾아보시길 바랍니다.
 
 ## 툭하면 삐끗, 왜 계속될까요? 만성 발목 불안정증의 원인과 자가진단
-
-![Close-up of an athlete's ankle being wrapped with an elastic bandage in a gym setting.](https://images.pexels.com/photos/7991959/pexels-photo-7991959.jpeg)
-*(출처: Pexels / 사진 제공: [Annushka  Ahuja](https://www.pexels.com/@annushka-ahuja))*
-
 
 우리의 발목은 여러 개의 인대들이 뼈를 단단히 지지하여 안정성을 유지하고 있습니다. 이 중에서도 특히 발목 바깥쪽에 위치한 인대들(전거비인대, 종비인대 등)은 발목이 안쪽으로 꺾이는 것을 막아주는 중요한 역할을 하죠. **만성 발목 불안정증**은 대부분 반복적인 발목 염좌(발목 삐끗)로 인해 발생합니다. 한 번 발목을 심하게 삐끗하면 인대가 늘어나거나 심하면 파열되기도 합니다. 문제는 인대가 손상된 후 제대로 치료하거나 재활하지 않으면 인대가 느슨해진 상태로 아무는 경우가 많다는 것입니다.
 

@@ -15,7 +15,6 @@ thumbnail: "https://images.pexels.com/photos/8076121/pexels-photo-8076121.jpeg"
 ![Businesswoman massaging neck while working on laptop, highlighting self-care and wellbeing.](https://images.pexels.com/photos/8076121/pexels-photo-8076121.jpeg)
 *(출처: Pexels / 사진 제공: [MART  PRODUCTION](https://www.pexels.com/@mart-production))*
 
-
 장시간 스마트폰을 들여다보거나 컴퓨터 앞에 앉아 있다 보면, 자신도 모르게 목이 앞으로 쭉 빠져나와 거북이처럼 변해버린 모습을 발견할 때가 있으실 겁니다. 처음에는 그저 가벼운 불편함으로 여기고 넘기기 쉽지만, 이 **'거북목 증후군'**은 단순한 자세 문제를 넘어 만성적인 통증과 심각한 건강 문제로 이어질 수 있는 경고 신호입니다.
 
 머리 무게는 생각보다 무거워서, 건강한 C자형 목이 이 하중을 효율적으로 분산합니다. 하지만 목이 1cm 앞으로 빠질 때마다 목뼈에는 2~3kg의 하중이 더해진다고 합니다. 목이 5cm만 앞으로 나와도 무려 10kg 이상의 무게를 더 짊어지게 되는 셈이죠. 어깨와 목 주변 근육은 이런 과도한 부담을 홀로 감당하느라 매일같이 긴장하고 경직됩니다. 이러한 상태가 지속되면 목과 어깨의 만성적인 통증은 물론, 두통, 손 저림, 심지어 디스크 질환으로까지 발전할 수 있습니다.
@@ -23,10 +22,6 @@ thumbnail: "https://images.pexels.com/photos/8076121/pexels-photo-8076121.jpeg"
 "설마 나한테까지?" 하고 생각하시나요? 지금 바로 거북목을 인지하고 관리해야 하는 이유는 명확합니다. 건강한 목은 우리의 삶의 질을 좌우하는 중요한 요소이기 때문입니다. 더 늦기 전에 오늘부터라도 당신의 목 건강을 위한 여정을 시작해야 합니다. 이 글을 통해 당신의 잃어버린 목의 C자 곡선을 되찾고, 통증 없는 편안한 일상을 되찾는 비법을 알려드리겠습니다.
 
 ## 거북목 증후군, 왜 생기고 어떤 증상을 보일까요?
-
-![Bearded man in casual blue shirt working on laptop while sitting on a cozy couch at home.](https://images.pexels.com/photos/7563476/pexels-photo-7563476.jpeg)
-*(출처: Pexels / 사진 제공: [VAZHNIK](https://www.pexels.com/@vazhnik))*
-
 
 우리의 건강한 목뼈는 옆에서 봤을 때 부드러운 **'C자 곡선'**을 이루고 있습니다. 이 C자 곡선은 스프링처럼 충격을 흡수하고 머리 무게를 분산시키는 중요한 역할을 합니다. 하지만 잘못된 자세가 반복되면 이 C자 곡선이 사라져 **'일자목'**이 되거나, 심지어 **'역C자형'**으로 변형되어 목이 앞으로 쭉 빠져나오는 **'거북목 증후군'**이 됩니다.
 

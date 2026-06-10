@@ -15,16 +15,11 @@ thumbnail: "https://images.pexels.com/photos/4506109/pexels-photo-4506109.jpeg"
 ![From above of crop faceless slim female patient sitting on examination couch and indicating osteopath in uniform pain spot on back in clinic](https://images.pexels.com/photos/4506109/pexels-photo-4506109.jpeg)
 *(출처: Pexels / 사진 제공: [www.kaboompics.com](https://www.pexels.com/@karola-g))*
 
-
 "허리가 뻐근해서 오래 앉아있기 힘들어요." "조금만 걸어도 허리가 끊어질 듯 아프고 다리까지 저릿저릿해요." 혹시 이런 불편함 때문에 일상생활에 어려움을 겪고 계신가요? 많은 분들이 처음에는 단순한 허리 통증으로 여기고 파스나 찜질로 버티곤 합니다. 하지만 허리 통증이 반복되거나 엉덩이, 다리까지 뻗쳐 내려오는 신경학적 증상이 나타난다면, 결코 가볍게 넘겨서는 안 됩니다. 이는 척추의 중요한 구조적 이상을 알리는 신호일 수 있기 때문입니다.
 
 특히 오늘 다룰 **‘척추전방전위증’**은 척추뼈가 제자리를 벗어나 미끄러져 내려앉는 질환으로, 방치할 경우 신경 압박이 심해져 만성적인 통증은 물론이고 하지 마비나 대소변 장애 같은 심각한 합병증으로 이어질 수도 있습니다. 소중한 척추 건강을 지키기 위해서는 지금 당장 척추전방전위증이 무엇인지 정확히 이해하고, 어떻게 관리해야 하는지 아는 것이 중요합니다. 건강한 척추는 활기찬 생활의 기본이니까요. 지금부터 저와 함께 척추전방전위증의 원인부터 스스로 할 수 있는 관리법까지 자세히 알아보겠습니다.
 
 ## 내 척추가 미끄러지고 있다고요? 척추전방전위증의 원인과 전조증상
-
-![From above back view of crop orthopedist in uniform and eyewear examining back of slim faceless female in casual clothes sitting on examination couch in doctor office](https://images.pexels.com/photos/4506111/pexels-photo-4506111.jpeg)
-*(출처: Pexels / 사진 제공: [www.kaboompics.com](https://www.pexels.com/@karola-g))*
-
 
 **척추전방전위증**은 말 그대로 **위쪽 척추뼈가 아래쪽 척추뼈보다 앞으로 미끄러져 나가 어긋나 있는 상태**를 의미합니다. 우리 몸의 기둥 역할을 하는 척추는 여러 개의 척추뼈가 쌓여 견고하게 지지되어야 하지만, 이 질환은 척추뼈의 정렬이 흐트러지면서 문제가 발생합니다. 그럼 왜 이런 현상이 발생하는 걸까요?
 

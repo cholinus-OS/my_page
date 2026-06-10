@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/4506113/pexels-photo-4506113.jpeg"
 ![Top view of crop unrecognizable woman in casual wear showing chiropractor in eyeglasses and uniform pain spot on back while sitting on examination couch in hospital](https://images.pexels.com/photos/4506113/pexels-photo-4506113.jpeg)
 *(출처: Pexels / 사진 제공: [www.kaboompics.com](https://www.pexels.com/@karola-g))*
 
-
-
 허리 통증으로 정형외과를 찾으면 의사 선생님들이 입을 모아 권하는 운동이 있습니다. 바로 **'걷기'**입니다. 하지만 신기하게도 어떤 분들은 걷고 나서 허리가 더 아프다고 하십니다. 왜 그럴까요? 해답은 바로 **'걷는 자세'**와 일상 속 **'앉아있는 습관'**에 있습니다.
 
 허리 디스크(요추 추간판 탈출증) 환자의 디스크는 이미 미세하게 찢어지거나 밖으로 밀려나와 신경에 염증이 발생한 상태입니다. 이때 허리에 추가적인 수직 압박을 주거나 허리를 구부정하게 만들면 디스크 손상은 걷잡을 수 없이 심해질 수 있습니다.
@@ -47,6 +45,3 @@ thumbnail: "https://images.pexels.com/photos/4506113/pexels-photo-4506113.jpeg"
 ### 💡 보너스 예방 팁
 허리 통증의 80%는 일상 속 의자에 앉는 습관에서 비롯됩니다. 의자에 앉을 때 등을 꼿꼿이 세우기 어렵거나 나도 모르게 구부정해진다면, 허리의 C자 전만 곡선을 받쳐주는 기능성 허리 보호대나 등받이 쿠션을 적극 활용해 보세요. 물리적으로 허리가 굽는 것을 막아주어 일상 속 통증 방지에 무척 유용합니다!
 
-
-![Close-up of a woman's hands gripping her painful back while outdoors.](https://images.pexels.com/photos/7298686/pexels-photo-7298686.jpeg)
-*(출처: Pexels / 사진 제공: [Kindel Media](https://www.pexels.com/@kindelmedia))*

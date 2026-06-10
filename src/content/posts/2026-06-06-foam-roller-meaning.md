@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/20890282/pexels-photo-20890282.jpeg
 ![A close-up shot of a foot on a foam roller, illustrating physiotherapy and exercise.](https://images.pexels.com/photos/20890282/pexels-photo-20890282.jpeg)
 *(출처: Pexels / 사진 제공: [Nadin Sh](https://www.pexels.com/@nadin-sh-78971847))*
 
-
-
 안녕하세요! 여러분의 건강한 관절과 뼈 건강을 지켜드리는 바른관절 헬프센터입니다. 혹시 집 거실 구석에 굴러다니는 원기둥 모양의 스펀지 도구, **폼롤러(Foam Roller)**가 있으신가요? 
 
 요즘은 홈트레이닝 필수품으로 집집마다 하나씩 가지고 있지만, 정확히 폼롤러가 우리 몸에 어떤 의미가 있고 어떤 원리로 도움을 주는지 제대로 알고 계시는 분은 드뭅니다. 단지 "문지르면 시원하니까" 쓰는 것을 넘어, 폼롤러가 가진 진짜 의미를 알면 운동과 회복 효과를 훨씬 극대화할 수 있습니다.
@@ -60,6 +58,3 @@ thumbnail: "https://images.pexels.com/photos/20890282/pexels-photo-20890282.jpeg
 
 처음 하실 때는 너무 딱딱한 재질(EPP)보다는 조금 부드럽고 말랑한 재질(EVA)의 폼롤러로 아프지 않은 범위 내에서 가볍게 시작해 보세요. 하루 5분, 폼롤러와 함께 피로가 싹 풀리는 편안한 하루를 보내시길 바랍니다. 다음에도 유용한 건강 이야기로 찾아뵙겠습니다. 감사합니다! 😊👍
 
-
-![Person using a black foam roller for leg exercise on a gray background.](https://images.pexels.com/photos/20890283/pexels-photo-20890283.jpeg)
-*(출처: Pexels / 사진 제공: [Nadin Sh](https://www.pexels.com/@nadin-sh-78971847))*

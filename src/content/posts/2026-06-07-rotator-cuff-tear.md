@@ -16,16 +16,11 @@ thumbnail: "https://images.pexels.com/photos/8219157/pexels-photo-8219157.jpeg"
 ![Close-up of a shoulder with kinesiology tape applied for muscle support during sports activities.](https://images.pexels.com/photos/8219157/pexels-photo-8219157.jpeg)
 *(출처: Pexels / 사진 제공: [Danik Prihodko](https://www.pexels.com/@danikprihodko))*
 
-
 "어깨가 자꾸 삐끗하는 것 같아요", "팔을 들 때마다 찌릿하고 힘이 없어요", "밤에 아파서 잠을 설치기 일쑤입니다." 혹시 지금 이 글을 읽고 계신 여러분도 이런 불편함을 겪고 계신가요? 매일 어깨가 뻐근하고 팔을 움직일 때마다 불쾌한 통증이 느껴지지만, 그저 '나이가 들어서 그렇겠지' 혹은 '과로했나 보다' 하고 넘기신 적은 없으신가요? 하지만 이러한 사소한 어깨 통증이 **어깨 회전근개 파열**이라는 심각한 질환의 시작일 수 있다는 사실을 아셔야 합니다.
 
 대수롭지 않게 여겼던 어깨의 불편함은 결국 삶의 질을 현저히 떨어뜨립니다. 옷을 입거나 머리를 감는 일상의 작은 행동조차 고통스러워지고, 좋아하는 운동이나 취미 생활은 꿈도 꿀 수 없게 될 수도 있죠. 통증을 참고 방치할 경우, 작은 파열이 점점 커져 **완전 파열**로 진행되거나, 주변 관절에 이차적인 문제를 일으켜 수술적 치료 외에는 답이 없는 상황에 이를 수도 있습니다. 지금 어깨가 보내는 작은 신호를 알아채고 현명하게 대처하는 것이, 건강하고 활기찬 삶을 위한 현명한 투자입니다. 오늘은 여러분의 어깨를 건강하게 지키기 위한 핵심 정보를 함께 알아보겠습니다.
 
 ## 어깨 회전근개 파열, 왜 생기고 어떻게 알 수 있나요?
-
-![Crop unrecognizable osteopath pressing shoulder of patient lying on bed during massage of spine](https://images.pexels.com/photos/5473215/pexels-photo-5473215.jpeg)
-*(출처: Pexels / 사진 제공: [Ryutaro Tsukata](https://www.pexels.com/@ryutaro))*
-
 
 어깨는 우리 몸에서 가장 움직임이 많은 관절 중 하나입니다. 이러한 어깨를 안정적으로 움직이게 하는 핵심적인 역할을 하는 것이 바로 **회전근개(Rotator Cuff)**입니다. 회전근개는 어깨 관절을 둘러싸고 있는 네 개의 근육(극상근, 극하근, 소원근, 견갑하근)과 이 근육들이 뼈에 붙는 힘줄(건)을 통틀어 이르는 말입니다. 이 힘줄 중 하나 이상이 닳거나 찢어지는 상태를 **회전근개 파열**이라고 합니다.
 

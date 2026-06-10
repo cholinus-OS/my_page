@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/8456107/pexels-photo-8456107.jpeg"
 ![A woman in activewear stretches on a yoga mat by a tranquil lakeside, enjoying outdoor exercise.](https://images.pexels.com/photos/8456107/pexels-photo-8456107.jpeg)
 *(출처: Pexels / 사진 제공: [Mikhail Nilov](https://www.pexels.com/@mikhail-nilov))*
 
-
-
 안녕하세요! 여러분의 소중한 관절과 뼈 건강을 지켜드리는 바른관절 헬프센터입니다. 혹시 반바지나 슬랙스를 입을 때 걸을 때마다 허벅지 안쪽 살이 쓸려서 불편했던 경험이 있으신가요? 
 
 흔히 우리가 **"안벅지"**라고 부르는 부위는 의학용어로 **내전근(허벅지 안쪽 모음근)**이라고 합니다. 이 근육은 일상적으로 걸을 때는 힘이 강하게 들어가지 않아 쉽게 느슨해지고 살이 붙기 매우 쉬운 부위인데요. 내전근이 약해지면 미관상 허벅지 탄력이 떨어질 뿐만 아니라 골반이 좌우로 흔들려 척추와 무릎 관절에도 안 좋은 영향을 줍니다.
@@ -48,6 +46,3 @@ thumbnail: "https://images.pexels.com/photos/8456107/pexels-photo-8456107.jpeg"
 
 하루 5분, 꾸준한 안벅지 운동과 함께 걸음걸이도 한층 가뿐해지고 통증 없는 튼튼한 하체를 만들어 보세요! 다음에도 실생활에 유용한 건강 정보를 가지고 찾아오겠습니다. 감사합니다! 😊👍
 
-
-![Caucasian woman in sportswear stretches on gym floor, showcasing flexibility and fitness.](https://images.pexels.com/photos/7991955/pexels-photo-7991955.jpeg)
-*(출처: Pexels / 사진 제공: [Annushka  Ahuja](https://www.pexels.com/@annushka-ahuja))*

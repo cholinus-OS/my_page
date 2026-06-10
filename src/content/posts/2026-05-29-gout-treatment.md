@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/8547627/pexels-photo-8547627.jpeg"
 ![A woman in a business setting holding a glass of water with salad nearby.](https://images.pexels.com/photos/8547627/pexels-photo-8547627.jpeg)
 *(출처: Pexels / 사진 제공: [www.kaboompics.com](https://www.pexels.com/@karola-g))*
 
-
-
 안녕하세요! 오늘은 살면서 겪을 수 있는 가장 극심한 통증 중 하나로 꼽히는 **통풍(Gout)**에 대해 이야기해 보려고 합니다. 통풍은 이름 그대로 "바람만 스쳐도 아프다"고 할 만큼 엄청난 격통을 동반하는 질환인데요. 옛날에는 잘 먹어서 생기는 병이라고 해서 '황제의 병'으로 불리기도 했지만, 현대에 들어서는 서구화된 식습관과 스트레스 때문에 남녀노소 불문하고 흔하게 발생하는 질병이 되었습니다.
 
 통풍의 원인과 예방, 그리고 식단 조절까지 초보자 눈높이에 맞춰서 핵심만 콕콕 집어 쉽게 알려드릴 테니 잘 따라와 주세요!
@@ -84,6 +82,3 @@ thumbnail: "https://images.pexels.com/photos/8547627/pexels-photo-8547627.jpeg"
 
 통풍은 꾸준한 약물 복용과 약간의 식생활 개선만 곁들이면 얼마든지 극복하고 통증 없이 행복하게 살 수 있는 질환입니다. 오늘 배운 내용을 마음에 새겨 통풍 없는 건강한 하루를 시작해 보세요!
 
-
-![Glass of sparkling water with citrus and berries, refreshing and invigorating.](https://images.pexels.com/photos/1412556/pexels-photo-1412556.jpeg)
-*(출처: Pexels / 사진 제공: [Miguel Á. Padriñán](https://www.pexels.com/@padrinan))*

@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/18986400/pexels-photo-18986400.jpeg
 ![A woman squats with a kettlebell in a gym setting, focusing on strength training.](https://images.pexels.com/photos/18986400/pexels-photo-18986400.jpeg)
 *(출처: Pexels / 사진 제공: [Franklin Santillan A.](https://www.pexels.com/@franklin-santillan-a-551795305))*
 
-
-
 안녕하세요! 여러분의 건강한 관절과 통증 없는 움직임을 지켜드리는 바른관절 헬프센터입니다. 혹시 헬스장에서 무거운 덤벨을 들고 특정 부위의 근육을 우람하게 키우는 운동만 반복하고 계시진 않나요? 
 
 근육의 크기를 키우는 것도 좋지만, 우리 몸이 일상생활이나 스포츠 활동을 할 때 다치지 않고 가장 효율적으로 움직이게 만들기 위해서는 꼭 필요한 운동이 있습니다. 바로 **"기능성 운동(Functional Training)"**입니다.
@@ -51,6 +49,3 @@ thumbnail: "https://images.pexels.com/photos/18986400/pexels-photo-18986400.jpeg
 
 매일 꾸준한 기능성 움직임 연습으로 한결 가볍고 부드러워진 몸을 체감해 보세요! 다음에도 실생활에 유용한 쉽고 유익한 건강 이야기로 찾아뵙겠습니다. 감사합니다! 😊👍
 
-
-![Side view full length muscular determined African American sportsman with naked torso flipping heavy truck tire in dark modern studio](https://images.pexels.com/photos/5611633/pexels-photo-5611633.jpeg)
-*(출처: Pexels / 사진 제공: [Sukh Winder](https://www.pexels.com/@sukh-winder-3740393))*

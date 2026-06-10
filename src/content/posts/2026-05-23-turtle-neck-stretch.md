@@ -10,8 +10,6 @@ thumbnail: "https://images.pexels.com/photos/7900674/pexels-photo-7900674.jpeg"
 ![Woman in black tank top stretching neck indoors, reflecting focus and relaxation.](https://images.pexels.com/photos/7900674/pexels-photo-7900674.jpeg)
 *(출처: Pexels / 사진 제공: [Ron Lach](https://www.pexels.com/@ron-lach))*
 
-
-
 안녕하세요! 하루 종일 사무실 책상 앞에 앉아 모니터를 보거나 스마트폰을 들여다보다 보면, 어느덧 목이 거북이처럼 앞으로 쑥 나와 있는 자신을 발견하게 됩니다. 
 
 거북목 증후군은 단순히 보기 싫은 자세의 문제를 넘어 뒷목 당김, 만성 두통, 승모근 강직을 일으키고 결국 목디스크로 이어질 수 있는 위험한 상태입니다. 오늘은 바쁜 일상 속에서 **단 3분만 투자하면 굳은 목을 편안하게 풀어줄 수 있는 필수 스트레칭 3가지**를 준비했습니다. 지금 바로 자리에서 일어나 함께 따라 해 보세요!
@@ -57,6 +55,3 @@ thumbnail: "https://images.pexels.com/photos/7900674/pexels-photo-7900674.jpeg"
 ### 💡 통풍 및 거북목 예방을 위한 작은 습관
 스트레칭도 중요하지만 컴퓨터 모니터의 높이를 눈높이에 맞추고, 50분 일한 뒤에는 반드시 10분간 일어나 가볍게 어깨를 돌려주는 습관을 들여보세요. 당신의 목이 훨씬 가볍고 편안해질 것입니다!
 
-
-![Woman with eyeglasses stretching on sofa using laptop, exuding relaxation and comfort.](https://images.pexels.com/photos/17775084/pexels-photo-17775084.jpeg)
-*(출처: Pexels / 사진 제공: [Gülşah Aydoğan](https://www.pexels.com/@gulsahaydgn))*

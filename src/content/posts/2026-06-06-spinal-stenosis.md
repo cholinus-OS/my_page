@@ -14,16 +14,11 @@ thumbnail: "https://images.pexels.com/photos/5793794/pexels-photo-5793794.jpeg"
 ![A therapist stretches a patient's back during a physical therapy session indoors.](https://images.pexels.com/photos/5793794/pexels-photo-5793794.jpeg)
 *(출처: Pexels / 사진 제공: [Yan Krukau](https://www.pexels.com/@yankrukov))*
 
-
 "조금만 걸어도 다리가 쥐나듯 저리고 아파서 자꾸만 멈춰 서게 돼요", "허리는 괜찮은데 다리가 무거워서 오래 서 있기가 힘들어요." 이런 말씀, 혹시 여러분의 이야기는 아닌가요? 앉아 있을 때는 괜찮다가도, 걷거나 서 있는 시간이 길어지면 엉덩이부터 다리까지 저릿한 통증이 내려와 주저앉고 싶어지는 불편함. 척추관 협착증 환자분들이 일상에서 흔히 겪는 고통입니다.
 
 대부분의 경우, '나이가 들어서 그렇겠지', '잠시 쉬면 괜찮아지겠지' 하며 통증을 대수롭지 않게 여기시곤 합니다. 하지만 이렇게 작은 통증을 방치하다 보면, 척추 신경이 더욱 압박되어 걸음걸이가 불안정해지고, 심한 경우 마비 증상까지 동반하는 만성 질환으로 발전할 수 있습니다. 건강한 노년기를 위해서는 지금 이 순간, 내 몸이 보내는 신호에 귀 기울이고 적극적으로 관리하는 것이 중요합니다. 오늘 이 글을 통해 척추관 협착증에 대한 정확한 이해와 함께, 생활 속에서 실천할 수 있는 효과적인 관리법을 알아보세요. 여러분의 척추 건강을 지키는 첫걸음이 될 것입니다.
 
 ## 왜 자꾸 다리가 저릴까요? 척추관 협착증의 원인과 주요 증상
-
-![A physiotherapist assists a patient in stretching exercises indoors.](https://images.pexels.com/photos/20860622/pexels-photo-20860622.jpeg)
-*(출처: Pexels / 사진 제공: [Funkcinės Terapijos Centras](https://www.pexels.com/@funkcines-terapijos-centras-927573878))*
-
 
 척추관 협착증은 말 그대로 우리 몸의 기둥인 척추뼈 내부에 있는 **척추관(Spinal Canal)**이라는 신경 통로가 좁아지면서, 그 안을 지나가는 **신경(Spinal Nerves)**을 압박하여 통증을 유발하는 질환입니다. 마치 수도관이 낡아 이물질이 끼고 녹슬면서 물이 잘 흐르지 못하는 상황과 비슷하다고 생각하시면 됩니다.
 
