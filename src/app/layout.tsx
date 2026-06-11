@@ -26,9 +26,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // 구글 애드센스 및 애널리틱스 ID 가져오기
-  const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID;
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  // 구글 애드센스 및 애널리틱스 ID 가져오기 (배포 빌드 환경변수 누락 대비 백업 기본값 설정)
+  const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID || "ca-pub-6115967537685539";
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-Z0MJR1HV78";
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
