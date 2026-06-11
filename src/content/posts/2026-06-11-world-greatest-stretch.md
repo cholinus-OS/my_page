@@ -4,7 +4,7 @@ date: 2026-06-11
 summary: 고관절 가동성, 흉추 회전력, 햄스트링 및 코어 안정성을 동시에 확보하는 전신 동적 스트레칭인 세계 최고의 스트레칭(WGS) 가이드입니다.
 category: 정보
 tags: [스트레칭, 전신운동, 웜업, 고관절, 흉추가동성]
-thumbnail: "https://images.pexels.com/photos/6453974/pexels-photo-6453974.jpeg"
+thumbnail: "/world-greatest-stretch.png"
 ---
 
 '세계 최고의 스트레칭(World's Greatest Stretch, WGS)'은 하나의 연속된 동작으로 고관절 가동성, 흉추 회전력, 햄스트링 및 코어 안정성을 동시에 확보하는 전신 동적 스트레칭입니다. 본 운동 전 웜업(Warm-up) 단계에서 신체 기능 활성화에 매우 탁월합니다.
@@ -13,8 +13,8 @@ thumbnail: "https://images.pexels.com/photos/6453974/pexels-photo-6453974.jpeg"
 
 ## 1. 개요 및 주요 효과
 
-![Side view of young slim female in sportswear smiling and looking forward while practicing yoga exercise](https://images.pexels.com/photos/6453974/pexels-photo-6453974.jpeg)
-*(출처: Pexels / 사진 제공: [Marta Wave](https://www.pexels.com/@marta-wave))*
+![세계 최고의 스트레칭 가이드](/world-greatest-stretch.png)
+*(출처: 세계 최고의 스트레칭 가이드. 출처: Redefining Strength)*
 
 이 동작은 스포츠 의학 및 트레이닝 분야에서 전신 사슬(Kinetic Chain)을 가장 효율적으로 풀어주는 핵심 루틴으로 평가받습니다. 좌식 생활로 인해 굳어지기 쉬운 주요 관절을 타깃합니다.
 
