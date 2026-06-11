@@ -46,7 +46,7 @@ function BreakPageAd({ activeTab }: { activeTab: string }) {
 }
 
 export default function BreakPage() {
-  const [activeTab, setActiveTab] = useState<"timer" | "lotto" | "roulette" | "tetris">("timer");
+  const [activeTab, setActiveTab] = useState<"timer" | "lotto" | "roulette" | "tetris" | "converter">("timer");
 
   // --- 1. 스트레칭 타이머 상태 관리 ---
   const [timeLeft, setTimeLeft] = useState(60); // 기본 1분(60초)
@@ -638,6 +638,60 @@ export default function BreakPage() {
     }
   }, [activeTab]);
 
+  // --- 5. 단위변환기 상태 관리 ---
+  const [inch, setInch] = useState("");
+  const [cm, setCm] = useState("");
+  const [mile, setMile] = useState("");
+  const [km, setKm] = useState("");
+  const [pyeong, setPyeong] = useState("");
+  const [m2, setM2] = useState("");
+
+  const formatUnitNumber = (num: number) => {
+    return parseFloat(num.toFixed(4)).toString();
+  };
+
+  const handleInchChange = (value: string) => {
+    setInch(value);
+    if (value === "") { setCm(""); return; }
+    const val = parseFloat(value);
+    if (!isNaN(val)) setCm(formatUnitNumber(val * 2.54));
+  };
+
+  const handleCmChange = (value: string) => {
+    setCm(value);
+    if (value === "") { setInch(""); return; }
+    const val = parseFloat(value);
+    if (!isNaN(val)) setInch(formatUnitNumber(val / 2.54));
+  };
+
+  const handleMileChange = (value: string) => {
+    setMile(value);
+    if (value === "") { setKm(""); return; }
+    const val = parseFloat(value);
+    if (!isNaN(val)) setKm(formatUnitNumber(val * 1.609344));
+  };
+
+  const handleKmChange = (value: string) => {
+    setKm(value);
+    if (value === "") { setMile(""); return; }
+    const val = parseFloat(value);
+    if (!isNaN(val)) setMile(formatUnitNumber(val / 1.609344));
+  };
+
+  const handlePyeongChange = (value: string) => {
+    setPyeong(value);
+    if (value === "") { setM2(""); return; }
+    const val = parseFloat(value);
+    if (!isNaN(val)) setM2(formatUnitNumber(val * 3.305785));
+  };
+
+  const handleM2Change = (value: string) => {
+    setM2(value);
+    if (value === "") { setPyeong(""); return; }
+    const val = parseFloat(value);
+    if (!isNaN(val)) setPyeong(formatUnitNumber(val / 3.305785));
+  };
+
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
       {/* 🌿 헤더 영역 */}
@@ -698,6 +752,16 @@ export default function BreakPage() {
         >
           <Gamepad2 className="h-3.5 w-3.5" />
           테트리스 게임
+        </button>
+        <button
+          onClick={() => setActiveTab("converter")}
+          className={`flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold transition ${
+            activeTab === "converter"
+              ? "bg-teal-600 text-white shadow-sm"
+              : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+          }`}
+        >
+          📏 단위변환기
         </button>
       </div>
 
@@ -1004,6 +1068,110 @@ export default function BreakPage() {
                 <p>↑ : 블록 회전</p>
                 <p>↓ : 소프트 드롭</p>
                 <p>Space : 하드 드롭</p>
+              </div>
+            </div>
+          </div>
+
+          {/* 구글 애드센스 광고 자리 */}
+          <BreakPageAd activeTab={activeTab} />
+        </section>
+      )}
+
+      {/* 📏 탭 5: 단위변환기 */}
+      {activeTab === "converter" && (
+        <section className="flex flex-col rounded-3xl bg-white border border-slate-200 p-8 shadow-sm">
+          <div className="flex items-center gap-2 border-b border-slate-100 pb-4 mb-6 justify-center">
+            <h2 className="text-xl font-bold text-slate-900">📏 실시간 단위 변환기</h2>
+          </div>
+
+          <div className="flex flex-col gap-6 max-w-md mx-auto w-full">
+            {/* 길이 변환 */}
+            <div className="bg-slate-50 border border-slate-100 rounded-2xl p-5 shadow-2xs">
+              <div className="font-semibold text-slate-700 text-sm mb-3">📏 길이 변환 (인치 / 센티미터)</div>
+              <div className="flex flex-col sm:flex-row items-center gap-3">
+                <div className="relative w-full">
+                  <input
+                    type="number"
+                    value={inch}
+                    onChange={(e) => handleInchChange(e.target.value)}
+                    placeholder="0"
+                    step="any"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-right pr-12 text-sm font-semibold focus:border-teal-500 focus:outline-none"
+                  />
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">in</span>
+                </div>
+                <div className="text-slate-400 font-bold rotate-90 sm:rotate-0">⇄</div>
+                <div className="relative w-full">
+                  <input
+                    type="number"
+                    value={cm}
+                    onChange={(e) => handleCmChange(e.target.value)}
+                    placeholder="0"
+                    step="any"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-right pr-12 text-sm font-semibold focus:border-teal-500 focus:outline-none"
+                  />
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">cm</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 장거리 변환 */}
+            <div className="bg-slate-50 border border-slate-100 rounded-2xl p-5 shadow-2xs">
+              <div className="font-semibold text-slate-700 text-sm mb-3">🚗 장거리 변환 (마일 / 킬로미터)</div>
+              <div className="flex flex-col sm:flex-row items-center gap-3">
+                <div className="relative w-full">
+                  <input
+                    type="number"
+                    value={mile}
+                    onChange={(e) => handleMileChange(e.target.value)}
+                    placeholder="0"
+                    step="any"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-right pr-12 text-sm font-semibold focus:border-teal-500 focus:outline-none"
+                  />
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">mi</span>
+                </div>
+                <div className="text-slate-400 font-bold rotate-90 sm:rotate-0">⇄</div>
+                <div className="relative w-full">
+                  <input
+                    type="number"
+                    value={km}
+                    onChange={(e) => handleKmChange(e.target.value)}
+                    placeholder="0"
+                    step="any"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-right pr-12 text-sm font-semibold focus:border-teal-500 focus:outline-none"
+                  />
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">km</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 넓이 변환 */}
+            <div className="bg-slate-50 border border-slate-100 rounded-2xl p-5 shadow-2xs">
+              <div className="font-semibold text-slate-700 text-sm mb-3">🏢 넓이 변환 (평 / 제곱미터)</div>
+              <div className="flex flex-col sm:flex-row items-center gap-3">
+                <div className="relative w-full">
+                  <input
+                    type="number"
+                    value={pyeong}
+                    onChange={(e) => handlePyeongChange(e.target.value)}
+                    placeholder="0"
+                    step="any"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-right pr-12 text-sm font-semibold focus:border-teal-500 focus:outline-none"
+                  />
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">평</span>
+                </div>
+                <div className="text-slate-400 font-bold rotate-90 sm:rotate-0">⇄</div>
+                <div className="relative w-full">
+                  <input
+                    type="number"
+                    value={m2}
+                    onChange={(e) => handleM2Change(e.target.value)}
+                    placeholder="0"
+                    step="any"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-right pr-12 text-sm font-semibold focus:border-teal-500 focus:outline-none"
+                  />
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">㎡</span>
+                </div>
               </div>
             </div>
           </div>
