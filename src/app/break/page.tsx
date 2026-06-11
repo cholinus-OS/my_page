@@ -16,6 +16,35 @@ interface LottoGame {
   bonusNumber: number;
 }
 
+// --- 구글 애드센스 광고 박스 컴포넌트 ---
+function BreakPageAd({ activeTab }: { activeTab: string }) {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const adsbygoogle = (window as any).adsbygoogle || [];
+        adsbygoogle.push({});
+      } catch (e) {
+        console.error("Google AdSense load error:", e);
+      }
+    }
+  }, [activeTab]);
+
+  return (
+    <div className="mt-8 overflow-hidden rounded-2xl bg-slate-50 p-4 border border-slate-100 flex flex-col items-center justify-center min-h-[100px] w-full">
+      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">ADVERTISEMENT</span>
+      <div className="w-full flex justify-center" style={{ minHeight: "90px" }}>
+        <ins
+          className="adsbygoogle"
+          style={{ display: "block", width: "100%", height: "90px" }}
+          data-ad-client="ca-pub-6115967537685539"
+          data-ad-format="horizontal"
+          data-full-width-responsive="true"
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function BreakPage() {
   const [activeTab, setActiveTab] = useState<"timer" | "lotto" | "roulette" | "tetris">("timer");
 
@@ -762,6 +791,9 @@ export default function BreakPage() {
               <RotateCcw className="h-5 w-5" />
             </button>
           </div>
+
+          {/* 구글 애드센스 광고 자리 */}
+          <BreakPageAd activeTab={activeTab} />
         </section>
       )}
 
@@ -817,6 +849,9 @@ export default function BreakPage() {
               );
             })}
           </div>
+
+          {/* 구글 애드센스 광고 자리 */}
+          <BreakPageAd activeTab={activeTab} />
         </section>
       )}
 
@@ -882,6 +917,9 @@ export default function BreakPage() {
               🎯 룰렛 돌리기
             </button>
           </div>
+
+          {/* 구글 애드센스 광고 자리 */}
+          <BreakPageAd activeTab={activeTab} />
         </section>
       )}
 
@@ -969,6 +1007,9 @@ export default function BreakPage() {
               </div>
             </div>
           </div>
+
+          {/* 구글 애드센스 광고 자리 */}
+          <BreakPageAd activeTab={activeTab} />
         </section>
       )}
     </div>
