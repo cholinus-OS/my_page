@@ -90,16 +90,10 @@ thumbnail: "/tennis-elbow-eccentric-cover.jpg"
 *   **골퍼스 엘보**: 손목을 안으로 굽히는 근육(굴곡근)이 타겟입니다. 반대편 손으로 손목을 안으로 굽혀 준 상태에서, 힘을 유지하며 천천히 손목을 펴 줍니다.
 *   *처음 운동할 때는 자극 부위가 헷갈릴 수 있습니다. 그럴 때는 손목을 올리는 운동과 내리는 운동 두 가지 모두를 부드럽게 병행하시면 됩니다.*
 
-<div style="display: flex; gap: 16px; margin: 16px 0;">
-  <div style="flex: 1; text-align: center;">
-    <img src="/eccentric-wrist-extension-tennis.jpg" alt="테니스 엘보 운동" style="border-radius: 8px; border: 1px solid #e2e8f0; width: 100%;" />
-    <span style="font-size: 12px; color: #64748b; display: block; margin-top: 8px;">좌) 테니스 엘보 (신전근 운동)</span>
-  </div>
-  <div style="flex: 1; text-align: center;">
-    <img src="/eccentric-wrist-extension-golfer.jpg" alt="골퍼스 엘보 운동" style="border-radius: 8px; border: 1px solid #e2e8f0; width: 100%;" />
-    <span style="font-size: 12px; color: #64748b; display: block; margin-top: 8px;">우) 골퍼스 엘보 (굴곡근 운동)</span>
-  </div>
-</div>
+| 좌) 테니스 엘보 (신전근 운동) | 우) 골퍼스 엘보 (굴곡근 운동) |
+| :---: | :---: |
+| ![테니스 엘보 운동](/eccentric-wrist-extension-tennis.jpg) | ![골퍼스 엘보 운동](/eccentric-wrist-extension-golfer.jpg) |
+
 
 처음에는 근육이 뻣뻣하고 아파서 운동 진행 속도가 매우 더디게 느껴질 수 있습니다. 하지만 충분한 스트레칭과 점진적인 신장성 수축 운동을 **보통 2~4주간 꾸준히 지속**해주시면 힘줄이 단단하게 치유되어 지긋지긋한 팔꿈치 통증과 재발의 악순환에서 완전히 벗어날 수 있습니다.
 
