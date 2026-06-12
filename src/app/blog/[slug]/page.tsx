@@ -140,7 +140,39 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
         {/* 마크다운 렌더링 영역 */}
         <div className="prose max-w-none text-sm sm:text-base leading-relaxed text-slate-700">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              a: ({ href, children }: any) => {
+                if (href && (href.includes("youtube.com") || href.includes("youtu.be"))) {
+                  let videoId = "";
+                  if (href.includes("youtu.be/")) {
+                    videoId = href.split("youtu.be/")[1].split("?")[0];
+                  } else if (href.includes("v=")) {
+                    videoId = href.split("v=")[1].split("&")[0];
+                  } else if (href.includes("embed/")) {
+                    videoId = href.split("embed/")[1].split("?")[0];
+                  }
+
+                  if (videoId) {
+                    return (
+                      <div className="relative pb-[56.25%] h-0 my-6 rounded-2xl overflow-hidden shadow-md border border-slate-200">
+                        <iframe
+                          className="absolute top-0 left-0 w-full h-full"
+                          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}`}
+                          title="YouTube video player"
+                          style={{ border: 0 }}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                        />
+                      </div>
+                    );
+                  }
+                }
+                return <a href={href} className="text-teal-600 hover:underline">{children}</a>;
+              }
+            }}
+          >
             {post.content}
           </ReactMarkdown>
         </div>
