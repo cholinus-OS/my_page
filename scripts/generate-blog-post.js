@@ -299,6 +299,8 @@ async function getPexelsImages(keyword) {
     "어깨": "shoulder stretch physical therapy",
     "팔꿈치": "elbow massage rehabilitation stretch",
     "발목": "ankle physical therapy brace",
+    "고관절": "hip joint stretch pelvic exercise",
+    "고관절보호대": "hip joint rehab pelvis support",
     "골밀도": "elderly health exercise doctor",
     "폼롤러": "foam roller stretching massage roll",
     "필라테스": "pilates core spine stretch yoga",
