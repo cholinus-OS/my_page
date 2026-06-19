@@ -283,8 +283,8 @@ function getUsedThumbnails() {
 async function getPexelsImages(keyword) {
   const pexelsKey = process.env.NEXT_PUBLIC_PEXELS_API_KEY;
   if (!pexelsKey || pexelsKey === "YOUR_PEXELS_API_KEY_HERE") {
-    console.log("Pexels API Key가 없거나 예시 상태이므로 이미지 검색을 건너뜁니다.");
-    return [];
+    console.error("에러: Pexels API Key가 누락되었거나 설정되지 않았습니다. 썸네일 및 이미지 삽입은 필수 사항이므로 글 생성 작업을 중단합니다.");
+    process.exit(1);
   }
 
   // 1. 이미 사용 중인 썸네일 URL 리스트 수집
