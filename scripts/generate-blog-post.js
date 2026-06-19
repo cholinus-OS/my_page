@@ -218,8 +218,8 @@ FILENAME: ${todayStr}-keyword`;
       bodyContent = bodyContent.replace(/^---\n/, "").trim();
     }
 
-    // Pexels 이미지 실시간 조회 (질환의 키워드로 검색)
-    const pexelsPhotos = await getPexelsImages(latestDisease.keyword || latestDisease.name);
+    // Pexels 이미지 실시간 조회 (질환의 키워드 및 해당 부위(part)로 검색)
+    const pexelsPhotos = await getPexelsImages(latestDisease.keyword || latestDisease.name, latestDisease.part);
 
     // 본문 내용 중간에 이미지 자동 삽입
     const updatedBodyContent = insertImagesIntoMarkdown(bodyContent, pexelsPhotos, latestDisease.name);
@@ -280,7 +280,7 @@ function getUsedThumbnails() {
 /**
  * Pexels API로부터 키워드와 연관된 고화질 이미지를 중복 없이 가져오는 함수입니다.
  */
-async function getPexelsImages(keyword) {
+async function getPexelsImages(keyword, part) {
   const pexelsKey = process.env.NEXT_PUBLIC_PEXELS_API_KEY;
   if (!pexelsKey || pexelsKey === "YOUR_PEXELS_API_KEY_HERE") {
     console.error("에러: Pexels API Key가 누락되었거나 설정되지 않았습니다. 썸네일 및 이미지 삽입은 필수 사항이므로 글 생성 작업을 중단합니다.");
@@ -317,7 +317,30 @@ async function getPexelsImages(keyword) {
     "기능성운동": "functional fitness training workout"
   };
 
-  const englishQuery = krEnMap[keyword] || keyword;
+  // 3. 1차 번역 검색어 선정 (개별 매핑어 우선)
+  let englishQuery = krEnMap[keyword];
+
+  // 4. 개별 매핑어가 없을 경우, 질환 부위(part)별로 적절한 부위 운동 사진 매핑 (대체 안전장치)
+  if (!englishQuery && part) {
+    const partMap = {
+      "neck": "neck stretching therapy",
+      "waist": "back pain core stretch exercise",
+      "shoulder": "shoulder stretch physical therapy",
+      "elbow": "elbow massage arm stretch",
+      "wrist": "wrist hand finger massage stretch",
+      "hip": "hip pelvic joint stretch exercise",
+      "knee": "knee joint stretch physical therapy",
+      "ankle": "ankle foot physical therapy massage",
+      "systemic": "elderly active physical exercise health"
+    };
+    englishQuery = partMap[part];
+  }
+
+  // 5. 부위별 매핑조차 없다면 키워드 자체를 영어 쿼리로 사용
+  if (!englishQuery) {
+    englishQuery = keyword;
+  }
+
   const searchQueries = [englishQuery, "stretching exercise", "physical therapy"];
 
   for (const query of searchQueries) {
