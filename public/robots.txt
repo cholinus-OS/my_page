@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://cholinus-exerciseismedicine.com
-
-# Sitemaps
-Sitemap: https://cholinus-exerciseismedicine.com/sitemap.xml

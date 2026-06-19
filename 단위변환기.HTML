@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>직관적인 단위 변환기</title>
+    <style>
+        /* 기본 스타일 초기화 및 폰트 설정 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #212529;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* 헤더 디자인 */
+        header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1c7ed6;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            color: #868e96;
+        }
+
+        /* 변환 카드 스타일 */
+        .converter-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e9ecef;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .converter-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 입력 그룹 레이아웃 */
+        .input-group-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .input-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            outline: none;
+            transition: border-color 0.2s;
+            text-align: right;
+            padding-right: 45px;
+        }
+
+        .input-box input:focus {
+            border-color: #1c7ed6;
+        }
+
+        .input-box .unit-label {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.95rem;
+            color: #495057;
+            font-weight: 600;
+            pointer-events: none;
+        }
+
+        /* 변환 기호 */
+        .arrow-icon {
+            color: #adb5bd;
+            font-size: 1.2rem;
+            user-select: none;
+        }
+
+        /* 반응형 대응 */
+        @media (max-width: 480px) {
+            .input-group-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .arrow-icon {
+                transform: rotate(90deg);
+                margin: 4px 0;
+            }
+            .input-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>실시간 단위 변환기</h1>
+        <p>값을 입력하면 반대편 단위로 즉시 변환됩니다.</p>
+    </header>
+
+    <main>
+        <div class="converter-card">
+            <div class="card-title">📏 길이 변환 (인치 / 센티미터)</div>
+            <div class="input-group-container">
+                <div class="input-box">
+                    <input type="number" id="inch" placeholder="0" step="any">
+                    <span class="unit-label">in</span>
+                </div>
+                <div class="arrow-icon">⇄</div>
+                <div class="input-box">
+                    <input type="number" id="inch-cm" placeholder="0" step="any">
+                    <span class="unit-label">cm</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="converter-card">
+            <div class="card-title">🚗 장거리 변환 (마일 / 킬로미터)</div>
+            <div class="input-group-container">
+                <div class="input-box">
+                    <input type="number" id="mile" placeholder="0" step="any">
+                    <span class="unit-label">mi</span>
+                </div>
+                <div class="arrow-icon">⇄</div>
+                <div class="input-box">
+                    <input type="number" id="mile-km" placeholder="0" step="any">
+                    <span class="unit-label">km</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="converter-card">
+            <div class="card-title">🏢 넓이 변환 (평 / 제곱미터)</div>
+            <div class="input-group-container">
+                <div class="input-box">
+                    <input type="number" id="pyeong" placeholder="0" step="any">
+                    <span class="unit-label">평</span>
+                </div>
+                <div class="arrow-icon">⇄</div>
+                <div class="input-box">
+                    <input type="number" id="m2" placeholder="0" step="any">
+                    <span class="unit-label">㎡</span>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    // 소수점 제한 처리 함수
+    function formatNumber(num) {
+        return parseFloat(num.toFixed(4));
+    }
+
+    // 변환 로직 정의 및 이벤트 바인딩 함수
+    function setupConverter(inputId1, inputId2, rate, isMultiply = true) {
+        const el1 = document.getElementById(inputId1);
+        const el2 = document.getElementById(inputId2);
+
+        el1.addEventListener('input', () => {
+            if (el1.value === '') { el2.value = ''; return; }
+            const val = parseFloat(el1.value);
+            el2.value = isMultiply ? formatNumber(val * rate) : formatNumber(val / rate);
+        });
+
+        el2.addEventListener('input', () => {
+            if (el2.value === '') { el1.value = ''; return; }
+            const val = parseFloat(el2.value);
+            el1.value = isMultiply ? formatNumber(val / rate) : formatNumber(val * rate);
+        });
+    }
+
+    // 환산 계수 바인딩
+    setupConverter('inch', 'inch-cm', 2.54, true);       // 1 in = 2.54 cm
+    setupConverter('mile', 'mile-km', 1.609344, true);   // 1 mi = 1.609344 km (수정 반영)
+    setupConverter('pyeong', 'm2', 3.305785, true);      // 1 평 = 3.305785 ㎡
+</script>
+
+</body>
+</html>
