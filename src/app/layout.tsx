@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Script from "next/script";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "관절 척추 관련 정보 | 재활 안내",
@@ -114,6 +115,15 @@ export default function RootLayout({
               본 사이트에서 제공하는 정보는 교육적 및 일반 정보 제공용입니다. 전문 의료인의 진단, 진료 및 치료를 대신할 수 없습니다.<br />
               통증이나 이상 증상이 있을 경우, 반드시 가까운 정형외과나 신경외과 등 전문 의료기관을 방문하시기 바랍니다.
             </p>
+            <div className="mt-4 flex items-center justify-center gap-5 text-xs font-semibold text-slate-400">
+              <Link href="/privacy" className="hover:text-teal-600 transition hover:underline">
+                개인정보처리방침
+              </Link>
+              <span className="text-slate-300">|</span>
+              <Link href="/terms" className="hover:text-teal-600 transition hover:underline">
+                이용약관
+              </Link>
+            </div>
             <p className="mt-4 text-xs text-slate-300">
               &copy; {new Date().getFullYear()} 바른관절 헬프센터. All rights reserved.
             </p>
