@@ -4,7 +4,7 @@ date: 2026-06-23
 summary: "딱딱하게 굳은 어깨를 부드럽게 풀어주고 근력을 강화하는 아주 쉽고 안전한 어깨 기초 재활 운동법을 알려드립니다."
 category: 정보
 tags: ["어깨재활", "오십견", "어깨통증", "회전근개", "홈트레이닝"]
-thumbnail: "https://mblogthumb-phinf.pstatic.net/MjAyNjA2MjNfNyAg/MDAxNzgyMjAyMzQ3MTIz.StvVwbzqDUe6dTMgAdzgXyQmNDyrYK69eoi4OkQzZnEg.M-9cqM8CoDxEEaLnYqD49K4zv9A-Xi_g6nA7g_GANw8g.PNG/%EC%96%B4%EA%B9%A8_%EA%B8%B0%EB%B3%B8_%EC%9E%AC%ED%99%9C_%EC%9A%B4%EB%8F%99_%EA%B0%9C%EC%9A%94_-_cholinus_by_gemini.png?type=w800"
+thumbnail: "/frozen-shoulder.jpg"
 ---
 
 안녕하세요! 여러분의 건강한 관절을 위해 언제나 유익한 정보를 전해드리는 바른관절 헬프센터입니다. 😊
