@@ -115,13 +115,13 @@ export default function DiseaseDictionary({ diseases }: DiseaseDictionaryProps) 
         </div>
       </div>
 
-      {/* 신체 부위 소분류 선택 탭 */}
-      <div className="flex flex-wrap gap-2 mb-10">
+      {/* 신체 부위 소분류 선택 탭 (모바일에서는 가로 스크롤) */}
+      <div className="flex overflow-x-auto hide-scrollbar flex-nowrap sm:flex-wrap gap-2 mb-10 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
         {bodyParts.map((part) => (
           <button
             key={part.id}
             onClick={() => setSelectedPart(part.id)}
-            className={`rounded-full px-4 py-2 text-xs font-semibold transition duration-200 ${
+            className={`whitespace-nowrap flex-shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition duration-200 ${
               selectedPart === part.id
                 ? "bg-slate-900 text-white shadow-md shadow-slate-900/10"
                 : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"

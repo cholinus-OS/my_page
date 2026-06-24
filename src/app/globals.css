@@ -74,3 +74,12 @@ body {
   color: #64748b;
   margin: 1.5rem 0;
 }
+
+/* 스크롤바 숨기기 유틸리티 (모바일 가로 스크롤 영역용) */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
