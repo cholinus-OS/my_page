@@ -33,11 +33,14 @@ async function generatePost(targetDateStr = null) {
     return fs.readFileSync(path.join(postsDir, file), "utf8");
   });
 
+  // 하루 전, 2일 전 포스트 파일 추출
+  const recentFiles = postFiles.sort().slice(-2);
+
   // 아직 작성되지 않은 첫 번째 질환 데이터 찾기
   let targetDisease = null;
   for (const disease of diseases) {
-    const isAlreadyWritten = existingPostContents.some(content => {
-      return content.includes(disease.name);
+    const isAlreadyWritten = postFiles.some(file => {
+      return file.includes(disease.id);
     });
     if (!isAlreadyWritten) {
       targetDisease = disease;
@@ -54,11 +57,23 @@ async function generatePost(targetDateStr = null) {
     }).sort((a, b) => a.date - b.date);
 
     if (postDates.length > 0) {
-      const oldestContent = fs.readFileSync(path.join(postsDir, postDates[0].file), "utf8");
-      for (const disease of diseases) {
-        if (oldestContent.includes(disease.name)) {
-          targetDisease = { ...disease, isRewriting: true };
-          break;
+      // 가장 오래된 순서대로 탐색하되, 최근 2일(하루 전, 이틀 전)에 작성된 주제와 겹치지 않도록 방어 로직 추가
+      for (let i = 0; i < postDates.length; i++) {
+        const candidateFile = postDates[i].file;
+        let foundDisease = null;
+        for (const disease of diseases) {
+          if (candidateFile.includes(disease.id)) {
+            foundDisease = disease;
+            break;
+          }
+        }
+        
+        if (foundDisease) {
+          const isRecentlyWritten = recentFiles.some(recentFile => recentFile.includes(foundDisease.id));
+          if (!isRecentlyWritten) {
+            targetDisease = { ...foundDisease, isRewriting: true };
+            break;
+          }
         }
       }
     }
