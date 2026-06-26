@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-async function generatePost() {
+async function generatePost(targetDateStr = null) {
   const postsDir = path.join(process.cwd(), "src/content/posts");
   const diseasesFile = path.join(process.cwd(), "src/content/diseases/data.json");
 
@@ -80,7 +80,7 @@ async function generatePost() {
   const now = new Date();
   const kstOffset = 9 * 60 * 60 * 1000;
   const kstDate = new Date(now.getTime() + kstOffset);
-  const todayStr = kstDate.toISOString().split("T")[0];
+  const todayStr = targetDateStr || kstDate.toISOString().split("T")[0];
 
   const topic = `${latestDisease.name} - ${latestDisease.summary}`;
 
@@ -448,5 +448,39 @@ function insertImagesIntoMarkdown(body, photos, keyword) {
   return resultLines.join('\n');
 }
 
-generatePost();
+async function main() {
+  const postsDir = path.join(process.cwd(), "src/content/posts");
+  let latestPostDateStr = null;
 
+  if (fs.existsSync(postsDir)) {
+    const postFiles = fs.readdirSync(postsDir).filter(file => file.endsWith(".md"));
+    if (postFiles.length > 0) {
+      const postDates = postFiles.map(file => file.substring(0, 10)).sort();
+      latestPostDateStr = postDates[postDates.length - 1];
+    }
+  }
+
+  const now = new Date();
+  const kstOffset = 9 * 60 * 60 * 1000;
+  const kstDate = new Date(now.getTime() + kstOffset);
+  const todayStr = kstDate.toISOString().split("T")[0];
+
+  if (latestPostDateStr && latestPostDateStr < todayStr) {
+    console.log(`최근 발행일(${latestPostDateStr})부터 오늘(${todayStr})까지 누락된 포스트를 백필(Backfill) 생성합니다.`);
+    let currentDate = new Date(latestPostDateStr);
+    while (true) {
+      currentDate.setDate(currentDate.getDate() + 1);
+      let dateStr = currentDate.toISOString().split("T")[0];
+      console.log(`[백필 진행] 대상 날짜: ${dateStr}`);
+      await generatePost(dateStr);
+      if (dateStr >= todayStr) break;
+    }
+  } else if (latestPostDateStr === todayStr) {
+    console.log(`오늘(${todayStr}) 날짜의 포스트가 이미 존재하므로 생성을 건너뜁니다.`);
+  } else {
+    console.log(`오늘(${todayStr}) 날짜의 포스트 생성을 진행합니다.`);
+    await generatePost(todayStr);
+  }
+}
+
+main();
