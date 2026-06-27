@@ -256,14 +256,18 @@ FILENAME: ${todayStr}-keyword`;
     // 썸네일로 쓸 첫 번째 이미지 URL 추출
     const thumbnailVal = pexelsPhotos.length > 0 ? pexelsPhotos[0].url : "";
 
+    // YAML 파싱 에러 방지를 위해 타이틀과 요약에 포함된 쌍따옴표를 안전하게 처리합니다.
+    const safeTitle = title.replace(/"/g, '\\"');
+    const safeSummary = latestDisease.summary.replace(/"/g, '\\"');
+
     // Frontmatter 생성
     const tags = [latestDisease.partName, latestDisease.mainCategoryName, "재활", "통증", latestDisease.keyword]
       .filter(Boolean)
       .map(tag => `"${tag}"`);
     const finalContent = `---
-title: ${title}
+title: "${safeTitle}"
 date: ${todayStr}
-summary: ${latestDisease.summary}
+summary: "${safeSummary}"
 category: 정보
 tags: [${tags.join(", ")}]
 thumbnail: "${thumbnailVal}"
