@@ -3,3 +3,6 @@ name = "cholinus-exerciseismedicine"
 
 # Next.js 정적 내보내기(export) 결과물이 쌓이는 폴더 이름입니다.
 pages_build_output_dir = "out"
+
+[ai]
+binding = "AI"
