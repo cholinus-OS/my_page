@@ -186,7 +186,7 @@ export default function Home() {
           </div>
 
           {/* 🎯 니 어깨 이야기 홍보 배너 */}
-          <div className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-md">
+          <div id="knee-shoulder-banner" className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-md">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/knee-shoulder-banner.png" alt="니 어깨 이야기 배너" className="w-full h-auto object-cover" />
             

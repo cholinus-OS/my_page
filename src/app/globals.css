@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   /* 메인 색상 시스템 */
   --background: #f8fafc; /* 연한 블루그레이 배경 */

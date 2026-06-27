@@ -29,6 +29,12 @@ export default function Header() {
             재활 블로그
           </Link>
           <Link 
+            href="/#knee-shoulder-banner" 
+            className="text-[13px] sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
+          >
+            니어깨이야기
+          </Link>
+          <Link 
             href="/break" 
             className="text-[13px] sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
           >
