@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
-import Script from "next/script";
+import Chatbot from "@/components/Chatbot";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -134,6 +134,8 @@ export default function RootLayout({
             </p>
           </div>
         </footer>
+
+        <Chatbot />
       </body>
     </html>
   );
