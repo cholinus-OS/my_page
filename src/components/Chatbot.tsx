@@ -237,7 +237,20 @@ export default function Chatbot() {
             <p className="text-xs font-semibold text-slate-500">
               {isHumanMode ? "상담원 연결 모드" : "궁금한 질문을 선택해 주세요"}
             </p>
-            {!isHumanMode && (
+            {isHumanMode ? (
+              <button
+                onClick={() => {
+                  setIsHumanMode(false);
+                  setMessages((prev) => [
+                    ...prev,
+                    { sender: "bot", text: "AI 상담원 모드로 복귀했습니다. 궁금한 점을 선택하거나 직접 질문해 주세요." }
+                  ]);
+                }}
+                className="rounded-lg bg-blue-500 px-2 py-1 text-[11px] font-bold text-white transition-all hover:bg-blue-600 active:scale-95"
+              >
+                AI 상담원 연결
+              </button>
+            ) : (
               <button
                 onClick={connectToHuman}
                 className="rounded-lg bg-red-500 px-2 py-1 text-[11px] font-bold text-white transition-all hover:bg-red-600 active:scale-95"
