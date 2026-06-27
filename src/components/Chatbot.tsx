@@ -30,26 +30,32 @@ export default function Chatbot() {
 
   return (
     <>
-      {/* 플로팅 버튼 */}
+      {/* 플로팅 버튼 - 캐릭터 이미지 사용 */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-blue-500 text-white shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
+        className={`fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-xl ring-2 ring-blue-400/50 transition-all duration-300 hover:scale-110 active:scale-95 ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
         aria-label="챗봇 열기"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
-        </svg>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/chatbot-character.png" alt="챗봇 캐릭터" className="h-12 w-12 rounded-full object-cover" />
       </button>
 
       {/* 채팅창 (열릴 때 부드러운 애니메이션 적용) */}
       <div
         className={`fixed bottom-0 right-0 z-50 flex h-full w-full flex-col bg-slate-100 shadow-2xl transition-all duration-300 sm:bottom-6 sm:right-6 sm:h-[500px] sm:w-[360px] sm:rounded-2xl sm:border sm:border-slate-200 ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0 pointer-events-none'}`}
       >
-        {/* 상단 헤더 */}
+        {/* 상단 헤더 - 캐릭터 아바타 포함 */}
         <div className="flex items-center justify-between bg-blue-500 px-4 py-3 text-white sm:rounded-t-2xl">
-          <div>
-            <h3 className="font-semibold text-sm">AI 상담원</h3>
-            <p className="text-xs text-blue-100">온라인</p>
+          <div className="flex items-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/chatbot-character.png" alt="챗봇 캐릭터" className="h-9 w-9 rounded-full bg-white object-cover ring-2 ring-white/30" />
+            <div>
+              <h3 className="font-semibold text-sm">AI 상담원</h3>
+              <p className="flex items-center gap-1 text-xs text-blue-100">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-green-400"></span>
+                온라인
+              </p>
+            </div>
           </div>
           <button
             onClick={() => setIsOpen(false)}
@@ -65,9 +71,13 @@ export default function Chatbot() {
         {/* 대화 영역 (카카오톡 스타일 배경색 적용) */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#b2c7d9]">
           {messages.map((msg, idx) => (
-            <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+            <div key={idx} className={`flex items-end gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+              {msg.sender === 'bot' && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src="/chatbot-character.png" alt="봇" className="h-8 w-8 flex-shrink-0 rounded-full bg-white object-cover shadow-sm" />
+              )}
               <div
-                className={`max-w-[75%] rounded-2xl px-4 py-2 text-sm shadow-sm leading-relaxed ${
+                className={`max-w-[70%] rounded-2xl px-4 py-2 text-sm shadow-sm leading-relaxed ${
                   msg.sender === 'user'
                     ? 'bg-blue-500 text-white rounded-tr-sm'
                     : 'bg-[#fef01b] text-slate-900 rounded-tl-sm'
