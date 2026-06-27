@@ -184,6 +184,27 @@ export default function Home() {
               </div>
             )}
           </div>
+
+          {/* 🎯 니 어깨 이야기 홍보 배너 */}
+          <div className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-md">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/knee-shoulder-banner.png" alt="니 어깨 이야기 배너" className="w-full h-auto object-cover" />
+            
+            {/* 무릎 이야기 버튼 */}
+            <Link 
+              href="/knee-story" 
+              className="absolute left-[6.5%] top-[13%] w-[32%] h-[75%] rounded-full cursor-pointer transition-all duration-300 hover:bg-teal-500/10 hover:shadow-[0_0_20px_10px_rgba(20,184,166,0.3)] focus:outline-none"
+              aria-label="무릎 이야기 페이지로 이동"
+            />
+
+            {/* 어깨 이야기 버튼 */}
+            <Link 
+              href="/shoulder-story" 
+              className="absolute right-[6.5%] top-[13%] w-[32%] h-[75%] rounded-full cursor-pointer transition-all duration-300 hover:bg-orange-500/10 hover:shadow-[0_0_20px_10px_rgba(249,115,22,0.3)] focus:outline-none"
+              aria-label="어깨 이야기 페이지로 이동"
+            />
+          </div>
+
         </div>
       </section>
 
