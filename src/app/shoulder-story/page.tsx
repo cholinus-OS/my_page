@@ -1,7 +1,7 @@
 import Link from "next/link";
 import diseasesData from "@/content/diseases/data.json";
 import { getSortedPostsData } from "@/lib/posts";
-import { ChevronRight, ArrowLeft, BookOpen, Activity, HeartPulse } from "lucide-react";
+import { ChevronRight, ArrowLeft, BookOpen, Activity, HeartPulse, Award } from "lucide-react";
 
 export default function ShoulderStoryPage() {
   // 어깨 부위 질환 필터링
@@ -15,6 +15,14 @@ export default function ShoulderStoryPage() {
       post.title.includes("어깨") ||
       shoulderDiseases.some((d) => post.slug.includes(d.id))
   ).slice(0, 5); // 최신 5개 포스트
+
+  // 센터장 브리핑 in Shoulder 관련 포스트 필터링 (카테고리가 '브리핑'이고 어깨 키워드 포함)
+  const shoulderBriefings = allPosts.filter(
+    (post) =>
+      post.category === "브리핑" &&
+      (post.tags?.some((tag) => tag.includes("어깨") || tag.includes("오십견")) ||
+        post.title.includes("어깨"))
+  );
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
@@ -37,6 +45,57 @@ export default function ShoulderStoryPage() {
         <p className="mt-3 max-w-2xl text-base text-amber-50/90 leading-relaxed">
           우리 몸에서 가장 운동 범위가 넓고 자유로운 관절, 어깨! 오십견, 회전근개 파열 등 만성 어깨 통증 질환의 예방법과 안전한 홈 재활 솔루션을 소개합니다.
         </p>
+      </div>
+
+      {/* 0. 센터장 브리핑 in Shoulder 섹션 */}
+      <div className="mb-10">
+        <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2 mb-4 border-b border-slate-200 pb-3">
+          <Award className="h-5 w-5 text-orange-600" />
+          센터장 브리핑 in Shoulder
+        </h2>
+        {shoulderBriefings.length > 0 ? (
+          <div className="grid gap-6 sm:grid-cols-2">
+            {shoulderBriefings.map((post) => (
+              <article 
+                key={post.slug}
+                className="group relative flex flex-col justify-between rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-orange-100 p-5 shadow-xs hover:shadow-md transition duration-200"
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="inline-block rounded-md bg-orange-50 px-2 py-0.5 text-xs font-semibold text-orange-700">
+                      공식 브리핑
+                    </span>
+                    <span className="text-[11px] text-slate-400">{post.date.replace(/-/g, ".")}</span>
+                  </div>
+                  <h3 className="mt-3 text-base font-bold text-slate-900 group-hover:text-orange-600 transition">
+                    <Link href={`/blog/${post.slug}`} className="focus:outline-none">
+                      <span className="absolute inset-0 z-0" aria-hidden="true" />
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-2 text-xs text-slate-500 leading-relaxed line-clamp-3">
+                    {post.summary}
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-slate-100 flex justify-end relative z-10">
+                  <span className="inline-flex items-center gap-0.5 text-xs font-semibold text-orange-600 hover:underline">
+                    브리핑 읽기 <ChevronRight className="h-3 w-3" />
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-dashed border-orange-200 bg-orange-50/20 p-6 text-center">
+            <p className="text-sm font-semibold text-orange-850">
+              ✍️ 센터장 전문 브리핑 준비 중
+            </p>
+            <p className="mt-1 text-xs text-slate-500 leading-relaxed">
+              센터장이 직접 작성하고 해설하는 어깨 관절 임상 정보 및 재활 칼럼이 준비 중에 있습니다.<br />
+              직접 작성하신 브리핑 글(카테고리: 브리핑)이 이곳에 실시간으로 업데이트될 예정입니다.
+            </p>
+          </div>
+        )}
       </div>
 
       {/* 1. 어깨 관련 질병 사전 */}
