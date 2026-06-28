@@ -68,8 +68,7 @@ export default function KneeStoryPage() {
                     <span className="text-[11px] text-slate-400">{post.date.replace(/-/g, ".")}</span>
                   </div>
                   <h3 className="mt-3 text-base font-bold text-slate-900 group-hover:text-teal-600 transition">
-                    <Link href={`/blog/${post.slug}`} className="focus:outline-none">
-                      <span className="absolute inset-0 z-0" aria-hidden="true" />
+                    <Link href={`/blog/${post.slug}`} className="hover:underline">
                       {post.title}
                     </Link>
                   </h3>
@@ -77,10 +76,13 @@ export default function KneeStoryPage() {
                     {post.summary}
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-100 flex justify-end relative z-10">
-                  <span className="inline-flex items-center gap-0.5 text-xs font-semibold text-teal-600 hover:underline">
+                <div className="mt-4 pt-3 border-t border-slate-100 flex justify-end">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="inline-flex items-center gap-0.5 text-xs font-semibold text-teal-600 hover:underline"
+                  >
                     브리핑 읽기 <ChevronRight className="h-3 w-3" />
-                  </span>
+                  </Link>
                 </div>
               </article>
             ))}
