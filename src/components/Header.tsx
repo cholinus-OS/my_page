@@ -32,7 +32,7 @@ export default function Header() {
             href="/#knee-shoulder-banner" 
             className="text-xs sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
           >
-            니어깨이야기
+            니숄더이야기
           </Link>
           <Link 
             href="/break" 
