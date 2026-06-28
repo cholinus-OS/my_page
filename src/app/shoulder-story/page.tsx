@@ -28,7 +28,7 @@ export default function ShoulderStoryPage() {
       </Link>
 
       {/* 헤더 섹션 */}
-      <div className="rounded-3xl bg-gradient-to-r from-orange-600 to-amber-500 p-8 text-white shadow-md mb-8">
+      <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-r from-orange-600 to-amber-500 p-6 sm:p-8 text-white shadow-md mb-8">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3.5 py-1 text-xs font-semibold text-white">
           <HeartPulse className="h-3.5 w-3.5" />
           Shoulder Story

@@ -8,35 +8,35 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-1.5 sm:gap-2 text-lg sm:text-xl font-bold text-slate-900 transition hover:opacity-80">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo.png" alt="바른관절 헬프센터 로고" className="h-6 w-6 sm:h-8 sm:w-8 object-contain" />
-          <span>바른관절 <span className="text-teal-600 font-semibold">헬프센터</span></span>
+          <span className="hidden min-[440px]:inline">바른관절 <span className="text-teal-600 font-semibold">헬프센터</span></span>
         </Link>
         
         <div className="hidden md:block text-base md:text-lg font-black tracking-widest bg-gradient-to-r from-rose-500 via-purple-600 to-teal-500 bg-clip-text text-transparent select-none">
           Exercise Is Medicine..!
         </div>
         
-        <nav className="flex items-center gap-3 sm:gap-6">
+        <nav className="flex items-center gap-2.5 sm:gap-6">
           <Link 
             href="/" 
-            className="text-[13px] sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
+            className="text-xs sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
           >
             질환 사전
           </Link>
           <Link 
             href="/blog" 
-            className="text-[13px] sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
+            className="text-xs sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
           >
             재활 블로그
           </Link>
           <Link 
             href="/#knee-shoulder-banner" 
-            className="text-[13px] sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
+            className="text-xs sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
           >
             니어깨이야기
           </Link>
           <Link 
             href="/break" 
-            className="text-[13px] sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
+            className="text-xs sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
           >
             쉬어가기
           </Link>
