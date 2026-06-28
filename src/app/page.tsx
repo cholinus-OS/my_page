@@ -193,16 +193,30 @@ export default function Home() {
             {/* 무릎 이야기 버튼 */}
             <Link 
               href="/knee-story" 
-              className="absolute left-[6.5%] top-[13%] w-[32%] h-[75%] rounded-full cursor-pointer transition-all duration-300 hover:bg-teal-500/10 hover:shadow-[0_0_20px_10px_rgba(20,184,166,0.3)] focus:outline-none"
+              className="absolute left-[6.5%] top-[13%] w-[32%] h-[75%] rounded-full cursor-pointer transition-all duration-300 border border-dashed border-teal-400/40 bg-teal-500/5 hover:scale-[1.03] hover:border-solid hover:border-teal-400 hover:bg-teal-500/20 hover:shadow-[0_0_30px_10px_rgba(20,184,166,0.6)] focus:outline-none flex items-center justify-center group"
               aria-label="무릎 이야기 페이지로 이동"
-            />
+            >
+              <span className="relative flex h-8 w-8 transition-transform duration-300 group-hover:scale-110">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-8 w-8 bg-teal-600 border border-white items-center justify-center shadow-md">
+                  <span className="text-[9px] font-extrabold text-white tracking-tighter">GO</span>
+                </span>
+              </span>
+            </Link>
 
             {/* 어깨 이야기 버튼 */}
             <Link 
               href="/shoulder-story" 
-              className="absolute right-[6.5%] top-[13%] w-[32%] h-[75%] rounded-full cursor-pointer transition-all duration-300 hover:bg-orange-500/10 hover:shadow-[0_0_20px_10px_rgba(249,115,22,0.3)] focus:outline-none"
+              className="absolute right-[6.5%] top-[13%] w-[32%] h-[75%] rounded-full cursor-pointer transition-all duration-300 border border-dashed border-orange-400/40 bg-orange-500/5 hover:scale-[1.03] hover:border-solid hover:border-orange-400 hover:bg-orange-500/20 hover:shadow-[0_0_30px_10px_rgba(249,115,22,0.6)] focus:outline-none flex items-center justify-center group"
               aria-label="어깨 이야기 페이지로 이동"
-            />
+            >
+              <span className="relative flex h-8 w-8 transition-transform duration-300 group-hover:scale-110">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-8 w-8 bg-orange-600 border border-white items-center justify-center shadow-md">
+                  <span className="text-[9px] font-extrabold text-white tracking-tighter">GO</span>
+                </span>
+              </span>
+            </Link>
           </div>
 
         </div>
