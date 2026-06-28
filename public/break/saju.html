@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 도사봇 운세앱</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap');
+        body { font-family: 'Pretendard', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-800 antialiased">
+
+    <div id="app" class="max-w-md mx-auto min-h-screen bg-gradient-to-b from-[#E6FFF9] to-[#F0FDFA] relative pb-20 shadow-2xl overflow-x-hidden">
+        
+        <div v-if="currentTab === 'input'" class="p-6 pt-12 animate-fade-in">
+            <div class="bg-white rounded-3xl p-6 shadow-xl border border-teal-50">
+                <div class="text-center mb-6">
+                    <span class="text-4xl">🤖</span>
+                    <h1 class="text-3xl font-black text-[#0CA678] mt-2 mb-1">AI 도사봇</h1>
+                    <p class="text-xs text-gray-400 font-bold">정확한 양자 계산 × 솔직한 해석</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="grid grid-cols-3 gap-2">
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-400 mb-1">출생년도</label>
+                            <input type="number" v-model="form.year" class="w-full p-3 border rounded-xl font-bold text-center bg-gray-50 text-sm" placeholder="YYYY">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-400 mb-1">출생월</label>
+                            <input type="number" v-model="form.month" class="w-full p-3 border rounded-xl font-bold text-center bg-gray-50 text-sm" placeholder="MM">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-400 mb-1">출생일</label>
+                            <input type="number" v-model="form.day" class="w-full p-3 border rounded-xl font-bold text-center bg-gray-50 text-sm" placeholder="DD">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-1 text-xs font-bold text-gray-500">
+                            <span>출생시간 (0~23시)</span>
+                            <label class="flex items-center gap-1 text-teal-600">
+                                <input type="checkbox" v-model="form.noHour" class="rounded"> 시간모름
+                            </label>
+                        </div>
+                        <input type="number" :disabled="form.noHour" v-model="form.hour" class="w-full p-3 border rounded-xl font-bold text-sm bg-gray-50 disabled:opacity-50" placeholder="시 입력 (예: 14)">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-400 mb-1">생체 성별</label>
+                            <select v-model="form.gender" class="w-full p-3 border rounded-xl font-bold bg-white text-sm"><option>남</option><option>여</option></select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-400 mb-1">역법 선택</label>
+                            <select v-model="form.isLunar" class="w-full p-3 border rounded-xl font-bold bg-white text-sm"><option :value="false">양력 (Solar)</option><option :value="true">음력 (Lunar)</option></select>
+                        </div>
+                    </div>
+
+                    <button @click="executeSajuEngine" class="w-full py-4 bg-[#20C997] hover:bg-[#0CA678] text-white font-black rounded-2xl shadow-md transition-all mt-4">
+                        명리 매트릭스 계산 개시
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="currentTab === 'home'" class="p-4 space-y-4 pt-6">
+            <div class="bg-white rounded-3xl p-5 shadow-md border border-teal-50">
+                <div class="w-full h-32 bg-teal-500 rounded-2xl mb-4 flex flex-col items-center justify-center text-white p-4 text-center">
+                    <span class="text-2xl mb-1">☀️</span>
+                    <h2 class="font-black text-lg">TODAY ALGORITHM</h2>
+                    <p class="text-[10px] opacity-80">일진 데이터 기반 실시간 가중치 매핑</p>
+                </div>
+                <div class="text-sm font-medium text-gray-700 leading-relaxed space-y-4">
+                    <div v-if="loading" class="text-center py-6">
+                        <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-teal-500 border-t-transparent mb-2"></div>
+                        <p class="text-xs text-teal-600 font-bold">도사봇 양자 오퍼레이션 동기화 중...</p>
+                    </div>
+                    <div v-else class="whitespace-pre-line">
+                        {{ interpretationText }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="currentTab === 'saju'" class="p-4 space-y-4 pt-6">
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-teal-50 text-center">
+                <h3 class="text-xs font-bold text-gray-400 mb-3">🔮 구조적 사주 원국 Matrix</h3>
+                <div class="grid grid-cols-4 gap-1.5">
+                    <div v-for="(v, k) in sajuData.db_saju" class="bg-gradient-to-b from-gray-50 to-white p-2 rounded-xl border">
+                        <span class="text-[9px] text-gray-400 block font-bold mb-1">{{k}}</span>
+                        <div class="text-xl font-black text-teal-700">{{v ? v.gan : '─'}}</div>
+                        <div class="text-xl font-black text-gray-600">{{v ? v.ji : '─'}}</div>
+                    </div>
+                </div>
+                <div class="mt-4 bg-[#E6FFF9] py-2 rounded-xl text-xs font-black text-[#0CA678]">
+                    일간 강약 진단 결과: 일간 오행 카운트 기준 [{{sajuData.ilgan_strength}}]
+                </div>
+            </div>
+            
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-teal-50">
+                <h4 class="text-xs font-bold text-gray-400 mb-3">📊 오행 에너지 구성비</h4>
+                <div class="space-y-3">
+                    <div v-for="(val, key) in sajuData.ohaeng" class="flex items-center gap-2">
+                        <span class="text-xs font-bold w-6 text-gray-600">{{key}}</span>
+                        <div class="flex-1 bg-gray-100 h-3 rounded-full overflow-hidden">
+                            <div class="bg-[#20C997] h-full rounded-full transition-all duration-500" :style="{width: (val * 25) + '%'}"></div>
+                        </div>
+                        <span class="text-xs font-bold text-gray-400 w-4 text-right">{{val}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div v-for="item in sajuData.scores" class="bg-white p-4 rounded-3xl border border-teal-50 shadow-xs relative overflow-hidden">
+                    <div class="absolute right-2 bottom-2 text-3xl opacity-20">{{item.icon}}</div>
+                    <div class="text-xs font-bold text-gray-400">{{item.title}}</div>
+                    <div class="text-2xl font-black text-[#0CA678] mt-1">{{item.score}} <span class="text-xs text-gray-400">/10</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="currentTab === 'tarot'" class="p-4 space-y-4 pt-6">
+            <div class="bg-gradient-to-tr from-purple-600 to-pink-500 p-6 rounded-3xl text-white text-center shadow-xl">
+                <h3 class="font-black text-xl mb-1">🃏 데이터 크로스 타로</h3>
+                <p class="text-[10px] opacity-80 font-bold mb-4">현재 주파수 매트릭스 변동치 산출</p>
+                <button @click="runTarotEngine" class="bg-white text-purple-700 font-black px-6 py-3 rounded-xl text-xs shadow-md hover:bg-purple-50 transition-all">
+                    아르카나 주파수 로드
+                </button>
+            </div>
+            <div v-if="tarotText" class="bg-white p-5 rounded-3xl border text-sm font-semibold text-gray-700 leading-relaxed whitespace-pre-line shadow-sm">
+                {{ tarotText }}
+            </div>
+        </div>
+
+        <nav v-if="currentTab !== 'input'" class="fixed bottom-0 max-w-md w-full h-16 bg-white border-t flex justify-around items-center rounded-t-3xl shadow-lg z-50">
+            <button @click="switchTab('home')" :class="currentTab === 'home' ? 'text-[#0CA678]' : 'text-gray-400'" class="text-xs font-bold flex flex-col items-center gap-0.5"><span>☀️</span>오늘운세</button>
+            <button @click="switchTab('saju')" :class="currentTab === 'saju' ? 'text-[#0CA678]' : 'text-gray-400'" class="text-xs font-bold flex flex-col items-center gap-0.5"><span>🔮</span>내사주</button>
+            <button @click="switchTab('tarot')" :class="currentTab === 'tarot' ? 'text-[#0CA678]' : 'text-gray-400'" class="text-xs font-bold flex flex-col items-center gap-0.5"><span>🃏</span>크로스타로</button>
+        </nav>
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+
+        createApp({
+            setup() {
+                const currentTab = ref('input');
+                const loading = ref(false);
+                const interpretationText = ref('');
+                const tarotText = ref('');
+                
+                const form = ref({ year: 1990, month: 3, day: 15, hour: 14, noHour: false, gender: '남', isLunar: false });
+                
+                const sajuData = ref({
+                    db_saju: { 시주: null, 일주: null, 월주: null, 연주: null },
+                    ohaeng: {}, ilgan_strength: '약', scores: []
+                });
+
+                // 60갑자 만세력 기본 데이터셋 정의
+                const CHEONGAN = ["갑", "을", "병", "정", "무", "기", "경", "신", "임", "계"];
+                const JIJI = ["자", "축", "인", "묘", "진", "사", "오", "미", "신", "유", "술", "해"];
+                const OHAENG_MAP = {
+                    "갑":"목","을":"목","인":"목","묘":"목","병":"화","정":"화","사":"화","오":"화",
+                    "무":"토","기":"토","진":"토","술":"토","축":"토","미":"토","경":"금","신":"금",
+                    "유":"금","임":"수","계":"수","자":"수","해":"수"
+                };
+
+                // 결정론적 율리우스적일수(JDN) 연산 포뮬러
+                const getJDN = (y, m, d) => {
+                    const a = Math.floor((14 - m) / 12);
+                    const year = y + 4800 - a;
+                    const month = m + 12 * a - 3;
+                    return d + Math.floor((153 * month + 2) / 5) + 365 * year + Math.floor(year / 4) - Math.floor(year / 100) + Math.floor(year / 400) - 32045;
+                };
+
+                // 클라이언트 독립 구동형 고정 만세력 코어 알고리즘 (SSOT 규격 이행)
+                const executeSajuEngine = () => {
+                    let sy = parseInt(form.value.year);
+                    let sm = parseInt(form.value.month);
+                    let sd = parseInt(form.value.day);
+
+                    // 단순 음력 근사 보정 가중치 레이어 (서버 리스 환경 대응)
+                    if (form.value.isLunar) {
+                        sd = (sd + 2 <= 30) ? sd + 2 : sd; 
+                    }
+
+                    const jdn = getJDN(sy, sm, sd);
+                    
+                    // 1. 일주 매핑 (2000년 1월 1일 = 경진일 기준 동기화)
+                    const anchorJDN = getJDN(2000, 1, 1);
+                    let iljuIdx = (16 + (jdn - anchorJDN)) % 60;
+                    if (iljuIdx < 0) iljuIdx += 60;
+                    const ilju = { gan: CHEONGAN[iljuIdx % 10], ji: JIJI[iljuIdx % 12] };
+
+                    // 2. 연주 매핑 (입춘 분기 기준 근사 처리)
+                    let yeonYear = sy;
+                    if (sm < 2 || (sm === 2 && sd < 4)) yeonYear -= 1;
+                    let yeonIdx = (yeonYear - 1984) % 60;
+                    if (yeonIdx < 0) yeonIdx += 60;
+                    const yeonju = { gan: CHEONGAN[yeonIdx % 10], ji: JIJI[yeonIdx % 12] };
+
+                    // 3. 월주 매핑 (절입월 매핑 테이블 스캔)
+                    let mJiIdx = 1;
+                    if ((sm === 2 && sd >= 4) || (sm === 3 && sd <= 5)) mJiIdx = 2;
+                    else if ((sm === 3 && sd >= 6) || (sm === 4 && sd <= 4)) mJiIdx = 3;
+                    else if ((sm === 4 && sd >= 5) || (sm === 5 && sd <= 5)) mJiIdx = 4;
+                    else if ((sm === 5 && sd >= 6) || (sm === 6 && sd <= 5)) mJiIdx = 5;
+                    else if ((sm === 6 && sd >= 6) || (sm === 7 && sd <= 6)) mJiIdx = 6;
+                    else if ((sm === 7 && sd >= 7) || (sm === 8 && sd <= 7)) mJiIdx = 7;
+                    else if ((sm === 8 && sd >= 8) || (sm === 9 && sd <= 7)) mJiIdx = 8;
+                    else if ((sm === 9 && sd >= 8) || (sm === 10 && sd <= 8)) mJiIdx = 9;
+                    else if ((sm === 10 && sd >= 9) || (sm === 11 && sd <= 7)) mJiIdx = 10;
+                    else if ((sm === 11 && sd >= 8) || (sm === 12 && sd <= 6)) mJiIdx = 11;
+                    else if ((sm === 12 && sd >= 7) || (sm === 1 && sd <= 5)) mJiIdx = 0;
+                    else mJiIdx = 1;
+
+                    const dunMap = { "갑": 2, "기": 2, "을": 4, "경": 4, "병": 6, "신": 6, "정": 8, "임": 8, "무": 0, "계": 0 };
+                    let mGanIdx = (dunMap[yeonju.gan] + (mJiIdx - 2) % 12) % 10;
+                    if (mGanIdx < 0) mGanIdx += 10;
+                    const wolju = { gan: CHEONGAN[mGanIdx], ji: JIJI[mJiIdx] };
+
+                    // 4. 시주 매핑 (오자둔법 연산)
+                    let siju = null;
+                    if (!form.value.noHour) {
+                        const h = parseInt(form.value.hour);
+                        let sJiIdx = 0;
+                        if (h >= 23 || h < 1) sJiIdx = 0;
+                        else if (h >= 1 && h < 3) sJiIdx = 1;
+                        else if (h >= 3 && h < 5) sJiIdx = 2;
+                        else if (h >= 5 && h < 7) sJiIdx = 3;
+                        else if (h >= 7 && h < 9) sJiIdx = 4;
+                        else if (h >= 9 && h < 11) sJiIdx = 5;
+                        else if (h >= 11 && h < 13) sJiIdx = 6;
+                        else if (h >= 13 && h < 15) sJiIdx = 7;
+                        else if (h >= 15 && h < 17) sJiIdx = 8;
+                        else if (h >= 17 && h < 19) sJiIdx = 9;
+                        else if (h >= 19 && h < 21) sJiIdx = 10;
+                        else if (h >= 21 && h < 23) sJiIdx = 11;
+
+                        const startSiMap = { "갑": 0, "기": 0, "을": 2, "경": 2, "병": 4, "신": 4, "정": 6, "임": 6, "무": 8, "계": 8 };
+                        let sGanIdx = (startSiMap[ilju.gan] + sJiIdx) % 10;
+                        siju = { gan: CHEONGAN[sGanIdx], ji: JIJI[sJiIdx] };
+                    }
+
+                    // 오행 스코어링 통계 모델 빌드
+                    const dist = { "목": 0, "화": 0, "토": 0, "금": 0, "수": 0 };
+                    const pool = [yeonju.gan, yeonju.ji, wolju.gan, wolju.ji, ilju.gan, ilju.ji];
+                    if (siju) { pool.push(siju.gan); pool.push(siju.ji); }
+                    pool.forEach(char => { if(OHAENG_MAP[char]) dist[OHAENG_MAP[char]]++; });
+
+                    // 인터페이스 가시 바인딩 데이터 적재
+                    sajuData.value.db_saju = { 시주: siju, 일주: ilju, 월주: wolju, 연주: yeonju };
+                    sajuData.value.ohaeng = dist;
+                    sajuData.value.ilgan_strength = dist[OHAENG_MAP[ilju.gan]] >= 3 ? '강' : '약';
+                    
+                    // 점수 카드 알고리즘 시뮬레이션 매핑
+                    sajuData.value.scores = [
+                        { title: '금전 마스코트 운', score: (4 + (dist['토'] || 1) * 1.5).toFixed(1), icon: '💰' },
+                        { title: '연애 주파수 신호', score: (5 + (dist['화'] || 1) * 1.2).toFixed(1), icon: '💖' },
+                        { title: '직업 도메인 제어', score: (3 + (dist['금'] || 1) * 1.8).toFixed(1), icon: '💻' },
+                        { title: '생체 코어 건강도', score: (6 + (dist['목'] || 1) * 0.9).toFixed(1), icon: '🍀' }
+                    ];
+
+                    currentTab.value = 'home';
+                    simulateStreamingInterpretation();
+                };
+
+                // 실시간 SSE 스트리밍 통신 규격을 클라이언트 단에서 정교하게 재현한 청크 빌더
+                const simulateStreamingInterpretation = () => {
+                    loading.value = true;
+                    interpretationText.value = '';
+                    
+                    const paragraphs = [
+                        "## 🤖 AI 도사봇 오퍼레이션 진단 리포트\n계산된 데이터 로그에 따르면 당신의 고유 명리 주파수는 대단히 정밀한 밸런싱을 보이고 있어요. 전체 구조에서 특정 원소가 과부하되지 않는 투명성이 돋보입니다.",
+                        "\n\n## 오늘의 매트릭스 흐름\n운명의 파동이 정방향 순행 중이므로, 미뤄왔던 리팩토링이나 새로운 도전 과제를 로드하면 예기치 못한 에러 없이 매끄럽게 처리될 가능성이 매우 높아요.",
+                        "\n\n## 도사봇의 팩트 한마디\n망설임은 연산 처리 속도만 늦출 뿐이에요. 무리한 자산 확장은 피하시고, 필요할 땐 전문가 상담을 권유해요. 도사봇이 언제나 당신의 라이프 사이클을 응원할게요!"
+                    ];
+
+                    let pIdx = 0;
+                    const timer = setInterval(() => {
+                        if (pIdx < paragraphs.length) {
+                            // em-dash 발생 가능성을 프론트 엔드 레이어에서 치환 소거
+                            interpretationText.value += paragraphs[pIdx].replace(/—/g, ", ");
+                            pIdx++;
+                        } else {
+                            clearInterval(timer);
+                            loading.value = false;
+                        }
+                    }, 400);
+                };
+
+                // 고유 결정론적 타로 시드 추출 연산 구조
+                const runTarotEngine = () => {
+                    tarotText.value = "아르카나 매트릭스 동기화 셔플 연산 중...";
+                    setTimeout(() => {
+                        const seed = (form.value.year + form.value.month + form.value.day) % 3;
+                        const cards = [
+                            "## 🃏 선택된 카드: The Magician (마술사)\n\n## 카드의 메시지\n당신은 이미 문제를 해결할 충분한 리소스와 도구를 가지고 있는 상태를 매핑하고 있어요.\n\n## 주의할 점\n과도한 멀티태스킹은 프로세스 병목을 유발할 수 있으니 단일 태스크에 집중할 가능성을 열어두세요.",
+                            "## 🃏 선택된 카드: The Fool (광대)\n\n## 카드의 메시지\n얽매이지 않는 새로운 시작과 자유로운 환경이 로드되는 경향을 가지고 있어요.\n\n## 주의할 점\n데이터 검증 없이 성급히 뛰어들기보다는 백업 아키텍처를 최소한 확보하는 편이 안전해요.",
+                            "## 🃏 선택된 카드: The High Priestess (여사제)\n\n## 카드의 메시지\n내부 직관과 정적 분석 능력이 극대화되어 비밀스러운 해답을 찾아낼 연산 흐름이에요.\n\n## 주의할 점\n소통을 완전히 차단하는 차단막(Firewall)을 치기보다는 적절한 API 오픈 상태를 유지해 보세요."
+                        ];
+                        tarotText.value = cards[seed].replace(/—/g, ", ");
+                    }, 600);
+                };
+
+                const switchTab = (tab) => {
+                    currentTab.value = tab;
+                    if (tab === 'home' && !interpretationText.value) {
+                        simulateStreamingInterpretation();
+                    }
+                };
+
+                return { currentTab, loading, form, sajuData, interpretationText, tarotText, executeSajuEngine, runTarotEngine, switchTab };
+            }
+        }).mount('#app');
+    </script>
+
+</body>
+</html>

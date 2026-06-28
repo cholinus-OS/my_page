@@ -46,7 +46,7 @@ function BreakPageAd({ activeTab }: { activeTab: string }) {
 }
 
 export default function BreakPage() {
-  const [activeTab, setActiveTab] = useState<"timer" | "lotto" | "roulette" | "tetris" | "converter">("timer");
+  const [activeTab, setActiveTab] = useState<"timer" | "lotto" | "roulette" | "tetris" | "converter" | "saju">("timer");
 
   // --- 1. 스트레칭 타이머 상태 관리 ---
   const [timeLeft, setTimeLeft] = useState(60); // 기본 1분(60초)
@@ -705,7 +705,7 @@ export default function BreakPage() {
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-sm text-slate-500">
           컴퓨터 앞을 벗어나 잠시 쉬어가세요. <br className="hidden sm:inline" />
-          스트레칭 타이머, 로또 번호 생성기, 제비뽑기와 신나는 테트리스 게임을 즐겨보세요!
+          타이머, 로또 생성기, 제비뽑기, 테트리스, 단위변환기 및 신기한 AI 사주•운세를 즐겨보세요!
         </p>
       </div>
 
@@ -762,6 +762,16 @@ export default function BreakPage() {
           }`}
         >
           📏 단위변환기
+        </button>
+        <button
+          onClick={() => setActiveTab("saju")}
+          className={`flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold transition ${
+            activeTab === "saju"
+              ? "bg-teal-600 text-white shadow-sm"
+              : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+          }`}
+        >
+          🔮 AI 사주•운세
         </button>
       </div>
 
@@ -1178,6 +1188,17 @@ export default function BreakPage() {
 
           {/* 구글 애드센스 광고 자리 */}
           <BreakPageAd activeTab={activeTab} />
+        </section>
+      )}
+
+      {/* 🔮 탭 6: AI 사주•운세 */}
+      {activeTab === "saju" && (
+        <section className="flex flex-col rounded-3xl bg-white border border-slate-200 p-0 shadow-sm overflow-hidden h-[850px] relative">
+          <iframe 
+            src="/break/saju.html" 
+            className="w-full h-full border-0" 
+            title="AI 사주•운세"
+          />
         </section>
       )}
     </div>
