@@ -4,7 +4,7 @@ date: 2026-06-28
 summary: "무릎 관절의 직접적인 움직임 없이 고관절 주변 근육을 강화하여 수술 후 관절을 보호하고 조기 보행을 유도하는 4방향 침상 재활 가이드입니다."
 category: "브리핑"
 tags: ["무릎", "재활", "고관절", "브리핑"]
-thumbnail: "https://postfiles.pstatic.net/MjAyNjA2MjhfMjEx/MDAxNzgyNjI4NTY0ODUz.Cn9W7jurg72fes-ZmqOsMTqfvvCuijLhHbezqozzP6Mg.oeq60yA49qd6_t5775TEkCT32mkI7WOBjQRTjMhBWwYg.JPEG/IMG%EF%BC%BF0020.jpg?type=w773"
+thumbnail: "/blog-images/IMG_0020_cover.jpg"
 ---
 
 # 무릎 수술 환자의 초기 재활을 위한 고관절 운동 가이드라인 보고서
@@ -25,7 +25,7 @@ thumbnail: "https://postfiles.pstatic.net/MjAyNjA2MjhfMjEx/MDAxNzgyNjI4NTY0ODUz.
 
 ### ① 전방 들기 (하지직거상 운동, Straight Leg Raise)
 
-![전방 들기 운동 방법](https://postfiles.pstatic.net/MjAyNjA2MjhfMjIw/MDAxNzgyNjIzNTQ2MTg3.gstml8NxC1XeWFFcdrpWlSh7djb9WnaFF36s3NBXZ8og.vYFBluZt7BwfTfwdCk6t4m0zdBqyraikTD2BsjU2Ihog.JPEG/IMG%EF%BC%BF0020.jpg?type=w773)
+![전방 들기 운동 방법](/blog-images/IMG_0020.jpg)
 
 * **준비 자세**: 똑바로 누운 상태에서 건강한 쪽 다리는 무릎을 구부려 발바닥을 바닥에 댑니다(허리 부담 경감). 수술한 다리는 곧게 폅니다.
 * **운동 방법**: 수술한 다리의 무릎을 편 채로, 바닥에서 약 30~45cm(반대편 무릎 높이)까지 천천히 들어 올립니다. 공중에서 5초간 유지한 후 천천히 내립니다.
@@ -36,7 +36,7 @@ thumbnail: "https://postfiles.pstatic.net/MjAyNjA2MjhfMjEx/MDAxNzgyNjI4NTY0ODUz.
 
 ### ② 바깥쪽 들기 (Hip Abduction)
 
-![바깥쪽 들기 운동 방법](https://postfiles.pstatic.net/MjAyNjA2MjhfMTE4/MDAxNzgyNjI4NDIwMzM5/IMG%EF%BC%BF0021.jpg?type=w773)
+![바깥쪽 들기 운동 방법](/blog-images/IMG_0021.jpg)
 
 * **준비 자세**: 건강한 다리가 아래로 가도록 옆으로 눕습니다. 중심을 잡기 위해 아래쪽 다리는 가볍게 구부립니다.
 * **운동 방법**: 수술한 다리를 곧게 편 상태에서 위를 향해 천천히 들어 올립니다(약 20~30도). 5초간 유지 후 천천히 내립니다.
@@ -47,7 +47,7 @@ thumbnail: "https://postfiles.pstatic.net/MjAyNjA2MjhfMjEx/MDAxNzgyNjI4NTY0ODUz.
 
 ### ③ 안쪽 들기 (Hip Adduction)
 
-![안쪽 들기 운동 방법](https://postfiles.pstatic.net/MjAyNjA2MjhfMjgy/MDAxNzgyNjI4NDI1NzQw.U_o1sqfIiW5veNmfPoqz3IKcRX_W_TMsQ22u9Z3z1XYg.wQXaw3K7jMOkP4IfM2EIS1uSXSS9Hz82yPkFtvcKFMMg.JPEG/IMG%EF%BC%BF0022.jpg?type=w773)
+![안쪽 들기 운동 방법](/blog-images/IMG_0022.jpg)
 
 * **준비 자세**: 수술한 다리가 아래로 가도록 옆으로 눕습니다. 위쪽에 있는 건강한 다리는 무릎을 구부려 수술한 다리의 앞쪽 바닥에 발을 디뎌 지탱합니다.
 * **운동 방법**: 아래에 위치한 수술한 다리를 곧게 편 상태에서 바닥으로부터 10~15cm 천천히 들어 올립니다. 5초간 유지 후 천천히 내립니다.
@@ -58,7 +58,7 @@ thumbnail: "https://postfiles.pstatic.net/MjAyNjA2MjhfMjEx/MDAxNzgyNjI4NTY0ODUz.
 
 ### ④ 후방 들기 (Hip Extension)
 
-![후방 들기 운동 방법](https://postfiles.pstatic.net/MjAyNjA2MjhfODkg/MDAxNzgyNjI4NTIzMDYw.SX6Hu3gwpl8Ixc90ugqAVU7oEJvJTBGyVa8dz5dDQ88g.s0VIVOeJn4qFpTxzW2ci6hJG36zh_F3s16toYmBS4zcg.JPEG/IMG%EF%BC%BF0023.jpg?type=w773)
+![후방 들기 운동 방법](/blog-images/IMG_0023.jpg)
 
 * **준비 자세**: 엎드린 자세(Prone position)를 취합니다. (엎드리기 어려운 경우, 의자나 벽을 잡고 바르게 선 자세로 대체 가능합니다.)
 * **운동 방법**: 수술한 다리의 무릎을 편 상태에서 천장을 향해(또는 뒤를 향해) 천천히 들어 올립니다. 엉덩이 근육이 수축하는 것을 느끼며 5초간 유지 후 내립니다.
