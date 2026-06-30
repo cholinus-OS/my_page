@@ -138,12 +138,22 @@ export default function Chatbot() {
     }
   };
 
-  const connectToHuman = () => {
+  const connectToHuman = async () => {
     setIsHumanMode(true);
     setMessages((prev) => [
       ...prev,
       { sender: "bot", text: "상담원을 연결하고 있습니다. 잠시만 대기해 주세요..." }
     ]);
+
+    try {
+      await fetch("/api/chat-human", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: "👋 [시스템] 사용자가 직접 상담원 연결을 요청했습니다.", sender: "system" }),
+      });
+    } catch (err) {
+      console.error("시스템 메시지 전송 오류:", err);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
