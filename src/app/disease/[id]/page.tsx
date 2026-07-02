@@ -57,11 +57,7 @@ export default async function DiseasePage({ params }: PageProps) {
         <h1 className="mt-4 text-2xl font-black text-slate-900 sm:text-3xl">
           {disease.name}
         </h1>
-        <div className="mt-5 text-base leading-relaxed text-slate-600 text-justify prose max-w-none">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {disease.description}
-          </ReactMarkdown>
-        </div>
+
         {disease.id === "sarcopenia" && (
           <div className="mt-6 w-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -405,6 +401,12 @@ export default async function DiseasePage({ params }: PageProps) {
             />
           </div>
         )}
+
+        <div className="mt-8 text-base leading-relaxed text-slate-600 text-justify prose max-w-none border-t border-slate-100 pt-6">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {disease.description}
+          </ReactMarkdown>
+        </div>
       </div>
 
       {/* 💰 애드센스 상단 광고 */}
