@@ -177,8 +177,8 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           </ReactMarkdown>
         </div>
 
-        {/* 🛍️ 쿠팡 파트너스 추천 배너 */}
-        <CoupangBanner postCategory={post.category} postTags={post.tags} postSlug={post.slug} />
+        {/* 🛍️ 쿠팡 파트너스 추천 배너 (애드센스 승인 심사를 위해 일시적 비활성화) */}
+        {/* <CoupangBanner postCategory={post.category} postTags={post.tags} postSlug={post.slug} /> */}
 
         {/* 태그 영역 */}
         {post.tags.length > 0 && (
