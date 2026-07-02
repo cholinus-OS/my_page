@@ -34,12 +34,14 @@ export default function Header() {
           >
             니숄더이야기
           </Link>
+          {/* 애드센스 심사를 위해 임시 비활성화
           <Link 
             href="/break" 
             className="text-xs sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
           >
             쉬어가기
           </Link>
+          */}
         </nav>
       </div>
     </header>
