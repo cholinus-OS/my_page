@@ -865,10 +865,12 @@ export default function BreakPage() {
               <RotateCcw className="h-5 w-5" />
             </button>
           </div>
-
-          {/* 구글 애드센스 광고 자리 */}
-          <BreakPageAd activeTab={activeTab} />
         </section>
+      )}
+      {activeTab === "timer" && (
+        <div className="mt-6">
+          <BreakPageAd activeTab={activeTab} />
+        </div>
       )}
 
       {/* 🎰 탭 2: 로또 번호 생성기 */}
@@ -923,10 +925,12 @@ export default function BreakPage() {
               );
             })}
           </div>
-
-          {/* 구글 애드센스 광고 자리 */}
-          <BreakPageAd activeTab={activeTab} />
         </section>
+      )}
+      {activeTab === "lotto" && (
+        <div className="mt-6">
+          <BreakPageAd activeTab={activeTab} />
+        </div>
       )}
 
       {/* 🎯 탭 3: 제비뽑기 (룰렛 게임) */}
@@ -991,9 +995,6 @@ export default function BreakPage() {
               🎯 룰렛 돌리기
             </button>
           </div>
-
-          {/* 구글 애드센스 광고 자리 */}
-          <BreakPageAd activeTab={activeTab} />
         </section>
       )}
 
@@ -1081,9 +1082,6 @@ export default function BreakPage() {
               </div>
             </div>
           </div>
-
-          {/* 구글 애드센스 광고 자리 */}
-          <BreakPageAd activeTab={activeTab} />
         </section>
       )}
 
@@ -1185,10 +1183,12 @@ export default function BreakPage() {
               </div>
             </div>
           </div>
-
-          {/* 구글 애드센스 광고 자리 */}
-          <BreakPageAd activeTab={activeTab} />
         </section>
+      )}
+      {activeTab === "converter" && (
+        <div className="mt-6">
+          <BreakPageAd activeTab={activeTab} />
+        </div>
       )}
 
       {/* 🔮 탭 6: AI 사주•운세 */}
