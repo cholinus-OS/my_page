@@ -24,63 +24,56 @@ async function generatePost(targetDateStr = null) {
     process.exit(1);
   }
 
-  // 2. 기존 포스트 확인
+  // 2. 기존 포스트 확인 및 각 질환별 누적 작성 횟수 계산
   if (!fs.existsSync(postsDir)) {
     fs.mkdirSync(postsDir, { recursive: true });
   }
   const postFiles = fs.readdirSync(postsDir).filter(file => file.endsWith(".md"));
-  const existingPostContents = postFiles.map(file => {
-    return fs.readFileSync(path.join(postsDir, file), "utf8");
-  });
 
-  // 하루 전, 2일 전 포스트 파일 추출
-  const recentFiles = postFiles.sort().slice(-2);
-
-  // 아직 작성되지 않은 첫 번째 질환 데이터 찾기
-  let targetDisease = null;
+  const diseaseCounts = {};
   for (const disease of diseases) {
-    const isAlreadyWritten = postFiles.some(file => {
-      return file.includes(disease.id);
-    });
-    if (!isAlreadyWritten) {
-      targetDisease = disease;
-      break;
-    }
+    diseaseCounts[disease.id] = postFiles.filter(file => file.includes(disease.id)).length;
   }
 
-  // [미배포 방지 대비책]: 모든 질환이 소진되면, 가장 오래된 포스트의 질환을 새로운 각도에서 재작성(리라이팅)하도록 순환합니다.
-  if (!targetDisease) {
-    console.log("모든 질환에 대한 블로그 글이 작성되었습니다. 미발행 일을 방지하기 위해 순환 리라이팅을 진행합니다.");
-    const postDates = postFiles.map(file => {
-      const datePart = file.substring(0, 10);
-      return { file, date: new Date(datePart) };
-    }).sort((a, b) => a.date - b.date);
-
-    if (postDates.length > 0) {
-      // 가장 오래된 순서대로 탐색하되, 최근 2일(하루 전, 이틀 전)에 작성된 주제와 겹치지 않도록 방어 로직 추가
-      for (let i = 0; i < postDates.length; i++) {
-        const candidateFile = postDates[i].file;
-        let foundDisease = null;
-        for (const disease of diseases) {
-          if (candidateFile.includes(disease.id)) {
-            foundDisease = disease;
-            break;
-          }
-        }
-        
-        if (foundDisease) {
-          const isRecentlyWritten = recentFiles.some(recentFile => recentFile.includes(foundDisease.id));
-          if (!isRecentlyWritten) {
-            targetDisease = { ...foundDisease, isRewriting: true };
-            break;
-          }
-        }
+  // 최근 7일 내 작성된 질환 ID 수집 (너무 자주 겹치는 것을 방지)
+  const sortedPostFiles = [...postFiles].sort().reverse();
+  const recent7Files = sortedPostFiles.slice(0, 7);
+  const recentlyWrittenIds = new Set();
+  for (const file of recent7Files) {
+    for (const disease of diseases) {
+      if (file.includes(disease.id)) {
+        recentlyWrittenIds.add(disease.id);
       }
     }
-    if (!targetDisease) {
-      targetDisease = { ...diseases[0], isRewriting: true };
-    }
   }
+
+  // 작성 횟수가 가장 적은 최솟값 찾기
+  const minCount = Math.min(...diseases.map(d => diseaseCounts[d.id]));
+
+  // 작성 횟수가 최솟값이면서 최근 7일 동안 작성되지 않은 질환 목록 필터링
+  let candidates = diseases.filter(d => diseaseCounts[d.id] === minCount && !recentlyWrittenIds.has(d.id));
+
+  // 만약 조건에 맞는 후보군이 없다면, 최근 7일 제한을 해제하고 가장 적게 작성된 질환 중 선택
+  if (candidates.length === 0) {
+    candidates = diseases.filter(d => diseaseCounts[d.id] === minCount);
+  }
+
+  // 후보군이 여전히 비어있다면 전체 질환 중 선택
+  if (candidates.length === 0) {
+    candidates = diseases;
+  }
+
+  // 후보군 중에서 랜덤으로 1개 선택
+  const randomIndex = Math.floor(Math.random() * candidates.length);
+  const selectedDisease = candidates[randomIndex];
+  
+  const targetDisease = {
+    ...selectedDisease,
+    isRewriting: diseaseCounts[selectedDisease.id] > 0
+  };
+
+  console.log(`🎯 오늘의 선정 주제: ${targetDisease.name} (부위: ${targetDisease.partName})`);
+  console.log(`📊 누적 작성 횟수: ${diseaseCounts[selectedDisease.id]}회 (재작성 여부: ${targetDisease.isRewriting})`);
 
   const latestDisease = targetDisease;
 
@@ -152,7 +145,7 @@ ${constraints}
 
 # [Input Variable]
 - 세부 주제어: ${topic}
-${latestDisease.isRewriting ? "- 특이사항: 이 질환에 대해 이전에 작성된 이력이 있습니다. 기존 글과 내용이 겹치지 않게, 이번에는 홈트레이닝 재활 가이드나 실생활 속 예방법 위주의 새로운 관점으로 완벽히 다르게 작성해 주세요." : ""}
+${latestDisease.isRewriting ? "- 특이사항: 이 질환에 대해 이전에 작성된 이력이 있습니다. 기존 글과 내용 및 제목이 절대 겹치지 않도록 완전히 새로운 각도에서 글을 작성해야 합니다. 클릭률을 극대화할 수 있는 **새롭고 강력한 후킹 제목(기존 글과 100% 다른 타이틀)**을 지어주시고, 본문에서 소개하는 자가 재활 운동 및 스트레칭 3가지 요령도 **기존 글과 다른 새로운 동작으로 구성하거나, 다른 소도구를 활용하거나, 혹은 난이도가 다른 홈트레이닝 방법**으로 대폭 추가/변경하여 작성해 주세요." : ""}
 
 # [Output Format]
 반드시 아래 정의된 템플릿 구조만 출력하고, 앞뒤로 "네, 알겠습니다" 등 AI의 불필요한 인사말이나 서론은 일절 제외하라.
