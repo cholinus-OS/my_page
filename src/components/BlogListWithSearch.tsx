@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Calendar, ChevronRight, Search, X } from "lucide-react";
 
@@ -20,6 +20,17 @@ interface BlogListWithSearchProps {
 
 export default function BlogListWithSearch({ initialPosts }: BlogListWithSearchProps) {
   const [searchQuery, setSearchQuery] = useState("");
+
+  // 페이지 마운트 시 주소창의 ?search=... 검색 파라미터를 읽어와 검색 상태에 반영
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const queryParam = params.get("search") || "";
+      if (queryParam) {
+        setSearchQuery(queryParam);
+      }
+    }
+  }, []);
 
   // 실시간 필터링 로직
   const filteredPosts = initialPosts.filter((post) => {
