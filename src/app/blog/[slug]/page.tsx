@@ -36,6 +36,9 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
   return {
     title: `${post.title} | 재활 안내`,
     description: post.summary,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.summary,
@@ -196,6 +199,17 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
               대학병원 정형외과 및 물리치료 임상 레퍼런스를 바탕으로 안전하고 효과적인 자가 재활 정보와 스트레칭 가이드를 제공합니다. 본 콘텐츠는 정형외과 전문 자문 위원단의 감수를 거쳐 작성되었습니다.
             </p>
           </div>
+        </div>
+
+        {/* ⚠️ 의학 정보 면책 조항 (E-E-A-T 신뢰성 보강) */}
+        <div className="mt-6 rounded-2xl bg-amber-50/50 border border-amber-100 p-5 text-xs text-amber-800 leading-relaxed text-justify">
+          <h4 className="font-bold flex items-center gap-1 mb-1">
+            ⚠️ 꼭 기억해주세요! (의학 정보 면책 조항)
+          </h4>
+          <p>
+            본 블로그의 재활 운동 및 자가 치료 정보는 일반적인 의학적 참고용으로 제작되었으며, 전문의의 개별 진단이나 진료를 대신할 수 없습니다. 
+            특히 특정 동작 시 날카로운 통증이 있거나 저림이 번지는 증상이 지속된다면 질환의 심화(신경 압박, 연골 파열 등) 단계일 수 있으므로 즉시 운동을 중단하시고 전문 의료기관을 찾아 정밀 검진을 받으시기 바랍니다.
+          </p>
         </div>
 
         {/* 태그 영역 */}

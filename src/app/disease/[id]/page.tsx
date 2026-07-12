@@ -12,6 +12,7 @@ import {
   Activity,
   ChevronRight
 } from "lucide-react";
+import type { Metadata } from "next";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -22,6 +23,23 @@ export async function generateStaticParams() {
   return diseasesData.map((d) => ({
     id: d.id,
   }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  const disease = diseasesData.find((d) => d.id === id);
+  if (!disease) {
+    return {
+      title: "질환 정보 없음 | 재활 안내",
+    };
+  }
+  return {
+    title: `${disease.name} 정보 및 자가진단 | 재활 안내`,
+    description: disease.summary,
+    alternates: {
+      canonical: `/disease/${id}`,
+    },
+  };
 }
 
 export default async function DiseasePage({ params }: PageProps) {
