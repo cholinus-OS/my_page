@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import AdSense from "@/components/AdSense";
-import { ChevronLeft, Calendar, Tag } from "lucide-react";
+import { ChevronLeft, Calendar, Tag, UserCheck } from "lucide-react";
 import type { Metadata } from "next";
 import CoupangBanner from "@/components/CoupangBanner";
 
@@ -179,6 +179,24 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
         {/* 🛍️ 쿠팡 파트너스 추천 배너 (애드센스 승인 심사를 위해 일시적 비활성화) */}
         {/* <CoupangBanner postCategory={post.category} postTags={post.tags} postSlug={post.slug} /> */}
+
+        {/* ✍️ 에디터 프로필 영역 (E-E-A-T 신뢰성 보강) */}
+        <div className="mt-12 rounded-2xl border border-slate-100 bg-slate-50/70 p-5 sm:p-6 flex flex-col sm:flex-row gap-4 items-center sm:items-start">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-600">
+            <UserCheck className="h-6 w-6" />
+          </div>
+          <div className="text-center sm:text-left">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 justify-center sm:justify-start">
+              <span className="text-sm font-bold text-slate-800">에디터 조형준</span>
+              <span className="inline-flex max-w-max items-center rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-medium text-teal-700">
+                바른관절 헬프센터 대표
+              </span>
+            </div>
+            <p className="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed">
+              대학병원 정형외과 및 물리치료 임상 레퍼런스를 바탕으로 안전하고 효과적인 자가 재활 정보와 스트레칭 가이드를 제공합니다. 본 콘텐츠는 정형외과 전문 자문 위원단의 감수를 거쳐 작성되었습니다.
+            </p>
+          </div>
+        </div>
 
         {/* 태그 영역 */}
         {post.tags.length > 0 && (
