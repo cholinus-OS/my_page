@@ -9,7 +9,8 @@ import {
   ArrowLeft, 
   CheckCircle2, 
   ShieldAlert, 
-  Activity
+  Activity,
+  ChevronRight
 } from "lucide-react";
 
 interface PageProps {
@@ -433,6 +434,25 @@ export default async function DiseasePage({ params }: PageProps) {
             ※ 안내된 자가 체크 증상 중 <strong>2개 이상이 3주 이상 만성적으로 지속</strong>될 경우, 해당 관절 부위의 구조적 변형이나 힘줄/인대 손상이 심화되었을 가능성이 있습니다. 단순 근육통이 아니므로 통증 범위와 저림 부위를 확인해 보세요.
           </p>
         </div>
+      </div>
+
+      {/* 3.5 관련 재활 블로그 연동 바로가기 */}
+      <div className="mt-8 rounded-3xl bg-teal-50 border border-teal-100 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex-1">
+          <h3 className="text-base font-bold text-teal-900">
+            '{disease.name}' 통증을 완화하는 하루 한 동작 재활 방법이 있습니다.
+          </h3>
+          <p className="mt-1.5 text-xs sm:text-sm text-teal-700 leading-relaxed">
+            물리치료사와 정형외과 명의들이 추천하는 집에서 돈 안 들이고 따라 할 수 있는 과학적인 스트레칭과 운동법을 알아보세요.
+          </p>
+        </div>
+        <Link
+          href={`/blog?search=${encodeURIComponent(disease.keyword)}`}
+          className="shrink-0 inline-flex items-center gap-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 py-3.5 px-6 text-sm font-bold text-white transition duration-200 shadow-md shadow-teal-600/10 cursor-pointer"
+        >
+          관련 재활 운동법 보러가기
+          <ChevronRight className="h-4 w-4" />
+        </Link>
       </div>
 
       {/* 🛍️ 쿠팡 파트너스 맞춤형 상품 매칭 (애드센스 승인 심사를 위해 일시적 비활성화) */}
