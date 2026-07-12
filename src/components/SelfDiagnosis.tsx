@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { 
   Activity, 
@@ -27,7 +27,8 @@ interface SelfDiagnosisProps {
 }
 
 export default function SelfDiagnosis({ diseases }: SelfDiagnosisProps) {
-  // 1. 상태 정의
+  // 1. 상태 및 Ref 정의
+  const containerRef = useRef<HTMLDivElement>(null);
   const [selectedPart, setSelectedPart] = useState<string | null>(null);
   const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
   const [result, setResult] = useState<Disease | null>(null);
@@ -79,6 +80,11 @@ export default function SelfDiagnosis({ diseases }: SelfDiagnosisProps) {
 
     setResult(bestMatchDisease);
     setIsSubmitted(true);
+
+    // 진단 결과 확인 영역으로 화면을 부드럽게 자동 스크롤
+    setTimeout(() => {
+      containerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
   };
 
   // 7. 초기화 함수
@@ -87,6 +93,11 @@ export default function SelfDiagnosis({ diseases }: SelfDiagnosisProps) {
     setSelectedSymptoms([]);
     setResult(null);
     setIsSubmitted(false);
+
+    // 초기화 시 다시 질문 영역 상단으로 부드럽게 스크롤
+    setTimeout(() => {
+      containerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
   };
 
   return (
@@ -107,7 +118,7 @@ export default function SelfDiagnosis({ diseases }: SelfDiagnosisProps) {
         </div>
 
         {/* 메인 진단 박스 (글래스모피즘 풍 프리미엄 보드) */}
-        <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-xs sm:p-8">
+        <div ref={containerRef} className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-xs sm:p-8">
           {!isSubmitted ? (
             <div>
               {/* STEP 1: 통증 부위 선택 */}
