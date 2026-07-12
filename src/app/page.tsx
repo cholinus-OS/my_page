@@ -1,6 +1,7 @@
 import Link from "next/link";
 import diseasesData from "@/content/diseases/data.json";
 import DiseaseDictionary from "@/components/DiseaseDictionary";
+import SelfDiagnosis from "@/components/SelfDiagnosis";
 import { getSortedPostsData } from "@/lib/posts";
 import { 
   ChevronRight, 
@@ -105,7 +106,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. 자가진단 사전 (클라이언트 컴포넌트 렌더링) */}
+      {/* 2. 1분 스마트 자가진단 테스트 (인터랙티브 컴포넌트) */}
+      <SelfDiagnosis diseases={diseasesData} />
+
+      {/* 3. 자가진단 사전 (클라이언트 컴포넌트 렌더링) */}
       <DiseaseDictionary diseases={diseasesData} />
 
       {/* 3. 최근 AI 재활 블로그 목록 섹션 */}
