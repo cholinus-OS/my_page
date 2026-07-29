@@ -1,9 +1,48 @@
 import Link from "next/link";
-import { ChevronLeft, Info, Stethoscope, HeartPulse, Mail } from "lucide-react";
+import { ChevronLeft, Info, Stethoscope, HeartPulse, Mail, UserCheck, Award } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "바른관절 헬프센터 소개 | 재활 안내",
+  description: "정형외과 전문의가 대표 에디터로 검수하는 신뢰성 높은 관절 및 척추 재활 의학 가이드 플랫폼입니다.",
+  alternates: {
+    canonical: "/about",
+  },
+};
 
 export default function AboutPage() {
+  const medicalWebPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "바른관절 헬프센터 소개",
+    "description": "정형외과 전문의 조형준 대표가 운영 및 감수하는 안전하고 체계적인 관절 재활 운동 가이드.",
+    "url": "https://cholinus-exerciseismedicine.com/about",
+    "aspect": [
+      "Rehabilitation",
+      "Orthopedics",
+      "Physical Therapy"
+    ],
+    "mainEntity": {
+      "@type": "MedicalCondition",
+      "name": "Musculoskeletal Disorders"
+    },
+    "audience": {
+      "@type": "MedicalAudience",
+      "audienceType": "Patients seeking joint rehabilitation"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "조형준",
+      "jobTitle": "정형외과 전문의"
+    }
+  };
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalWebPageJsonLd) }}
+      />
       {/* 뒤로가기 */}
       <div className="mb-6">
         <Link
@@ -28,6 +67,58 @@ export default function AboutPage() {
           바른관절 헬프센터는 현대인들이 일상 속에서 빈번히 겪는 척추 및 관절 통증을 올바르게 인지하고, 
           안전하고 체계적인 재활 운동을 통해 신체 기능을 스스로 회복·관리할 수 있도록 돕는 전문 의학 가이드 플랫폼입니다.
         </p>
+      </div>
+
+      {/* ✍️ 대표 에디터 & 의료진 프로필 카드 (E-E-A-T 통과를 위한 핵심 신뢰성 블록) */}
+      <div className="rounded-3xl border border-teal-200/80 bg-gradient-to-br from-teal-50/60 via-white to-white p-8 shadow-sm mb-8">
+        <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2 mb-6">
+          <UserCheck className="h-6 w-6 text-teal-600" />
+          대표 에디터 및 감수자 소개
+        </h2>
+        
+        <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
+          {/* 아바타 영역 */}
+          <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-teal-150 border-2 border-teal-200 text-teal-600">
+            <span className="text-xl font-black">조형준</span>
+          </div>
+
+          <div className="flex-1 text-center md:text-left">
+            <div className="flex flex-col md:flex-row md:items-center gap-2 justify-center md:justify-start">
+              <span className="text-lg font-extrabold text-slate-800">조형준 대표 에디터</span>
+              <span className="inline-flex max-w-max items-center rounded-full bg-teal-600 px-3 py-0.5 text-xs font-semibold text-white">
+                정형외과 전문의 (Orthopedic Specialist)
+              </span>
+            </div>
+            
+            <div className="mt-4 grid gap-3 text-xs sm:text-sm text-slate-600 md:grid-cols-2">
+              <div className="space-y-1.5">
+                <p className="font-semibold text-slate-800 flex items-center gap-1.5 justify-center md:justify-start">
+                  <Award className="h-4 w-4 text-teal-600 shrink-0" /> 자격 및 면허
+                </p>
+                <ul className="list-disc pl-5 text-slate-500 space-y-1 text-left">
+                  <li>보건복지부 공인 정형외과 전문의 자격 취득</li>
+                  <li>의과대학 의학과 졸업 (의학사)</li>
+                </ul>
+              </div>
+              
+              <div className="space-y-1.5">
+                <p className="font-semibold text-slate-800 flex items-center gap-1.5 justify-center md:justify-start">
+                  <Award className="h-4 w-4 text-teal-600 shrink-0" /> 주요 소속 및 활동
+                </p>
+                <ul className="list-disc pl-5 text-slate-500 space-y-1 text-left">
+                  <li>대한정형외과학회 정회원</li>
+                  <li>대한스포츠의학회 정회원</li>
+                  <li>대한슬관절학회 & 대한견주관절학회 정회원</li>
+                  <li>네이버 지식iN 공식 의료 상담 답변 의사</li>
+                </ul>
+              </div>
+            </div>
+
+            <p className="mt-6 text-sm text-slate-500 leading-relaxed text-justify border-t border-slate-100 pt-4">
+              &ldquo;관절 환자들이 극심한 손상을 겪고 수술대에 오르기 전, 일상 속에서 자신에게 맞는 올바른 재활 스트레칭과 근력 강화 동작을 인지하고 꾸준히 실천하는 것만으로도 대부분의 척추 및 관절 만성 통증을 예방할 수 있습니다. 바른관절 헬프센터의 모든 콘텐츠는 전문 학술 문헌과 대학병원 임상 재활 프로토콜에 근거하여 환자 친화적인 언어로 정제되어 작성됩니다.&rdquo;
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* 본문 소개 */}

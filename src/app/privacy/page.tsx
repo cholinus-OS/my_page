@@ -1,5 +1,14 @@
 import Link from "next/link";
 import { ChevronLeft, ShieldCheck } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "개인정보처리방침 | 재활 안내",
+  description: "바른관절 헬프센터의 개인정보처리방침 규정 안내 페이지입니다.",
+  alternates: {
+    canonical: "/privacy",
+  },
+};
 
 export default function PrivacyPolicyPage() {
   return (

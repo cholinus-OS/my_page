@@ -1,5 +1,14 @@
 import Link from "next/link";
 import { ChevronLeft, FileText } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "이용약관 | 재활 안내",
+  description: "바른관절 헬프센터의 서비스 이용 및 의학적 면책 사항에 대한 이용약관 동의 안내 페이지입니다.",
+  alternates: {
+    canonical: "/terms",
+  },
+};
 
 export default function TermsOfServicePage() {
   return (

@@ -2,6 +2,15 @@ import Link from "next/link";
 import diseasesData from "@/content/diseases/data.json";
 import { getSortedPostsData } from "@/lib/posts";
 import { ChevronRight, ArrowLeft, BookOpen, Activity, HeartPulse, Award } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "무릎 이야기 - 무릎 질환 맞춤형 재활 칼럼 | 재활 안내",
+  description: "퇴행성 무릎 관절염부터 십자인대 파열까지 무릎 부위 상세 질환 정보와 전문 재활 칼럼을 한데 모았습니다.",
+  alternates: {
+    canonical: "/knee-story",
+  },
+};
 
 export default function KneeStoryPage() {
   // 무릎 부위 질환 필터링

@@ -2,6 +2,15 @@ import Link from "next/link";
 import diseasesData from "@/content/diseases/data.json";
 import { getSortedPostsData } from "@/lib/posts";
 import { ChevronRight, ArrowLeft, BookOpen, Activity, HeartPulse, Award } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "어깨 이야기 - 어깨 질환 맞춤형 재활 칼럼 | 재활 안내",
+  description: "오십견, 회전근개 파열 등 만성 어깨 통증 질환의 예방법과 안전한 홈 재활 운동법 컬렉션입니다.",
+  alternates: {
+    canonical: "/shoulder-story",
+  },
+};
 
 export default function ShoulderStoryPage() {
   // 어깨 부위 질환 필터링

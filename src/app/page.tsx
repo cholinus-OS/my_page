@@ -3,6 +3,13 @@ import diseasesData from "@/content/diseases/data.json";
 import DiseaseDictionary from "@/components/DiseaseDictionary";
 import SelfDiagnosis from "@/components/SelfDiagnosis";
 import { getSortedPostsData } from "@/lib/posts";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 import { 
   ChevronRight, 
   Sparkles, 
