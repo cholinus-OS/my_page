@@ -25,6 +25,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
+  // 질환 사전 데이터 로드하여 URL 추가
+  const diseasesFile = path.join(process.cwd(), "src/content/diseases/data.json");
+  let diseaseUrls: MetadataRoute.Sitemap = [];
+  if (fs.existsSync(diseasesFile)) {
+    try {
+      const diseases = JSON.parse(fs.readFileSync(diseasesFile, "utf8"));
+      diseaseUrls = diseases.map((d: any) => {
+        return {
+          url: `${baseUrl}/disease/${d.id}`,
+          lastModified: new Date(),
+          changeFrequency: "monthly",
+          priority: 0.6,
+        };
+      });
+    } catch (e) {
+      console.error("Error reading diseases data for sitemap:", e);
+    }
+  }
+
   return [
     {
       url: baseUrl,
@@ -37,6 +56,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/knee-story`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/shoulder-story`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/privacy`,
@@ -56,6 +87,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.3,
     },
+    ...diseaseUrls,
     ...postUrls,
   ];
 }
