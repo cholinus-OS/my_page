@@ -97,7 +97,9 @@ export default function AboutPage() {
                 </p>
                 <ul className="list-disc pl-5 text-slate-500 space-y-1 text-left">
                   <li>보건복지부 공인 정형외과 전문의 자격 취득</li>
-                  <li>의과대학 의학과 졸업 (의학사)</li>
+                  <li>경희대학교 의과대학 졸업</li>
+                  <li>경희의료원 정형외과학 석사</li>
+                  <li>경희의료원 정형외과학 박사</li>
                 </ul>
               </div>
               
@@ -106,6 +108,9 @@ export default function AboutPage() {
                   <Award className="h-4 w-4 text-teal-600 shrink-0" /> 주요 소속 및 활동
                 </p>
                 <ul className="list-disc pl-5 text-slate-500 space-y-1 text-left">
+                  <li>경희의료원 정형외과 레지던트 수료</li>
+                  <li>경희의료원 정형외과 슬관절외과 전임의</li>
+                  <li>경희대학교 의과대학 외래교수</li>
                   <li>대한정형외과학회 정회원</li>
                   <li>대한스포츠의학회 정회원</li>
                   <li>대한슬관절학회 & 대한견주관절학회 정회원</li>
