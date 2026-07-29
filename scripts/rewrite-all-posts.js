@@ -137,12 +137,21 @@ async function run() {
   // 전체 55개 파일 실행
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
+    
+    // 이미 재작성된 파일인지 간단히 체크 (제목에 ? 가 있는지 여부 등)
+    const content = fs.readFileSync(path.join(postsDir, file), "utf8");
+    const titleMatch = content.match(/^title:\s*(.+)$/m);
+    if (titleMatch && (titleMatch[1].includes("?") || titleMatch[1].includes("!"))) {
+      console.log(`[SKIP] 이미 재작성된 것으로 보입니다: ${file}`);
+      continue;
+    }
+
     await rewritePost(path.join(postsDir, file), file);
     
-    // API Rate Limit 방지를 위한 3초 대기 (마지막 파일 제외)
+    // API Rate Limit 방지를 위한 10초 대기
     if (i < files.length - 1) {
-      console.log("...Rate Limit 방지를 위해 3초 대기 중...");
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      console.log("...Rate Limit 방지를 위해 10초 대기 중...");
+      await new Promise(resolve => setTimeout(resolve, 10000));
     }
   }
   
