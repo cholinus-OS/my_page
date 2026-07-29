@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import AdSense from "@/components/AdSense";
-import { ChevronLeft, Calendar, Tag, UserCheck } from "lucide-react";
+import { ChevronLeft, Calendar, Tag, UserCheck, BookOpen, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 import CoupangBanner from "@/components/CoupangBanner";
 
@@ -86,6 +86,19 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   if (!post) {
     notFound();
   }
+
+  // 관련 포스트 추출 (현재 포스트와 같은 카테고리이거나 태그가 겹치는 포스트)
+  const allPosts = getSortedPostsData();
+  const postCategory = post.category?.replace(/"/g, "") || "";
+  const relatedPosts = allPosts
+    .filter((p) => {
+      if (p.slug === slug) return false;
+      const pCategory = p.category?.replace(/"/g, "");
+      const hasSameCategory = pCategory && pCategory === postCategory;
+      const hasOverlappingTags = p.tags && post.tags && p.tags.some(tag => post.tags.includes(tag));
+      return hasSameCategory || hasOverlappingTags;
+    })
+    .slice(0, 3);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -227,6 +240,41 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           </footer>
         )}
       </article>
+
+      {/* 추천 관련 칼럼 영역 (구조적 고립 탈피 및 내부 링크 순환) */}
+      {relatedPosts.length > 0 && (
+        <div className="mt-12 mb-8">
+          <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2 mb-6 border-b border-slate-200 pb-3">
+            <BookOpen className="h-5 w-5 text-teal-600" />
+            추천 관련 재활 칼럼
+          </h3>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {relatedPosts.map((relatedPost) => (
+              <Link
+                key={relatedPost.slug}
+                href={`/blog/${relatedPost.slug}`}
+                className="group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:border-teal-500/50"
+              >
+                <div>
+                  <div className="flex items-center gap-2 text-[10px] text-slate-400 mb-2">
+                    <span className="font-semibold text-teal-600">
+                      {relatedPost.category?.replace(/"/g, "") || "기타"}
+                    </span>
+                    <span>•</span>
+                    <span>{relatedPost.date}</span>
+                  </div>
+                  <h4 className="text-sm font-bold text-slate-800 line-clamp-2 group-hover:text-teal-700 transition">
+                    {relatedPost.title}
+                  </h4>
+                </div>
+                <div className="mt-4 flex items-center justify-end text-xs font-semibold text-teal-600 opacity-0 group-hover:opacity-100 transition">
+                  읽어보기 <ArrowRight className="ml-1 h-3 w-3" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* 💰 구글 애드센스 하단 광고 */}
       <AdSense slot="9998887770" />

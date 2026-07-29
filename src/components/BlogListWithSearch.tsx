@@ -20,6 +20,13 @@ interface BlogListWithSearchProps {
 
 export default function BlogListWithSearch({ initialPosts }: BlogListWithSearchProps) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("전체");
+
+  // 동적 카테고리 추출 (중복 제거 및 전체 포함)
+  const categories = [
+    "전체", 
+    ...Array.from(new Set(initialPosts.map(post => post.category?.replace(/"/g, "") || "기타"))).filter(c => c !== "전체")
+  ];
 
   // 페이지 마운트 시 주소창의 ?search=... 검색 파라미터를 읽어와 검색 상태에 반영
   useEffect(() => {
@@ -34,15 +41,21 @@ export default function BlogListWithSearch({ initialPosts }: BlogListWithSearchP
 
   // 실시간 필터링 로직
   const filteredPosts = initialPosts.filter((post) => {
+    // 1. 카테고리 매칭 (전체이거나 카테고리가 일치해야 함)
+    const postCategory = post.category?.replace(/"/g, "") || "기타";
+    const matchesCategory = selectedCategory === "전체" || postCategory === selectedCategory;
+    if (!matchesCategory) return false;
+
+    // 2. 검색어 매칭
     const query = searchQuery.toLowerCase().trim();
     if (!query) return true;
 
     const matchTitle = post.title.toLowerCase().includes(query);
     const matchSummary = post.summary.toLowerCase().includes(query);
     const matchTags = post.tags && post.tags.some(tag => tag.toLowerCase().includes(query));
-    const matchCategory = post.category && post.category.toLowerCase().includes(query);
+    const matchSearchCategory = post.category && post.category.toLowerCase().includes(query);
 
-    return matchTitle || matchSummary || matchTags || matchCategory;
+    return matchTitle || matchSummary || matchTags || matchSearchCategory;
   });
 
   return (
@@ -69,8 +82,25 @@ export default function BlogListWithSearch({ initialPosts }: BlogListWithSearchP
         )}
       </div>
 
+      {/* 🏷️ 카테고리 필터 칩 */}
+      <div className="flex flex-wrap gap-2 pt-2">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all ${
+              selectedCategory === category
+                ? "bg-teal-600 text-white shadow-md shadow-teal-600/20"
+                : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300"
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
       {/* 실시간 필터링 결과 수 안내 */}
-      {searchQuery && (
+      {(searchQuery || selectedCategory !== "전체") && (
         <p className="text-xs text-slate-500 pl-1">
           총 <strong className="text-teal-600 font-semibold">{filteredPosts.length}개</strong>의 글이 검색되었습니다.
         </p>
