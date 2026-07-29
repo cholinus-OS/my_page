@@ -22,60 +22,7 @@ export default function Chatbot() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // 실시간 상담원 연결 시 2초 주기 폴링
-  useEffect(() => {
-    if (!isHumanMode || !isOpen) return;
-
-    let isSubscribed = true;
-    const interval = setInterval(async () => {
-      try {
-        const res = await fetch("/api/chat-poll");
-        if (!res.ok) return;
-        const data = await res.json();
-
-        if (!isSubscribed) return;
-
-        // 배열 데이터 파싱 지원 (배열 혹은 { messages: [] })
-        const arrayData = Array.isArray(data)
-          ? data
-          : data && Array.isArray(data.messages)
-          ? data.messages
-          : [];
-
-        if (arrayData.length > 0) {
-          const adminMsgs = arrayData.filter((m: any) => m.sender === "admin");
-
-          setMessages((prev) => {
-            const existingAdminTexts = prev
-              .filter((m) => m.sender === "admin")
-              .map((m) => m.text);
-
-            const newAdminMsgs = adminMsgs.filter(
-              (m: any) => m.text && !existingAdminTexts.includes(m.text)
-            );
-
-            if (newAdminMsgs.length > 0) {
-              return [
-                ...prev,
-                ...newAdminMsgs.map((m: any) => ({
-                  sender: "admin" as const,
-                  text: m.text,
-                })),
-              ];
-            }
-            return prev;
-          });
-        }
-      } catch (err) {
-        console.error("상담원 메시지 폴링 실패:", err);
-      }
-    }, 2000);
-
-    return () => {
-      isSubscribed = false;
-      clearInterval(interval);
-    };
-  }, [isHumanMode, isOpen]);
+  // 실시간 상담원 연결 폴링 제거 (정적 배포 404 에러 방지)
 
   const handleQuestionClick = (question: string, answer: string) => {
     setMessages((prev) => [...prev, { sender: "user", text: question }]);
@@ -85,7 +32,7 @@ export default function Chatbot() {
     }, 400);
   };
 
-  const handleSendMessage = async () => {
+  const handleSendMessage = () => {
     const trimmed = inputValue.trim();
     if (!trimmed || isLoading) return;
 
@@ -94,66 +41,52 @@ export default function Chatbot() {
     setIsLoading(true);
 
     if (isHumanMode) {
-      // 상담원 연결 모드
-      try {
-        const res = await fetch("/api/chat-human", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: trimmed }),
-        });
-
-        if (!res.ok) throw new Error("서버 전송 오류");
-      } catch {
+      // 상담원 연결 모드 시뮬레이션
+      setTimeout(() => {
         setMessages((prev) => [
           ...prev,
-          { sender: "bot", text: "상담원에게 메시지를 보내지 못했습니다. 다시 시도해 주세요." },
+          { sender: "bot", text: "현재 상담원이 부재중입니다. 문의사항을 cholinus@naver.com 이메일로 남겨주시면 영업일 기준 24시간 내에 신속히 회신해 드리겠습니다." }
         ]);
-      } finally {
         setIsLoading(false);
-      }
+      }, 1000);
     } else {
-      // AI 모드
-      try {
-        const res = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: trimmed }),
-        });
-
-        if (!res.ok) throw new Error("서버 응답 오류");
-
-        const data = await res.json();
+      // AI 모드 시뮬레이션 (클라이언트 키워드 분석 매칭)
+      setTimeout(() => {
+        const query = trimmed.toLowerCase();
+        let answer = "안녕하세요! 저는 바른관절 헬프센터의 안내 봇입니다. 현재 질문하신 단어에 매칭되는 정보를 찾지 못했습니다. 아래의 자주 묻는 질문 버튼을 누르시거나, 메인 화면의 '1분 스마트 자가진단 테스트'를 통해 관절 통증의 의심 질환을 확인해 보세요!";
+        
+        if (query.includes("블로그") || query.includes("소개") || query.includes("누구")) {
+          answer = "바른관절 헬프센터는 정형외과 질환 및 과학적인 물리치료 재활 운동법을 기획하여 매일 제공해 드리는 정보 공유 플랫폼입니다.";
+        } else if (query.includes("업데이트") || query.includes("주기") || query.includes("언제")) {
+          answer = "새로운 건강 정보 및 재활 운동 팁이 주기적으로 홈페이지에 자동으로 반영되어 업데이트됩니다.";
+        } else if (query.includes("정보") || query.includes("제공") || query.includes("무슨")) {
+          answer = "30가지 주요 관절 질환 정밀 사전 및 단계별 예방 홈트레이닝 재활 스트레칭 가이드를 제공합니다.";
+        } else if (query.includes("광고") || query.includes("문의") || query.includes("이메일") || query.includes("연락")) {
+          answer = "모든 제휴 및 문의 사항은 공식 이메일 cholinus@naver.com으로 보내주시면 신속하게 답변해 드립니다.";
+        }
+        
         setMessages((prev) => [
           ...prev,
-          { sender: "bot", text: data.answer || "답변을 가져오지 못했습니다." },
+          { sender: "bot", text: answer }
         ]);
-      } catch {
-        setMessages((prev) => [
-          ...prev,
-          { sender: "bot", text: "죄송합니다. 답변을 가져오는 중 오류가 발생했습니다." },
-        ]);
-      } finally {
         setIsLoading(false);
-      }
+      }, 800);
     }
   };
 
-  const connectToHuman = async () => {
+  const connectToHuman = () => {
     setIsHumanMode(true);
     setMessages((prev) => [
       ...prev,
-      { sender: "bot", text: "상담원을 연결하고 있습니다. 잠시만 대기해 주세요..." }
+      { sender: "bot", text: "실시간 상담원을 연결하고 있습니다. 잠시만 대기해 주세요..." }
     ]);
 
-    try {
-      await fetch("/api/chat-human", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: "👋 [시스템] 사용자가 직접 상담원 연결을 요청했습니다.", sender: "system" }),
-      });
-    } catch (err) {
-      console.error("시스템 메시지 전송 오류:", err);
-    }
+    setTimeout(() => {
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: "안녕하세요! 실시간 상담원 연결이 시도되었습니다. 현재 상담원 업무가 종료되었거나 부재 중이므로, 상세 내용이나 피드백은 cholinus@naver.com 이메일로 보내주시면 감사하겠습니다." }
+      ]);
+    }, 1500);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
