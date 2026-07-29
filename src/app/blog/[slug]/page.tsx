@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import AdSense from "@/components/AdSense";
-import { ChevronLeft, Calendar, Tag, UserCheck, BookOpen, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Calendar, Tag, UserCheck, BookOpen, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 import CoupangBanner from "@/components/CoupangBanner";
 
@@ -122,16 +122,30 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* 뒤로가기 버튼 */}
-      <div className="mb-6">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-1 text-sm font-medium text-slate-500 hover:text-teal-600 transition"
-        >
-          <ChevronLeft className="h-4 w-4" />
-          목록으로 돌아가기
-        </Link>
-      </div>
+      {/* 🧭 시각적 브레드크럼(Breadcrumb) 내비게이션 (구조적 SEO 강화) */}
+      <nav aria-label="Breadcrumb" className="mb-6">
+        <ol className="flex items-center space-x-2 text-xs sm:text-sm font-medium text-slate-500">
+          <li>
+            <Link href="/" className="hover:text-teal-600 transition">홈</Link>
+          </li>
+          <li>
+            <ChevronRight className="h-4 w-4 text-slate-400" />
+          </li>
+          <li>
+            <Link href="/blog" className="hover:text-teal-600 transition">재활 블로그</Link>
+          </li>
+          {post.category && (
+            <>
+              <li>
+                <ChevronRight className="h-4 w-4 text-slate-400" />
+              </li>
+              <li>
+                <span className="text-slate-700 font-semibold">{post.category.replace(/"/g, "")}</span>
+              </li>
+            </>
+          )}
+        </ol>
+      </nav>
 
       {/* 💰 구글 애드센스 상단 광고 */}
       <AdSense slot="5556667770" />

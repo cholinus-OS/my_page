@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Chatbot from "@/components/Chatbot";
+import CookieBanner from "@/components/CookieBanner";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -141,6 +142,7 @@ export default function RootLayout({
         </footer>
 
         <Chatbot />
+        <CookieBanner />
       </body>
     </html>
   );

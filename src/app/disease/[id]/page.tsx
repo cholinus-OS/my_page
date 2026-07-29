@@ -54,14 +54,26 @@ export default async function DiseasePage({ params }: PageProps) {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-      {/* 1. 상단 목록가기 링크 */}
-      <Link 
-        href="/" 
-        className="inline-flex items-center gap-1 text-sm font-semibold text-slate-500 hover:text-slate-800 transition mb-6"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        통증 사전 홈으로 돌아가기
-      </Link>
+      {/* 🧭 시각적 브레드크럼(Breadcrumb) 내비게이션 (구조적 SEO 강화) */}
+      <nav aria-label="Breadcrumb" className="mb-6">
+        <ol className="flex items-center space-x-2 text-xs sm:text-sm font-medium text-slate-500">
+          <li>
+            <Link href="/" className="hover:text-teal-600 transition">홈</Link>
+          </li>
+          <li>
+            <ChevronRight className="h-4 w-4 text-slate-400" />
+          </li>
+          <li>
+            <Link href="/" className="hover:text-teal-600 transition">통증 사전</Link>
+          </li>
+          <li>
+            <ChevronRight className="h-4 w-4 text-slate-400" />
+          </li>
+          <li>
+            <span className="text-slate-700 font-semibold">{disease.name}</span>
+          </li>
+        </ol>
+      </nav>
 
       {/* 2. 질환 기본 정보 헤더 */}
       <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm">
@@ -76,6 +88,12 @@ export default async function DiseasePage({ params }: PageProps) {
         <h1 className="mt-4 text-2xl font-black text-slate-900 sm:text-3xl">
           {disease.name}
         </h1>
+        
+        {/* YMYL 최신성(Freshness) 뱃지 */}
+        <div className="mt-4 flex items-center gap-2 text-xs font-medium text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-100 max-w-fit">
+          <CheckCircle2 className="h-4 w-4 text-teal-600" />
+          <span>최종 의학적 감수: 2026. 07. (정형외과 전문의 조형준)</span>
+        </div>
 
         {disease.id === "sarcopenia" && (
           <div className="mt-6 w-full">
