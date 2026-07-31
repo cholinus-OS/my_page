@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
   const { slug } = await params;
   if (slug === "placeholder") {
     return {
-      title: "블로그 준비 중 | 재활 안내",
-      description: "새로운 재활 소식이 곧 등록될 예정입니다."
+      title: "문서를 찾을 수 없습니다 | 재활 안내",
+      description: "요청하신 페이지를 찾을 수 없습니다.",
     };
   }
   
@@ -74,8 +74,8 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           </Link>
         </div>
         <div className="text-center py-20 rounded-3xl border border-dashed border-slate-300 bg-white">
-          <p className="text-slate-500 font-medium">블로그 글이 아직 발행되지 않았습니다.</p>
-          <p className="text-xs text-slate-400 mt-2">새로운 건강 상식을 열심히 준비 중이니 조금만 기다려주세요!</p>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">문서를 찾을 수 없습니다</h1>
+          <p className="text-xs text-slate-400 mt-2">요청하신 건강 상식 포스트가 존재하지 않거나 이동되었습니다.</p>
         </div>
       </div>
     );

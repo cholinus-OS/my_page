@@ -99,11 +99,11 @@ export default function KneeStoryPage() {
         ) : (
           <div className="rounded-2xl border border-dashed border-teal-200 bg-teal-50/20 p-6 text-center">
             <p className="text-sm font-semibold text-teal-850">
-              ✍️ 센터장 전문 브리핑 준비 중
+              ✍️ 추가 센터장 전문 브리핑 발행 대기
             </p>
             <p className="mt-1 text-xs text-slate-500 leading-relaxed">
-              센터장이 직접 작성하고 해설하는 무릎 관절 임상 정보 및 재활 칼럼이 준비 중에 있습니다.<br />
-              직접 작성하신 브리핑 글(카테고리: 브리핑)이 이곳에 실시간으로 업데이트될 예정입니다.
+              센터장이 직접 작성하고 해설하는 무릎 관절 임상 정보 및 재활 칼럼이 등록될 공간입니다.<br />
+              보다 깊이 있는 의료 정보가 정기적으로 업데이트됩니다.
             </p>
           </div>
         )}
