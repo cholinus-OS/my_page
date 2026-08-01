@@ -11,6 +11,7 @@ import {
   AlertTriangle,
   Stethoscope
 } from "lucide-react";
+import ShareButtons from "./ShareButtons";
 
 interface Disease {
   id: string;
@@ -256,6 +257,15 @@ export default function SelfDiagnosis({ diseases }: SelfDiagnosisProps) {
                   <RefreshCw className="h-3.5 w-3.5" />
                   처음부터 다시하기
                 </button>
+              </div>
+
+              <div className="mt-8 flex flex-col items-center border-t border-slate-200/60 pt-6">
+                <p className="text-xs font-semibold text-slate-500 mb-3">이 진단 테스트가 도움이 되셨나요? 지인에게 공유해보세요!</p>
+                <ShareButtons 
+                  title="관절 자가진단 테스트 - 바른관절 헬프센터" 
+                  text="내 관절 통증의 원인은 무엇일까? 1분 자가진단으로 확인해보세요!" 
+                  url="https://cholinus-exerciseismedicine.com/#self-diagnosis"
+                />
               </div>
             </div>
           )}

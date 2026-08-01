@@ -7,6 +7,7 @@ import AdSense from "@/components/AdSense";
 import { ChevronLeft, ChevronRight, Calendar, Tag, UserCheck, BookOpen, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 import CoupangBanner from "@/components/CoupangBanner";
+import ShareButtons from "@/components/ShareButtons";
 
 interface BlogDetailPageProps {
   params: Promise<{
@@ -253,6 +254,14 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             ))}
           </footer>
         )}
+
+        {/* 바이럴 공유 버튼 */}
+        <div className="mt-8 flex justify-center border-t border-slate-100 pt-8">
+          <ShareButtons 
+            title={`${post.title} - 바른관절 헬프센터`} 
+            text={post.summary} 
+          />
+        </div>
       </article>
 
       {/* 추천 관련 칼럼 영역 (구조적 고립 탈피 및 내부 링크 순환) */}
