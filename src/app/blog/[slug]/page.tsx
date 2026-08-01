@@ -275,7 +275,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             {relatedPosts.map((relatedPost) => (
               <Link
                 key={relatedPost.slug}
-                href={`/blog/${relatedPost.slug}`}
+                href={`/blog/${relatedPost.slug}/`}
                 className="group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:border-teal-500/50"
               >
                 <div>

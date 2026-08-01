@@ -72,7 +72,7 @@ export default function DiseaseDictionary({ diseases }: DiseaseDictionaryProps) 
       </div>
       <div className="mt-5 pt-4 border-t border-slate-100">
         <Link
-          href={`/disease/${disease.id}`}
+          href={`/disease/${disease.id}/`}
           className="inline-flex w-full items-center justify-center gap-1 rounded-xl bg-slate-950 py-2.5 text-xs font-semibold text-white transition hover:bg-teal-700"
         >
           원인 및 자가 체크 알아보기

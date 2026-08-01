@@ -223,7 +223,7 @@ export default function SelfDiagnosis({ diseases }: SelfDiagnosisProps) {
                   </p>
                   <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-2">
                     <Link
-                      href={`/disease/${result.id}`}
+                      href={`/disease/${result.id}/`}
                       className="flex-1 inline-flex items-center justify-center gap-1 rounded-xl bg-teal-600 hover:bg-teal-700 py-2.5 text-xs font-bold text-white transition duration-200"
                     >
                       질환 사전에서 확인하기

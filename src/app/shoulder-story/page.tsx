@@ -77,7 +77,7 @@ export default function ShoulderStoryPage() {
                     <span className="text-[11px] text-slate-400">{post.date.replace(/-/g, ".")}</span>
                   </div>
                   <h3 className="mt-3 text-base font-bold text-slate-900 group-hover:text-orange-600 transition">
-                    <Link href={`/blog/${post.slug}`} className="hover:underline">
+                    <Link href={`/blog/${post.slug}/`} className="hover:underline">
                       {post.title}
                     </Link>
                   </h3>
@@ -87,7 +87,7 @@ export default function ShoulderStoryPage() {
                 </div>
                 <div className="mt-4 pt-3 border-t border-slate-100 flex justify-end">
                   <Link
-                    href={`/blog/${post.slug}`}
+                    href={`/blog/${post.slug}/`}
                     className="inline-flex items-center gap-0.5 text-xs font-semibold text-orange-600 hover:underline"
                   >
                     브리핑 읽기 <ChevronRight className="h-3 w-3" />
@@ -129,7 +129,7 @@ export default function ShoulderStoryPage() {
               </div>
               <div className="mt-4 pt-4 border-t border-slate-100 flex justify-end">
                 <Link 
-                  href={`/disease/${disease.id}`}
+                  href={`/disease/${disease.id}/`}
                   className="inline-flex items-center gap-1 text-xs font-semibold text-orange-600 hover:underline"
                 >
                   상세 증상 및 진단 가이드 <ChevronRight className="h-3 w-3" />
@@ -157,7 +157,7 @@ export default function ShoulderStoryPage() {
                   <div>
                     <span className="text-xs text-slate-400">{post.date.replace(/-/g, ".")}</span>
                     <h3 className="mt-2 text-base font-bold text-slate-900 group-hover:text-orange-600 transition">
-                      <Link href={`/blog/${post.slug}`} className="focus:outline-none">
+                      <Link href={`/blog/${post.slug}/`} className="focus:outline-none">
                         <span className="absolute inset-0 z-0" aria-hidden="true" />
                         {post.title}
                       </Link>

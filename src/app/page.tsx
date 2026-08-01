@@ -155,8 +155,8 @@ export default function Home() {
                         <span>•</span>
                         <span className="text-teal-600 font-medium">{blog.category}</span>
                       </div>
-                      <h3 className="mt-3 text-lg font-bold text-slate-900 group-hover:text-teal-600 transition">
-                        <Link href={`/blog/${blog.slug}`} className="focus:outline-none">
+                      <h3 className="mt-2 text-base font-bold text-slate-900 group-hover:text-teal-600 transition">
+                        <Link href={`/blog/${blog.slug}/`} className="focus:outline-none">
                           <span className="absolute inset-0 z-0" aria-hidden="true" />
                           {blog.title}
                         </Link>
@@ -166,9 +166,9 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="mt-4 pt-4 border-t border-slate-100 flex justify-end relative z-10">
-                      <Link
-                        href={`/blog/${blog.slug}`}
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-teal-600 hover:underline"
+                      <Link 
+                        href={`/blog/${blog.slug}/`}
+                        className="inline-flex items-center gap-0.5 text-xs font-semibold text-teal-600"
                       >
                         자세히 읽기 <ChevronRight className="h-3 w-3" />
                       </Link>

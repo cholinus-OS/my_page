@@ -130,7 +130,7 @@ export default function BlogListWithSearch({ initialPosts }: BlogListWithSearchP
                   </div>
                   
                   <h2 className="mt-4 text-xl font-bold text-slate-900 group-hover:text-teal-600 transition">
-                    <Link href={`/blog/${post.slug}`} className="focus:outline-none">
+                    <Link href={`/blog/${post.slug}/`} className="focus:outline-none">
                       <span className="absolute inset-0 z-0" aria-hidden="true" />
                       {post.title}
                     </Link>
