@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   if (fs.existsSync(diseasesFile)) {
     try {
       const diseases = JSON.parse(fs.readFileSync(diseasesFile, "utf8"));
-      diseaseUrls = diseases.map((d: any) => {
+      diseaseUrls = diseases.map((d: { id: string }) => {
         return {
           url: `${baseUrl}/disease/${d.id}`,
           lastModified: new Date(),

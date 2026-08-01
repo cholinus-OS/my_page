@@ -21,7 +21,7 @@ export default function AdSense({
     // 실제 광고 로드 트리거
     if (typeof window !== "undefined" && adsenseId) {
       try {
-        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+        ((window as unknown as { adsbygoogle: unknown[] }).adsbygoogle = (window as unknown as { adsbygoogle: unknown[] }).adsbygoogle || []).push({});
       } catch (err) {
         console.error("AdSense Error: ", err);
       }

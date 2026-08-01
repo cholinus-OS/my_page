@@ -6,7 +6,6 @@ import Link from "next/link";
 import AdSense from "@/components/AdSense";
 import { ChevronLeft, ChevronRight, Calendar, Tag, UserCheck, BookOpen, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
-import CoupangBanner from "@/components/CoupangBanner";
 import ShareButtons from "@/components/ShareButtons";
 
 interface BlogDetailPageProps {
@@ -174,7 +173,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
-              a: ({ href, children }: any) => {
+              a: ({ href, children }: { href?: string, children?: React.ReactNode }) => {
                 if (href && (href.includes("youtube.com") || href.includes("youtu.be"))) {
                   let videoId = "";
                   if (href.includes("youtu.be/")) {

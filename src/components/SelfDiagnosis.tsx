@@ -209,7 +209,7 @@ export default function SelfDiagnosis({ diseases }: SelfDiagnosisProps) {
               </div>
               <span className="text-xs font-semibold text-teal-600 tracking-wider uppercase">Diagnosis Result</span>
               <h3 className="mt-2 text-xl sm:text-2xl font-black text-slate-900">
-                가장 의심되는 질환은 <span className="text-teal-600">'{result?.name}'</span>입니다.
+                가장 의심되는 질환은 <span className="text-teal-600">&apos;{result?.name}&apos;</span>입니다.
               </h3>
               
               {result && (

@@ -35,7 +35,7 @@ export default function PrivacyPolicyPage() {
         </h1>
         <p className="mt-4 text-slate-500 text-sm leading-relaxed">
           시행일자: 2026년 6월 22일 <br />
-          바른관절 헬프센터(이하 '본 사이트')는 이용자의 개인정보를 보호하고 관련 법령을 준수하기 위해 다음과 같은 개인정보처리방침을 수립·공개합니다.
+          바른관절 헬프센터(이하 &apos;본 사이트&apos;)는 이용자의 개인정보를 보호하고 관련 법령을 준수하기 위해 다음과 같은 개인정보처리방침을 수립·공개합니다.
         </p>
       </div>
 

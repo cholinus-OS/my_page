@@ -33,7 +33,7 @@ export default function AdminPage() {
           : [];
 
         if (arrayData.length > 0) {
-          const formatted = arrayData.map((m: any) => ({
+          const formatted = arrayData.map((m: { sender: string; text: string }) => ({
             sender: m.sender,
             text: m.text,
           }));

@@ -70,9 +70,9 @@ export default function PexelsGallery() {
       if (data.photos && data.photos.length === 0) {
         setError('검색 결과가 존재하지 않습니다. 다른 단어로 검색해 보세요!');
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
-      setError(err.message || '인터넷 연결이 불안정하거나 서버 오류가 발생했습니다.');
+      setError(err instanceof Error ? err.message : '인터넷 연결이 불안정하거나 서버 오류가 발생했습니다.');
     } finally {
       setLoading(false);
     }
@@ -139,11 +139,13 @@ export default function PexelsGallery() {
           >
             {/* 이미지 컨테이너 */}
             <div className="aspect-[4/3] w-full overflow-hidden bg-slate-900 relative">
-              <img
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
                 src={photo.src.medium}
                 alt={photo.alt}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
+                    decoding="async"
               />
               {/* 이미지 원본 새창 링크 아이콘 */}
               <a 

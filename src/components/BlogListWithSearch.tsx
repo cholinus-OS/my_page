@@ -34,6 +34,7 @@ export default function BlogListWithSearch({ initialPosts }: BlogListWithSearchP
       const params = new URLSearchParams(window.location.search);
       const queryParam = params.get("search") || "";
       if (queryParam) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setSearchQuery(queryParam);
       }
     }
@@ -164,11 +165,13 @@ export default function BlogListWithSearch({ initialPosts }: BlogListWithSearchP
               {/* 오른쪽 썸네일 이미지 영역 (모바일은 상단, PC는 우측 정렬) */}
               {post.thumbnail && (
                 <div className="w-full sm:w-48 sm:h-32 aspect-[16/9] sm:aspect-auto rounded-2xl overflow-hidden bg-slate-50 flex-shrink-0 relative z-10 border border-slate-100/60 shadow-2xs">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={post.thumbnail}
                     alt={`${post.title} 썸네일`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               )}

@@ -1,13 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import diseasesData from "@/content/diseases/data.json";
-import CoupangLink from "@/components/CoupangLink";
 import AdSense from "@/components/AdSense";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { 
-  ArrowLeft, 
-  CheckCircle2, 
+import { CheckCircle2, 
   ShieldAlert, 
   Activity,
   ChevronRight
@@ -476,7 +473,7 @@ export default async function DiseasePage({ params }: PageProps) {
       <div className="mt-8 rounded-3xl bg-teal-50 border border-teal-100 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex-1">
           <h3 className="text-base font-bold text-teal-900">
-            '{disease.name}' 통증을 완화하는 하루 한 동작 재활 방법이 있습니다.
+            &apos;{disease.name}&apos; 통증을 완화하는 하루 한 동작 재활 방법이 있습니다.
           </h3>
           <p className="mt-1.5 text-xs sm:text-sm text-teal-700 leading-relaxed">
             물리치료사와 정형외과 명의들이 추천하는 집에서 돈 안 들이고 따라 할 수 있는 과학적인 스트레칭과 운동법을 알아보세요.

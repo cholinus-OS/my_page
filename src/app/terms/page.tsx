@@ -35,7 +35,7 @@ export default function TermsOfServicePage() {
         </h1>
         <p className="mt-4 text-slate-500 text-sm leading-relaxed">
           시행일자: 2026년 6월 22일 <br />
-          바른관절 헬프센터(이하 '본 사이트')를 이용해 주셔서 감사합니다. 본 약관은 본 사이트가 제공하는 모든 정보 및 서비스의 이용 조건과 규칙을 규정합니다.
+          바른관절 헬프센터(이하 &apos;본 사이트&apos;)를 이용해 주셔서 감사합니다. 본 약관은 본 사이트가 제공하는 모든 정보 및 서비스의 이용 조건과 규칙을 규정합니다.
         </p>
       </div>
 
@@ -43,7 +43,7 @@ export default function TermsOfServicePage() {
       <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10 prose max-w-none text-slate-700 text-sm sm:text-base leading-relaxed">
         <h2 className="text-xl font-bold text-slate-900 mt-6 mb-4">제 1 조 (목적)</h2>
         <p>
-          본 약관은 '바른관절 헬프센터'가 온라인으로 제공하는 건강, 척추, 관절 및 홈트레이닝 재활 정보 서비스(이하 '서비스')를 이용함에 있어, 본 사이트와 이용자 간의 기본적인 권리, 의무 및 책임 사항을 규정하는 것을 목적으로 합니다.
+          본 약관은 &apos;바른관절 헬프센터&apos;가 온라인으로 제공하는 건강, 척추, 관절 및 홈트레이닝 재활 정보 서비스(이하 &apos;서비스&apos;)를 이용함에 있어, 본 사이트와 이용자 간의 기본적인 권리, 의무 및 책임 사항을 규정하는 것을 목적으로 합니다.
         </p>
 
         <h2 className="text-xl font-bold text-slate-900 mt-8 mb-4">제 2 조 (용어의 정의)</h2>

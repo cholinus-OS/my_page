@@ -16,7 +16,7 @@ export interface PostData {
 }
 
 // 날짜 포맷 YYYY-MM-DD 변환 함수
-function formatDate(dateVal: any): string {
+function formatDate(dateVal: unknown): string {
   if (dateVal instanceof Date) {
     const yyyy = dateVal.getFullYear();
     const mm = String(dateVal.getMonth() + 1).padStart(2, "0");

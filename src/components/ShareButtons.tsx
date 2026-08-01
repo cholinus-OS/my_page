@@ -15,6 +15,7 @@ export default function ShareButtons({ title, text, url }: ShareButtonsProps) {
 
   useEffect(() => {
     if (typeof navigator !== "undefined" && "share" in navigator) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCanShare(true);
     }
   }, []);
