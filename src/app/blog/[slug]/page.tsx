@@ -67,7 +67,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
         <div className="mb-6">
           <Link
-            href="/blog"
+            href="/blog/"
             className="inline-flex items-center gap-1 text-sm font-medium text-slate-500 hover:text-teal-600 transition"
           >
             <ChevronLeft className="h-4 w-4" />
@@ -133,7 +133,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             <ChevronRight className="h-4 w-4 text-slate-400" />
           </li>
           <li>
-            <Link href="/blog" className="hover:text-teal-600 transition">재활 블로그</Link>
+            <Link href="/blog/" className="hover:text-teal-600 transition">재활 블로그</Link>
           </li>
           {post.category && (
             <>

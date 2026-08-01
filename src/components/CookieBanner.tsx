@@ -44,7 +44,7 @@ export default function CookieBanner() {
             <p className="mt-1 text-xs leading-relaxed text-slate-500">
               본 웹사이트는 사용자 경험을 향상시키고 트래픽을 분석하며 개인화된 콘텐츠 및 광고를 제공하기 위해 쿠키를 사용합니다. 
               사이트를 계속 이용하시면 쿠키 사용에 동의하시는 것으로 간주됩니다. 자세한 내용은{" "}
-              <Link href="/privacy" className="text-teal-600 underline hover:text-teal-800">
+              <Link href="/privacy/" className="text-teal-600 underline hover:text-teal-800">
                 개인정보처리방침
               </Link>
               을 확인해 주세요.

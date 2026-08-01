@@ -23,7 +23,7 @@ export default function Header() {
             질환 사전
           </Link>
           <Link 
-            href="/blog" 
+            href="/blog/" 
             className="text-xs sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
           >
             재활 블로그
@@ -35,14 +35,14 @@ export default function Header() {
             니숄더이야기
           </Link>
           <Link 
-            href="/about" 
+            href="/about/" 
             className="text-xs sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
           >
             소개
           </Link>
           {/* 애드센스 심사를 위해 임시 비활성화
           <Link 
-            href="/break" 
+            href="/break/" 
             className="text-xs sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
           >
             쉬어가기

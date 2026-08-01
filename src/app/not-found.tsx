@@ -37,7 +37,7 @@ export default function NotFound() {
             홈으로 가기
           </Link>
           <Link
-            href="/blog"
+            href="/blog/"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-white border border-slate-300 px-6 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50"
           >
             <BookOpen className="h-4 w-4 text-teal-600" />

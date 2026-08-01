@@ -132,7 +132,7 @@ export default function Home() {
               </p>
             </div>
             <Link
-              href="/blog"
+              href="/blog/"
               className="inline-flex items-center gap-1 text-sm font-semibold text-teal-600 hover:text-teal-700"
             >
               전체 보기
@@ -203,7 +203,7 @@ export default function Home() {
             
             {/* 무릎 이야기 버튼 */}
             <Link 
-              href="/knee-story" 
+              href="/knee-story/" 
               className="absolute left-[6.5%] top-[13%] w-[32%] h-[75%] rounded-full cursor-pointer transition-all duration-300 border border-dashed border-teal-400/40 bg-teal-500/5 hover:scale-[1.03] hover:border-solid hover:border-teal-400 hover:bg-teal-500/20 hover:shadow-[0_0_30px_10px_rgba(20,184,166,0.6)] focus:outline-none flex items-center justify-center group"
               aria-label="무릎 이야기 페이지로 이동"
             >
@@ -217,7 +217,7 @@ export default function Home() {
 
             {/* 어깨 이야기 버튼 */}
             <Link 
-              href="/shoulder-story" 
+              href="/shoulder-story/" 
               className="absolute right-[6.5%] top-[13%] w-[32%] h-[75%] rounded-full cursor-pointer transition-all duration-300 border border-dashed border-orange-400/40 bg-orange-500/5 hover:scale-[1.03] hover:border-solid hover:border-orange-400 hover:bg-orange-500/20 hover:shadow-[0_0_30px_10px_rgba(249,115,22,0.6)] focus:outline-none flex items-center justify-center group"
               aria-label="어깨 이야기 페이지로 이동"
             >

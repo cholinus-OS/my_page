@@ -123,15 +123,15 @@ export default function RootLayout({
               통증이나 이상 증상이 있을 경우, 반드시 가까운 정형외과나 신경외과 등 전문 의료기관을 방문하시기 바랍니다.
             </p>
             <div className="mt-4 flex items-center justify-center gap-5 text-xs font-semibold text-slate-400">
-              <Link href="/about" className="hover:text-teal-600 transition hover:underline">
+              <Link href="/about/" className="hover:text-teal-600 transition hover:underline">
                 소개 및 문의
               </Link>
               <span className="text-slate-300">|</span>
-              <Link href="/privacy" className="hover:text-teal-600 transition hover:underline">
+              <Link href="/privacy/" className="hover:text-teal-600 transition hover:underline">
                 개인정보처리방침
               </Link>
               <span className="text-slate-300">|</span>
-              <Link href="/terms" className="hover:text-teal-600 transition hover:underline">
+              <Link href="/terms/" className="hover:text-teal-600 transition hover:underline">
                 이용약관
               </Link>
             </div>
