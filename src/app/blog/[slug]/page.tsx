@@ -200,6 +200,18 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                   }
                 }
                 return <a href={href} className="text-teal-600 hover:underline">{children}</a>;
+              },
+              img: ({ node, ...props }) => {
+                return (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    {...props}
+                    referrerPolicy="no-referrer"
+                    className="rounded-xl mx-auto block max-w-full h-auto"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                );
               }
             }}
           >
