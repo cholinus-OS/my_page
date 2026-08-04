@@ -43,7 +43,7 @@ tags: ["어깨재활", "견갑골거상", "보상기전", "센터장브리핑", 
 - **견갑골 거상 (Scapular Hiking)**: 팔을 측면이나 앞으로 들어 올릴 때, 삼각근(Deltoid)과 회전근개(Rotator Cuff)가 제 역할을 하지 못하여 상부 승모근(Upper Trapezius)과 견갑거근(Levator Scapulae)이 과도하게 개입, 날개뼈 전체를 위로 솟구치게 만드는 현상입니다.
 - **정상 견갑상완 리듬 (Scapulohumeral Rhythm)**: 정상적으로 팔을 올릴 때 어깨관절(GH Joint)과 날개뼈(Scapula)는 약 2:1의 비율로 협응하여 움직여야 합니다. 견갑골 거상은 이 황금 비율을 완전히 파괴합니다.
 
-![이미지](https://postfiles.pstatic.net/MjAyNjA4MDJfMTIg/MDAxNzg1NjU0MzM4NTk2.EmdMrGbNygS7tSZ72FAtQgYQLbJjEIvpgpkNni0Rts0g.splLM7A46FZyTNF3Z4m8xdXm6uEfTaMqOD_BY6mJbu8g.JPEG/IMG%EF%BC%BF0038.jpg?type=w80_blur)
+
 
 ### 2.2 견갑골 거상을 반드시 차단해야 하는 3가지 이유
 

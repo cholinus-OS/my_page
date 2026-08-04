@@ -26,7 +26,7 @@ tags: ["어깨재활", "외회전운동", "회전근개", "센터장브리핑", 
 2. **수건 끼우기**: 팔꿈치 안쪽(겨드랑이 사이)에 수건이나 두루마리 휴지를 끼워 떨어지지 않게 꽉 잡아줍니다. 
 3. **느리고 섬세하게**: 무거운 무게는 독입니다. 회전근개가 조여지는 느낌에 온전히 집중하며 천천히 당기고 템포를 조절해야 합니다.
 
-![이미지](https://postfiles.pstatic.net/MjAyNjA4MDRfOSAg/MDAxNzg1ODEzODQ5MjEy.HeDRTkyNnkKLlrqG7wxwQm3Sqgk_gkYWb3xJhEjJxxMg.25nplyTubHEFm_xWuO7bWu6NAP5Ty6T0jw-qVXrmX9og.PNG/Gemini_Generated_Image_yaw902yaw902yaw9.png?type=w80_blur)
+
 
 ---
 
@@ -55,7 +55,7 @@ tags: ["어깨재활", "외회전운동", "회전근개", "센터장브리핑", 
 ### ⚠️ 실수 3: 수건 안 끼우고 팔꿈치 붙여서 하기
 팔꿈치를 옆구리에 딱 붙이고(0도 외전) 돌리면, 어깨뼈 안에서 힘줄이 씹히거나 혈류가 막히기 쉽습니다. 수건을 끼워 살짝 틈(15~30도)을 벌려주면, 겉근육(중부 삼각근)의 원치 않는 개입을 억제하면서 어깨 관절의 숨통을 트여 훨씬 편안하고 안전하게 속근육을 단련할 수 있습니다.
 
-![이미지](https://postfiles.pstatic.net/MjAyNjA4MDRfMTE2/MDAxNzg1ODEzNjMzMTg5.6NbMcggsSQKDu-rIIuRjo2i7HfUj4lGigovjBV8acLYg.1pVYdLZN52Ca6bHT8Q_kehjVi-CcanHLFjS6aoa60V8g.PNG/Gemini_Generated_Image_4lkq5b4lkq5b4lkq.png?type=w80_blur)
+
 
 ---
 

@@ -29,7 +29,7 @@ tags: ["무릎재활", "고유수용성감각", "십자인대수술", "센터장
 그런데 십자인대가 끊어지거나 수술을 위해 칼을 대면, 이 안테나들이 박살이 납니다. 뇌는 무릎에서 오는 신호가 끊기니 불안해져서, 방어 기제로 허벅지 근육(대퇴사두근)에 힘이 들어가는 스위치를 아예 꺼버립니다. 이를 **'관절성 근육 억제(AMI)'**라고 부릅니다. 
 수술 직후 아무리 다리에 힘을 주려 해도 쥐만 나고 힘이 안 들어가는 이유가 바로 이 때문입니다. 
 
-![이미지](https://postfiles.pstatic.net/MjAyNjA4MDRfMjEw/MDAxNzg1ODEwNjgyMjY3.ZgCoIExxoifsiZVVPUI79W-BcrZzGgHm0nrEx64s24cg.JyOvCeQ6VBw9yhflH-yA5_6bv_hDZ8Dvnpgnrs4hlRsg.PNG/proprioception_in_knee.png?type=w80_blur)
+
 
 ---
 

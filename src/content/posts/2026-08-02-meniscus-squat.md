@@ -27,7 +27,7 @@ tags: ["무릎재활", "반월상연골판", "스쿼트위험성", "센터장브
 
 연골판 바깥쪽(Red zone)과 뼈에 붙는 뿌리 부위에는 통증을 감지하는 신경이 밀집해 있습니다. 찢어진 상태에서 스쿼트처럼 무릎을 굽히고 하중을 가하면, 이 통각 수용체들이 비명을 지르며 심한 통증을 유발하게 됩니다.
 
-![이미지](https://postfiles.pstatic.net/MjAyNjA4MDJfNjUg/MDAxNzg1NjU3ODM0OTQx.ZB_uRFDil3cbGYT51Crr6aS_rfJm5fwNUuEvHKvt5I0g.oDvm6PlV-pZT9pBoFmH6JuA6qn9laOyQNhXBjEn6rfAg.JPEG/IMG%EF%BC%BF0039.jpg?type=w80_blur)
+
 
 ## 📌 2. 스쿼트 동작 시 무릎이 망가지는 역학적 기전
 
