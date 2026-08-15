@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getPostData, getSortedPostsData } from "@/lib/posts";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import Link from "next/link";
 import AdSense from "@/components/AdSense";
 import { ChevronLeft, ChevronRight, Calendar, Tag, UserCheck, BookOpen, ArrowRight } from "lucide-react";
@@ -246,6 +247,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         <div className="prose max-w-none text-sm sm:text-base leading-relaxed text-slate-700">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
             components={{
               a: ({ href, children }: { href?: string, children?: React.ReactNode }) => {
                 if (href && (href.includes("youtube.com") || href.includes("youtu.be"))) {
