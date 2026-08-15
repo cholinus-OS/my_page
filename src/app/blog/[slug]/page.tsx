@@ -182,8 +182,8 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         </ol>
       </nav>
 
-      {/* 💰 구글 애드센스 상단 광고 */}
-      <AdSense slot="5556667770" />
+      {/* 💰 구글 애드센스 상단 광고 (승인 전 미관상 일시 숨김 처리) */}
+      {/* <AdSense slot="5556667770" /> */}
 
       {/* 본문 콘텐츠 카드 */}
       <article className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
