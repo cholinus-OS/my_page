@@ -144,7 +144,7 @@ export default function BlogListWithSearch({ initialPosts }: BlogListWithSearchP
                   {/* 태그 리스트 */}
                   {post.tags && post.tags.length > 0 && (
                     <div className="mt-4 flex flex-wrap gap-1.5 relative z-10">
-                      {post.tags.map((tag) => (
+                      {Array.from(new Set(post.tags)).map((tag) => (
                         <span 
                           key={tag} 
                           className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-2xs font-medium text-slate-600"

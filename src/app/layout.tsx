@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Chatbot from "@/components/Chatbot";
 import CookieBanner from "@/components/CookieBanner";
 import Link from "next/link";
+import Script from "next/script";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -33,6 +34,9 @@ export const metadata: Metadata = {
     other: {
       "naver-site-verification": ["99442813d39bc5e4084de2796dd65657c2226df7"],
     },
+  },
+  other: {
+    "google-adsense-account": "ca-pub-6115967537685539",
   },
 };
 
@@ -75,22 +79,28 @@ export default function RootLayout({
   return (
     <html lang="ko" className="h-full">
       <head>
-        {/* 구글 애드센스 스크립트 등록 (네이티브 script 태그로 구글 크롤러 소유권 확인율 극대화) */}
+        {/* 구글 애드센스 스크립트 등록 */}
         {adsenseId && (
-          <script
+          <Script
+            id="adsense-script"
             async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
             crossOrigin="anonymous"
+            strategy="afterInteractive"
           />
         )}
         {/* 구글 애널리틱스 (GA4) 스크립트 등록 */}
         {gaId && gaId !== "나중에_입력" && (
           <>
-            <script
+            <Script
+              id="ga-script-1"
               async
               src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
             />
-            <script
+            <Script
+              id="ga-script-2"
+              strategy="afterInteractive"
               dangerouslySetInnerHTML={{
                 __html: `
                   window.dataLayer = window.dataLayer || [];

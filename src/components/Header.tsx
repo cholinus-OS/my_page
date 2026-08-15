@@ -16,6 +16,12 @@ export default function Header() {
         
         <nav className="flex items-center gap-2.5 sm:gap-6">
           <Link 
+            href="/manual" 
+            className="text-xs sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
+          >
+            사용 설명서
+          </Link>
+          <Link 
             href="/" 
             className="text-xs sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
           >

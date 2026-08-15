@@ -252,9 +252,9 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         </div>
 
         {/* 태그 영역 */}
-        {post.tags.length > 0 && (
-          <footer className="mt-10 pt-6 border-t border-slate-100 flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
+        {post.tags && post.tags.length > 0 && (
+          <div className="mt-6 flex flex-wrap gap-2">
+            {Array.from(new Set(post.tags)).map((tag) => (
               <span
                 key={tag}
                 className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-600"
@@ -263,7 +263,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                 {tag}
               </span>
             ))}
-          </footer>
+          </div>
         )}
 
         {/* 바이럴 공유 버튼 */}

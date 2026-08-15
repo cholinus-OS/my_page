@@ -54,9 +54,10 @@ const youtubeChannels = [
 ];
 
 export default function Home() {
-  // 실제 마크다운 데이터베이스에서 최신 글 2개 가져오기
-  const latestPosts = getSortedPostsData().slice(0, 2);
-
+  // 실제 마크다운 데이터베이스에서 최신 글 가져오기
+  const allPosts = getSortedPostsData();
+  const latestPosts = allPosts.slice(0, 2);
+  
   const eventJsonLd = {
     "@context": "https://schema.org",
     "@type": "Event",
@@ -101,22 +102,96 @@ export default function Home() {
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-teal-500/10 px-4 py-1.5 text-xs font-semibold text-teal-400 border border-teal-500/20">
             <Sparkles className="h-3 w-3" />
-            100% 무료 맞춤형 홈 재활 자가진단 사전
+            100% 무료 맞춤형 홈 재활 & 바른 자세 가이드
           </span>
-          <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-5xl">
-            하루 한 동작, <br className="sm:hidden" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-300">통증 없는 건강한 관절</span> 만들기
+          <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-5xl leading-tight">
+            내 몸을 가장 완벽하게 쓰는 법,<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-300">우리 몸 사용 설명서</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-base text-slate-300 sm:text-lg">
-            관절 통증으로 병원을 찾기 전, 부위별 세부 질환의 정확한 원인과 나도 해당되는지 체크할 수 있는 증상 진단 가이드를 확인하세요.
+            스포츠 부상 예방부터 일상 속 바른 자세, 그리고 노화 방지까지. 요람에서 무덤까지 이어지는 생애주기별 자기 관리 가이드입니다.
           </p>
         </div>
       </section>
 
-      {/* 2. 1분 스마트 자가진단 테스트 (인터랙티브 컴포넌트) */}
+      {/* 2. 우리 몸 사용 설명서 (핵심 카테고리 안내) */}
+      <section className="bg-white py-16" id="manual-categories">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900">
+              우리가 알아야 할 <span className="text-teal-600">몸의 사용법</span>
+            </h2>
+            <p className="mt-4 text-slate-500">
+              통증 예방부터 삶의 질을 높이는 자세 교정까지, 목적에 맞는 가이드를 확인하세요.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* 카테고리 1 */}
+            <Link href="/manual#chapter-1" className="block rounded-2xl bg-slate-50 p-8 text-center border border-slate-100 hover:shadow-lg hover:border-emerald-200 transition-all duration-300 group">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 mb-6 group-hover:scale-110 transition-transform">
+                <span className="text-3xl">🏃</span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">스포츠 부상 예방</h3>
+              <p className="mt-3 text-sm text-slate-500 leading-relaxed">
+                안전하게 스포츠를 즐기기 위한 필수 스트레칭과 각 관절 보호 요령을 배웁니다.
+              </p>
+            </Link>
+            {/* 카테고리 2 */}
+            <Link href="/manual#chapter-2" className="block rounded-2xl bg-slate-50 p-8 text-center border border-slate-100 hover:shadow-lg hover:border-teal-200 transition-all duration-300 group">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-teal-100 mb-6 group-hover:scale-110 transition-transform">
+                <span className="text-3xl">🧘</span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-teal-700 transition-colors">일상 속 바른 자세</h3>
+              <p className="mt-3 text-sm text-slate-500 leading-relaxed">
+                거북목, 라운드숄더 등 현대인의 고질병을 해결하는 매일 5분 자세 교정 루틴.
+              </p>
+            </Link>
+            {/* 카테고리 3 */}
+            <Link href="/manual#chapter-3" className="block rounded-2xl bg-slate-50 p-8 text-center border border-slate-100 hover:shadow-lg hover:border-rose-200 transition-all duration-300 group">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-rose-100 mb-6 group-hover:scale-110 transition-transform">
+                <span className="text-3xl">👨‍👩‍👧‍👦</span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-rose-700 transition-colors">생애주기별 관리</h3>
+              <p className="mt-3 text-sm text-slate-500 leading-relaxed">
+                성장기 아이부터 관절염이 걱정되는 노년층까지 연령대별 노화 방지 솔루션.
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. 맞춤형 큐레이션 미니 퀴즈 (UI) */}
+      <section className="bg-slate-900 py-12 text-white">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
+          <h2 className="text-2xl font-bold mb-4">나에게 맞는 &apos;사용 설명서&apos; 찾기</h2>
+          <p className="text-slate-400 mb-8 text-sm">현재 당신의 고민은 무엇인가요?</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link 
+              href="/manual?search=Chapter 1"
+              className="px-6 py-3 rounded-full bg-slate-800 border border-slate-700 hover:bg-teal-600 hover:border-teal-500 transition-colors text-sm font-medium"
+            >
+              🏃 운동 전후 부상이 걱정돼요
+            </Link>
+            <Link 
+              href="/manual?search=Chapter 2"
+              className="px-6 py-3 rounded-full bg-slate-800 border border-slate-700 hover:bg-teal-600 hover:border-teal-500 transition-colors text-sm font-medium"
+            >
+              💻 굽은 등과 목을 펴고 싶어요
+            </Link>
+            <Link 
+              href="/blog?category=니숄더이야기"
+              className="px-6 py-3 rounded-full bg-slate-800 border border-slate-700 hover:bg-rose-600 hover:border-rose-500 transition-colors text-sm font-medium"
+            >
+              🤕 이미 통증이 있고 수술을 했어요
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. 1분 스마트 자가진단 테스트 (인터랙티브 컴포넌트) */}
       <SelfDiagnosis diseases={diseasesData} />
 
-      {/* 3. 자가진단 사전 (클라이언트 컴포넌트 렌더링) */}
+      {/* 5. 자가진단 사전 (클라이언트 컴포넌트 렌더링) */}
       <DiseaseDictionary diseases={diseasesData} />
 
       {/* 3. 최근 AI 재활 블로그 목록 섹션 */}
