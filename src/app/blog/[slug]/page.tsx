@@ -202,12 +202,12 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             {post.title}
           </h1>
           {post.thumbnail && (
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-6 shadow-sm">
+            <div className="relative w-full rounded-2xl overflow-hidden mb-6 shadow-sm bg-slate-50 flex items-center justify-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
                 src={post.thumbnail.startsWith('http') ? post.thumbnail : post.thumbnail} 
                 alt={post.title} 
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-contain max-h-[700px]"
               />
             </div>
           )}
