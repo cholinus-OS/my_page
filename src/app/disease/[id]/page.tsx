@@ -52,6 +52,31 @@ export default async function DiseasePage({ params }: PageProps) {
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
       {/* 🧭 시각적 브레드크럼(Breadcrumb) 내비게이션 (구조적 SEO 강화) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "MedicalWebPage",
+            "headline": `${disease.name} 정보 및 자가진단`,
+            "description": disease.summary,
+            "aspect": ["Diagnosis", "Symptoms"],
+            "audience": {
+              "@type": "MedicalAudience",
+              "audienceType": "Patients"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "조형준",
+              "jobTitle": "정형외과 전문의"
+            },
+            "publisher": {
+              "@type": "MedicalOrganization",
+              "name": "바른관절 헬프센터"
+            }
+          })
+        }}
+      />
       <nav aria-label="Breadcrumb" className="mb-6">
         <ol className="flex items-center space-x-2 text-xs sm:text-sm font-medium text-slate-500">
           <li>
