@@ -7,6 +7,7 @@ import AdSense from "@/components/AdSense";
 import { ChevronLeft, ChevronRight, Calendar, Tag, UserCheck, BookOpen, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 import ShareButtons from "@/components/ShareButtons";
+import NewsletterForm from "@/components/NewsletterForm";
 
 interface BlogDetailPageProps {
   params: Promise<{
@@ -306,6 +307,11 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             title={`${post.title} - 바른관절 헬프센터`} 
             text={post.summary} 
           />
+        </div>
+
+        {/* 💌 뉴스레터 구독 섹션 */}
+        <div className="mt-10">
+          <NewsletterForm />
         </div>
 
         {/* 이전 글 / 다음 글 네비게이션 */}

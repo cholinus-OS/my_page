@@ -43,12 +43,13 @@ export default function PrivacyPolicyPage() {
       <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10 prose max-w-none text-slate-700 text-sm sm:text-base leading-relaxed">
         <h2 className="text-xl font-bold text-slate-900 mt-6 mb-4">1. 개인정보의 수집 항목 및 방법</h2>
         <p>
-          본 사이트는 방문자들의 별도 회원가입 없이 이용할 수 있는 개방형 서비스로, **직접적인 개인정보(이름, 이메일, 전화번호 등)를 수집하거나 보관하지 않습니다.** 
-          다만, 서비스 이용 과정에서 서비스 분석 및 광고 제공을 위해 아래와 같은 정보가 자동으로 생성되어 수집될 수 있습니다.
+          본 사이트는 방문자에게 뉴스레터 서비스를 제공하기 위해 최소한의 개인정보를 수집하고 있습니다. 
+          그 외의 서비스는 회원가입 없이 개방형으로 이용하실 수 있습니다.
         </p>
         <ul>
-          <li>수집 항목: 접속 IP 정보, 쿠키(Cookie), 방문 일시, 서비스 이용 기록, 기기 정보 및 웹 브라우저 종류</li>
-          <li>수집 방법: 웹 브라우저 접속 시 생성되는 로그 분석 및 쿠키 기술 활용</li>
+          <li><strong>수집하는 개인정보 항목</strong>: 이메일 주소 (뉴스레터 구독 시)</li>
+          <li><strong>자동 수집 항목</strong>: 접속 IP 정보, 쿠키(Cookie), 기기 정보 및 웹 브라우저 종류 (서비스 분석 및 광고 제공용)</li>
+          <li><strong>수집 방법</strong>: 뉴스레터 구독 양식을 통한 자발적 입력 및 브라우저 로그 수집</li>
         </ul>
 
         <h2 className="text-xl font-bold text-slate-900 mt-8 mb-4">2. 개인정보의 수집 및 이용 목적</h2>
@@ -73,7 +74,9 @@ export default function PrivacyPolicyPage() {
 
         <h2 className="text-xl font-bold text-slate-900 mt-8 mb-4">4. 개인정보의 보유 및 이용 기간</h2>
         <p>
-          본 사이트는 이용자의 개인정보를 직접 보관하지 않으므로 파기 절차가 존재하지 않습니다. 다만 제3자 서비스(구글 애드센스 및 애널리틱스)를 통해 수집된 비식별화된 행동 통계 및 쿠키 정보는 해당 서비스 운영사인 구글의 데이터 보관 정책 및 표준 보유 기간을 따릅니다.
+          본 사이트는 이용자가 뉴스레터 구독을 유지하는 기간 동안에 한하여 이메일 주소를 보유 및 이용합니다. 
+          이용자가 **구독 해지를 요청하는 즉시 해당 이메일 정보는 복구 불가능한 방법으로 영구 파기**됩니다. 
+          제3자 서비스(구글 애드센스 및 애널리틱스)를 통해 수집된 비식별 통계 정보는 해당 서비스 운영사의 정책을 따릅니다.
         </p>
 
         <h2 className="text-xl font-bold text-slate-900 mt-8 mb-4">5. 의학 정보에 대한 면책 고지 (Medical Disclaimer)</h2>
