@@ -22,7 +22,7 @@ export default function Header() {
             사용 설명서
           </Link>
           <Link 
-            href="/" 
+            href="/disease" 
             className="text-xs sm:text-sm font-medium text-slate-600 transition hover:text-teal-600"
           >
             질환 사전

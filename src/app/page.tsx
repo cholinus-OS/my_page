@@ -1,6 +1,5 @@
 import Link from "next/link";
 import diseasesData from "@/content/diseases/data.json";
-import DiseaseDictionary from "@/components/DiseaseDictionary";
 import SelfDiagnosis from "@/components/SelfDiagnosis";
 import { getSortedPostsData } from "@/lib/posts";
 import type { Metadata } from "next";
@@ -191,8 +190,73 @@ export default function Home() {
       {/* 4. 1분 스마트 자가진단 테스트 (인터랙티브 컴포넌트) */}
       <SelfDiagnosis diseases={diseasesData} />
 
-      {/* 5. 자가진단 사전 (클라이언트 컴포넌트 렌더링) */}
-      <DiseaseDictionary diseases={diseasesData} />
+      {/* 5. 관절별 질환 사전 바로가기 (Shortcut) */}
+      <section className="bg-white py-16 border-t border-slate-100">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mb-10 text-center">
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+              관절별 <span className="text-teal-600">통증 사전</span>
+            </h2>
+            <p className="mt-3 text-sm text-slate-500">
+              통증 부위에 맞는 질환 정보를 빠르고 정확하게 찾아보세요.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
+            {/* 전체보기 */}
+            <Link href="/disease" className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-lg hover:border-slate-300">
+              <div className="aspect-square w-full overflow-hidden bg-slate-50">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/disease_all.png" alt="전체 질환 사전" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 w-full p-4 sm:p-5 text-center">
+                <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-teal-300 transition-colors">전체 질환 보기</h3>
+                <span className="mt-1 inline-flex items-center text-[10px] sm:text-xs text-white/80 group-hover:text-white transition">바로가기 <ChevronRight className="ml-0.5 h-3 w-3" /></span>
+              </div>
+            </Link>
+
+            {/* 척추 및 전신질환 */}
+            <Link href="/disease#spine" className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-lg hover:border-slate-300">
+              <div className="aspect-square w-full overflow-hidden bg-slate-50">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/disease_spine.png" alt="척추 및 전신 질환" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 w-full p-4 sm:p-5 text-center">
+                <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-teal-300 transition-colors">척추 및 전신질환</h3>
+                <span className="mt-1 inline-flex items-center text-[10px] sm:text-xs text-white/80 group-hover:text-white transition">바로가기 <ChevronRight className="ml-0.5 h-3 w-3" /></span>
+              </div>
+            </Link>
+
+            {/* 상지 관절 */}
+            <Link href="/disease#upper" className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-lg hover:border-slate-300">
+              <div className="aspect-square w-full overflow-hidden bg-slate-50">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/disease_upper.png" alt="상지 관절 질환" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 w-full p-4 sm:p-5 text-center">
+                <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-teal-300 transition-colors">상지 관절</h3>
+                <span className="mt-1 inline-flex items-center text-[10px] sm:text-xs text-white/80 group-hover:text-white transition">바로가기 <ChevronRight className="ml-0.5 h-3 w-3" /></span>
+              </div>
+            </Link>
+
+            {/* 하지 관절 */}
+            <Link href="/disease#lower" className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-lg hover:border-slate-300">
+              <div className="aspect-square w-full overflow-hidden bg-slate-50">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/disease_lower.png" alt="하지 관절 질환" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 w-full p-4 sm:p-5 text-center">
+                <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-teal-300 transition-colors">하지 관절</h3>
+                <span className="mt-1 inline-flex items-center text-[10px] sm:text-xs text-white/80 group-hover:text-white transition">바로가기 <ChevronRight className="ml-0.5 h-3 w-3" /></span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* 3. 최근 AI 재활 블로그 목록 섹션 */}
       <section className="bg-slate-100 py-16">

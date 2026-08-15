@@ -136,7 +136,7 @@ export default function DiseaseDictionary({ diseases }: DiseaseDictionaryProps) 
       {hasResults ? (
         <div className="grid gap-8 md:grid-cols-3">
           {/* 1열: 척추 (목, 허리) */}
-          <div className="flex flex-col gap-6 rounded-2xl bg-slate-100/50 p-4 border border-slate-200/50">
+          <div id="spine" className="flex flex-col gap-6 rounded-2xl bg-slate-100/50 p-4 border border-slate-200/50 scroll-mt-28">
             <div className="flex items-center gap-2 border-b border-slate-200 pb-3 mb-2 px-1">
               <div className="rounded-lg bg-indigo-100 p-1.5 text-indigo-700">
                 <Activity className="h-5 w-5" />
@@ -155,7 +155,7 @@ export default function DiseaseDictionary({ diseases }: DiseaseDictionaryProps) 
           </div>
 
           {/* 2열: 상지 관절 (어깨, 팔꿈치, 손목) */}
-          <div className="flex flex-col gap-6 rounded-2xl bg-slate-100/50 p-4 border border-slate-200/50">
+          <div id="upper" className="flex flex-col gap-6 rounded-2xl bg-slate-100/50 p-4 border border-slate-200/50 scroll-mt-28">
             <div className="flex items-center gap-2 border-b border-slate-200 pb-3 mb-2 px-1">
               <div className="rounded-lg bg-teal-100 p-1.5 text-teal-700">
                 <Hand className="h-5 w-5" />
@@ -174,7 +174,7 @@ export default function DiseaseDictionary({ diseases }: DiseaseDictionaryProps) 
           </div>
 
           {/* 3열: 하지 관절 (고관절, 무릎, 발목) */}
-          <div className="flex flex-col gap-6 rounded-2xl bg-slate-100/50 p-4 border border-slate-200/50">
+          <div id="lower" className="flex flex-col gap-6 rounded-2xl bg-slate-100/50 p-4 border border-slate-200/50 scroll-mt-28">
             <div className="flex items-center gap-2 border-b border-slate-200 pb-3 mb-2 px-1">
               <div className="rounded-lg bg-emerald-100 p-1.5 text-emerald-700">
                 <Footprints className="h-5 w-5" />
