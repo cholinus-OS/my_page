@@ -198,9 +198,19 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
               {post.date}
             </span>
           </div>
-          <h1 className="text-2xl font-black text-slate-900 sm:text-3xl leading-tight">
+          <h1 className="text-2xl font-black text-slate-900 sm:text-3xl leading-tight mb-6">
             {post.title}
           </h1>
+          {post.thumbnail && (
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-6 shadow-sm">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img 
+                src={post.thumbnail.startsWith('http') ? post.thumbnail : post.thumbnail} 
+                alt={post.title} 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
         </header>
 
         {/* ✍️ 에디터 프로필 영역 (E-E-A-T 신뢰성 보강) */}

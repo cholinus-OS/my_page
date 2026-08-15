@@ -37,7 +37,7 @@ export default function AdSense({
   }, [adsenseId]);
 
   return (
-    <div className="my-6 w-full overflow-hidden min-h-[100px] flex items-center justify-center bg-slate-50/50 rounded-lg">
+    <div className="my-6 w-full overflow-hidden flex items-center justify-center rounded-lg">
       <ins
         ref={insRef}
         className="adsbygoogle w-full"
