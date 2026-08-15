@@ -468,8 +468,8 @@ export default async function DiseasePage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* 💰 애드센스 상단 광고 (승인 전 미관상 일시 숨김 처리) */}
-      {/* <AdSense slot="1234567890" /> */}
+      {/* 💰 애드센스 상단 광고 */}
+      <AdSense slot="1234567890" />
 
       {/* 3. 주요 증상 안내 (가독성을 극대화한 넓은 단일 카드 배치) */}
       <div className="mt-8 rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm">
