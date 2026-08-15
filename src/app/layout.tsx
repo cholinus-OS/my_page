@@ -68,13 +68,24 @@ export default function RootLayout({
     ]
   };
 
-  const websiteJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "관절 척추 재활 정보",
-    "url": "https://cholinus-exerciseismedicine.com",
-    "description": "우리 몸의 최적의 상태를 유지하기 위한 재활 운동에 대한 정보"
-  };
+  const websiteJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "바른관절 헬프센터",
+      "url": "https://cholinus-exerciseismedicine.com",
+      "description": "우리 몸의 최적의 상태를 유지하기 위한 재활 운동에 대한 정보"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalOrganization",
+      "name": "바른관절 헬프센터",
+      "url": "https://cholinus-exerciseismedicine.com",
+      "logo": "https://cholinus-exerciseismedicine.com/logo.png",
+      "medicalSpecialty": ["Orthopedic", "Physiotherapy"],
+      "description": "정형외과 전문의가 검수하는 관절 척추 재활 가이드"
+    }
+  ];
 
   return (
     <html lang="ko" className="h-full">
