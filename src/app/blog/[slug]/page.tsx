@@ -89,6 +89,9 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
   // 관련 포스트 추출 (현재 포스트와 같은 카테고리이거나 태그가 겹치는 포스트)
   const allPosts = getSortedPostsData();
+  const currentIndex = allPosts.findIndex((p) => p.slug === slug);
+  const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+  const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
   const postCategory = post.category?.replace(/"/g, "") || "";
   const relatedPosts = allPosts
     .filter((p) => {
@@ -168,6 +171,35 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           </h1>
         </header>
 
+        {/* ✍️ 에디터 프로필 영역 (E-E-A-T 신뢰성 보강) */}
+        <div className="mb-6 rounded-2xl border border-slate-100 bg-slate-50/70 p-5 sm:p-6 flex flex-col sm:flex-row gap-4 items-center sm:items-start">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-600">
+            <UserCheck className="h-6 w-6" />
+          </div>
+          <div className="text-center sm:text-left">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 justify-center sm:justify-start">
+              <span className="text-sm font-bold text-slate-800">에디터 조형준</span>
+              <span className="inline-flex max-w-max items-center rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-medium text-teal-700">
+                바른관절 헬프센터 대표
+              </span>
+            </div>
+            <p className="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed">
+              대학병원 정형외과 및 물리치료 임상 레퍼런스를 바탕으로 안전하고 효과적인 자가 재활 정보와 스트레칭 가이드를 제공합니다. 본 콘텐츠는 정형외과 전문 자문 위원단의 감수를 거쳐 작성되었습니다.
+            </p>
+          </div>
+        </div>
+
+        {/* ⚠️ 의학 정보 면책 조항 (E-E-A-T 신뢰성 보강) */}
+        <div className="mb-8 rounded-2xl bg-amber-50/50 border border-amber-100 p-5 text-xs text-amber-800 leading-relaxed text-justify">
+          <h4 className="font-bold flex items-center gap-1 mb-1">
+            ⚠️ 꼭 기억해주세요! (의학 정보 면책 조항)
+          </h4>
+          <p>
+            본 블로그의 재활 운동 및 자가 치료 정보는 일반적인 의학적 참고용으로 제작되었으며, 전문의의 개별 진단이나 진료를 대신할 수 없습니다. 
+            특히 특정 동작 시 날카로운 통증이 있거나 저림이 번지는 증상이 지속된다면 질환의 심화(신경 압박, 연골 파열 등) 단계일 수 있으므로 즉시 운동을 중단하시고 전문 의료기관을 찾아 정밀 검진을 받으시기 바랍니다.
+          </p>
+        </div>
+
         {/* 마크다운 렌더링 영역 */}
         <div className="prose max-w-none text-sm sm:text-base leading-relaxed text-slate-700">
           <ReactMarkdown
@@ -222,35 +254,6 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         {/* 🛍️ 쿠팡 파트너스 추천 배너 (애드센스 승인 심사를 위해 일시적 비활성화) */}
         {/* <CoupangBanner postCategory={post.category} postTags={post.tags} postSlug={post.slug} /> */}
 
-        {/* ✍️ 에디터 프로필 영역 (E-E-A-T 신뢰성 보강) */}
-        <div className="mt-12 rounded-2xl border border-slate-100 bg-slate-50/70 p-5 sm:p-6 flex flex-col sm:flex-row gap-4 items-center sm:items-start">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-600">
-            <UserCheck className="h-6 w-6" />
-          </div>
-          <div className="text-center sm:text-left">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 justify-center sm:justify-start">
-              <span className="text-sm font-bold text-slate-800">에디터 조형준</span>
-              <span className="inline-flex max-w-max items-center rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-medium text-teal-700">
-                바른관절 헬프센터 대표
-              </span>
-            </div>
-            <p className="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed">
-              대학병원 정형외과 및 물리치료 임상 레퍼런스를 바탕으로 안전하고 효과적인 자가 재활 정보와 스트레칭 가이드를 제공합니다. 본 콘텐츠는 정형외과 전문 자문 위원단의 감수를 거쳐 작성되었습니다.
-            </p>
-          </div>
-        </div>
-
-        {/* ⚠️ 의학 정보 면책 조항 (E-E-A-T 신뢰성 보강) */}
-        <div className="mt-6 rounded-2xl bg-amber-50/50 border border-amber-100 p-5 text-xs text-amber-800 leading-relaxed text-justify">
-          <h4 className="font-bold flex items-center gap-1 mb-1">
-            ⚠️ 꼭 기억해주세요! (의학 정보 면책 조항)
-          </h4>
-          <p>
-            본 블로그의 재활 운동 및 자가 치료 정보는 일반적인 의학적 참고용으로 제작되었으며, 전문의의 개별 진단이나 진료를 대신할 수 없습니다. 
-            특히 특정 동작 시 날카로운 통증이 있거나 저림이 번지는 증상이 지속된다면 질환의 심화(신경 압박, 연골 파열 등) 단계일 수 있으므로 즉시 운동을 중단하시고 전문 의료기관을 찾아 정밀 검진을 받으시기 바랍니다.
-          </p>
-        </div>
-
         {/* 태그 영역 */}
         {post.tags && post.tags.length > 0 && (
           <div className="mt-6 flex flex-wrap gap-2">
@@ -273,6 +276,26 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             text={post.summary} 
           />
         </div>
+
+        {/* 이전 글 / 다음 글 네비게이션 */}
+        <nav className="mt-12 flex flex-col sm:flex-row justify-between gap-4 border-t border-slate-100 pt-8" aria-label="Pagination">
+          {prevPost ? (
+            <Link href={`/blog/${prevPost.slug}`} className="group flex flex-1 flex-col items-start rounded-2xl border border-slate-200 bg-white p-4 hover:border-teal-500/50 hover:shadow-sm transition">
+              <span className="text-xs font-semibold text-slate-400 mb-1 flex items-center gap-1"><ChevronLeft className="h-3 w-3" /> 이전 글</span>
+              <span className="text-sm font-bold text-slate-800 line-clamp-1 group-hover:text-teal-700 transition">{prevPost.title}</span>
+            </Link>
+          ) : (
+            <div className="flex-1"></div>
+          )}
+          {nextPost ? (
+            <Link href={`/blog/${nextPost.slug}`} className="group flex flex-1 flex-col items-end rounded-2xl border border-slate-200 bg-white p-4 hover:border-teal-500/50 hover:shadow-sm transition text-right">
+              <span className="text-xs font-semibold text-slate-400 mb-1 flex items-center gap-1">다음 글 <ChevronRight className="h-3 w-3" /></span>
+              <span className="text-sm font-bold text-slate-800 line-clamp-1 group-hover:text-teal-700 transition">{nextPost.title}</span>
+            </Link>
+          ) : (
+            <div className="flex-1"></div>
+          )}
+        </nav>
       </article>
 
       {/* 추천 관련 칼럼 영역 (구조적 고립 탈피 및 내부 링크 순환) */}

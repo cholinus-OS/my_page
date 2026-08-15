@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cholinus-exerciseismedicine.com"),
-  title: "관절 척추 관련 정보 | 재활 안내",
+  title: "바른관절 헬프센터 | 정형외과 전문의가 알려주는 척추·관절 재활 가이드",
   description: "우리 몸의 최적의 상태를 유지하기 위한 재활 운동에 대한 정보를 매일 업데이트합니다.",
   keywords: ["허리디스크 운동", "거북목 교정", "무릎 관절염 재활", "물리치료 스트레칭", "자세 교정"],
   icons: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     apple: "/logo.png",
   },
   openGraph: {
-    title: "관절 척추 관련 정보 | 재활 안내",
+    title: "바른관절 헬프센터 | 정형외과 전문의가 알려주는 척추·관절 재활 가이드",
     description: "우리 몸의 최적의 상태를 유지하기 위한 재활 운동에 대한 정보를 매일 업데이트합니다.",
     type: "website",
     locale: "ko_KR",
