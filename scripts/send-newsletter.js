@@ -18,14 +18,27 @@ async function sendNewsletter() {
   }
 
   // 2. 파일 존재 여부 확인
-  if (!fs.existsSync(NEWSLETTER_FILE) || !fs.existsSync(SUBSCRIBERS_FILE)) {
-    console.error("❌ 오류: 뉴스레터 HTML 파일이나 구독자 목록 파일을 찾을 수 없습니다.");
+  if (!fs.existsSync(NEWSLETTER_FILE)) {
+    console.error("❌ 오류: 뉴스레터 HTML 파일을 찾을 수 없습니다.");
     return;
   }
 
   // 3. 구독자 목록 및 뉴스레터 본문 읽어오기
-  const subscribersData = fs.readFileSync(SUBSCRIBERS_FILE, "utf8");
-  const subscribers = JSON.parse(subscribersData);
+  const secret = process.env.NEWSLETTER_SECRET_KEY || "cholinus_newsletter_secret_2026";
+  let subscribers = [];
+  try {
+    const res = await fetch(`https://cholinus-exerciseismedicine.com/api/subscribe?secret=${secret}`);
+    if (res.ok) {
+      subscribers = await res.json();
+    } else {
+      console.error("⚠️ 서버에서 구독자 목록을 가져오는데 실패했습니다.", res.statusText);
+      return;
+    }
+  } catch (err) {
+    console.error("⚠️ 실서버 구독자 조회 중 오류 발생:", err.message);
+    return;
+  }
+
   const htmlContent = fs.readFileSync(NEWSLETTER_FILE, "utf8");
 
   if (subscribers.length === 0) {
