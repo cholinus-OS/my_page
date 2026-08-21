@@ -1,5 +1,6 @@
 import Link from "next/link";
 import diseasesData from "@/content/diseases/data.json";
+import NewsletterForm from "@/components/NewsletterForm";
 import SelfDiagnosis from "@/components/SelfDiagnosis";
 import { getSortedPostsData } from "@/lib/posts";
 import type { Metadata } from "next";
@@ -467,6 +468,21 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 5. 주간 뉴스레터 구독 섹션 */}
+      <section className="bg-slate-900 py-16">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <div className="mb-10 text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white">
+              가장 빠른 <span className="text-teal-400">건강 소식</span> 받아보기
+            </h2>
+            <p className="mt-4 text-slate-400">
+              바쁜 일상 속, 단 5분 투자로 관절 건강을 지키는 비법을 매주 배달해 드립니다.
+            </p>
+          </div>
+          <NewsletterForm />
         </div>
       </section>
     </div>
