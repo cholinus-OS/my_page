@@ -16,7 +16,7 @@ export default function NewsletterForm() {
     setErrorMessage("");
 
     try {
-      const res = await fetch("/api/subscribe", {
+      const res = await fetch("/api/subscribe/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
