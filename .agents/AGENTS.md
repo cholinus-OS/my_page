@@ -22,3 +22,6 @@
 - **Briefing Title Rule**: '니숄더이야기' (무릎 이야기, 어깨 이야기 등) 브리핑 섹션에 추가되는 모든 공식 브리핑 블로그 글은 반드시 제목의 접두사로 `[센터장 브리핑]`이라는 말머리를 통일성 있게 추가하여야 합니다.
 <!-- END:briefing-title-rule -->
 
+<!-- BEGIN:subscription-stability-rule -->
+- **Subscription Stability Rule**: 구독(Newsletter Subscription)과 관련된 기능은 병원의 신뢰도와 직결되므로 안정성을 최우선으로 해야 합니다. 웹사이트를 업데이트하거나 배포, 리빌드(Rebuild)를 진행할 때마다, 반드시 구독 관련 폼이나 데이터 저장 로직(KV 연동 등)이 정상적으로 동작하는지 최우선으로 사전 점검(체크)해야 합니다.
+<!-- END:subscription-stability-rule -->
