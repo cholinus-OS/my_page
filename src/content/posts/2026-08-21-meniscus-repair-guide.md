@@ -4,7 +4,10 @@ date: "2026-08-21"
 summary: "반월상 연골판 봉합술 후 일상으로 건강하게 복귀하기 위한 시기별 필수 주의사항과 운동법을 알려드립니다."
 category: "브리핑"
 tags: ["무릎", "반월상연골판", "봉합술", "재활가이드", "센터장브리핑"]
+thumbnail: "/images/meniscus-repair-surgery.jpg"
 ---
+
+![관절경하 연골판 봉합술](/images/meniscus-repair-surgery.jpg)
 
 안녕하십니까, 바른관절 헬프센터 센터장 조형준입니다.
 
