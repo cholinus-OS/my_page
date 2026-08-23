@@ -5,6 +5,13 @@ import Chatbot from "@/components/Chatbot";
 import CookieBanner from "@/components/CookieBanner";
 import Link from "next/link";
 import Script from "next/script";
+import { Noto_Sans_KR } from "next/font/google";
+
+const notoSansKr = Noto_Sans_KR({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -124,7 +131,7 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body className="flex min-h-full flex-col bg-slate-50 text-slate-900">
+      <body className={`flex min-h-full flex-col bg-slate-50 text-slate-900 ${notoSansKr.className}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
