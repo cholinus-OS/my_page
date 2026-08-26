@@ -1,0 +1,43 @@
+name: Generate User Manual (PR)
+
+on:
+  schedule:
+    # 매주 월요일 새벽 4시 27분(UTC 일요일 19시 27분)에 실행
+    - cron: '27 19 * * 0'
+  workflow_dispatch:
+
+jobs:
+  generate-manual:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 2. Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 3. Install Dependencies
+        run: npm ci
+
+      - name: 4. Generate User Manual
+        run: node scripts/update-disease-content.js
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: 5. Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'feat: 🤖 AI 자동 생성 사용설명서 보강'
+          title: '🤖 주간 사용설명서(질환 가이드라인) 자동 제작 결과'
+          body: |
+            AI가 생성한 사용설명서(의학 가이드라인)가 업데이트되었습니다. 
+            내용을 확인하시고 승인(Merge)해주시면 배포됩니다.
+          branch: 'auto-manual-update'
+          delete-branch: true

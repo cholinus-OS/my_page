@@ -2,8 +2,8 @@ name: Send Weekly Newsletter
 
 on:
   schedule:
-    # 매주 금요일 오전 8시(UTC 목요일 23시)에 뉴스레터 발송
-    - cron: '0 23 * * 4'
+    # 매주 화요일 오전 8시(UTC 월요일 23시)에 뉴스레터 발송
+    - cron: '0 23 * * 1'
   workflow_dispatch:
 
 jobs:

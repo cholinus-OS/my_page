@@ -52,8 +52,6 @@ async function generatePost(targetDateStr = null) {
 
   // [애드센스 승인 대비책]: 모든 질환(30개)에 대해 최소 1개 이상씩 작성 완료된 경우,
   // 중복 포스트 누적으로 인한 '가치없는 콘텐츠(Thin Content)' 필터링을 방지하기 위해 신규 생성을 정지합니다.
-  // (사용자 요청으로 제한 해제)
-  /*
   if (minCount >= 1) {
     console.log("--------------------------------------------------------------------------------");
     console.log("📢 알림: 모든 질환에 대한 고유 블로그 포스트(30개)가 이미 최소 1회 이상 작성되었습니다.");
@@ -61,7 +59,6 @@ async function generatePost(targetDateStr = null) {
     console.log("--------------------------------------------------------------------------------");
     process.exit(0); // 에러가 아닌 성공 종료(정상 정지) 처리
   }
-  */
 
   // 작성 횟수가 최솟값이면서 최근 7일 동안 작성되지 않은 질환 목록 필터링
   let candidates = diseases.filter(d => diseaseCounts[d.id] === minCount && !recentlyWrittenIds.has(d.id));
