@@ -1,0 +1,35 @@
+name: Send Weekly Newsletter
+
+on:
+  schedule:
+    # 매주 금요일 오전 8시(UTC 목요일 23시)에 뉴스레터 발송
+    - cron: '0 23 * * 4'
+  workflow_dispatch:
+
+jobs:
+  send-newsletter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 2. Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 3. Install Dependencies
+        run: npm ci
+
+      - name: 4. Generate Newsletter
+        run: node scripts/generate-newsletter.js
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: 5. Send Newsletter
+        run: node scripts/send-newsletter.js
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          NEWSLETTER_SECRET_KEY: ${{ secrets.NEWSLETTER_SECRET_KEY }}
