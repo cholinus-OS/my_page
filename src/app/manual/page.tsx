@@ -15,7 +15,7 @@ export default function ManualPage() {
   const allPosts = getSortedPostsData();
   const manualPosts = allPosts.filter(post => {
     const cat = post.category?.replace(/"/g, "").trim();
-    return cat === "사용 설명서";
+    return cat === "사용 설명서" || (post.tags && post.tags.includes("우리몸사용설명서"));
   });
 
   return (
