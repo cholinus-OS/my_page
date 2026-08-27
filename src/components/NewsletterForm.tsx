@@ -32,9 +32,9 @@ export default function NewsletterForm() {
 
       setStatus("success");
       setEmail("");
-    } catch (err: any) {
+    } catch (err) {
       setStatus("error");
-      setErrorMessage(err.message);
+      setErrorMessage(err instanceof Error ? err.message : "알 수 없는 오류가 발생했습니다.");
     }
   };
 
