@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  schedule:
-    # 가장 트래픽이 적은 시간인 매일 새벽 4시 27분(UTC 19시 27분)에 실행
-    - cron: '27 19 * * *'
   workflow_dispatch:
 
 concurrency:
