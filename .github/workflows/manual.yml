@@ -1,4 +1,4 @@
-name: Generate User Manual (PR)
+name: Generate and Deploy User Manual
 
 on:
   schedule:
@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
     steps:
       - name: 1. Checkout Repository
         uses: actions/checkout@v4
@@ -30,14 +29,14 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-      - name: 5. Create Pull Request
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'feat: 🤖 AI 자동 생성 사용설명서 보강'
-          title: '🤖 주간 사용설명서(질환 가이드라인) 자동 제작 결과'
-          body: |
-            AI가 생성한 사용설명서(의학 가이드라인)가 업데이트되었습니다. 
-            내용을 확인하시고 승인(Merge)해주시면 배포됩니다.
-          branch: 'auto-manual-update'
-          delete-branch: true
+      - name: 5. Commit and Push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          if ! git diff --cached --quiet; then
+            git commit -m "feat: 🤖 AI 자동 생성 사용설명서 보강 [skip ci]"
+            git push origin HEAD:main
+          else
+            echo "No changes to commit"
+          fi
