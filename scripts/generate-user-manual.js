@@ -89,7 +89,7 @@ async function generateManuals() {
 - 챕터 테마: Chapter ${chapter.number}. ${chapter.name} (${chapter.desc})
 
 # [규칙 및 제약사항 (CRITICAL)]
-1. 제목 형식: "[우리 몸 사용 설명서] Chapter ${chapter.number}. (여기에 훅이 들어간 세부 제목)"
+1. 제목 형식: "[우리 몸 사용 설명서] Chapter ${chapter.number}. (여기에 훅이 들어간 세부 제목)" (중요: 제목에는 HTML 태그나 마크다운 기호를 절대 넣지 말고 순수 텍스트로만 작성하라)
 2. 중복 방지: 아래 [기존에 작성된 제목 목록]을 참고하여, 기존에 다루지 않은 완전히 새롭고 구체적인 세부 주제를 하나 선정하라.
 3. 마크다운 포맷 규칙:
    - 강조를 위해 글자 양옆에 물결표(~)를 절대 사용하지 마라. 숫자 범위는 하이픈(-)을 사용하라.
@@ -135,11 +135,11 @@ ${existingTitles.join("\n")}
             const filenameMatch = responseText.match(/\[FILENAME\]:\s*(.*?\.md)/);
             if (filenameMatch) {
               const filename = filenameMatch[1].trim();
-              // 프론트매터 YAML 파싱 에러 방지: [ 대괄호로 시작하는 제목에 큰따옴표 자동 보정
-              content = content.replace(/^title:\s*(\[[^"'\n\r]+.*)$/m, (match, p1) => {
-                let clean = p1.trim();
+              // 프론트매터 제목 정제: HTML 태그(<mark>, <u> 등) 및 마크다운 기호 제거 후 큰따옴표로 안전하게 감싸기
+              content = content.replace(/^title:\s*(.*)$/m, (match, p1) => {
+                let clean = p1.replace(/<[^>]+>/g, '').replace(/\*\*/g, '').replace(/~~/g, '').replace(/`/g, '').trim();
                 if ((clean.startsWith('"') && clean.endsWith('"')) || (clean.startsWith("'") && clean.endsWith("'"))) {
-                  return `title: ${clean}`;
+                  clean = clean.slice(1, -1).trim();
                 }
                 return `title: "${clean.replace(/"/g, '\\"')}"`;
               });

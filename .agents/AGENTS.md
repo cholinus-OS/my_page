@@ -30,5 +30,9 @@
 - **User Manual vs Disease Guidelines/Rehab Blog Rule**:
   - `재활 블로그 자동 작성` (Rehab Blog): Automated by `deploy.yml` (generate-blog-post.js). Currently STOPPED (no cron schedule).
   - `질환 가이드라인 자동 보강` (Disease Guidelines): Automated by `disease-guideline.yml` (update-disease-content.js). Updates `data.json`.
-  - `우리 몸 사용 설명서` (User Manual): NOT automated by a script. This is a weekly task where the USER provides a general health/body topic (e.g., posture, joint nutrition), and the agent manually creates a blog post with the prefix `[우리 몸 사용 설명서] Chapter N.`. Do not confuse this with disease data generation.
+  - `우리 몸 사용 설명서` (User Manual): Automated weekly on Mondays via `user-manual-auto.yml` (scripts/generate-user-manual.js) for 3 chapters (스포츠 부상 예방, 일상 속 바른 자세, 생애주기별 관리).
 <!-- END:user-manual-distinction-rule -->
+
+<!-- BEGIN:title-plain-text-rule -->
+- **Title Plain Text Rule**: 모든 글(블로그, 브리핑, 우리 몸 사용 설명서 등)의 프론트매터 제목(`title`)에는 `<mark>`, `<u>`, `<b>`, `**`, `~~` 등의 HTML 태그나 마크다운 서식 기호를 절대 포함하지 마세요. 제목은 반드시 순수 텍스트(Plain Text)로만 작성해야 합니다.
+<!-- END:title-plain-text-rule -->
