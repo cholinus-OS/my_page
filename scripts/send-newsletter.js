@@ -12,14 +12,14 @@ async function sendNewsletter() {
   const userPass = process.env.EMAIL_APP_PASSWORD;
 
   if (!userEmail || !userPass) {
-    console.error("❌ 오류: .env.local 파일에 EMAIL_USER 또는 EMAIL_APP_PASSWORD가 설정되지 않았습니다.");
-    return;
+    console.error("❌ 오류: EMAIL_USER 또는 EMAIL_APP_PASSWORD가 설정되지 않았습니다.");
+    process.exit(1);
   }
 
   // 2. 파일 존재 여부 확인
   if (!fs.existsSync(NEWSLETTER_FILE)) {
     console.error("❌ 오류: 뉴스레터 HTML 파일을 찾을 수 없습니다.");
-    return;
+    process.exit(1);
   }
 
   // 3. 구독자 목록 및 뉴스레터 본문 읽어오기
@@ -31,11 +31,11 @@ async function sendNewsletter() {
       subscribers = await res.json();
     } else {
       console.error("⚠️ 서버에서 구독자 목록을 가져오는데 실패했습니다.", res.statusText);
-      return;
+      process.exit(1);
     }
   } catch (err) {
     console.error("⚠️ 실서버 구독자 조회 중 오류 발생:", err.message);
-    return;
+    process.exit(1);
   }
 
   const htmlContent = fs.readFileSync(NEWSLETTER_FILE, "utf8");
@@ -74,6 +74,14 @@ async function sendNewsletter() {
   }
 
   console.log(`🎉 전송 완료! (성공: ${successCount}건)`);
+  
+  if (successCount === 0 && subscribers.length > 0) {
+    console.error("❌ 모든 이메일 발송이 실패했습니다.");
+    process.exit(1);
+  }
 }
 
-sendNewsletter();
+sendNewsletter().catch((err) => {
+  console.error("❌ 치명적인 오류 발생:", err);
+  process.exit(1);
+});
