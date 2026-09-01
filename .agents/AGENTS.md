@@ -25,3 +25,10 @@
 <!-- BEGIN:subscription-stability-rule -->
 - **Subscription Stability Rule**: 구독(Newsletter Subscription)과 관련된 기능은 병원의 신뢰도와 직결되므로 안정성을 최우선으로 해야 합니다. 웹사이트를 업데이트하거나 배포, 리빌드(Rebuild)를 진행할 때마다, 반드시 구독 관련 폼이나 데이터 저장 로직(KV 연동 등)이 정상적으로 동작하는지 최우선으로 사전 점검(체크)해야 합니다.
 <!-- END:subscription-stability-rule -->
+
+<!-- BEGIN:user-manual-distinction-rule -->
+- **User Manual vs Disease Guidelines/Rehab Blog Rule**:
+  - `재활 블로그 자동 작성` (Rehab Blog): Automated by `deploy.yml` (generate-blog-post.js). Currently STOPPED (no cron schedule).
+  - `질환 가이드라인 자동 보강` (Disease Guidelines): Automated by `disease-guideline.yml` (update-disease-content.js). Updates `data.json`.
+  - `우리 몸 사용 설명서` (User Manual): NOT automated by a script. This is a weekly task where the USER provides a general health/body topic (e.g., posture, joint nutrition), and the agent manually creates a blog post with the prefix `[우리 몸 사용 설명서] Chapter N.`. Do not confuse this with disease data generation.
+<!-- END:user-manual-distinction-rule -->
