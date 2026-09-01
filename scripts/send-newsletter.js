@@ -7,9 +7,8 @@ const NEWSLETTER_FILE = path.join(__dirname, "../newsletter-output.html");
 async function sendNewsletter() {
   console.log("🚀 뉴스레터 전송 준비 중...");
 
-  // 1. 발송자 이메일 계정 정보 확인
   const userEmail = process.env.EMAIL_USER;
-  const userPass = process.env.EMAIL_APP_PASSWORD;
+  const userPass = process.env.EMAIL_APP_PASSWORD ? process.env.EMAIL_APP_PASSWORD.replace(/\s+/g, '') : undefined;
 
   if (!userEmail || !userPass) {
     console.error("❌ 오류: EMAIL_USER 또는 EMAIL_APP_PASSWORD가 설정되지 않았습니다.");

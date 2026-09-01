@@ -135,9 +135,15 @@ ${existingTitles.join("\n")}
             const filenameMatch = responseText.match(/\[FILENAME\]:\s*(.*?\.md)/);
             if (filenameMatch) {
               const filename = filenameMatch[1].trim();
-              let content = responseText.replace(/\[FILENAME\]:.*?\n/i, "").trim();
-              content = content.replace(/^```markdown\n/i, "").replace(/\n```$/i, "").trim();
-              
+              // 프론트매터 YAML 파싱 에러 방지: [ 대괄호로 시작하는 제목에 큰따옴표 자동 보정
+              content = content.replace(/^title:\s*(\[[^"'\n\r]+.*)$/m, (match, p1) => {
+                let clean = p1.trim();
+                if ((clean.startsWith('"') && clean.endsWith('"')) || (clean.startsWith("'") && clean.endsWith("'"))) {
+                  return `title: ${clean}`;
+                }
+                return `title: "${clean.replace(/"/g, '\\"')}"`;
+              });
+
               const filePath = path.join(postsDir, filename);
               fs.writeFileSync(filePath, content, "utf8");
               console.log(`✅ 작성 완료: ${filename}`);
