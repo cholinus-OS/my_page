@@ -2,7 +2,6 @@ const nodemailer = require("nodemailer");
 const fs = require("fs");
 const path = require("path");
 
-const SUBSCRIBERS_FILE = path.join(__dirname, "../src/data/subscribers.json");
 const NEWSLETTER_FILE = path.join(__dirname, "../newsletter-output.html");
 
 async function sendNewsletter() {

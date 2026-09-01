@@ -24,7 +24,11 @@ function getLatestPosts() {
     });
 
   // 날짜 내림차순 정렬 후 상위 3개 반환
-  return posts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
+  return posts.sort((a, b) => {
+    const dateA = a.date ? new Date(a.date).getTime() : 0;
+    const dateB = b.date ? new Date(b.date).getTime() : 0;
+    return dateB - dateA;
+  }).slice(0, 3);
 }
 
 async function generateNewsletter() {
