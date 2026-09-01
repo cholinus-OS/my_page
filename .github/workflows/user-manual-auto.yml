@@ -1,0 +1,42 @@
+name: Generate and Deploy User Manual (우리 몸 사용 설명서)
+
+on:
+  schedule:
+    # 매주 월요일 새벽 4시 27분(UTC 일요일 19시 27분)에 실행
+    - cron: '27 19 * * 0'
+  workflow_dispatch:
+
+jobs:
+  generate-user-manual:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 2. Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 3. Install Dependencies
+        run: npm ci
+
+      - name: 4. Generate User Manuals
+        run: node scripts/generate-user-manual.js
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: 5. Commit and Push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          if ! git diff --cached --quiet; then
+            git commit -m "feat: 🤖 매주 자동 생성 우리 몸 사용 설명서 보강"
+            git push origin HEAD:main
+          else
+            echo "No changes to commit"
+          fi
