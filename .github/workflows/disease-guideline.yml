@@ -1,4 +1,4 @@
-name: Generate and Deploy User Manual
+name: Generate and Deploy Disease Guidelines
 
 on:
   schedule:
