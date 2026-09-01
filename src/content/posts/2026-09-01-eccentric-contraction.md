@@ -2,7 +2,7 @@
 title: "재활 운동의 기본, 신장성 수축.!!"
 date: "2026-09-01"
 summary: "재활 시 인대 손상을 예방하고 효과적인 회복을 돕는 필수 운동법, '신장성 수축'의 원리와 부위별 실전 운동법을 알아봅니다."
-category: "정보"
+category: "브리핑"
 tags: ["재활운동", "신장성수축", "EccentricContraction", "테니스엘보", "아킬레스건염"]
 thumbnail: "/images/eccentric-contraction-thumbnail.jpg"
 ---
