@@ -136,12 +136,16 @@ async function generateManuals() {
     "gemini-flash-latest"
   ];
 
+  const generatedThisBatch = [];
+
   for (const chapter of chapters) {
     console.log(`\n========================================`);
     console.log(`📝 Chapter ${chapter.number}: ${chapter.name} 신규 주제 선정 및 생성 시작...`);
 
     const pastItems = chapterHistories[chapter.number] || [];
-    const pastTitlesStr = pastItems.map(item => `- ${item.title}`).join("\n");
+    const pastChapterTitles = pastItems.map(item => `- ${item.title}`).join("\n");
+    const allExistingTitlesStr = allTitles.map(t => `- ${t}`).join("\n");
+    const thisBatchTitlesStr = generatedThisBatch.map(t => `- [이번 주 타 챕터에서 이미 선정된 주제]: ${t}`).join("\n");
 
     const prompt = `# [System Role]
 너는 15년 경력의 정형외과 전문의이자 베스트셀러 '우리 몸 사용 설명서'의 대표 저자이다.
@@ -154,16 +158,18 @@ async function generateManuals() {
 # [관절 부위 풀(Body Parts Pool) - 참고용]
 ${chapter.bodyPartsPool.map(p => `- ${p}`).join("\n")}
 
-# [⚠️ 중복 방지 및 주제 다양성 원칙 (MANDATORY)]
+# [⚠️ 중복 방지 및 주제 다양성 원칙 (기본 설정 - MANDATORY)]
 1. 아래 [기존에 이미 다룬 주제 목록]을 철저히 분석하라.
 2. **이미 다룬 관절 부위(예: 최근에 작성된 부위)나 세부 상황은 절대로 다시 작성하지 마라.**
-3. 관절 부위와 대상 운동/상황이 기존 글들과 완전히 겹치지 않는 **새로운 신체 부위 및 새로운 주제**를 선정하라!
-4. 제목(title) 규칙:
+3. 이번 주 같은 주차에 작성된 다른 챕터의 신체 부위와도 겹치지 않게 완전히 다른 부위를 선정하라!
+4. 관절 부위와 대상 운동/상황이 기존 글들과 완전히 겹치지 않는 **새로운 신체 부위 및 새로운 주제**를 선정하라!
+5. 제목(title) 규칙:
    - 형식: "[우리 몸 사용 설명서] Chapter ${chapter.number}. (여기에 훅이 들어간 매력적인 세부 제목)"
    - **중요: 제목(title)에는 <mark>, <u>, <b>, ** 등의 HTML 태그나 마크다운 서식을 절대 넣지 말고 오직 순수 텍스트(Plain Text)로만 작성하라.**
 
-[기존에 이미 다룬 주제 목록 (중복 엄금)]
-${pastTitlesStr || "(아직 작성된 이전 글 없음)"}
+[기존에 이미 다룬 주제 목록 (중복 절대 엄금)]
+${allExistingTitlesStr || "(아직 작성된 이전 글 없음)"}
+${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (중복 금지)]\n${thisBatchTitlesStr}` : ""}
 
 # [마크다운 및 본문 작성 규칙]
 - 강조를 위해 글자 양옆에 물결표(~)를 절대 사용하지 마라. 숫자 범위는 하이픈(-)을 사용하라 (예: 4-5kg, 2-3회).
@@ -225,6 +231,13 @@ ${pastTitlesStr || "(아직 작성된 이전 글 없음)"}
               const filePath = path.join(postsDir, filename);
               fs.writeFileSync(filePath, content, "utf8");
               console.log(`✅ 작성 완료: ${filename}`);
+
+              const savedTitleMatch = content.match(/^title:\s*"?(.*?)"?$/m);
+              if (savedTitleMatch) {
+                generatedThisBatch.push(savedTitleMatch[1]);
+                allTitles.push(savedTitleMatch[1]);
+              }
+
               success = true;
               break;
             } else {
