@@ -30,13 +30,13 @@ const chapters = [
     name: "스포츠 부상 예방",
     desc: "안전하게 스포츠를 즐기기 위한 필수 스트레칭과 각 관절 보호 요령을 배웁니다.",
     bodyPartsPool: [
-      "어깨 (회전근개 손상, 어깨 충돌증후군, 야구/수영 손상)",
-      "무릎 (전방십자인대 파열, 반월상연골판 손상, 러너스 니/장경인대)",
-      "팔꿈치 (테니스 엘보, 골프 엘보, 배드민턴/골프 손상)",
-      "허리/코어 (급성 요추 염좌, 웨이트 트레이닝 허리 부상)",
+      "어깨 (회전근개 손상, 어깨 충돌증후군, 수영/야구/배드민턴 손상)",
+      "무릎 (전방십자인대 파열, 반월상연골판 손상, 러너스 니/장경인대 마찰)",
+      "팔꿈치 (테니스 엘보, 골프 엘보, 내/외측 상과염)",
+      "허리/코어 (급성 요추 염좌, 웨이트 트레이닝 요통 방지)",
       "허벅지/햄스트링 (햄스트링 근육 파열, 내전근 좌상, 축구/육상)",
-      "손목/손가락 (손목 염좌, 삼각섬유연골복합체 TFCC, 클라이밍/헬스)",
-      "종아리/아킬레스 (비복근 파열/테니스 레그, 아킬레스건염)",
+      "손목/손가락 (손목 염좌, 삼각섬유연골복합체 TFCC, 클라이밍/골프)",
+      "종아리/아킬레스 (비복근 파열/테니스 레그, 아킬레스건병증)",
       "고관절/골반 (고관절 충돌증후군, 서혜부 통증, 러닝/필라테스)"
     ]
   },
@@ -45,11 +45,11 @@ const chapters = [
     name: "일상 속 바른 자세",
     desc: "거북목, 라운드숄더 등 현대인의 고질병을 해결하는 매일 5분 자세 교정 루틴.",
     bodyPartsPool: [
-      "목/경추 (거북목 증후군, 일자목, 스마트폰 목 통증)",
-      "어깨/등 (라운드숄더, 굽은 등, 견갑골 비대칭/익상견갑)",
+      "목/경추 (거북목 증후군, 일자목, 스마트폰 목 디스크 예방)",
+      "어깨/등 (라운드숄더, 굽은 등/흉추 후만, 견갑골 비대칭/익상견갑)",
       "허리/골반 (골반 틀어짐, 짝다리/다리꼬기, 의자 요통, 골반 전방경사)",
-      "손목/손가락 (마우스 손목터널증후군, 스마트폰 방아쇠수지, 건초염)",
-      "발/보행 (팔자걸음, 안짱다리, 평발 보행 피로, 뒤꿈치 통증)",
+      "손목/손가락 (마우스 손목터널증후군, 스마트폰 방아쇠수지, 드퀘르벵 건초염)",
+      "발/보행 (팔자걸음, 안짱다리, 평발 보행 피로, 뒤꿈치 족저근막 통증)",
       "턱관절/두통 (턱관절 장애, 자세성 긴장성 두통)",
       "전신/수면 (수면 자세, 베개 높이, 체형 불균형 리셋)"
     ]
@@ -59,21 +59,35 @@ const chapters = [
     name: "생애주기별 관리",
     desc: "성장기 아이부터 관절염이 걱정되는 노년층까지 연령대별 노화 방지 솔루션.",
     bodyPartsPool: [
-      "10대 성장기 (청소년 척추측만증, 오스굿씨병, 성장통, 바른 책상 자세)",
+      "10대 성장기 (청소년 척추측만증, 오스굿씨병, 성장통 완화, 바른 책상 자세)",
       "20~30대 청년기 (초기 디스크 예방, 직장인 관절 기초체력, 스포츠 손상 복구)",
-      "40~50대 중년기 (오십견/유착성관절낭염, 조기 퇴행성관절염, 폐경기 골밀도)",
-      "60대 이상 노년기 (퇴행성 무릎관절염, 척추관협착증, 낙상 예방/균형감각, 근감소증 방지)",
-      "생애 전반 (관절 연골 영양학, 뼈 건강 영양소, 항노화 관절 습관)"
+      "40~50대 중년기 (오십견/동결견, 조기 퇴행성관절염, 폐경기 골밀도/골감소증)",
+      "60대 이상 노년기 (퇴행성 무릎관절염 완충, 척추관협착증 보행 요령, 낙상 예방/균형감각, 근감소증 방지)",
+      "생애 전반 (관절 연골 영양학, 뼈 건강 영양소, 평생 쓰는 항노화 관절 습관)"
     ]
   }
 ];
 
+function detectBodyPart(title, summary, tags) {
+  const text = `${title} ${summary} ${(tags || []).join(" ")}`;
+  if (/무릎|십자인대|연골판|슬개|반월상|러너스/.test(text)) return "무릎";
+  if (/발목|아킬레스|족저|발바닥|뒤꿈치/.test(text)) return "발목/발";
+  if (/어깨|회전근개|오십견|라운드숄더|견갑|익상/.test(text)) return "어깨/등";
+  if (/목|경추|거북목|일자목/.test(text)) return "목/경추";
+  if (/허리|요추|골반|척추|디스크|측만증/.test(text)) return "허리/척추/골반";
+  if (/팔꿈치|엘보|손목|수근관|방아쇠|TFCC/.test(text)) return "팔꿈치/손목";
+  if (/고관절|서혜부|둔근/.test(text)) return "고관절/골반";
+  if (/햄스트링|허벅지|대퇴|내전근/.test(text)) return "허벅지/햄스트링";
+  return "기타/전신";
+}
+
 function analyzeExistingManuals(postsDir) {
-  if (!fs.existsSync(postsDir)) return { allTitles: [], chapterHistories: { 1: [], 2: [], 3: [] } };
+  if (!fs.existsSync(postsDir)) return { allTitles: [], chapterHistories: { 1: [], 2: [], 3: [] }, recentPosts: [] };
 
   const files = fs.readdirSync(postsDir).filter(f => f.endsWith(".md"));
   const allTitles = [];
   const chapterHistories = { 1: [], 2: [], 3: [] };
+  const allManualPosts = [];
 
   for (const file of files) {
     try {
@@ -87,19 +101,28 @@ function analyzeExistingManuals(postsDir) {
         const cleanTitle = data.title.replace(/<[^>]+>/g, '').replace(/["']/g, '').trim();
         allTitles.push(cleanTitle);
 
+        const bodyPart = detectBodyPart(cleanTitle, data.summary, data.tags);
+
         // Determine which chapter it belongs to
         let chNum = 0;
         if (file.includes("chapter1") || file.includes("chapter-1") || cleanTitle.includes("Chapter 1") || cleanTitle.includes("스포츠")) chNum = 1;
         else if (file.includes("chapter2") || file.includes("chapter-2") || cleanTitle.includes("Chapter 2") || cleanTitle.includes("자세")) chNum = 2;
         else if (file.includes("chapter3") || file.includes("chapter-3") || cleanTitle.includes("Chapter 3") || cleanTitle.includes("생애") || cleanTitle.includes("노화")) chNum = 3;
 
+        const postObj = {
+          file,
+          title: cleanTitle,
+          date: data.date || "2026-08-01",
+          summary: data.summary || "",
+          tags: data.tags || [],
+          bodyPart,
+          chNum
+        };
+
+        allManualPosts.push(postObj);
+
         if (chNum > 0) {
-          chapterHistories[chNum].push({
-            file,
-            title: cleanTitle,
-            summary: data.summary || "",
-            tags: data.tags || []
-          });
+          chapterHistories[chNum].push(postObj);
         }
       }
     } catch (e) {
@@ -107,7 +130,11 @@ function analyzeExistingManuals(postsDir) {
     }
   }
 
-  return { allTitles, chapterHistories };
+  // 날짜 내림차순 정렬
+  allManualPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const recentPosts = allManualPosts.slice(0, 6); // 최근 6개 글 (약 최근 2주 분량)
+
+  return { allTitles, chapterHistories, recentPosts };
 }
 
 async function generateManuals() {
@@ -122,7 +149,7 @@ async function generateManuals() {
     fs.mkdirSync(postsDir, { recursive: true });
   }
 
-  const { allTitles, chapterHistories } = analyzeExistingManuals(postsDir);
+  const { allTitles, chapterHistories, recentPosts } = analyzeExistingManuals(postsDir);
 
   const now = new Date();
   const kstOffset = 9 * 60 * 60 * 1000;
@@ -143,8 +170,9 @@ async function generateManuals() {
     console.log(`📝 Chapter ${chapter.number}: ${chapter.name} 신규 주제 선정 및 생성 시작...`);
 
     const pastItems = chapterHistories[chapter.number] || [];
-    const pastChapterTitles = pastItems.map(item => `- ${item.title}`).join("\n");
+    const pastChapterTitles = pastItems.map(item => `- ${item.title} (부위: ${item.bodyPart})`).join("\n");
     const allExistingTitlesStr = allTitles.map(t => `- ${t}`).join("\n");
+    const recentPartsList = [...new Set(recentPosts.map(p => p.bodyPart))].join(", ");
     const thisBatchTitlesStr = generatedThisBatch.map(t => `- [이번 주 타 챕터에서 이미 선정된 주제]: ${t}`).join("\n");
 
     const prompt = `# [System Role]
@@ -152,24 +180,27 @@ async function generateManuals() {
 전문적이면서도 독자의 눈높이에 맞춘 다정하고 신뢰감 있는 어조(~합니다, ~해보세요)로 유용한 건강 솔루션을 제공한다.
 
 # [Task Instructions]
-다음 챕터 대주제에 맞춰, **기존에 다루지 않은 완전히 새로운 관절 부위 및 세부 질환/상황**을 스스로 1개 선정하여 깊이 있는 블로그 글을 작성하라.
+다음 챕터 대주제에 맞춰, **이번 주에 다룰 [특정 세부 주제]를 스스로 1개 선정**하고 심층적인 블로그 글을 작성하라.
 - 챕터 대주제: Chapter ${chapter.number}. ${chapter.name} (${chapter.desc})
 
 # [관절 부위 풀(Body Parts Pool) - 참고용]
 ${chapter.bodyPartsPool.map(p => `- ${p}`).join("\n")}
 
-# [⚠️ 중복 방지 및 주제 다양성 원칙 (기본 설정 - MANDATORY)]
-1. 아래 [기존에 이미 다룬 주제 목록]을 철저히 분석하라.
-2. **이미 다룬 관절 부위(예: 최근에 작성된 부위)나 세부 상황은 절대로 다시 작성하지 마라.**
-3. 이번 주 같은 주차에 작성된 다른 챕터의 신체 부위와도 겹치지 않게 완전히 다른 부위를 선정하라!
-4. 관절 부위와 대상 운동/상황이 기존 글들과 완전히 겹치지 않는 **새로운 신체 부위 및 새로운 주제**를 선정하라!
-5. 제목(title) 규칙:
+# [⚠️ 핵심 편집 지침: 관절 부위 쿨다운 & 재활 내용 차별화 원칙 (기본 설정)]
+1. **단기간 빈번 출현 방지 (쿨다운 원칙):**
+   - 최근 2~3주 내에 이미 다룬 관절 부위: **[ ${recentPartsList || "없음"} ]**
+   - 위 부위들은 짧은 시간에 너무 자주 연달아 나오는 것을 방지하기 위해, 이번 주에는 **가급적 최근에 다루지 않은 다른 관절 부위를 우선 선정**하라.
+   - 또한, 이번 주 같은 주차에 작성된 다른 챕터의 부위와도 겹치지 않게 완전히 다른 신체 부위를 선정하라!
+2. **동일 관절 재방문 시 100% 차별화 원칙:**
+   - 관절이 같은 부위(예: 무릎, 어깨 등)라 하더라도, 충분한 시간 간격(쿨다운)을 둔 후 **재활의 내용, 타겟 세부 구조물, 손상 메커니즘, 운동 처방(신장성 수축, 고유수용성 감각, 관절 가동성 등)이 완전히 다르다면 언제든 훌륭한 설명서가 될 수 있다.**
+   - 단, 같은 부위를 다룰 때는 이전 글의 주제와 운동법을 절대 단순 반복하지 말고, **완전히 새로운 각도와 실천 팁**으로 접근해야 한다!
+3. 제목(title) 규칙:
    - 형식: "[우리 몸 사용 설명서] Chapter ${chapter.number}. (여기에 훅이 들어간 매력적인 세부 제목)"
    - **중요: 제목(title)에는 <mark>, <u>, <b>, ** 등의 HTML 태그나 마크다운 서식을 절대 넣지 말고 오직 순수 텍스트(Plain Text)로만 작성하라.**
 
-[기존에 이미 다룬 주제 목록 (중복 절대 엄금)]
+[기존에 이미 다룬 전체 주제 목록 (참고 및 차별화용)]
 ${allExistingTitlesStr || "(아직 작성된 이전 글 없음)"}
-${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (중복 금지)]\n${thisBatchTitlesStr}` : ""}
+${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동주차 중복 금지)]\n${thisBatchTitlesStr}` : ""}
 
 # [마크다운 및 본문 작성 규칙]
 - 강조를 위해 글자 양옆에 물결표(~)를 절대 사용하지 마라. 숫자 범위는 하이픈(-)을 사용하라 (예: 4-5kg, 2-3회).
