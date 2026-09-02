@@ -30,7 +30,13 @@
 - **User Manual vs Disease Guidelines/Rehab Blog Rule**:
   - `재활 블로그 자동 작성` (Rehab Blog): Automated by `deploy.yml` (generate-blog-post.js). Currently STOPPED (no cron schedule).
   - `질환 가이드라인 자동 보강` (Disease Guidelines): Automated by `disease-guideline.yml` (update-disease-content.js). Updates `data.json`.
-  - `우리 몸 사용 설명서` (User Manual): Automated weekly on Mondays via `user-manual-auto.yml` (scripts/generate-user-manual.js) for 3 chapters (스포츠 부상 예방, 일상 속 바른 자세, 생애주기별 관리).
+  - `우리 몸 사용 설명서` (User Manual):
+    - 매주 월요일 새벽(04:27 KST)에 `user-manual-auto.yml` (scripts/generate-user-manual.js)을 통해 3개 챕터(Chapter 1. 스포츠 부상 예방, Chapter 2. 일상 속 바른 자세, Chapter 3. 생애주기별 관리)가 자동 작성 및 배포됩니다.
+    - **중요**: 웹페이지의 30가지 질병 데이터(`data.json`)에 국한되지 않으며, 오로지 각 챕터의 일반론적 대주제와 다양한 관절 부위 풀(어깨, 무릎, 팔꿈치, 허리, 골반, 발목 등)을 바탕으로 새롭고 다변화된 주제로 제작됩니다.
+  - `원장님 브리핑` (Briefing):
+    - 원장님께서 직접 위 '우리 몸 사용 설명서'의 내용을 바탕으로 재가공하여 `[센터장 브리핑]` 말머리를 달고 직접 작성 및 발행하는 공식 칼럼입니다.
+  - `주간 뉴스레터` (Weekly Newsletter):
+    - 매주 화요일 아침(08:00 KST)에 `newsletter.yml`을 통해 월요일에 배포된 최신 사용설명서 3편을 담아 네이버/핫메일/지메일 완벽 호환 인라인 테이블 템플릿으로 자동 발송됩니다.
 <!-- END:user-manual-distinction-rule -->
 
 <!-- BEGIN:title-plain-text-rule -->
