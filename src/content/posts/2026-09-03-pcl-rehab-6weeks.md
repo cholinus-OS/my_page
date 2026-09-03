@@ -65,6 +65,12 @@ thumbnail: "/images/pcl-arthroscopy.png"
 
 ![누워서 사용하는 일반 무릎 CPM 기계 운동 금지 안내](/images/pcl-cpm-prohibited.png)
 
+> **💡 안전한 무릎 굴곡 운동의 대안: '엎드린 자세(Prone)'에서 시행하기**  
+> 관절 운동을 시작할 때도 누워서 다리를 들어 올리면 중력으로 인해 종아리가 처지므로, **반드시 엎드린 자세(Prone)**에서 관절 굴곡을 진행해야 인대에 무리가 가지 않습니다. 아래와 같이 건강한 반대쪽 다리(건측)로 환측 발목을 받쳐 올리거나, 탄력 밴드를 발목에 걸어 부드럽게 당겨주는 수동적 굴곡 운동을 시행합니다.
+
+![엎드려 수동적 굴곡 운동 (건측 이용)](/images/pcl-prone-flexion-leg.jpg)
+![엎드려 수동적 굴곡 운동 (밴드 이용)](/images/pcl-prone-flexion-band.jpg)
+
 ---
 
 ## 4. 4주차의 핵심: '월스쿼트(Wall Squat)' 시작
