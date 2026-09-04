@@ -34,6 +34,21 @@ function getLatestPosts() {
 
 async function generateNewsletter() {
   console.log('📰 뉴스레터 생성을 시작합니다...');
+
+  // 0. 한국 시간(KST) 기준 화요일 검증 안전장치 (Tuesday Guard)
+  const now = new Date();
+  const kstOffset = 9 * 60 * 60 * 1000;
+  const kstDate = new Date(now.getTime() + kstOffset);
+  const dayOfWeek = kstDate.getUTCDay();
+  const isTuesday = dayOfWeek === 2;
+  const forceSend = process.env.FORCE_SEND === "true";
+
+  if (!isTuesday && !forceSend) {
+    const dayNames = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+    console.log(`🛑 [생성 스킵] 오늘은 ${dayNames[dayOfWeek]}입니다.`);
+    console.log(`📌 주간 뉴스레터는 매주 [화요일]에만 생성 및 발송되도록 안전 잠금장치가 활성화되어 있습니다.`);
+    process.exit(0);
+  }
   
   const latestPosts = getLatestPosts();
   console.log(`✅ 최신 글 ${latestPosts.length}개 추출 완료.`);
@@ -70,9 +85,6 @@ html 태그 없이 순수 텍스트로만 작성하세요.
   }
 
   // 오늘 날짜 포맷팅 (YYYY.MM.DD)
-  const now = new Date();
-  const kstOffset = 9 * 60 * 60 * 1000;
-  const kstDate = new Date(now.getTime() + kstOffset);
   const formattedDate = `${kstDate.getFullYear()}년 ${kstDate.getMonth() + 1}월 ${kstDate.getDate()}일`;
 
   // 인트로 문단을 <p> 태그로 변환 (네이버 메일 등에서 white-space 지원 안 해도 줄바꿈 유지)

@@ -5,6 +5,12 @@ on:
     # 매주 화요일 오전 8시(UTC 월요일 23시)에 뉴스레터 발송
     - cron: '0 23 * * 1'
   workflow_dispatch:
+    inputs:
+      force_send:
+        description: '화요일이 아니어도 강제 발송 여부 (true/false)'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   send-newsletter:
@@ -26,6 +32,7 @@ jobs:
         run: node scripts/generate-newsletter.js
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FORCE_SEND: ${{ inputs.force_send }}
 
       - name: 5. Send Newsletter
         run: node scripts/send-newsletter.js
@@ -33,3 +40,4 @@ jobs:
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
           NEWSLETTER_SECRET_KEY: ${{ secrets.NEWSLETTER_SECRET_KEY }}
+          FORCE_SEND: ${{ inputs.force_send }}
