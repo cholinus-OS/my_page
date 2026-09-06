@@ -91,6 +91,8 @@ thumbnail: "/images/short-foot-exercise-guide.jpg"
 * **2차 신장 (가자미근 & 아킬레스건):** 뒷다리 보폭을 약간 좁힌 뒤, 뒤꿈치를 바닥에 붙인 채 **뒷다리 무릎을 살짝 구부려** 아킬레스건 깊숙한 곳을 <span style="white-space: nowrap;">30초간 늘립니다.</span>
 * **절대 주의:** 아이들은 종아리가 당기면 발끝을 밖으로 1-2시 방향으로 돌려버립니다. **뒷발의 두 번째 발가락과 무릎 축이 반드시 벽과 수직인 '정면 12시 방향'**을 향해야만 진짜 스트레칭이 됩니다.
 
+![실베르스키월드 기반 하퇴삼두근 분별 신장 (Differential Gastro-Soleus Wall Stretch) 환자 안내 가이드](/images/differential-gastro-soleus-stretch-guide.png)
+
 ---
 
 ### 🚨 의사가 경고하는 '당장 병원에 가야 할' 3대 적신호 (Red Flags)
