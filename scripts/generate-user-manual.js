@@ -158,16 +158,34 @@ async function generateManuals() {
 
   const candidateModels = [
     "gemini-2.5-flash",
-    "gemini-2.0-flash",
-    "gemini-3.5-flash",
-    "gemini-flash-latest"
+    "gemini-flash-latest",
+    "gemini-2.5-pro"
   ];
 
   const generatedThisBatch = [];
+  const failedChapters = [];
 
   for (const chapter of chapters) {
     console.log(`\n========================================`);
-    console.log(`📝 Chapter ${chapter.number}: ${chapter.name} 신규 주제 선정 및 생성 시작...`);
+    console.log(`📝 Chapter ${chapter.number}: ${chapter.name} 검사 및 생성 시작...`);
+
+    // 오늘 날짜로 이미 작성된 해당 챕터가 있는지 확인
+    const existingToday = fs.readdirSync(postsDir).find(f => 
+      f.startsWith(todayStr) && 
+      (f.includes(`chapter${chapter.number}`) || f.includes(`chapter-${chapter.number}`))
+    );
+
+    if (existingToday) {
+      console.log(`⏩ Chapter ${chapter.number}는 오늘(${todayStr}) 이미 작성되어 있습니다: ${existingToday}`);
+      try {
+        const raw = fs.readFileSync(path.join(postsDir, existingToday), "utf8");
+        const { data } = matter(raw);
+        if (data.title) {
+          generatedThisBatch.push(data.title);
+        }
+      } catch (e) {}
+      continue;
+    }
 
     const pastItems = chapterHistories[chapter.number] || [];
     const pastChapterTitles = pastItems.map(item => `- ${item.title} (부위: ${item.bodyPart})`).join("\n");
@@ -176,7 +194,7 @@ async function generateManuals() {
     const thisBatchTitlesStr = generatedThisBatch.map(t => `- [이번 주 타 챕터에서 이미 선정된 주제]: ${t}`).join("\n");
 
     const prompt = `# [System Role]
-너는 15년 경력의 정형외과 전문의이자 베스트셀러 '우리 몸 사용 설명서'의 대표 저자이다.
+너는 15년 경력의 정형외과 전문의이자 바른관절 헬프센터 센터장 '조형준 원장'이며, 베스트셀러 '우리 몸 사용 설명서'의 대표 저자이다. 가상의 다른 이름(예: 박선생 등)을 일절 사용하지 말고, 항상 정형외과 전문의 조형준 원장으로서 풍부한 진료실 임상 경험을 바탕으로 글을 작성하라.
 전문적이면서도 독자의 눈높이에 맞춘 다정하고 신뢰감 있는 어조(~합니다, ~해보세요)로 유용한 건강 솔루션을 제공한다.
 
 # [Task Instructions]
@@ -188,7 +206,7 @@ ${chapter.bodyPartsPool.map(p => `- ${p}`).join("\n")}
 
 # [⚠️ 핵심 편집 지침: 관절 부위 쿨다운 & 재활 내용 차별화 원칙 (기본 설정)]
 1. **단기간 빈번 출현 방지 (쿨다운 원칙):**
-   - 최근 2~3주 내에 이미 다룬 관절 부위: **[ ${recentPartsList || "없음"} ]**
+   - 최근 2-3주 내에 이미 다룬 관절 부위: **[ ${recentPartsList || "없음"} ]**
    - 위 부위들은 짧은 시간에 너무 자주 연달아 나오는 것을 방지하기 위해, 이번 주에는 **가급적 최근에 다루지 않은 다른 관절 부위를 우선 선정**하라.
    - 또한, 이번 주 같은 주차에 작성된 다른 챕터의 부위와도 겹치지 않게 완전히 다른 신체 부위를 선정하라!
 2. **동일 관절 재방문 시 100% 차별화 원칙:**
@@ -207,8 +225,8 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
 - 본문 내 강조 시에는 마크다운 볼드(**) 외에도 <u>밑줄</u> 이나 <mark>형광펜</mark> 태그를 적극 활용하여 가독성을 높여라.
 - 표(Table) 작성 시 모바일 가독성을 위해 항목명은 <br/>로 두 줄 줄바꿈하고, 수치/기간 등 줄바꿈되면 안 되는 텍스트는 <span style="white-space: nowrap;">...</span> 처리하라.
 - 구성:
-  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2"])
-  2. 서론: 일상 속 특정 통증/부상 상황 공감 및 주제 선정 이유
+  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2", "우리몸사용설명서"])
+  2. 서론: 일상 속 특정 통증/부상 상황 공감 및 주제 선정 이유 (정형외과 전문의 조형준 원장 인사)
   3. 본론: 해부학적 발생 원인 분석 및 실생활에서 즉시 따라 할 수 있는 자가 운동/스트레칭 3가지 이상 상세 설명
   4. 결론: 요약, 따뜻한 응원 멘트 및 의학적 면책 조항(디스클레이머)
 - 분량: 공백 제외 1,800자 이상으로 매우 상세하고 알차게 작성할 것.
@@ -239,41 +257,70 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
           let responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
           
           if (responseText) {
-            const filenameMatch = responseText.match(/\[FILENAME\]:\s*(.*?\.md)/);
+            let filename = null;
+            const filenameMatch = responseText.match(/(?:\[FILENAME\]|\*\*\[FILENAME\]\*\*|FILENAME:)\s*([a-zA-Z0-9_\-\.]+\.md)/i);
             if (filenameMatch) {
-              const filename = filenameMatch[1].trim();
-              let content = responseText.replace(/\[FILENAME\]:.*?\n/i, "").trim();
-              content = content.replace(/^```markdown\n/i, "").replace(/\n```$/i, "").trim();
-
-              // 1. 제목 순수 텍스트 정제 및 큰따옴표 보정
-              content = content.replace(/^title:\s*(.*)$/m, (match, p1) => {
-                let clean = p1.replace(/<[^>]+>/g, '').replace(/\*\*/g, '').replace(/~~/g, '').replace(/`/g, '').trim();
-                if ((clean.startsWith('"') && clean.endsWith('"')) || (clean.startsWith("'") && clean.endsWith("'"))) {
-                  clean = clean.slice(1, -1).trim();
-                }
-                return `title: "${clean.replace(/"/g, '\\"')}"`;
-              });
-
-              // 2. 카테고리 보정
-              if (!content.includes('category: "사용 설명서"') && !content.includes("category: '사용 설명서'")) {
-                content = content.replace(/^category:\s*.*$/m, 'category: "사용 설명서"');
-              }
-
-              const filePath = path.join(postsDir, filename);
-              fs.writeFileSync(filePath, content, "utf8");
-              console.log(`✅ 작성 완료: ${filename}`);
-
-              const savedTitleMatch = content.match(/^title:\s*"?(.*?)"?$/m);
-              if (savedTitleMatch) {
-                generatedThisBatch.push(savedTitleMatch[1]);
-                allTitles.push(savedTitleMatch[1]);
-              }
-
-              success = true;
-              break;
+              filename = filenameMatch[1].trim();
             } else {
-              console.warn("⚠️ 출력 포맷에서 파일명을 찾을 수 없습니다. 재시도...");
+              filename = `${todayStr}-chapter${chapter.number}-guide.md`;
             }
+
+            let content = responseText
+              .replace(/^(?:\[FILENAME\]|\*\*\[FILENAME\]\*\*|FILENAME:).*?\n/gim, "")
+              .trim();
+            content = content.replace(/^```markdown\s*\n/i, "").replace(/\n```$/i, "").trim();
+
+            // 1. 제목 순수 텍스트 정제 및 큰따옴표 보정
+            content = content.replace(/^title:\s*(.*)$/m, (match, p1) => {
+              let clean = p1.replace(/<[^>]+>/g, '').replace(/\*\*/g, '').replace(/~~/g, '').replace(/`/g, '').trim();
+              if ((clean.startsWith('"') && clean.endsWith('"')) || (clean.startsWith("'") && clean.endsWith("'"))) {
+                clean = clean.slice(1, -1).trim();
+              }
+              return `title: "${clean.replace(/"/g, '\\"')}"`;
+            });
+
+            // 2. 날짜 큰따옴표 보정
+            content = content.replace(/^date:\s*["']?(\d{4}-\d{2}-\d{2})["']?/m, `date: "$1"`);
+
+            // 3. summary 큰따옴표 보정
+            content = content.replace(/^summary:\s*(.*)$/m, (match, p1) => {
+              let clean = p1.trim();
+              if ((clean.startsWith('"') && clean.endsWith('"')) || (clean.startsWith("'") && clean.endsWith("'"))) {
+                clean = clean.slice(1, -1).trim();
+              }
+              return `summary: "${clean.replace(/"/g, '\\"')}"`;
+            });
+
+            // 4. 카테고리 보정
+            if (!content.includes('category: "사용 설명서"') && !content.includes("category: '사용 설명서'")) {
+              content = content.replace(/^category:\s*.*$/m, 'category: "사용 설명서"');
+            }
+
+            // 5. 물결표(~) 자동 치환 (하이픈 -)
+            content = content.replace(/(\d+)\s*~\s*(\d+)/g, "$1-$2");
+
+            // 6. 태그에 "우리몸사용설명서" 보장
+            if (content.includes("tags:")) {
+              if (!content.includes('"우리몸사용설명서"') && !content.includes("'우리몸사용설명서'")) {
+                content = content.replace(/^tags:\s*\[(.*?)\]/m, (match, p1) => {
+                  const items = p1.trim() ? `${p1.trim()}, "우리몸사용설명서"` : `"우리몸사용설명서"`;
+                  return `tags: [${items}]`;
+                });
+              }
+            }
+
+            const filePath = path.join(postsDir, filename);
+            fs.writeFileSync(filePath, content, "utf8");
+            console.log(`✅ 작성 완료: ${filename}`);
+
+            const savedTitleMatch = content.match(/^title:\s*"?(.*?)"?$/m);
+            if (savedTitleMatch) {
+              generatedThisBatch.push(savedTitleMatch[1]);
+              allTitles.push(savedTitleMatch[1]);
+            }
+
+            success = true;
+            break;
           }
         }
       } catch (err) {
@@ -284,8 +331,16 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
     
     if (!success) {
       console.error(`❌ Chapter ${chapter.number} 생성 실패.`);
+      failedChapters.push(chapter.number);
     }
     await new Promise(r => setTimeout(r, 3000));
+  }
+
+  if (failedChapters.length > 0) {
+    console.error(`\n⚠️ 최종 미완료 챕터 목록: Chapter ${failedChapters.join(", ")}`);
+    process.exitCode = 1;
+  } else {
+    console.log(`\n🎉 모든 챕터가 완벽하게 준비되었습니다!`);
   }
 }
 
