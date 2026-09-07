@@ -42,6 +42,16 @@
     - 매주 화요일 아침(08:00 KST)에 `newsletter.yml`을 통해 월요일에 배포된 최신 사용설명서 3편을 담아 네이버/핫메일/지메일 완벽 호환 인라인 테이블 템플릿으로 자동 발송됩니다.
 <!-- END:user-manual-distinction-rule -->
 
+<!-- BEGIN:weekly-schedule-management-rule -->
+- **Weekly Schedule Management & Automatic Troubleshooting Rule (월요일 설명서 배포 & 화요일 주간뉴스 발송 기본 원칙)**:
+  1. **매주 월요일 - 우리 몸 사용 설명서 (User Manual)**:
+     - 3개 챕터(Chapter 1. 스포츠 부상 예방, Chapter 2. 일상 속 바른 자세, Chapter 3. 생애주기별 관리)가 부위 및 주제 쿨다운(중복 방지) 원칙에 따라 정상 작성 및 배포되었는지 주의 깊게 확인 및 관리합니다.
+     - **배포 미완료 시 조치**: 만약 월요일 정기 배포가 완료되지 않았거나 일부 챕터가 누락된 경우, **반드시 미배포된 원인을 즉시 추적·분석하여 오류를 수정한 뒤 완벽히 보강 및 배포하는 것을 기본값**으로 합니다.
+  2. **매주 화요일 - 주간 뉴스레터 발송 (Weekly Newsletter)**:
+     - 월요일에 배포된 최신 3개 챕터 사용설명서가 담긴 주간 뉴스레터가 구독자들에게 정상 발송되었는지 주의 깊게 관리합니다.
+     - **발송 미완료 시 조치**: 만약 화요일 발송이 실행되지 않았거나 발송 실패 오류가 발생한 경우, **반드시 그 원인을 정밀 진단하여 스크립트/템플릿/키 설정 오류를 수정한 후 즉시 정상 발송되도록 조치하는 것을 기본값**으로 합니다.
+<!-- END:weekly-schedule-management-rule -->
+
 <!-- BEGIN:title-plain-text-rule -->
 - **Title Plain Text Rule**: 모든 글(블로그, 브리핑, 우리 몸 사용 설명서 등)의 프론트매터 제목(`title`)에는 `<mark>`, `<u>`, `<b>`, `**`, `~~` 등의 HTML 태그나 마크다운 서식 기호를 절대 포함하지 마세요. 제목은 반드시 순수 텍스트(Plain Text)로만 작성해야 합니다.
 <!-- END:title-plain-text-rule -->
