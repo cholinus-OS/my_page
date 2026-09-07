@@ -137,5 +137,13 @@ thumbnail: "/images/proper-walking-posture-guide.jpg"
 
 ---
 
+### 📚 전문 의학 학술 참고 문헌 (References)
+1. **The Lancet Public Health**: Paluch AE, et al. *Daily steps and all-cause mortality: a meta-analysis of 15 international cohorts.* [PubMed: 35247352](https://pubmed.ncbi.nlm.nih.gov/35247352/)
+2. **JAMA Internal Medicine**: Saint-Maurice PF, et al. *Association of Daily Step Count and Step Intensity With Mortality Among US Adults.* [JAMA Network](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2763292)
+3. **American College of Sports Medicine (ACSM)**: *ACSM's Guidelines for Exercise Testing and Prescription (11th Edition).* [ACSM Physical Activity Guidelines](https://www.acsm.org/education-resources/trending-topics-resources/physical-activity-guidelines)
+4. **질병관리청(KDCA) 국가건강정보포털**: *만성질환 예방을 위한 신체활동 및 걷기 운동 지침.* [질병관리청 건강정보](https://health.kdca.go.kr)
+
+---
+
 **[의학적 면책 조항 (Disclaimer)]**  
 본 칼럼에 수록된 건강 정보는 일반적인 운동생리학적 지식을 전달하기 위해 작성되었으며, 개별 환자의 의학적 진단이나 처방을 대신할 수 없습니다. 퇴행성 관절염 중증, 족저근막염 급성기, 심장질환 병력이 있으신 분은 운동 강도를 높이기 전에 반드시 담당 정형외과 및 순환기내과 전문의와 상담하시기 바랍니다.

@@ -122,4 +122,12 @@ thumbnail: "/images/short-foot-exercise-guide.jpg"
 
 ---
 
+### 📚 전문 의학 학술 참고 문헌 (References)
+1. **Journal of Foot and Ankle Research / Cochrane**: Evans AM, Rome K. *A Cochrane review of the evidence for children's flat feet.* [PubMed: 21251330](https://pubmed.ncbi.nlm.nih.gov/21251330/)
+2. **American Academy of Orthopaedic Surgeons (AAOS OrthoInfo)**: *Pediatric Flatfoot (Flexible Flatfoot in Children).* [AAOS OrthoInfo](https://orthoinfo.aaos.org/en/diseases--conditions/flexible-flatfoot-in-children/)
+3. **대한소아정형외과학회 / 대한족부족관절학회**: *소아 편평족의 평가 및 비수술적 운동 치료 지침.* [대한정형외과학회](https://www.koa.or.kr)
+4. **질병관리청(KDCA) 국가건강정보포털**: *소아 발 질환 및 평발의 바른 발달 과정.* [질병관리청 건강정보](https://health.kdca.go.kr)
+
+---
+
 *본 건강 정보는 정형외과 전문의 조형준 센터장의 임상 경험과 소아 족부 생체역학 지식을 바탕으로 작성되었습니다. 만약 아이가 걷기를 거부하거나 특정 관절 부위에 열감과 부종이 동반된다면 단순 성장통이 아닐 수 있으므로 지체 없이 전문의의 정밀 진단을 받으시기 바랍니다.*

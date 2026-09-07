@@ -110,5 +110,13 @@ tags: ["손목통증", "손목터널증후군", "드퀘르벵건초염", "자세
 
 ---
 
+### 📚 전문 의학 학술 참고 문헌 (References)
+1. **American Academy of Orthopaedic Surgeons (AAOS OrthoInfo)**: *Carpal Tunnel Syndrome & de Quervain's Tenosynovitis Clinical Guidelines.* [AAOS OrthoInfo](https://orthoinfo.aaos.org/en/diseases--conditions/carpal-tunnel-syndrome/)
+2. **Cochrane Database of Systematic Reviews / PubMed**: Page MJ, et al. *Exercise and mobilisation interventions for carpal tunnel syndrome.* [PubMed: 22674989](https://pubmed.ncbi.nlm.nih.gov/22674989/)
+3. **대한수부외과학회 / 대한정형외과학회**: *수근관 증후군 및 건초염의 비수술적 재활 프로토콜.* [대한정형외과학회](https://www.koa.or.kr)
+4. **질병관리청(KDCA) 국가건강정보포털**: *수근관증후군(손목터널증후군) 예방 및 생활 수칙.* [질병관리청 건강정보](https://health.kdca.go.kr)
+
+---
+
 **[의학적 면책 조항 (Disclaimer)]**
 본 칼럼에 제공된 정보는 학술 및 정보 전달을 목적으로 작성되었으며, 전문의의 개별적인 의학적 진단이나 치료를 대신할 수 없습니다. 통증이 2주 이상 지속되거나 손가락의 근력 저하, 마비 증상이 동반되는 경우에는 즉시 가까운 정형외과 전문의를 찾아 정확한 진단을 받으시길 권장합니다.

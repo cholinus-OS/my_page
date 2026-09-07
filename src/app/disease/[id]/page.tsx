@@ -10,6 +10,7 @@ import { CheckCircle2,
   ChevronRight
 } from "lucide-react";
 import type { Metadata } from "next";
+import MedicalReferences from "@/components/MedicalReferences";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -61,6 +62,11 @@ export default async function DiseasePage({ params }: PageProps) {
             "headline": `${disease.name} 정보 및 자가진단`,
             "description": disease.summary,
             "aspect": ["Diagnosis", "Symptoms"],
+            "isBasedOn": [
+              "https://health.kdca.go.kr",
+              "https://pubmed.ncbi.nlm.nih.gov",
+              "https://www.koa.or.kr"
+            ],
             "audience": {
               "@type": "MedicalAudience",
               "audienceType": "Patients"
@@ -522,6 +528,13 @@ export default async function DiseasePage({ params }: PageProps) {
 
       {/* 💰 애드센스 하단 광고 */}
       <AdSense slot="0987654321" />
+
+      {/* 📚 공신력 있는 의학 학술 참고문헌 및 가이드라인 (E-E-A-T 강화) */}
+      <MedicalReferences 
+        title={disease.name} 
+        partName={disease.partName} 
+        category={disease.mainCategoryName} 
+      />
 
       {/* 4. 의학 가이드 면책 조항 */}
       <div className="mt-8 rounded-2xl bg-amber-50/50 border border-amber-100 p-5 text-xs text-amber-800 leading-relaxed">

@@ -77,6 +77,14 @@ tags: ["뼈 건강", "골밀도", "골감소증", "골다공증", "갱년기", "
 
 ---
 
+### 📚 전문 의학 학술 참고 문헌 (References)
+1. **Bone Health & Osteoporosis Foundation (BHOF)**: *Clinician's Guide to Prevention and Treatment of Osteoporosis.* [BHOF Guidelines](https://www.bonehealthandosteoporosis.org/)
+2. **The New England Journal of Medicine (NEJM)**: Black DM, Rosen CJ. *Postmenopausal Osteoporosis: Clinical Practice.* [PubMed: 26789873](https://pubmed.ncbi.nlm.nih.gov/26789873/)
+3. **대한골대사학회 (KSBMR)**: *골다공증 진료지침 (체중 부하 운동 및 영양 가이드라인).* [대한골대사학회](https://www.ksbmr.org)
+4. **질병관리청(KDCA) 국가건강정보포털**: *골다공증 진단(골밀도 T-score) 및 예방 관리 수칙.* [질병관리청 건강정보](https://health.kdca.go.kr)
+
+---
+
 **[면책 조항]**
 본 글은 일반적인 건강 정보를 제공하며, 특정 질병의 진단이나 치료를 위한 의학적 조언을 대체할 수 없습니다. 개개인의 건강 상태 및 질병 유무에 따라 적절한 관리법은 달라질 수 있으므로, 반드시 전문 의료진과 상담하여 개인에게 맞는 진료 및 치료 계획을 수립하시길 바랍니다.
 ---

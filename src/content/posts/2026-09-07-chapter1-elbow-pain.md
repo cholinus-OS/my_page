@@ -90,6 +90,15 @@ tags: ["팔꿈치통증", "테니스엘보", "골프엘보", "외측상과염", 
 여러분의 건강하고 즐거운 스포츠 생활을 위해 정형외과 전문의 조형준 원장이 항상 함께하겠습니다. 다음 주에도 더 유익한 정보로 찾아뵙겠습니다. 감사합니다!
 
 ---
+
+### 📚 전문 의학 학술 참고 문헌 (References)
+1. **American Academy of Orthopaedic Surgeons (AAOS OrthoInfo)**: *Tennis Elbow (Lateral Epicondylitis) & Golfer's Elbow Clinical Guidelines.* [AAOS OrthoInfo](https://orthoinfo.aaos.org/en/diseases--conditions/tennis-elbow-lateral-epicondylitis/)
+2. **British Journal of Sports Medicine (BJSM)**: Tyler TF, et al. *Addition of an eccentric wrist extensor strengthening protocol for lateral epicondylosis: a randomized controlled trial.* [PubMed: 20876174](https://pubmed.ncbi.nlm.nih.gov/20876174/)
+3. **대한정형외과학회 (KOA)**: *외측 및 내측 상과염의 임상 진단과 보존적 재활 치료 원칙.* [대한정형외과학회](https://www.koa.or.kr)
+4. **질병관리청(KDCA) 국가건강정보포털**: *상과염(테니스 엘보, 골프 엘보) 원인과 예방 가이드.* [질병관리청 건강정보](https://health.kdca.go.kr)
+
+---
+
 **[면책 조항]**
 본 글은 일반적인 건강 정보 제공을 목적으로 하며, 특정 질병의 진단이나 치료를 대체할 수 없습니다. 개개인의 증상과 상태에 따라 전문 의료인의 진단 및 상담이 필요합니다. 제공된 운동 방법은 일반적인 가이드라인이며, 운동 중 통증이 발생하거나 기존 질환이 있는 경우 반드시 전문 의료진과 상의 후 진행해야 합니다.
 ---

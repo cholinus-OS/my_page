@@ -9,6 +9,7 @@ import { ChevronLeft, ChevronRight, Calendar, Tag, UserCheck, BookOpen, ArrowRig
 import type { Metadata } from "next";
 import ShareButtons from "@/components/ShareButtons";
 import NewsletterForm from "@/components/NewsletterForm";
+import MedicalReferences from "@/components/MedicalReferences";
 
 interface BlogDetailPageProps {
   params: Promise<{
@@ -133,6 +134,11 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     "datePublished": post.date,
     "description": post.summary,
     "aspect": ["Rehabilitation", "Physical Therapy"],
+    "isBasedOn": [
+      "https://health.kdca.go.kr",
+      "https://pubmed.ncbi.nlm.nih.gov",
+      "https://www.koa.or.kr"
+    ],
     "audience": {
       "@type": "MedicalAudience",
       "audienceType": "Patients"
@@ -275,7 +281,17 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                     );
                   }
                 }
-                return <a href={href} className="text-teal-600 hover:underline">{children}</a>;
+                const isExternal = href?.startsWith("http");
+                return (
+                  <a 
+                    href={href} 
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    className="text-teal-600 font-medium hover:underline"
+                  >
+                    {children}
+                  </a>
+                );
               },
               img: ({ node, ...props }) => {
                 return (
@@ -312,6 +328,13 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             ))}
           </div>
         )}
+
+        {/* 📚 공신력 있는 의학 학술 참고문헌 및 기관 출처 (E-E-A-T 강화) */}
+        <MedicalReferences 
+          title={post.title} 
+          category={post.category} 
+          tags={post.tags} 
+        />
 
         {/* 바이럴 공유 버튼 */}
         <div className="mt-8 flex justify-center border-t border-slate-100 pt-8">
