@@ -4,7 +4,7 @@ date: "2026-09-08"
 summary: "오래 앉아 일하다 뻐근해진 고관절, 다리를 뒤로 억지로 찢으며 늘리다 허리만 아프셨나요? 단순한 유연성 스트레칭의 치명적 함정과 왜 안정화 운동으로 수정해야 하는지 3대 이유, 그리고 허리 통증 없이 앞쪽 관절을 시원하게 여는 3단계 90/90 하프 닐링 재교육법을 센터장이 명쾌하게 처방해 드립니다."
 category: "정보"
 tags: ["고관절통증", "장요근스트레칭", "하프닐링", "골반교정", "우리몸사용설명서", "센터장브리핑", "허리디스크예방"]
-thumbnail: "/images/half-kneeling-hip-flexor-guide.jpg"
+thumbnail: "/images/beginner-hip-flexor-guide.jpg"
 ---
 
 안녕하십니까, 바른관절 헬프센터 센터장 조형준입니다.
@@ -69,7 +69,7 @@ thumbnail: "/images/half-kneeling-hip-flexor-guide.jpg"
 
 이제 진료실에서 환자분들께 직접 지도해 드리는 가장 안전하고 정밀한 3단계 고관절 안정화 재교육 운동을 알려드립니다. 푹신한 매트 위에서 하루 5분만 집중해 보세요.
 
-![90/90 하프 닐링 고관절 안정화 재교육 가이드 인포그래픽](/images/half-kneeling-hip-flexor-guide.jpg)
+![비기너를 위한 3단계 힙플렉서 동작 및 핵심 요약 안내 가이드](/images/beginner-hip-flexor-guide.jpg)
 
 ```
 [90/90 하프 닐링 기본 세팅]
