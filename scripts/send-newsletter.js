@@ -4,6 +4,85 @@ const path = require("path");
 
 const NEWSLETTER_FILE = path.join(__dirname, "../newsletter-output.html");
 
+// .env.local 로컬 환경변수 자동 로드
+const envPath = path.join(__dirname, '../.env.local');
+if (fs.existsSync(envPath)) {
+  const envContent = fs.readFileSync(envPath, 'utf8');
+  envContent.split('\n').forEach(line => {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith('#')) {
+      const idx = trimmed.indexOf('=');
+      if (idx !== -1) {
+        const key = trimmed.slice(0, idx).trim();
+        const val = trimmed.slice(idx + 1).trim();
+        if (!process.env[key]) {
+          process.env[key] = val;
+        }
+      }
+    }
+  });
+}
+
+// 구독자 목록 조회 (1순위: Cloudflare Direct KV API, 2순위: 브라우저 헤더 웹사이트 API)
+async function getSubscribersList() {
+  const cfAccountId = process.env.CLOUDFLARE_ACCOUNT_ID;
+  const cfToken = process.env.CLOUDFLARE_API_TOKEN;
+  const kvNamespaceId = "7ee49834412c41b8938b3b566f17cc90"; // wrangler.toml CHAT_KV
+
+  // 1순위: Cloudflare Direct KV API (깃허브 액션 및 CI 환경에서 WAF 차단 완벽 우회)
+  if (cfAccountId && cfToken) {
+    try {
+      console.log("📡 Cloudflare Direct KV API를 통해 구독자 조회를 시도합니다...");
+      const cfRes = await fetch(
+        `https://api.cloudflare.com/client/v4/accounts/${cfAccountId}/storage/kv/namespaces/${kvNamespaceId}/values/newsletter_subscribers`,
+        {
+          headers: {
+            Authorization: `Bearer ${cfToken}`,
+          },
+        }
+      );
+      if (cfRes.ok) {
+        const data = await cfRes.json();
+        console.log(`✅ Cloudflare Direct KV 조회 성공 (${data.length}명)`);
+        return data;
+      } else {
+        console.warn(`⚠️ Cloudflare Direct KV 응답 (${cfRes.status}): ${cfRes.statusText}`);
+      }
+    } catch (e) {
+      console.warn("⚠️ Cloudflare Direct KV 통신 에러:", e.message);
+    }
+  }
+
+  // 2순위: 공식 웹사이트 엔드포인트 조회 (브라우저 User-Agent 및 Secret Header 탑재)
+  const secret = (process.env.NEWSLETTER_SECRET_KEY && process.env.NEWSLETTER_SECRET_KEY.trim()) || "cholinus_newsletter_secret_2026";
+  try {
+    console.log("🌐 웹사이트 API 엔드포인트를 통해 구독자 조회를 시도합니다...");
+    const siteRes = await fetch(
+      `https://cholinus-exerciseismedicine.com/api/subscribe?secret=${encodeURIComponent(secret)}`,
+      {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "Accept": "application/json",
+          "x-newsletter-secret": secret,
+          "Referer": "https://cholinus-exerciseismedicine.com/",
+        },
+      }
+    );
+    if (siteRes.ok) {
+      const data = await siteRes.json();
+      console.log(`✅ 웹사이트 API 조회 성공 (${data.length}명)`);
+      return data;
+    } else {
+      const errText = await siteRes.text().catch(() => "");
+      console.error(`⚠️ 웹사이트 API 조회 실패 (${siteRes.status} ${siteRes.statusText}): ${errText.slice(0, 100)}`);
+    }
+  } catch (err) {
+    console.error("⚠️ 웹사이트 API 통신 에러:", err.message);
+  }
+
+  return [];
+}
+
 async function sendNewsletter() {
   console.log("🚀 뉴스레터 전송 준비 중...");
 
@@ -30,33 +109,19 @@ async function sendNewsletter() {
     process.exit(1);
   }
 
-  // 2. 파일 존재 여부 확인
+  // 2. 파일 존재 여부 확인 및 본문 읽기
   if (!fs.existsSync(NEWSLETTER_FILE)) {
     console.error("❌ 오류: 뉴스레터 HTML 파일을 찾을 수 없습니다.");
     process.exit(1);
   }
-
-  // 3. 구독자 목록 및 뉴스레터 본문 읽어오기
-  const secret = process.env.NEWSLETTER_SECRET_KEY || "cholinus_newsletter_secret_2026";
-  let subscribers = [];
-  try {
-    const res = await fetch(`https://cholinus-exerciseismedicine.com/api/subscribe?secret=${secret}`);
-    if (res.ok) {
-      subscribers = await res.json();
-    } else {
-      console.error("⚠️ 서버에서 구독자 목록을 가져오는데 실패했습니다.", res.statusText);
-      process.exit(1);
-    }
-  } catch (err) {
-    console.error("⚠️ 실서버 구독자 조회 중 오류 발생:", err.message);
-    process.exit(1);
-  }
-
   const htmlContent = fs.readFileSync(NEWSLETTER_FILE, "utf8");
 
+  // 3. 구독자 목록 가져오기
+  const subscribers = await getSubscribersList();
+
   if (subscribers.length === 0) {
-    console.log("⚠️ 구독자가 없습니다. 전송을 취소합니다.");
-    return;
+    console.error("❌ 오류: 구독자 목록을 가져오지 못했거나 구독자가 0명입니다.");
+    process.exit(1);
   }
 
   // 4. 이메일 서버 (Gmail) 설정
@@ -68,7 +133,7 @@ async function sendNewsletter() {
     },
   });
 
-  // 5. 모든 구독자에게 순차 발송
+  // 5. 모든 구독자에게 순차 발송 (안전한 전송을 위해 500ms 간격 딜레이)
   console.log(`📬 총 ${subscribers.length}명의 구독자에게 발송을 시작합니다...`);
 
   let successCount = 0;
@@ -82,6 +147,7 @@ async function sendNewsletter() {
       });
       console.log(`✅ [성공] ${subscriber.email} 전송 완료`);
       successCount++;
+      await new Promise((resolve) => setTimeout(resolve, 500));
     } catch (error) {
       console.error(`❌ [실패] ${subscriber.email} 전송 실패:`, error.message);
     }

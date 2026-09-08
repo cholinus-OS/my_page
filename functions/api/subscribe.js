@@ -54,12 +54,13 @@ export async function onRequestPost(context) {
 export async function onRequestGet(context) {
   const { request, env } = context;
   const url = new URL(request.url);
-  const secret = url.searchParams.get("secret");
+  const querySecret = url.searchParams.get("secret");
+  const headerSecret = request.headers.get("x-newsletter-secret");
 
   // 환경변수 NEWSLETTER_SECRET_KEY 또는 기본값으로 인증
   const validSecret = env.NEWSLETTER_SECRET_KEY || "cholinus_newsletter_secret_2026";
 
-  if (secret !== validSecret) {
+  if (querySecret !== validSecret && headerSecret !== validSecret) {
     return new Response(JSON.stringify({ error: "Unauthorized" }), {
       status: 401,
       headers: { "Content-Type": "application/json" },

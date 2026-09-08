@@ -7,7 +7,26 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const POSTS_DIR = path.join(__dirname, '../src/content/posts');
 const OUTPUT_FILE = path.join(__dirname, '../newsletter-output.html');
 
-// 1. 최신 블로그 3개 추출
+// .env.local 로컬 환경변수 자동 로드
+const envPath = path.join(__dirname, '../.env.local');
+if (fs.existsSync(envPath)) {
+  const envContent = fs.readFileSync(envPath, 'utf8');
+  envContent.split('\n').forEach(line => {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith('#')) {
+      const idx = trimmed.indexOf('=');
+      if (idx !== -1) {
+        const key = trimmed.slice(0, idx).trim();
+        const val = trimmed.slice(idx + 1).trim();
+        if (!process.env[key]) {
+          process.env[key] = val;
+        }
+      }
+    }
+  });
+}
+
+// 1. 월요일에 발행된 최신 '우리 몸 사용 설명서' 3개 챕터 우선 추출
 function getLatestPosts() {
   const fileNames = fs.readdirSync(POSTS_DIR);
   const posts = fileNames
@@ -16,6 +35,7 @@ function getLatestPosts() {
       const fileContents = fs.readFileSync(path.join(POSTS_DIR, fileName), 'utf8');
       const { data } = matter(fileContents);
       return {
+        fileName,
         title: (data.title || '').replace(/<[^>]+>/g, '').replace(/["']/g, '').trim(),
         summary: (data.summary || '').trim(),
         date: data.date,
@@ -24,11 +44,19 @@ function getLatestPosts() {
       };
     });
 
-  // 날짜 내림차순 정렬 후 상위 3개 반환
-  return posts.sort((a, b) => {
+  // '사용 설명서' 또는 chapter 파일 우선 필터링
+  const manualPosts = posts.filter(
+    (p) => p.category === '사용 설명서' || p.fileName.toLowerCase().includes('chapter')
+  );
+
+  const targetPool = manualPosts.length >= 3 ? manualPosts : posts;
+
+  // 날짜 내림차순, 같은 날짜 내에서는 Chapter 1 -> 2 -> 3 순으로 정렬
+  return targetPool.sort((a, b) => {
     const dateA = a.date ? new Date(a.date).getTime() : 0;
     const dateB = b.date ? new Date(b.date).getTime() : 0;
-    return dateB - dateA;
+    if (dateB !== dateA) return dateB - dateA;
+    return a.fileName.localeCompare(b.fileName);
   }).slice(0, 3);
 }
 
@@ -55,14 +83,12 @@ async function generateNewsletter() {
 
   let aiIntro = "안녕하세요, 소중한 구독자 여러분! 정형외과 전문의 조형준 원장입니다. 매일 우리의 삶을 지탱해 주는 소중한 관절, 잘 관리하고 계신가요? 이번 주에도 일상에서 바로 실천할 수 있는 건강한 재활 루틴과 유익한 의학 정보를 준비했습니다. 여러분의 활기찬 일상을 응원합니다!";
 
-  // 2. Gemini AI를 활용한 인사말 생성 (API 키가 있을 경우만)
+  // 2. Gemini AI를 활용한 인사말 생성 (API 키가 있을 경우만, 503 오류 대비 다중 모델 폴백 적용)
   const apiKey = process.env.GEMINI_API_KEY;
   if (apiKey) {
     try {
       console.log('🤖 AI 인트로 생성을 요청합니다...');
       const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
-
       const prompt = `
 당신은 정형외과 전문의 '조형준 원장'입니다. 
 당신의 블로그 구독자들에게 매주 보내는 뉴스레터의 오프닝 인사말(3~4문장)을 작성해주세요.
@@ -70,15 +96,32 @@ async function generateNewsletter() {
 이번 주에 다룰 내용들은 다음과 같습니다:
 1. ${latestPosts[0]?.title || ''}
 2. ${latestPosts[1]?.title || ''}
+3. ${latestPosts[2]?.title || ''}
 
 html 태그 없이 순수 텍스트로만 작성하세요.
       `;
 
-      const result = await model.generateContent(prompt);
-      aiIntro = result.response.text().trim();
-      console.log('✅ AI 인트로 생성 완료.');
+      const candidateModels = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
+      let isAiGenerated = false;
+
+      for (const modelName of candidateModels) {
+        try {
+          const model = genAI.getGenerativeModel({ model: modelName });
+          const result = await model.generateContent(prompt);
+          aiIntro = result.response.text().trim();
+          console.log(`✅ AI 인트로 생성 완료 (${modelName}).`);
+          isAiGenerated = true;
+          break;
+        } catch (subErr) {
+          console.warn(`⚠️ ${modelName} 호출 실패 (${subErr.message}). 다음 모델로 재시도합니다...`);
+        }
+      }
+
+      if (!isAiGenerated) {
+        console.error('⚠️ 모든 Gemini 모델 요청 실패. 기본 인사말로 대체합니다.');
+      }
     } catch (error) {
-      console.error('⚠️ AI 생성 실패 (기본 인사말 대체):', error.message);
+      console.error('⚠️ AI 생성 처리 중 오류 발생 (기본 인사말 대체):', error.message);
     }
   } else {
     console.log('⚠️ GEMINI_API_KEY가 없습니다. 기본 인사말로 대체합니다.');
