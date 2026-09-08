@@ -69,7 +69,7 @@ thumbnail: "/images/beginner-hip-flexor-guide.jpg"
 
 이제 진료실에서 환자분들께 직접 지도해 드리는 가장 안전하고 정밀한 3단계 고관절 안정화 재교육 운동을 알려드립니다. 푹신한 매트 위에서 하루 5분만 집중해 보세요.
 
-![비기너를 위한 3단계 힙플렉서 동작 및 핵심 요약 안내 가이드](/images/beginner-hip-flexor-guide.jpg)
+![90/90 하프 닐링 고관절 안정화 재교육 가이드 인포그래픽](/images/half-kneeling-hip-flexor-guide.jpg)
 
 ```
 [90/90 하프 닐링 기본 세팅]
@@ -93,6 +93,8 @@ thumbnail: "/images/beginner-hip-flexor-guide.jpg"
 * **절대 주의:** 절대로 골반을 바닥 쪽으로 푹 주저앉히거나 허리를 활처럼 꺾으면 안 됩니다! 허리가 단 1mm라도 꺾이는 순간 운동 효과는 사라지고 척추에 부하가 걸립니다.
 * 앞쪽 고관절 깊숙한 곳이 팽팽하게 열리는 자극을 느끼며, 복부와 엉덩이의 힘으로 꼿꼿하게 버텨냅니다.
 * **권장 시간 및 횟수:** <span style="white-space: nowrap;">5-10초간 호흡을 유지하며 정지</span>한 뒤 천천히 제자리로 돌아옵니다. 좌우 각각 <span style="white-space: nowrap;">5회씩 3세트</span> 반복합니다.
+
+![비기너를 위한 3단계 힙플렉서 동작 및 핵심 요약 안내 가이드](/images/beginner-hip-flexor-guide.jpg)
 
 ---
 
