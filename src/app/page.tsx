@@ -16,7 +16,8 @@ import {
   ArrowRight,
   ExternalLink,
   Youtube,
-  BookOpen
+  BookOpen,
+  Play
 } from "lucide-react";
 
 // 추천 유튜브 채널 정보 정의
@@ -373,98 +374,201 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. 추천 사이트 및 공식 유튜브 채널 추천 영역 */}
-      <section className="bg-slate-50 border-t border-slate-200 py-16">
+      {/* 4. 공식 미디어 채널 및 추천 유튜브 큐레이션 영역 */}
+      <section className="bg-slate-50 border-t border-slate-200 py-16" id="media-channels">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid gap-8 lg:grid-cols-3">
-            {/* 공식 운영 네이버 블로그 카드 */}
-            <div className="lg:col-span-1 flex flex-col justify-between rounded-3xl bg-white border border-slate-200 p-6 shadow-sm hover:shadow-md transition duration-300">
+          <div className="text-center mb-10">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-teal-500/10 px-3.5 py-1 text-xs font-semibold text-teal-600 border border-teal-500/20">
+              <Sparkles className="h-3 w-3" />
+              Official Channels & Curated Media
+            </span>
+            <h2 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+              영상과 글로 만나는 <span className="text-teal-600">바른관절 공식 채널</span>
+            </h2>
+            <p className="mt-2 text-sm text-slate-500">
+              전문의가 검수하는 공식 영상과 건강 칼럼을 유튜브와 네이버 블로그에서 생생하게 확인하세요.
+            </p>
+          </div>
+
+          {/* 상단 2열: 공식 유튜브 채널 & 공식 네이버 블로그 전용 카드 */}
+          <div className="grid gap-8 md:grid-cols-2 mb-10">
+            {/* 1. 공식 유튜브 채널 전용 카드 */}
+            <div className="flex flex-col justify-between rounded-3xl bg-white border border-rose-100 p-6 sm:p-8 shadow-sm hover:shadow-xl hover:border-red-200 transition-all duration-300 group relative overflow-hidden">
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-bl from-red-500/10 via-rose-500/5 to-transparent rounded-full pointer-events-none" />
+              
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
-                    Naver Blog
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-red-50 border border-red-200/60 px-3 py-1 text-xs font-bold text-red-600">
+                    <Youtube className="h-4 w-4 fill-red-600 text-red-600" />
+                    Official YouTube
                   </span>
-                  <BookOpen className="h-5 w-5 text-emerald-600" />
+                  <span className="text-xs font-semibold text-slate-400">@cholinus-EIM</span>
                 </div>
-                <h3 className="mt-5 text-xl font-bold text-slate-900">cholinus 공식 블로그</h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-500">
-                  웹사이트 운영자가 직접 수집하고 기록하는 깊이 있는 건강 관련 지식과 일상 속 자세 교정 꿀팁을 공유합니다.
+
+                <h3 className="mt-4 text-xl sm:text-2xl font-black text-slate-900 group-hover:text-red-600 transition-colors">
+                  바른관절 헬프센터 유튜브
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                  글로는 이해하기 어려웠던 부위별 관절 스트레칭과 수술·비수술 재활 운동법을 영상으로 생생하게 만나보세요.
                 </p>
-                <div className="my-4 w-full">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img 
-                    src="/blog-banner.jpg" 
-                    alt="cholinus 공식 블로그 배너 일러스트" 
-                    className="w-full h-auto rounded-2xl border border-slate-200"
-                  />
-                </div>
-                <p className="text-sm leading-relaxed text-slate-500">
-                  재활에 도움이 되는 다양한 운동 일지들과 유용한 노하우들을 공식 네이버 블로그에서 생생하게 만나보세요.
-                </p>
-              </div>
-              <div className="mt-8">
+
+                {/* 시각적 유튜브 플레이어 비주얼 배너 */}
                 <a
-                  href="https://blog.naver.com/cholinus"
+                  href="https://www.youtube.com/@cholinus-EIM"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 py-3 text-sm font-semibold text-white transition shadow-md shadow-emerald-600/10"
+                  className="my-5 block relative rounded-2xl overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-red-950 p-6 text-white shadow-inner group/banner"
                 >
-                  공식 블로그 방문하기
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,68,68,0.3),transparent_60%)]" />
+                  <div className="relative z-10 flex flex-col justify-between h-36">
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center gap-1 text-[11px] font-medium tracking-wider text-rose-300 uppercase">
+                        <Sparkles className="h-3 w-3" />
+                        Exercise Is Medicine
+                      </span>
+                      <span className="rounded bg-red-600 px-2 py-0.5 text-[10px] font-bold text-white tracking-wider shadow-sm">
+                        OFFICIAL
+                      </span>
+                    </div>
+
+                    {/* 중앙 플레이 버튼 (펄스 효과) */}
+                    <div className="self-center flex items-center justify-center">
+                      <div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-lg shadow-red-600/50 group-hover/banner:scale-110 group-hover/banner:bg-red-500 transition-all duration-300">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-40"></span>
+                        <Play className="h-6 w-6 fill-white ml-0.5" />
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between text-xs text-slate-300">
+                      <span className="font-semibold text-white tracking-wide">채널 바로가기</span>
+                      <span className="text-[11px] text-red-300 font-medium">@cholinus-EIM</span>
+                    </div>
+                  </div>
+                </a>
+
+                <div className="flex flex-wrap gap-1.5 text-xs text-slate-500">
+                  <span className="rounded-md bg-slate-100 px-2.5 py-1">#정형외과재활</span>
+                  <span className="rounded-md bg-slate-100 px-2.5 py-1">#홈트레이닝</span>
+                  <span className="rounded-md bg-slate-100 px-2.5 py-1">#부위별스트레칭</span>
+                  <span className="rounded-md bg-slate-100 px-2.5 py-1">#바른자세</span>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <a
+                  href="https://www.youtube.com/@cholinus-EIM"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 hover:bg-red-700 py-3 text-sm font-bold text-white transition shadow-md shadow-red-600/20 active:scale-[0.99]"
+                >
+                  <Youtube className="h-4 w-4 fill-white" />
+                  공식 유튜브 채널 구독하기
                   <ExternalLink className="h-4 w-4" />
                 </a>
               </div>
             </div>
 
-            {/* 추천 유튜브 채널 리스트 */}
-            <div className="lg:col-span-2 rounded-3xl bg-white border border-slate-200 p-6 shadow-sm">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
-                <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                  <Youtube className="h-5 w-5 text-red-600" />
-                  물리치료 & 재활 추천 유튜브 채널
+            {/* 2. 공식 운영 네이버 블로그 카드 */}
+            <div className="flex flex-col justify-between rounded-3xl bg-white border border-emerald-100 p-6 sm:p-8 shadow-sm hover:shadow-xl hover:border-emerald-200 transition-all duration-300 group relative overflow-hidden">
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-bl from-emerald-500/10 via-teal-500/5 to-transparent rounded-full pointer-events-none" />
+
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200/60 px-3 py-1 text-xs font-bold text-emerald-700">
+                    <BookOpen className="h-4 w-4 text-emerald-600" />
+                    Official Naver Blog
+                  </span>
+                  <span className="text-xs font-semibold text-slate-400">cholinus</span>
+                </div>
+
+                <h3 className="mt-4 text-xl sm:text-2xl font-black text-slate-900 group-hover:text-emerald-700 transition-colors">
+                  cholinus 공식 블로그
                 </h3>
-                <span className="text-[10px] text-slate-400">※ 무단 복제가 아닌 공식 큐레이션 채널입니다.</span>
-              </div>
-              
-              <div className="space-y-4 max-h-[300px] overflow-y-auto pr-1">
-                {youtubeChannels.map((channel, index) => (
-                  <a
-                    key={index}
-                    href={channel.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-100 transition duration-200 group"
-                  >
-                    <div className="flex-1 pr-4">
-                      <h4 className="text-sm font-bold text-slate-900 group-hover:text-red-600 transition flex items-center gap-1.5">
-                        {channel.name}
-                      </h4>
-                      <p className="mt-1 text-xs text-slate-500 leading-relaxed line-clamp-1">
-                        {channel.description}
-                      </p>
-                    </div>
-                    <span className="text-slate-400 group-hover:text-red-500 transition">
-                      <ExternalLink className="h-4 w-4 shrink-0" />
-                    </span>
-                  </a>
-                ))}
+                <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                  웹사이트 운영자가 직접 수집하고 기록하는 깊이 있는 건강 관련 지식과 일상 속 자세 교정 꿀팁을 공유합니다.
+                </p>
+
+                <div className="my-5 w-full">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src="/blog-banner.jpg" 
+                    alt="cholinus 공식 블로그 배너 일러스트" 
+                    className="w-full h-36 object-cover rounded-2xl border border-slate-200 group-hover:opacity-95 transition-opacity"
+                  />
+                </div>
+
+                <div className="flex flex-wrap gap-1.5 text-xs text-slate-500">
+                  <span className="rounded-md bg-slate-100 px-2.5 py-1">#건강일지</span>
+                  <span className="rounded-md bg-slate-100 px-2.5 py-1">#자세교정꿀팁</span>
+                  <span className="rounded-md bg-slate-100 px-2.5 py-1">#의학칼럼</span>
+                  <span className="rounded-md bg-slate-100 px-2.5 py-1">#재활노하우</span>
+                </div>
               </div>
 
-              {/* 🚂 Exercise Is Medicine. 기차 흐름 애니메이션 추가 */}
-              <div className="mt-6 overflow-hidden w-full relative whitespace-nowrap bg-slate-50 py-4 rounded-2xl border border-slate-100/60 select-none">
-                <style>{`
-                  @keyframes trainMarquee {
-                    0% { transform: translateX(100%); }
-                    100% { transform: translateX(-100%); }
-                  }
-                `}</style>
-                <div 
-                  className="inline-block text-2xl sm:text-3xl font-black bg-gradient-to-r from-rose-500 via-purple-600 to-teal-500 bg-clip-text text-transparent tracking-widest"
-                  style={{
-                    animation: 'trainMarquee 15s linear infinite',
-                  }}
+              <div className="mt-8">
+                <a
+                  href="https://blog.naver.com/cholinus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 py-3 text-sm font-bold text-white transition shadow-md shadow-emerald-600/20 active:scale-[0.99]"
                 >
-                  Exercise Is Medicine.
-                </div>
+                  <BookOpen className="h-4 w-4" />
+                  공식 네이버 블로그 방문하기
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* 하단 큐레이션: 물리치료 & 재활 추천 유튜브 채널 리스트 */}
+          <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
+              <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                <Youtube className="h-5 w-5 text-red-600" />
+                물리치료 & 재활 추천 유튜브 채널
+              </h3>
+              <span className="text-[10px] sm:text-xs text-slate-400">※ 무단 복제가 아닌 공식 큐레이션 채널입니다.</span>
+            </div>
+            
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {youtubeChannels.map((channel, index) => (
+                <a
+                  key={index}
+                  href={channel.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-3.5 rounded-xl hover:bg-slate-50 border border-slate-100 hover:border-slate-200 transition duration-200 group"
+                >
+                  <div className="flex-1 pr-3">
+                    <h4 className="text-sm font-bold text-slate-900 group-hover:text-red-600 transition flex items-center gap-1.5">
+                      {channel.name}
+                    </h4>
+                    <p className="mt-1 text-xs text-slate-500 leading-relaxed line-clamp-1">
+                      {channel.description}
+                    </p>
+                  </div>
+                  <span className="text-slate-400 group-hover:text-red-500 transition">
+                    <ExternalLink className="h-4 w-4 shrink-0" />
+                  </span>
+                </a>
+              ))}
+            </div>
+
+            {/* 🚂 Exercise Is Medicine. 기차 흐름 애니메이션 추가 */}
+            <div className="mt-6 overflow-hidden w-full relative whitespace-nowrap bg-slate-50 py-4 rounded-2xl border border-slate-100/60 select-none">
+              <style>{`
+                @keyframes trainMarquee {
+                  0% { transform: translateX(100%); }
+                  100% { transform: translateX(-100%); }
+                }
+              `}</style>
+              <div 
+                className="inline-block text-2xl sm:text-3xl font-black bg-gradient-to-r from-rose-500 via-purple-600 to-teal-500 bg-clip-text text-transparent tracking-widest"
+                style={{
+                  animation: 'trainMarquee 15s linear infinite',
+                }}
+              >
+                Exercise Is Medicine.
               </div>
             </div>
           </div>
