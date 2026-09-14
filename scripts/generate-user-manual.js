@@ -279,8 +279,8 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
               return `title: "${clean.replace(/"/g, '\\"')}"`;
             });
 
-            // 2. 날짜 큰따옴표 보정
-            content = content.replace(/^date:\s*["']?(\d{4}-\d{2}-\d{2})["']?/m, `date: "$1"`);
+            // 2. 날짜 큰따옴표 보정 및 시간 찌꺼기 완벽 제거
+            content = content.replace(/^date:\s*["']?(\d{4}-\d{2}-\d{2}).*$/m, `date: "$1"`);
 
             // 3. summary 큰따옴표 보정
             content = content.replace(/^summary:\s*(.*)$/m, (match, p1) => {
@@ -296,10 +296,24 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
               content = content.replace(/^category:\s*.*$/m, 'category: "사용 설명서"');
             }
 
-            // 5. 물결표(~) 자동 치환 (하이픈 -)
+            // 5. 썸네일 자동 보장 (누락 방지)
+            const chapterThumbnails = {
+              1: "/images/ch1-injury-prevention.png",
+              2: "/images/ch2-good-posture.png",
+              3: "/images/ch3-lifecycle-management.png"
+            };
+            if (!content.includes("thumbnail:")) {
+              content = content.replace(/^(category:\s*.*)$/m, `$1\nthumbnail: "${chapterThumbnails[chapter.number]}"`);
+            }
+
+            // 6. 플레이스홀더 더미 이미지 자동 제거
+            content = content.replace(/\*\*?<img[^>]*via\.placeholder\.com[^>]*>\*\*?/gi, "");
+            content = content.replace(/!\[.*?\]\(https?:\/\/via\.placeholder\.com\/.*?\)/gi, "");
+
+            // 7. 물결표(~) 자동 치환 (하이픈 -)
             content = content.replace(/(\d+)\s*~\s*(\d+)/g, "$1-$2");
 
-            // 6. 태그에 "우리몸사용설명서" 보장
+            // 8. 태그에 "우리몸사용설명서" 보장
             if (content.includes("tags:")) {
               if (!content.includes('"우리몸사용설명서"') && !content.includes("'우리몸사용설명서'")) {
                 content = content.replace(/^tags:\s*\[(.*?)\]/m, (match, p1) => {

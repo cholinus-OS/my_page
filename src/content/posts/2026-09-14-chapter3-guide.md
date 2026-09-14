@@ -4,6 +4,7 @@ date: "2026-09-14"
 summary: "60대 이후 건강한 노년을 위해 낙상 예방은 필수입니다. 정형외과 전문의 조형준 원장이 노년층의 낙상 위험을 줄이고 관절 건강을 지키는 3분 균형감각 훈련법을 소개합니다."
 category: "사용 설명서"
 tags: ["노년기건강", "낙상예방", "균형감각", "근감소증", "관절건강", "우리몸사용설명서"]
+thumbnail: "/images/ch3-lifecycle-management.png"
 ---
 
 안녕하세요, 바른관절 헬프센터 센터장 정형외과 전문의 조형준 원장입니다. 베스트셀러 '우리 몸 사용 설명서'의 대표 저자로서, 여러분의 평생 관절 건강을 위해 늘 깊이 고민하고 있습니다.
@@ -89,5 +90,13 @@ tags: ["노년기건강", "낙상예방", "균형감각", "근감소증", "관�
 언제나 여러분의 바른 관절 건강을 응원하는 정형외과 전문의 조형준 원장이었습니다. 다음 주에도 유익한 정보로 찾아뵙겠습니다.
 
 ---
+
+### 📚 전문 의학 학술 참고 문헌 (References)
+1. **The New England Journal of Medicine (NEJM)**: Tinetti ME. *Preventing Falls in Elderly Persons.* [NEJM: 10.1056/NEJMcp020719](https://www.nejm.org/doi/full/10.1056/NEJMcp020719)
+2. **Cochrane Database of Systematic Reviews**: Sherrington C, et al. *Exercise for preventing falls in older people living in the community.* [PubMed: 30703272](https://pubmed.ncbi.nlm.nih.gov/30703272/)
+3. **대한노인병학회 & 질병관리청(KDCA)**: *노인 낙상 예방을 위한 신체기능 증진 가이드라인.* [질병관리청 국가건강정보포털](https://health.kdca.go.kr)
+
+---
+
 **[의학적 면책 조항 (Disclaimer)]**
 본 블로그 글은 일반적인 건강 정보 제공을 목적으로 하며, 특정 질병의 진단이나 치료를 대체할 수 없습니다. 개개인의 건강 상태와 증상은 다를 수 있으므로, 건강 문제 발생 시 반드시 전문 의료진(의사, 물리치료사 등)과 상담하여 정확한 진단과 적절한 치료 계획을 세우시는 것을 권장합니다. 제시된 운동법은 안전을 고려하였으나, 개인의 신체 능력에 따라 무리하게 따라 하지 마시고, 통증이나 불편함이 느껴지면 즉시 중단하십시오.

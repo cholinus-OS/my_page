@@ -29,13 +29,27 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-      - name: 5. Commit and Push
+      - name: 5. Build Search Index
+        run: node scripts/build-search-index.js
+
+      - name: 6. Build Project
+        run: npm run build
+        env:
+          NEXT_PUBLIC_PEXELS_API_KEY: ${{ secrets.NEXT_PUBLIC_PEXELS_API_KEY }}
+
+      - name: 7. Deploy to Cloudflare Pages
+        run: npx wrangler pages deploy out --project-name=cholinus-exerciseismedicine
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: 8. Commit and Push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .
           if ! git diff --cached --quiet; then
-            git commit -m "feat: 🤖 매주 자동 생성 우리 몸 사용 설명서 보강"
+            git commit -m "feat: 🤖 매주 자동 생성 우리 몸 사용 설명서 보강 및 배포"
             git push origin HEAD:main
           else
             echo "No changes to commit"
