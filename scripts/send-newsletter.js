@@ -23,16 +23,18 @@ if (fs.existsSync(envPath)) {
   });
 }
 
-// 구독자 목록 조회 (1순위: Cloudflare Direct KV API, 2순위: 브라우저 헤더 웹사이트 API)
+const BACKUP_SUBSCRIBERS_FILE = path.join(__dirname, "../src/content/subscribers-backup.json");
+
+// 구독자 목록 조회 (1순위: Cloudflare Direct KV API, 2순위: 웹사이트 API, 3순위: 로컬 안전 백업 파일)
 async function getSubscribersList() {
   const cfAccountId = process.env.CLOUDFLARE_ACCOUNT_ID;
   const cfToken = process.env.CLOUDFLARE_API_TOKEN;
   const kvNamespaceId = "7ee49834412c41b8938b3b566f17cc90"; // wrangler.toml CHAT_KV
 
-  // 1순위: Cloudflare Direct KV API (깃허브 액션 및 CI 환경에서 WAF 차단 완벽 우회)
+  // 1순위: Cloudflare Direct KV API (깃허브 액션 및 CI 환경에서 WAF 차단 우회)
   if (cfAccountId && cfToken) {
     try {
-      console.log("📡 Cloudflare Direct KV API를 통해 구독자 조회를 시도합니다...");
+      console.log("📡 [1순위] Cloudflare Direct KV API를 통해 구독자 조회를 시도합니다...");
       const cfRes = await fetch(
         `https://api.cloudflare.com/client/v4/accounts/${cfAccountId}/storage/kv/namespaces/${kvNamespaceId}/values/newsletter_subscribers`,
         {
@@ -43,8 +45,13 @@ async function getSubscribersList() {
       );
       if (cfRes.ok) {
         const data = await cfRes.json();
-        console.log(`✅ Cloudflare Direct KV 조회 성공 (${data.length}명)`);
-        return data;
+        if (Array.isArray(data) && data.length > 0) {
+          console.log(`✅ Cloudflare Direct KV 조회 성공 (${data.length}명)`);
+          try {
+            fs.writeFileSync(BACKUP_SUBSCRIBERS_FILE, JSON.stringify(data, null, 2), "utf8");
+          } catch (e) {}
+          return data;
+        }
       } else {
         console.warn(`⚠️ Cloudflare Direct KV 응답 (${cfRes.status}): ${cfRes.statusText}`);
       }
@@ -56,7 +63,7 @@ async function getSubscribersList() {
   // 2순위: 공식 웹사이트 엔드포인트 조회 (브라우저 User-Agent 및 Secret Header 탑재)
   const secret = (process.env.NEWSLETTER_SECRET_KEY && process.env.NEWSLETTER_SECRET_KEY.trim()) || "cholinus_newsletter_secret_2026";
   try {
-    console.log("🌐 웹사이트 API 엔드포인트를 통해 구독자 조회를 시도합니다...");
+    console.log("🌐 [2순위] 웹사이트 API 엔드포인트를 통해 구독자 조회를 시도합니다...");
     const siteRes = await fetch(
       `https://cholinus-exerciseismedicine.com/api/subscribe?secret=${encodeURIComponent(secret)}`,
       {
@@ -70,14 +77,34 @@ async function getSubscribersList() {
     );
     if (siteRes.ok) {
       const data = await siteRes.json();
-      console.log(`✅ 웹사이트 API 조회 성공 (${data.length}명)`);
-      return data;
+      if (Array.isArray(data) && data.length > 0) {
+        console.log(`✅ 웹사이트 API 조회 성공 (${data.length}명)`);
+        try {
+          fs.writeFileSync(BACKUP_SUBSCRIBERS_FILE, JSON.stringify(data, null, 2), "utf8");
+        } catch (e) {}
+        return data;
+      }
     } else {
       const errText = await siteRes.text().catch(() => "");
       console.error(`⚠️ 웹사이트 API 조회 실패 (${siteRes.status} ${siteRes.statusText}): ${errText.slice(0, 100)}`);
     }
   } catch (err) {
     console.error("⚠️ 웹사이트 API 통신 에러:", err.message);
+  }
+
+  // 3순위: 로컬 안전 백업 파일 (Cloudflare WAF 차단이나 네트워크 장애 시 100% 무중단 발송 보장)
+  if (fs.existsSync(BACKUP_SUBSCRIBERS_FILE)) {
+    try {
+      console.log("🛡️ [3순위 안전망 발동] Cloudflare 네트워크 연결 불안정으로 로컬 안전 백업 파일에서 구독자 조회를 진행합니다...");
+      const backupRaw = fs.readFileSync(BACKUP_SUBSCRIBERS_FILE, "utf8");
+      const backupData = JSON.parse(backupRaw);
+      if (Array.isArray(backupData) && backupData.length > 0) {
+        console.log(`✅ 로컬 안전 백업 파일에서 구독자 목록 복구 성공 (${backupData.length}명)`);
+        return backupData;
+      }
+    } catch (bErr) {
+      console.error("⚠️ 로컬 백업 파일 파싱 에러:", bErr.message);
+    }
   }
 
   return [];
