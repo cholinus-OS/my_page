@@ -104,7 +104,7 @@ thumbnail: "/images/running-intensity-1-trap.png"
 
 내가 오늘 뛰는 속도가 정말 몸에 약이 되는 '쉬운 강도(80%)'인지 궁금하시다면, 달리는 도중 다음 3가지를 스스로 점검해 보세요.
 
-![쉬운 강도 셀프 체크 3가지 기준 인포그래픽](/images/running-intensity-4-self-check.png)
+![쉬운 강도 셀프 체크 3가지 기준 인포그래픽](/images/running-intensity-4-self-check-clean.png)
 
 1. **🗣️ 대화 테스트 (Talk Test):**
    * 달리는 도중 옆 러너나 가상의 대화 상대와 *"오늘 저녁 날씨가 참 상쾌하고 좋네요"*처럼 **온전한 긴 문장으로 숨 끊김 없이 대화가 가능한가?**
