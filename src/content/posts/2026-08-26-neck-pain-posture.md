@@ -4,7 +4,7 @@ date: "2026-08-26"
 summary: "지긋지긋한 목 통증과 거북목, 더 이상 방치하지 마세요. 집에서 척추 C커브를 살려내는 가장 확실한 비법과 베개 선택법을 알려드립니다."
 category: "브리핑"
 tags: ["목통증", "거북목교정", "맥켄지운동", "수면자세", "우리몸사용설명서"]
-thumbnail: "/images/neck-pain-2.png"
+thumbnail: "/images/thumbnails/thumb_spine.jpg"
 ---
 
 안녕하세요! 바른관절 헬프센터의 센터장입니다. 😊

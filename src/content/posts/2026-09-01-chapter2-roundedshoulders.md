@@ -3,7 +3,7 @@ title: "[우리 몸 사용 설명서] Chapter 2. 굽은 어깨, 숨겨진 통증
 date: "2026-09-01"
 summary: "현대인의 고질병, 라운드숄더의 원인과 증상을 명확히 분석하고, 집에서 쉽게 따라 할 수 있는 교정 스트레칭과 일상생활 개선 팁을 상세히 안내합니다. 어깨 통증과 자세 불균형을 해결하여 건강한 삶을 되찾으세요!"
 
-thumbnail: "/images/chapter2-good-posture.png"
+thumbnail: "/images/thumbnails/thumb_shoulder.jpg"
 tags: ["라운드숄더", "굽은어깨", "자세교정", "어깨통증", "흉추스트레칭", "어깨스트레칭", "승모근", "현대인고질병"]
 ---
 

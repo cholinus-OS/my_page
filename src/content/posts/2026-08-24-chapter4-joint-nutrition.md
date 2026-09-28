@@ -4,7 +4,7 @@ date: "2026-08-24"
 summary: "아무리 좋은 운동을 해도 먹는 것이 부실하면 뼈는 약해집니다. 관절과 연골을 보호하는 최고의 식재료와 피해야 할 음식을 알아봅니다."
 category: "사용 설명서"
 tags: ["관절영양", "뼈건강", "우리몸사용설명서", "영양제"]
-thumbnail: "/images/ch4-nutrition.png"
+thumbnail: "/images/thumbnails/thumb_knee.jpg"
 ---
 
 안녕하세요, 바른관절 헬프센터입니다.

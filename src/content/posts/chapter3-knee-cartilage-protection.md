@@ -4,7 +4,7 @@ date: "2026-08-13"
 summary: "나이가 들며 자연스럽게 마모되는 무릎 연골, 한 번 손상되면 재생되지 않는 연골을 최대한 오랫동안 건강하게 보존하기 위한 필수 생활 수칙을 알아봅니다."
 category: "사용 설명서"
 tags: ["퇴행성관절염", "무릎연골", "노화방지", "생애주기", "관절보호"]
-thumbnail: "/images/knee_cartilage_protection_1786622211078.png"
+thumbnail: "/images/thumbnails/thumb_knee.jpg"
 ---
 
 > **안녕하세요. 바른관절 헬프센터 대표 에디터 조형준 전문의입니다.**

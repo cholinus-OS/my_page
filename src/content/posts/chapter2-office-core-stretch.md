@@ -4,7 +4,7 @@ date: "2026-08-13"
 summary: "사무실 의자에 장시간 앉아 근무하며 무너진 코어와 척추 정렬을 단 3분 만에 바로잡는 간단한 오피스 스트레칭과 바른 자세 세팅법을 알려드립니다."
 category: "사용 설명서"
 tags: ["바른자세", "직장인", "허리통증", "거북목", "코어운동"]
-thumbnail: "/images/office_core_stretch_1786622198393.png"
+thumbnail: "/images/thumbnails/thumb_spine.jpg"
 ---
 
 > **안녕하세요. 바른관절 헬프센터 대표 에디터 조형준 전문의입니다.**

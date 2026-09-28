@@ -4,7 +4,7 @@ date: "2026-08-08"
 summary: "모니터 앞에서 무너진 당신의 목과 어깨를 구출할 5분 루틴. 거북목과 라운드 숄더의 근본적인 원인을 파악하고 교정합니다."
 category: "사용 설명서"
 tags: ["거북목", "라운드숄더", "바른자세", "직장인스트레칭", "목디스크"]
-thumbnail: "/images/office_worker_posture.png"
+thumbnail: "/images/thumbnails/thumb_spine.jpg"
 ---
 
 > **안녕하세요. 바른관절 헬프센터 대표 에디터 조형준 전문의입니다.**
