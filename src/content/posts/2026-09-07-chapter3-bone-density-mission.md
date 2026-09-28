@@ -3,7 +3,7 @@ title: "[우리 몸 사용 설명서] Chapter 3. 40대 여성, 갱년기 뼈 도
 date: "2026-09-07"
 summary: "갱년기를 앞둔 40대 여성들을 위해 골밀도 감소의 원인과 심각성을 설명하고, 뼈 건강을 지킬 수 있는 실천적인 운동과 식단, 생활 습관 솔루션을 제시합니다."
 
-thumbnail: "/images/thumbnails/thumb_senior.jpg"
+thumbnail: /images/thumbnails/thumb_senior.jpg
 tags: ["뼈 건강", "골밀도", "골감소증", "골다공증", "갱년기", "폐경기", "여성 건강", "정형외과", "생애주기별 관리", "우리몸사용설명서"]
 ---
 

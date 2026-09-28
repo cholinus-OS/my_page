@@ -4,7 +4,7 @@ date: "2026-08-08"
 summary: "노후 자금보다 중요한 관절 재테크. 가장 튼튼할 때 연골을 아껴 쓰고 하체 근력을 저축하여 퇴행성 관절염을 예방하는 비법입니다."
 category: "사용 설명서"
 tags: ["퇴행성관절염예방", "하체운동", "생애주기별관리", "관절재테크", "스쿼트"]
-thumbnail: "/images/thumbnails/thumb_senior.jpg"
+thumbnail: /images/thumbnails/2026-08-08-chapter-3-lifecycle-management.jpg
 ---
 
 > **안녕하세요. 바른관절 헬프센터 대표 에디터 조형준 전문의입니다.**

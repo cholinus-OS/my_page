@@ -4,7 +4,7 @@ date: "2026-08-08"
 summary: "장경인대 증후군과 아킬레스건염 예방을 위한 필수 웜업과 쿨다운 가이드. 러닝 시 발생하는 무릎 통증의 원인과 해결책을 알아봅니다."
 category: "사용 설명서"
 tags: ["러닝", "장경인대증후군", "무릎통증", "스포츠부상예방", "스트레칭"]
-thumbnail: "/images/thumbnails/thumb_knee.jpg"
+thumbnail: /images/thumbnails/2026-08-08-chapter-1-sports-prehab.jpg
 ---
 
 > **안녕하세요. 바른관절 헬프센터 대표 에디터 조형준 전문의입니다.**

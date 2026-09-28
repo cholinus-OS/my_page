@@ -3,7 +3,7 @@ title: "[우리 몸 사용 설명서] Chapter 1. 달리다 '뚝' 끊어지는 �
 date: "2026-09-21"
 summary: "갑작스러운 햄스트링 통증은 스포츠 활동을 순식간에 멈추게 합니다. 축구, 육상 등 다이내믹한 움직임이 많은 스포츠에서 흔히 발생하는 햄스트링 파열을 예방하고 안전하게 즐길 수 있는 효과적인 스트레칭과 강화 훈련법을 조형준 원장이 알려드립니다."
 category: "사용 설명서"
-thumbnail: "/images/thumbnails/thumb_exercise.jpg"
+thumbnail: /images/pcl-weight-bearing-exercise.png
 tags: ["햄스트링", "스포츠부상예방", "근육파열", "달리기", "축구", "하체운동", "조형준원장", "우리몸사용설명서"]
 ---
 

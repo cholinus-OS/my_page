@@ -4,7 +4,7 @@ date: "2026-08-17"
 summary: "현대인의 고질병인 거북목과 허리 디스크를 예방하는 인체공학적 작업 환경과 바른 자세의 모든 것."
 category: "칼럼"
 tags: ["바른자세", "거북목", "디스크예방", "체형교정", "우리몸사용설명서"]
-thumbnail: "/images/thumbnails/thumb_spine.jpg"
+thumbnail: /images/chapter2-good-posture.png
 ---
 
 안녕하십니까, 바른관절 헬프센터입니다.

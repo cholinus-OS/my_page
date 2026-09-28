@@ -4,7 +4,7 @@ date: "2026-08-13"
 summary: "여름철 등산 중 발생하기 쉬운 발목 염좌(발목 삠)를 예방하기 위한 전문 테이핑 기법과 5분 사전 스트레칭 루틴을 안내합니다."
 category: "사용 설명서"
 tags: ["발목염좌", "등산", "스트레칭", "테이핑", "스포츠부상방지"]
-thumbnail: "/images/thumbnails/thumb_neck.jpg"
+thumbnail: /images/neck-pain-4.png
 ---
 
 > **안녕하세요. 바른관절 헬프센터 대표 에디터 조형준 전문의입니다.**
