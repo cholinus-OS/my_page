@@ -225,10 +225,15 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
 - 본문 내 강조 시에는 마크다운 볼드(**) 외에도 <u>밑줄</u> 이나 <mark>형광펜</mark> 태그를 적극 활용하여 가독성을 높여라.
 - 표(Table) 작성 시 모바일 가독성을 위해 항목명은 <br/>로 두 줄 줄바꿈하고, 수치/기간 등 줄바꿈되면 안 되는 텍스트는 <span style="white-space: nowrap;">...</span> 처리하라.
 - 구성:
-  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2", "우리몸사용설명서"]), thumbnail (주제에 맞는 아래 URL 중 하나를 선택)
-     - 스포츠/부상/스트레칭: "/images/ch1-injury-prevention.png", "/images/chapter1-injury-prevention.png", "/images/runner_knee_anatomy.png", "/images/ankle_sprain_prevention_1786622190001.png"
-     - 바른자세/척추/통증: "/images/ch2-good-posture.png", "/images/chapter2-good-posture.png", "/images/office_worker_posture.png", "/images/office_core_stretch_1786622198393.png"
-     - 생애주기/시니어/건강: "/images/ch3-lifecycle-management.png", "/images/chapter3-lifelong-health.png", "/images/joint_health_muscle_shield.png", "/images/knee_cartilage_protection_1786622211078.png"
+  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2", "우리몸사용설명서"]), thumbnail (아래의 지정된 썸네일 경로 중 글의 주제에 가장 정확히 부합하는 단 1개만 선택하여 삽입할 것!)
+     - 무릎 관절 / 십자인대 / 연골: "/images/thumbnails/thumb_knee.jpg"
+     - 어깨 관절 / 회전근개 / 오십견: "/images/thumbnails/thumb_shoulder.jpg"
+     - 허리 / 척추 / 골반 / 허리디스크: "/images/thumbnails/thumb_spine.jpg"
+     - 목 / 경추 / 거북목 / 두통: "/images/thumbnails/thumb_neck.jpg"
+     - 팔꿈치(엘보) / 손목 / 수부: "/images/thumbnails/thumb_elbow.jpg"
+     - 발목 / 발바닥 / 족저근막염: "/images/thumbnails/thumb_ankle.jpg"
+     - 시니어 건강 / 노년기 / 근감소증 / 낙상: "/images/thumbnails/thumb_senior.jpg"
+     - 일반 스트레칭 / 부상예방 / 바른자세(전신): "/images/thumbnails/thumb_exercise.jpg"
   2. 서론: 일상 속 특정 통증/부상 상황 공감 및 주제 선정 이유 (정형외과 전문의 조형준 원장 인사)
   3. 본론: 해부학적 발생 원인 분석 및 실생활에서 즉시 따라 할 수 있는 자가 운동/스트레칭 3가지 이상 상세 설명
   4. 결론: 요약, 따뜻한 응원 멘트 및 의학적 면책 조항(디스클레이머)
@@ -300,29 +305,18 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
             }
 
             // 5. 썸네일 자동 보장 (누락 방지 및 랜덤 풀 적용)
-            const fallbackThumbnails = {
-              1: [
-                "/images/ch1-injury-prevention.png",
-                "/images/chapter1-injury-prevention.png",
-                "/images/runner_knee_anatomy.png",
-                "/images/ankle_sprain_prevention_1786622190001.png"
-              ],
-              2: [
-                "/images/ch2-good-posture.png",
-                "/images/chapter2-good-posture.png",
-                "/images/office_worker_posture.png",
-                "/images/office_core_stretch_1786622198393.png"
-              ],
-              3: [
-                "/images/ch3-lifecycle-management.png",
-                "/images/chapter3-lifelong-health.png",
-                "/images/joint_health_muscle_shield.png",
-                "/images/knee_cartilage_protection_1786622211078.png"
-              ]
-            };
+            const fallbackThumbnails = [
+              "/images/thumbnails/thumb_knee.jpg",
+              "/images/thumbnails/thumb_shoulder.jpg",
+              "/images/thumbnails/thumb_spine.jpg",
+              "/images/thumbnails/thumb_neck.jpg",
+              "/images/thumbnails/thumb_elbow.jpg",
+              "/images/thumbnails/thumb_ankle.jpg",
+              "/images/thumbnails/thumb_senior.jpg",
+              "/images/thumbnails/thumb_exercise.jpg"
+            ];
             if (!content.includes("thumbnail:")) {
-              const pool = fallbackThumbnails[chapter.number] || fallbackThumbnails[1];
-              const randomThumb = pool[Math.floor(Math.random() * pool.length)];
+              const randomThumb = fallbackThumbnails[Math.floor(Math.random() * fallbackThumbnails.length)];
               content = content.replace(/^(category:\s*.*)$/m, `$1\nthumbnail: "${randomThumb}"`);
             }
 
