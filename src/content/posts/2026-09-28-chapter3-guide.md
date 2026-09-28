@@ -3,7 +3,7 @@ title: "[우리 몸 사용 설명서] Chapter 3. 60대 이후, 척추관협착�
 date: "2026-09-28"
 summary: "60세 이상 노년층에서 흔히 발생하는 척추관협착증은 보행에 큰 어려움을 줍니다. 짧은 거리만 걸어도 다리가 저리고 아파 주저앉게 되는 경험, 조형준 원장이 통증 없는 보행을 위한 실질적인 관리법과 운동 솔루션을 제시합니다."
 category: "사용 설명서"
-thumbnail: "/images/ch3-lifecycle-management.png"
+thumbnail: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80"
 tags: ["척추관협착증", "노년기관리", "보행운동", "허리통증", "생애주기별관리", "우리몸사용설명서"]
 ---
 
