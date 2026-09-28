@@ -4,7 +4,7 @@ date: "2026-08-17"
 summary: "청소년기 성장부터 중장년층의 퇴행성 관절염 예방까지, 나이에 맞는 단계별 뼈·관절 건강 관리 가이드."
 category: "칼럼"
 tags: ["관절관리", "생애주기", "퇴행성관절염", "뼈건강", "우리몸사용설명서"]
-thumbnail: /images/joint_health_muscle_shield.png
+thumbnail: /images/chapter1-injury-prevention.png
 ---
 
 안녕하십니까, 바른관절 헬프센터입니다.

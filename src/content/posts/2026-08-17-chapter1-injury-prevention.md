@@ -4,7 +4,7 @@ date: "2026-08-17"
 summary: "운동 전 필수 스트레칭부터 내 몸에 맞는 강도 조절까지, 스포츠 손상을 막는 핵심 예방 수칙을 알아봅니다."
 category: "사용 설명서"
 tags: ["부상예방", "스트레칭", "스포츠손상", "건강운동", "우리몸사용설명서"]
-thumbnail: /images/thumbnails/2026-08-17-chapter1-injury-prevention.jpg
+thumbnail: /images/ch1-injury-prevention.png
 ---
 
 안녕하십니까, 바른관절 헬프센터입니다.

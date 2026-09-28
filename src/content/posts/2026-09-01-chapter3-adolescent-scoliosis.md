@@ -3,7 +3,7 @@ title: "[우리 몸 사용 설명서] Chapter 3. 숨어있는 우리 아이의 �
 date: "2026-09-01"
 summary: "청소년기 척추측만증은 조기 발견과 적절한 관리가 매우 중요합니다. 15년 경력 정형외과 전문의가 우리 아이의 숨겨진 척추측만증을 알아보고, 어떻게 관리해야 하는지 친절하게 알려드립니다."
 
-thumbnail: /images/office_worker_posture.png
+thumbnail: /images/office_core_stretch_1786622198393.png
 tags: ["척추측만증", "청소년 건강", "성장기", "척추 관리", "자세 교정", "정형외과 전문의"]
 ---
 
