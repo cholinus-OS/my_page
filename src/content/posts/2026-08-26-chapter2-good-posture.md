@@ -4,7 +4,7 @@ date: "2026-08-26"
 summary: "스마트폰과 모니터에 빠져버린 현대인들. 당신의 척추가 소리 없이 망가지는 것을 막아줄 바른 자세 가이드입니다."
 category: "사용 설명서"
 tags: ["바른자세", "거북목", "우리몸사용설명서", "디스크예방"]
-thumbnail: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80"
+thumbnail: "/images/office_core_stretch_1786622198393.png"
 ---
 
 안녕하세요, 바른관절 헬프센터입니다.

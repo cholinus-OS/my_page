@@ -4,7 +4,7 @@ date: "2026-08-26"
 summary: "운동 전 10분의 웜업이 당신의 10년 관절 수명을 결정합니다. 다치지 않고 오래 운동하기 위한 필수 부상 예방 가이드."
 category: "정보"
 tags: ["부상예방", "워밍업", "우리몸사용설명서", "스트레칭"]
-thumbnail: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80"
+thumbnail: "/images/runner_knee_anatomy.png"
 ---
 
 안녕하세요, 바른관절 헬프센터입니다.

@@ -4,7 +4,7 @@ date: "2026-08-26"
 summary: "10대부터 80대까지, 나이에 맞는 관절 관리법은 따로 있습니다. 노화를 막고 평생 쓸 수 있는 관절을 위한 생애주기별 관리 전략!"
 category: "사용 설명서"
 tags: ["생애주기", "관절건강", "우리몸사용설명서", "항노화"]
-thumbnail: "https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=800&q=80"
+thumbnail: "/images/knee_cartilage_protection_1786622211078.png"
 ---
 
 안녕하세요, 바른관절 헬프센터입니다.

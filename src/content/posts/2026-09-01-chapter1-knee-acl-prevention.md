@@ -3,7 +3,7 @@ title: "[우리 몸 사용 설명서] Chapter 1. 뚝 소리와 함께 무너지�
 date: "2026-09-01"
 summary: "축구, 농구, 테니스, 배드민턴 등 방향 전환이 빠른 스포츠에서 가장 빈번하게 발생하는 무릎 전방십자인대 및 반월상연골판 손상. 비접촉성 부상이 일어나는 생체역학적 원인을 분석하고, 무릎 관절을 완벽히 보호하는 3대 신경근 착지 훈련법을 상세히 전해드립니다."
 
-thumbnail: "https://images.unsplash.com/photo-1598284534169-d6daea734c51?auto=format&fit=crop&w=800&q=80"
+thumbnail: "/images/runner_knee_anatomy.png"
 tags: ["무릎부상예방", "십자인대", "반월상연골판", "착지훈련", "스포츠손상", "정형외과", "우리몸사용설명서"]
 ---
 

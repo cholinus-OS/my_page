@@ -3,7 +3,7 @@ title: "[우리 몸 사용 설명서] Chapter 2. 스마트폰과 마우스가 �
 date: "2026-09-07"
 summary: "하루 종일 컴퓨터와 스마트폰을 사용하는 현대인들을 괴롭히는 손목 통증. 손목터널증후군과 드퀘르벵 건초염의 원인을 해부학적으로 분석하고, 신경 유동술과 신장성 수축을 활용한 매일 5분 자가 재활 운동법을 정형외과 전문의가 친절하게 알려드립니다."
 
-thumbnail: "https://images.unsplash.com/photo-1497215898147-5ddf3a8dfdc9?auto=format&fit=crop&w=800&q=80"
+thumbnail: "/images/office_core_stretch_1786622198393.png"
 tags: ["손목통증", "손목터널증후군", "드퀘르벵건초염", "자세교정", "손목스트레칭", "손목재활", "우리몸사용설명서"]
 ---
 
