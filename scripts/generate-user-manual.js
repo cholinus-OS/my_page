@@ -225,7 +225,10 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
 - 본문 내 강조 시에는 마크다운 볼드(**) 외에도 <u>밑줄</u> 이나 <mark>형광펜</mark> 태그를 적극 활용하여 가독성을 높여라.
 - 표(Table) 작성 시 모바일 가독성을 위해 항목명은 <br/>로 두 줄 줄바꿈하고, 수치/기간 등 줄바꿈되면 안 되는 텍스트는 <span style="white-space: nowrap;">...</span> 처리하라.
 - 구성:
-  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2", "우리몸사용설명서"])
+  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2", "우리몸사용설명서"]), thumbnail (주제에 맞는 아래 URL 중 하나를 선택)
+     - 스포츠/부상/스트레칭: "/images/ch1-injury-prevention.png", "/images/chapter1-injury-prevention.png", "/images/runner_knee_anatomy.png", "/images/ankle_sprain_prevention_1786622190001.png"
+     - 바른자세/척추/통증: "/images/ch2-good-posture.png", "/images/chapter2-good-posture.png", "/images/office_worker_posture.png", "/images/office_core_stretch_1786622198393.png"
+     - 생애주기/시니어/건강: "/images/ch3-lifecycle-management.png", "/images/chapter3-lifelong-health.png", "/images/joint_health_muscle_shield.png", "/images/knee_cartilage_protection_1786622211078.png"
   2. 서론: 일상 속 특정 통증/부상 상황 공감 및 주제 선정 이유 (정형외과 전문의 조형준 원장 인사)
   3. 본론: 해부학적 발생 원인 분석 및 실생활에서 즉시 따라 할 수 있는 자가 운동/스트레칭 3가지 이상 상세 설명
   4. 결론: 요약, 따뜻한 응원 멘트 및 의학적 면책 조항(디스클레이머)
@@ -296,14 +299,31 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
               content = content.replace(/^category:\s*.*$/m, 'category: "사용 설명서"');
             }
 
-            // 5. 썸네일 자동 보장 (누락 방지)
-            const chapterThumbnails = {
-              1: "/images/ch1-injury-prevention.png",
-              2: "/images/ch2-good-posture.png",
-              3: "/images/ch3-lifecycle-management.png"
+            // 5. 썸네일 자동 보장 (누락 방지 및 랜덤 풀 적용)
+            const fallbackThumbnails = {
+              1: [
+                "/images/ch1-injury-prevention.png",
+                "/images/chapter1-injury-prevention.png",
+                "/images/runner_knee_anatomy.png",
+                "/images/ankle_sprain_prevention_1786622190001.png"
+              ],
+              2: [
+                "/images/ch2-good-posture.png",
+                "/images/chapter2-good-posture.png",
+                "/images/office_worker_posture.png",
+                "/images/office_core_stretch_1786622198393.png"
+              ],
+              3: [
+                "/images/ch3-lifecycle-management.png",
+                "/images/chapter3-lifelong-health.png",
+                "/images/joint_health_muscle_shield.png",
+                "/images/knee_cartilage_protection_1786622211078.png"
+              ]
             };
             if (!content.includes("thumbnail:")) {
-              content = content.replace(/^(category:\s*.*)$/m, `$1\nthumbnail: "${chapterThumbnails[chapter.number]}"`);
+              const pool = fallbackThumbnails[chapter.number] || fallbackThumbnails[1];
+              const randomThumb = pool[Math.floor(Math.random() * pool.length)];
+              content = content.replace(/^(category:\s*.*)$/m, `$1\nthumbnail: "${randomThumb}"`);
             }
 
             // 6. 플레이스홀더 더미 이미지 자동 제거
