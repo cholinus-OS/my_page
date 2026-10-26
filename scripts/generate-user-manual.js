@@ -158,6 +158,7 @@ async function generateManuals() {
 
   const candidateModels = [
     "gemini-2.5-flash",
+    "gemini-3.8-flash",
     "gemini-flash-latest",
     "gemini-2.5-pro"
   ];
@@ -225,15 +226,7 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
 - 본문 내 강조 시에는 마크다운 볼드(**) 외에도 <u>밑줄</u> 이나 <mark>형광펜</mark> 태그를 적극 활용하여 가독성을 높여라.
 - 표(Table) 작성 시 모바일 가독성을 위해 항목명은 <br/>로 두 줄 줄바꿈하고, 수치/기간 등 줄바꿈되면 안 되는 텍스트는 <span style="white-space: nowrap;">...</span> 처리하라.
 - 구성:
-  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2", "우리몸사용설명서"]), thumbnail (아래의 지정된 썸네일 경로 중 글의 주제에 가장 정확히 부합하는 단 1개만 선택하여 삽입할 것!)
-     - 무릎 관절 / 십자인대 / 연골: "/images/thumbnails/thumb_knee.jpg"
-     - 어깨 관절 / 회전근개 / 오십견: "/images/thumbnails/thumb_shoulder.jpg"
-     - 허리 / 척추 / 골반 / 허리디스크: "/images/thumbnails/thumb_spine.jpg"
-     - 목 / 경추 / 거북목 / 두통: "/images/thumbnails/thumb_neck.jpg"
-     - 팔꿈치(엘보) / 손목 / 수부: "/images/thumbnails/thumb_elbow.jpg"
-     - 발목 / 발바닥 / 족저근막염: "/images/thumbnails/thumb_ankle.jpg"
-     - 시니어 건강 / 노년기 / 근감소증 / 낙상: "/images/thumbnails/thumb_senior.jpg"
-     - 일반 스트레칭 / 부상예방 / 바른자세(전신): "/images/thumbnails/thumb_exercise.jpg"
+  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2", "우리몸사용설명서"]), image_prompt (이 글의 핵심 주제를 가장 잘 표현하는 영문 이미지 프롬프트. 예: "A healthy knee joint with blue energy, 3D medical illustration")
   2. 서론: 일상 속 특정 통증/부상 상황 공감 및 주제 선정 이유 (정형외과 전문의 조형준 원장 인사)
   3. 본론: 해부학적 발생 원인 분석 및 실생활에서 즉시 따라 할 수 있는 자가 운동/스트레칭 3가지 이상 상세 설명
   4. 결론: 요약, 따뜻한 응원 멘트 및 의학적 면책 조항(디스클레이머)
@@ -243,118 +236,180 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
 반드시 다음 구조만 출력하고 앞뒤 잡담은 일절 배제하라.
 [FILENAME]: ${todayStr}-chapter${chapter.number}-영문키워드.md
 ---
-(프론트매터 및 본문 마크다운 내용)
+title: ...
+date: ...
+summary: ...
+category: "사용 설명서"
+tags: ...
+image_prompt: "..."
+---
+(본론 마크다운 내용)
 `;
 
     let success = false;
-    for (const modelName of candidateModels) {
-      console.log(`- API 호출 시도 (${modelName})...`);
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
-      
-      try {
-        const response = await fetch(url, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }]
-          })
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          let responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
-          
-          if (responseText) {
-            let filename = null;
-            const filenameMatch = responseText.match(/(?:\[FILENAME\]|\*\*\[FILENAME\]\*\*|FILENAME:)\s*([a-zA-Z0-9_\-\.]+\.md)/i);
-            if (filenameMatch) {
-              filename = filenameMatch[1].trim();
-            } else {
-              filename = `${todayStr}-chapter${chapter.number}-guide.md`;
-            }
-
-            let content = responseText
-              .replace(/^(?:\[FILENAME\]|\*\*\[FILENAME\]\*\*|FILENAME:).*?\n/gim, "")
-              .trim();
-            content = content.replace(/^```markdown\s*\n/i, "").replace(/\n```$/i, "").trim();
-
-            // 1. 제목 순수 텍스트 정제 및 큰따옴표 보정
-            content = content.replace(/^title:\s*(.*)$/m, (match, p1) => {
-              let clean = p1.replace(/<[^>]+>/g, '').replace(/\*\*/g, '').replace(/~~/g, '').replace(/`/g, '').trim();
-              if ((clean.startsWith('"') && clean.endsWith('"')) || (clean.startsWith("'") && clean.endsWith("'"))) {
-                clean = clean.slice(1, -1).trim();
-              }
-              return `title: "${clean.replace(/"/g, '\\"')}"`;
-            });
-
-            // 2. 날짜 큰따옴표 보정 및 시간 찌꺼기 완벽 제거
-            content = content.replace(/^date:\s*["']?(\d{4}-\d{2}-\d{2}).*$/m, `date: "$1"`);
-
-            // 3. summary 큰따옴표 보정
-            content = content.replace(/^summary:\s*(.*)$/m, (match, p1) => {
-              let clean = p1.trim();
-              if ((clean.startsWith('"') && clean.endsWith('"')) || (clean.startsWith("'") && clean.endsWith("'"))) {
-                clean = clean.slice(1, -1).trim();
-              }
-              return `summary: "${clean.replace(/"/g, '\\"')}"`;
-            });
-
-            // 4. 카테고리 보정
-            if (!content.includes('category: "사용 설명서"') && !content.includes("category: '사용 설명서'")) {
-              content = content.replace(/^category:\s*.*$/m, 'category: "사용 설명서"');
-            }
-
-            // 5. 썸네일 자동 보장 (누락 방지 및 랜덤 풀 적용)
-            const fallbackThumbnails = [
-              "/images/thumbnails/thumb_knee.jpg",
-              "/images/thumbnails/thumb_shoulder.jpg",
-              "/images/thumbnails/thumb_spine.jpg",
-              "/images/thumbnails/thumb_neck.jpg",
-              "/images/thumbnails/thumb_elbow.jpg",
-              "/images/thumbnails/thumb_ankle.jpg",
-              "/images/thumbnails/thumb_senior.jpg",
-              "/images/thumbnails/thumb_exercise.jpg"
-            ];
-            if (!content.includes("thumbnail:")) {
-              const randomThumb = fallbackThumbnails[Math.floor(Math.random() * fallbackThumbnails.length)];
-              content = content.replace(/^(category:\s*.*)$/m, `$1\nthumbnail: "${randomThumb}"`);
-            }
-
-            // 6. 플레이스홀더 더미 이미지 자동 제거
-            content = content.replace(/\*\*?<img[^>]*via\.placeholder\.com[^>]*>\*\*?/gi, "");
-            content = content.replace(/!\[.*?\]\(https?:\/\/via\.placeholder\.com\/.*?\)/gi, "");
-
-            // 7. 물결표(~) 자동 치환 (하이픈 -)
-            content = content.replace(/(\d+)\s*~\s*(\d+)/g, "$1-$2");
-
-            // 8. 태그에 "우리몸사용설명서" 보장
-            if (content.includes("tags:")) {
-              if (!content.includes('"우리몸사용설명서"') && !content.includes("'우리몸사용설명서'")) {
-                content = content.replace(/^tags:\s*\[(.*?)\]/m, (match, p1) => {
-                  const items = p1.trim() ? `${p1.trim()}, "우리몸사용설명서"` : `"우리몸사용설명서"`;
-                  return `tags: [${items}]`;
-                });
-              }
-            }
-
-            const filePath = path.join(postsDir, filename);
-            fs.writeFileSync(filePath, content, "utf8");
-            console.log(`✅ 작성 완료: ${filename}`);
-
-            const savedTitleMatch = content.match(/^title:\s*"?(.*?)"?$/m);
-            if (savedTitleMatch) {
-              generatedThisBatch.push(savedTitleMatch[1]);
-              allTitles.push(savedTitleMatch[1]);
-            }
-
-            success = true;
-            break;
-          }
-        }
-      } catch (err) {
-        console.warn(`- 에러 발생: ${err.message}`);
+    for (let pass = 1; pass <= 2 && !success; pass++) {
+      if (pass > 1) {
+        console.log(`\n🔄 Chapter ${chapter.number} 재시도 (2차 패스)... 8초 대기 중`);
+        await new Promise(r => setTimeout(r, 8000));
       }
-      await new Promise(r => setTimeout(r, 2000));
+
+      for (const modelName of candidateModels) {
+        console.log(`- API 호출 시도 (${modelName})...`);
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+        
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: prompt }] }]
+            })
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            let responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+            
+            if (responseText) {
+              let filename = null;
+              const filenameMatch = responseText.match(/(?:\[FILENAME\]|\*\*\[FILENAME\]\*\*|FILENAME:)\s*([a-zA-Z0-9_\-\.]+\.md)/i);
+              if (filenameMatch) {
+                filename = filenameMatch[1].trim();
+              } else {
+                filename = `${todayStr}-chapter${chapter.number}-guide.md`;
+              }
+
+              let content = responseText
+                .replace(/^(?:\[FILENAME\]|\*\*\[FILENAME\]\*\*|FILENAME:).*?\n/gim, "")
+                .trim();
+              content = content.replace(/^```markdown\s*\n/i, "").replace(/\n```$/i, "").trim();
+
+              // 1. 제목 순수 텍스트 정제 및 큰따옴표 보정 (따옴표 중첩 YAML 파싱 오류 방지)
+              content = content.replace(/^title:\s*(.*)$/m, (match, p1) => {
+                let clean = p1.replace(/<[^>]+>/g, '').replace(/\*\*/g, '').replace(/~~/g, '').replace(/`/g, '').trim();
+                if ((clean.startsWith('"') && clean.endsWith('"')) || (clean.startsWith("'") && clean.endsWith("'"))) {
+                  clean = clean.slice(1, -1).trim();
+                }
+                clean = clean.replace(/\\"/g, "'").replace(/"/g, "'");
+                return `title: "${clean}"`;
+              });
+
+              // 2. 날짜 큰따옴표 보정 및 시간 찌꺼기 완벽 제거
+              content = content.replace(/^date:\s*["']?(\d{4}-\d{2}-\d{2}).*$/m, `date: "$1"`);
+
+              // 3. summary 큰따옴표 보정 (따옴표 중첩 YAML 파싱 오류 방지)
+              content = content.replace(/^summary:\s*(.*)$/m, (match, p1) => {
+                let clean = p1.trim();
+                if ((clean.startsWith('"') && clean.endsWith('"')) || (clean.startsWith("'") && clean.endsWith("'"))) {
+                  clean = clean.slice(1, -1).trim();
+                }
+                clean = clean.replace(/\\"/g, "'").replace(/"/g, "'");
+                return `summary: "${clean}"`;
+              });
+
+              // 4. 카테고리 보정
+              if (!content.includes('category: "사용 설명서"') && !content.includes("category: '사용 설명서'")) {
+                content = content.replace(/^category:\s*.*$/m, 'category: "사용 설명서"');
+              }
+
+              // 5. 썸네일 동적 생성 (image_prompt 기반, 3회 재시도 및 안전 폴백)
+              const imgPromptMatch = content.match(/^image_prompt:\s*["']?(.*?)["']?$/m);
+              const bodyPart = detectBodyPart(filename, content, []);
+              const partToThumb = {
+                "무릎": "/images/thumbnails/thumb_knee.jpg",
+                "어깨/등": "/images/thumbnails/thumb_shoulder.jpg",
+                "허리/척추/골반": "/images/thumbnails/thumb_spine.jpg",
+                "목/경추": "/images/thumbnails/thumb_neck.jpg",
+                "팔꿈치/손목": "/images/thumbnails/thumb_elbow.jpg",
+                "발목/발": "/images/thumbnails/thumb_ankle.jpg",
+                "허벅지/햄스트링": "/images/thumbnails/thumb_exercise.jpg",
+                "고관절/골반": "/images/thumbnails/thumb_spine.jpg",
+                "기타/전신": "/images/thumbnails/thumb_exercise.jpg"
+              };
+              let downloadedThumb = partToThumb[bodyPart] || "/images/thumbnails/thumb_exercise.jpg";
+              
+              if (imgPromptMatch) {
+                const basePrompt = imgPromptMatch[1].trim();
+                const style = "minimalist 3D medical illustration, soft pastel colors, glowing blue energy, premium modern healthcare aesthetic, clean white background";
+                const fullPrompt = `${basePrompt}, ${style}`;
+                
+                const imgUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=800&height=500&nologo=true`;
+                const imgFilename = `${filename.replace(".md", "")}.jpg`;
+                const imgLocalPath = path.join(process.cwd(), "public", "images", "thumbnails", imgFilename);
+                
+                console.log(`- 썸네일 생성 중 (Pollinations API): ${basePrompt}`);
+                for (let attempt = 1; attempt <= 3; attempt++) {
+                  try {
+                    const imgRes = await fetch(imgUrl);
+                    if (imgRes.ok) {
+                      const arrayBuffer = await imgRes.arrayBuffer();
+                      const buffer = Buffer.from(arrayBuffer);
+                      fs.writeFileSync(imgLocalPath, buffer);
+                      downloadedThumb = `/images/thumbnails/${imgFilename}`;
+                      console.log(`✅ 썸네일 다운로드 성공: ${downloadedThumb}`);
+                      break;
+                    } else {
+                      console.warn(`- 썸네일 다운로드 실패 (시도 ${attempt}/3, status: ${imgRes.status})`);
+                      if (attempt < 3) await new Promise(r => setTimeout(r, 4000));
+                    }
+                  } catch (e) {
+                    console.warn(`- 썸네일 다운로드 에러 (시도 ${attempt}/3): ${e.message}`);
+                    if (attempt < 3) await new Promise(r => setTimeout(r, 4000));
+                  }
+                }
+                
+                // image_prompt 라인을 제거하고 실제 thumbnail로 교체
+                content = content.replace(/^image_prompt:\s*.*$/m, `thumbnail: "${downloadedThumb}"`);
+              } else {
+                // image_prompt가 없을 경우 폴백
+                content = content.replace(/^(category:\s*.*)$/m, `$1\nthumbnail: "${downloadedThumb}"`);
+              }
+
+              // 6. 플레이스홀더 더미 이미지 자동 제거
+              content = content.replace(/\*\*?<img[^>]*via\.placeholder\.com[^>]*>\*\*?/gi, "");
+              content = content.replace(/!\[.*?\]\(https?:\/\/via\.placeholder\.com\/.*?\)/gi, "");
+
+              // 7. 물결표(~) 자동 치환 (하이픈 -)
+              content = content.replace(/(\d+)\s*~\s*(\d+)/g, "$1-$2");
+
+              // 8. 태그에 "우리몸사용설명서" 보장
+              if (content.includes("tags:")) {
+                if (!content.includes('"우리몸사용설명서"') && !content.includes("'우리몸사용설명서'")) {
+                  content = content.replace(/^tags:\s*\[(.*?)\]/m, (match, p1) => {
+                    const items = p1.trim() ? `${p1.trim()}, "우리몸사용설명서"` : `"우리몸사용설명서"`;
+                    return `tags: [${items}]`;
+                  });
+                }
+              }
+
+              const filePath = path.join(postsDir, filename);
+              fs.writeFileSync(filePath, content, "utf8");
+              console.log(`✅ 작성 완료: ${filename}`);
+
+              const savedTitleMatch = content.match(/^title:\s*"?(.*?)"?$/m);
+              if (savedTitleMatch) {
+                generatedThisBatch.push(savedTitleMatch[1]);
+                allTitles.push(savedTitleMatch[1]);
+              }
+
+              success = true;
+              break;
+            } else {
+              console.warn(`- API 응답 텍스트가 비어있음 (${modelName}), finishReason: ${data.candidates?.[0]?.finishReason}`);
+            }
+          } else {
+            const errText = await response.text();
+            console.warn(`- API 호출 실패 [${modelName}] (${response.status} ${response.statusText}): ${errText.slice(0, 150)}`);
+            if (response.status === 429 || response.status === 503) {
+              console.log(`- 할당량/서버 부하 감지: 5초 대기 후 다음 모델 시도...`);
+              await new Promise(r => setTimeout(r, 5000));
+            }
+          }
+        } catch (err) {
+          console.warn(`- 에러 발생: ${err.message}`);
+        }
+        await new Promise(r => setTimeout(r, 2000));
+      }
     }
     
     if (!success) {

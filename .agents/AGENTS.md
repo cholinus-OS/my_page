@@ -55,3 +55,12 @@
 <!-- BEGIN:title-plain-text-rule -->
 - **Title Plain Text Rule**: 모든 글(블로그, 브리핑, 우리 몸 사용 설명서 등)의 프론트매터 제목(`title`)에는 `<mark>`, `<u>`, `<b>`, `**`, `~~` 등의 HTML 태그나 마크다운 서식 기호를 절대 포함하지 마세요. 제목은 반드시 순수 텍스트(Plain Text)로만 작성해야 합니다.
 <!-- END:title-plain-text-rule -->
+
+<!-- BEGIN:thumbnail-uniqueness-policy -->
+- **Thumbnail Uniqueness & AI Generation Rule (썸네일 무결성 및 고유 배정 원칙)**:
+  1. **절대 중복 금지 (Zero Duplication)**: 우리 몸 사용 설명서 및 모든 자동 생성 블로그 포스팅의 썸네일 이미지는 **전체 웹사이트 내에서 단 하나도 중복되어서는 안 됩니다**. 동일한 관절 부위(예: 무릎, 허리)를 다루더라도, 각각의 세부 주제(예: 디스크 vs 협착증)를 명확히 구분하는 완전히 다른 일러스트가 배정되어야 합니다. (목과 허리는 같은 척추 계열이라도 시각적으로 확실히 구분되어야 함)
+  2. **동적 AI 생성 도입 (Dynamic AI Generation)**: `scripts/generate-user-manual.js` 스크립트는 고정된 이미지 풀에 의존하지 않습니다. 프론트매터 영역에 글의 핵심을 나타내는 영문 프롬프트(`image_prompt`)를 AI(Gemini)가 텍스트로 먼저 요약해 내고, 통일된 톤앤매너("minimalist 3D medical illustration, soft pastel colors, glowing blue energy, premium modern healthcare aesthetic, clean white background")를 덧붙여 AI 이미지 생성 API(Pollinations 등)를 통해 실시간으로 이미지를 생성하고 로컬 디렉토리(`/public/images/thumbnails/`)에 즉각 다운로드 및 저장하는 것을 기본 원칙으로 합니다.
+  3. **경로 작성 시 따옴표 강제 및 링크 엑스박스 방지**: 썸네일 경로를 마크다운 파일에 덮어쓸 때는, 이전의 엑스박스(404 Not Found) 오류를 방지하기 위해 정규식이 따옴표 유무에 관계없이 정확히 치환(`thumbnail:\s*(.*)$/m`)되도록 처리하며, 완성된 로컬 저장 경로(예: `/images/thumbnails/2026-XX-XX-chapter.jpg`)만 사용해야 합니다.
+  4. **수동 포스팅 보호**: 원장님이 직접 작성하신 `[센터장 브리핑]` 등 수동 지정된 썸네일은 자동 교체 로직에서 완벽히 배제(Lock)하여 고유성을 훼손하지 않습니다.
+<!-- END:thumbnail-uniqueness-policy -->
+
