@@ -226,7 +226,7 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
 - 본문 내 강조 시에는 마크다운 볼드(**) 외에도 <u>밑줄</u> 이나 <mark>형광펜</mark> 태그를 적극 활용하여 가독성을 높여라.
 - 표(Table) 작성 시 모바일 가독성을 위해 항목명은 <br/>로 두 줄 줄바꿈하고, 수치/기간 등 줄바꿈되면 안 되는 텍스트는 <span style="white-space: nowrap;">...</span> 처리하라.
 - 구성:
-  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2", "우리몸사용설명서"]), image_prompt (이 글의 핵심 주제를 가장 잘 표현하는 영문 이미지 프롬프트. 예: "A healthy knee joint with blue energy, 3D medical illustration")
+  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2", "우리몸사용설명서"]), image_prompt (이 글의 핵심 관절/뼈 구조물을 나타내는 영문 3D 해부학 모형 프롬프트. ⚠️절대 주의: 성인물/19금처럼 보이거나 신체 노출·접촉 오해를 줄 수 있는 그림을 원천 차단하기 위해 사람, 인물, 아이, 피부, 전신 실루엣, 마사지/스트레칭 자세 묘사를 절대 넣지 마라! 오직 "Isolated 3D medical model of a knee bone joint with glowing blue cartilage on a white clinic desk, no people, no human body" 처럼 순수 뼈/관절 해부학 모형만 묘사할 것)
   2. 서론: 일상 속 특정 통증/부상 상황 공감 및 주제 선정 이유 (정형외과 전문의 조형준 원장 인사)
   3. 본론: 해부학적 발생 원인 분석 및 실생활에서 즉시 따라 할 수 있는 자가 운동/스트레칭 3가지 이상 상세 설명
   4. 결론: 요약, 따뜻한 응원 멘트 및 의학적 면책 조항(디스클레이머)
@@ -329,8 +329,13 @@ image_prompt: "..."
               let downloadedThumb = partToThumb[bodyPart] || "/images/thumbnails/thumb_exercise.jpg";
               
               if (imgPromptMatch) {
-                const basePrompt = imgPromptMatch[1].trim();
-                const style = "minimalist 3D medical illustration, soft pastel colors, glowing blue energy, premium modern healthcare aesthetic, clean white background";
+                // 인물/신체 노출/접촉으로 인한 19금 오해 소지 단어를 강제로 제거하고 순수 3D 뼈/관절 모형만 생성하도록 정제
+                let basePrompt = imgPromptMatch[1]
+                  .trim()
+                  .replace(/\b(person|people|human|man|woman|child|children|kid|kids|boy|girl|parent|mother|father|body|skin|naked|nude|silhouette|figure|massage|massaging|touching|bed|sleeping|couple|buttocks|hips|thighs|chest|breast|torso)\b/gi, "")
+                  .replace(/\s+/g, " ")
+                  .trim();
+                const style = "close-up isolated 3D anatomical bone and joint model on a bright hospital clinic desk, soft pastel colors, glowing sky-blue cartilage energy, premium modern healthcare aesthetic, clean white background, strictly no people, no human body, no skin, safe medical diagram";
                 const fullPrompt = `${basePrompt}, ${style}`;
                 
                 const imgUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=800&height=500&nologo=true`;
