@@ -73,11 +73,11 @@ function detectBodyPart(title, summary, tags) {
   if (/무릎|십자인대|연골판|슬개|반월상|러너스/.test(text)) return "무릎";
   if (/발목|아킬레스|족저|발바닥|뒤꿈치/.test(text)) return "발목/발";
   if (/어깨|회전근개|오십견|라운드숄더|견갑|익상/.test(text)) return "어깨/등";
-  if (/목|경추|거북목|일자목/.test(text)) return "목/경추";
+  if (/목|경추|거북목|일자목|텍스트\s*넥/.test(text)) return "목/경추";
   if (/허리|요추|골반|척추|디스크|측만증/.test(text)) return "허리/척추/골반";
-  if (/팔꿈치|엘보|손목|수근관|방아쇠|TFCC/.test(text)) return "팔꿈치/손목";
-  if (/고관절|서혜부|둔근/.test(text)) return "고관절/골반";
-  if (/햄스트링|허벅지|대퇴|내전근/.test(text)) return "허벅지/햄스트링";
+  if (/팔꿈치|엘보|손목|수근관|방아쇠|TFCC|손가락/.test(text)) return "팔꿈치/손목";
+  if (/고관절|서혜부|둔근|엉덩이/.test(text)) return "고관절/골반";
+  if (/햄스트링|허벅지|대퇴|내전근|사타구니/.test(text)) return "허벅지/햄스트링";
   return "기타/전신";
 }
 
@@ -226,7 +226,15 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
 - 본문 내 강조 시에는 마크다운 볼드(**) 외에도 <u>밑줄</u> 이나 <mark>형광펜</mark> 태그를 적극 활용하여 가독성을 높여라.
 - 표(Table) 작성 시 모바일 가독성을 위해 항목명은 <br/>로 두 줄 줄바꿈하고, 수치/기간 등 줄바꿈되면 안 되는 텍스트는 <span style="white-space: nowrap;">...</span> 처리하라.
 - 구성:
-  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2", "우리몸사용설명서"]), image_prompt (이 글의 핵심 관절/뼈 구조물을 나타내는 영문 3D 해부학 모형 프롬프트. ⚠️절대 주의: 성인물/19금처럼 보이거나 신체 노출·접촉 오해를 줄 수 있는 그림을 원천 차단하기 위해 사람, 인물, 아이, 피부, 전신 실루엣, 마사지/스트레칭 자세 묘사를 절대 넣지 마라! 오직 "Isolated 3D medical model of a knee bone joint with glowing blue cartilage on a white clinic desk, no people, no human body" 처럼 순수 뼈/관절 해부학 모형만 묘사할 것)
+  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2", "우리몸사용설명서"]), thumbnail (아래의 지정된 공식 썸네일 경로 중 글의 주제에 가장 정확히 부합하는 단 1개만 선택):
+     - 무릎 관절 / 십자인대 / 연골판 / 슬개골 / 러너스니: "/images/thumbnails/thumb_knee.jpg"
+     - 어깨 관절 / 회전근개 / 오십견 / 라운드숄더 / 익상견갑: "/images/thumbnails/thumb_shoulder.jpg"
+     - 허리 / 척추 / 골반 / 허리디스크 / 고관절 / 엉덩이: "/images/thumbnails/thumb_spine.jpg"
+     - 목 / 경추 / 거북목 / 일자목 / 텍스트넥 / 자세성 두통: "/images/thumbnails/thumb_neck.jpg"
+     - 팔꿈치(엘보) / 손목 / 수근관 / 방아쇠수지 / 손가락: "/images/thumbnails/thumb_elbow.jpg"
+     - 발목 / 발바닥 / 족저근막염 / 아킬레스건 / 뒤꿈치: "/images/thumbnails/thumb_ankle.jpg"
+     - 시니어 건강 / 노년기 / 근감소증 / 낙상 예방: "/images/thumbnails/thumb_senior.jpg"
+     - 일반 스트레칭 / 부상예방 / 바른자세(전신) / 허벅지·내전근: "/images/thumbnails/thumb_exercise.jpg"
   2. 서론: 일상 속 특정 통증/부상 상황 공감 및 주제 선정 이유 (정형외과 전문의 조형준 원장 인사)
   3. 본론: 해부학적 발생 원인 분석 및 실생활에서 즉시 따라 할 수 있는 자가 운동/스트레칭 3가지 이상 상세 설명
   4. 결론: 요약, 따뜻한 응원 멘트 및 의학적 면책 조항(디스클레이머)
@@ -241,7 +249,7 @@ date: ...
 summary: ...
 category: "사용 설명서"
 tags: ...
-image_prompt: "..."
+thumbnail: "/images/thumbnails/..."
 ---
 (본론 마크다운 내용)
 `;
@@ -312,8 +320,7 @@ image_prompt: "..."
                 content = content.replace(/^category:\s*.*$/m, 'category: "사용 설명서"');
               }
 
-              // 5. 썸네일 동적 생성 (image_prompt 기반, 3회 재시도 및 안전 폴백)
-              const imgPromptMatch = content.match(/^image_prompt:\s*["']?(.*?)["']?$/m);
+              // 5. 썸네일 자동 배정 (누가 봐도 한눈에 주제를 명확히 알 수 있는 고품질 공식 3D 의료 일러스트 적용)
               const bodyPart = detectBodyPart(filename, content, []);
               const partToThumb = {
                 "무릎": "/images/thumbnails/thumb_knee.jpg",
@@ -326,48 +333,15 @@ image_prompt: "..."
                 "고관절/골반": "/images/thumbnails/thumb_spine.jpg",
                 "기타/전신": "/images/thumbnails/thumb_exercise.jpg"
               };
-              let downloadedThumb = partToThumb[bodyPart] || "/images/thumbnails/thumb_exercise.jpg";
-              
-              if (imgPromptMatch) {
-                // 인물/신체 노출/접촉으로 인한 19금 오해 소지 단어를 강제로 제거하고 순수 3D 뼈/관절 모형만 생성하도록 정제
-                let basePrompt = imgPromptMatch[1]
-                  .trim()
-                  .replace(/\b(person|people|human|man|woman|child|children|kid|kids|boy|girl|parent|mother|father|body|skin|naked|nude|silhouette|figure|massage|massaging|touching|bed|sleeping|couple|buttocks|hips|thighs|chest|breast|torso)\b/gi, "")
-                  .replace(/\s+/g, " ")
-                  .trim();
-                const style = "close-up isolated 3D anatomical bone and joint model on a bright hospital clinic desk, soft pastel colors, glowing sky-blue cartilage energy, premium modern healthcare aesthetic, clean white background, strictly no people, no human body, no skin, safe medical diagram";
-                const fullPrompt = `${basePrompt}, ${style}`;
-                
-                const imgUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=800&height=500&nologo=true`;
-                const imgFilename = `${filename.replace(".md", "")}.jpg`;
-                const imgLocalPath = path.join(process.cwd(), "public", "images", "thumbnails", imgFilename);
-                
-                console.log(`- 썸네일 생성 중 (Pollinations API): ${basePrompt}`);
-                for (let attempt = 1; attempt <= 3; attempt++) {
-                  try {
-                    const imgRes = await fetch(imgUrl);
-                    if (imgRes.ok) {
-                      const arrayBuffer = await imgRes.arrayBuffer();
-                      const buffer = Buffer.from(arrayBuffer);
-                      fs.writeFileSync(imgLocalPath, buffer);
-                      downloadedThumb = `/images/thumbnails/${imgFilename}`;
-                      console.log(`✅ 썸네일 다운로드 성공: ${downloadedThumb}`);
-                      break;
-                    } else {
-                      console.warn(`- 썸네일 다운로드 실패 (시도 ${attempt}/3, status: ${imgRes.status})`);
-                      if (attempt < 3) await new Promise(r => setTimeout(r, 4000));
-                    }
-                  } catch (e) {
-                    console.warn(`- 썸네일 다운로드 에러 (시도 ${attempt}/3): ${e.message}`);
-                    if (attempt < 3) await new Promise(r => setTimeout(r, 4000));
-                  }
-                }
-                
-                // image_prompt 라인을 제거하고 실제 thumbnail로 교체
-                content = content.replace(/^image_prompt:\s*.*$/m, `thumbnail: "${downloadedThumb}"`);
+              const assignedThumb = partToThumb[bodyPart] || "/images/thumbnails/thumb_exercise.jpg";
+
+              // 기존 image_prompt 제거 및 확실한 공식 썸네일 배정
+              if (content.includes("image_prompt:")) {
+                content = content.replace(/^image_prompt:\s*.*$/m, `thumbnail: "${assignedThumb}"`);
+              } else if (!content.includes("thumbnail:")) {
+                content = content.replace(/^(category:\s*.*)$/m, `$1\nthumbnail: "${assignedThumb}"`);
               } else {
-                // image_prompt가 없을 경우 폴백
-                content = content.replace(/^(category:\s*.*)$/m, `$1\nthumbnail: "${downloadedThumb}"`);
+                content = content.replace(/^thumbnail:\s*.*$/m, `thumbnail: "${assignedThumb}"`);
               }
 
               // 6. 플레이스홀더 더미 이미지 자동 제거

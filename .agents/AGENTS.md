@@ -57,12 +57,18 @@
 <!-- END:title-plain-text-rule -->
 
 <!-- BEGIN:thumbnail-uniqueness-policy -->
-- **Thumbnail Uniqueness & AI Generation Rule (썸네일 무결성 및 고유 배정 원칙)**:
-  1. **절대 중복 금지 (Zero Duplication)**: 우리 몸 사용 설명서 및 모든 자동 생성 블로그 포스팅의 썸네일 이미지는 **전체 웹사이트 내에서 단 하나도 중복되어서는 안 됩니다**. 동일한 관절 부위(예: 무릎, 허리)를 다루더라도, 각각의 세부 주제(예: 디스크 vs 협착증)를 명확히 구분하는 완전히 다른 일러스트가 배정되어야 합니다. (목과 허리는 같은 척추 계열이라도 시각적으로 확실히 구분되어야 함)
-  2. **동적 AI 생성 도입 (Dynamic AI Generation)**: `scripts/generate-user-manual.js` 스크립트는 고정된 이미지 풀에 의존하지 않습니다. 프론트매터 영역에 글의 핵심을 나타내는 영문 프롬프트(`image_prompt`)를 AI(Gemini)가 텍스트로 먼저 요약해 내고, 통일된 톤앤매너("minimalist 3D medical illustration, soft pastel colors, glowing blue energy, premium modern healthcare aesthetic, clean white background")를 덧붙여 AI 이미지 생성 API(Pollinations 등)를 통해 실시간으로 이미지를 생성하고 로컬 디렉토리(`/public/images/thumbnails/`)에 즉각 다운로드 및 저장하는 것을 기본 원칙으로 합니다.
-  3. **선정성·오해 소지 원천 차단 (19금/신체 노출 느낌 절대 금지 - 영구 기본 설정)**: 어떤 그림이든 성인물(19금)처럼 보이거나 선정적인 오해를 불러일으킬 수 있는 이미지는 **절대 허용하지 않습니다**.
-     - AI가 두 사람의 마사지·스트레칭 자세나 맨살·전신 실루엣을 그릴 때 신체 부위가 겹치며 기괴하거나 선정적인 구도가 나오는 것을 원천 차단하기 위해, **모든 썸네일 프롬프트(`image_prompt`)는 사람(인물, 전신, 피부, 엉덩이/허벅지 실루엣, 두 사람의 신체 접촉 등) 묘사를 일절 배제하고, 오직 순수 해부학적 뼈/관절 3D 모형(Isolated 3D anatomical bone and joint model) 또는 의료 기구/아이콘 중심으로만 생성**하도록 강제합니다.
-  4. **경로 작성 시 따옴표 강제 및 링크 엑스박스 방지**: 썸네일 경로를 마크다운 파일에 덮어쓸 때는, 이전의 엑스박스(404 Not Found) 오류를 방지하기 위해 정규식이 따옴표 유무에 관계없이 정확히 치환(`thumbnail:\s*(.*)$/m`)되도록 처리하며, 완성된 로컬 저장 경로(예: `/images/thumbnails/2026-XX-XX-chapter.jpg`)만 사용해야 합니다.
-  5. **수동 포스팅 보호**: 원장님이 직접 작성하신 `[센터장 브리핑]` 등 수동 지정된 썸네일은 자동 교체 로직에서 완벽히 배제(Lock)하여 고유성을 훼손하지 않습니다.
+- **Thumbnail Unmistakable Quality & Strict Topic Match Rule (처음 세팅한 고품질 공식 3D 썸네일 배정 및 괴기 이미지 원천 차단 원칙)**:
+  1. **주제 부합성 및 직관성 최우선**: 모든 우리 몸 사용 설명서의 썸네일은 독자가 보았을 때 해당 글이 어떤 관절·부위·통증을 다루는지 한눈에 직관적으로 명확히 이해할 수 있는 전문 의료 3D 일러스트여야 합니다.
+  2. **불안정한 동적 AI 생성 전면 중단 (괴기/선정적 이미지 원천 차단)**: 외부 무료 AI 생성기(Pollinations 등)의 환각으로 인한 기괴한 외계인 손가락(7개 손가락 등), 변형된 살덩어리, 정체불명의 계란 바가지, 유령 해골 등 그로테스크하거나 선정적인 이미지가 생성되는 문제를 원천 차단하기 위해, 불안정한 동적 이미지 생성을 전면 중단하고 **검증된 고화질 공식 3D 의료 일러스트 라이브러리(`/images/thumbnails/thumb_*.jpg`)를 부위별로 100% 신뢰성 있게 자동 배정**합니다.
+  3. **공식 부위별 썸네일 매핑 기준**:
+     - 무릎 / 십자인대 / 연골판 / 슬개골 / 러너스 니: `/images/thumbnails/thumb_knee.jpg`
+     - 어깨 / 회전근개 / 오십견 / 라운드숄더 / 익상견갑: `/images/thumbnails/thumb_shoulder.jpg`
+     - 허리 / 척추 / 골반 / 허리디스크 / 고관절 / 엉덩이 통증: `/images/thumbnails/thumb_spine.jpg`
+     - 목 / 경추 / 거북목 / 일자목 / 텍스트 넥 / 자세성 두통: `/images/thumbnails/thumb_neck.jpg`
+     - 팔꿈치(엘보) / 손목 / 수근관 / 방아쇠수지 / 손가락 통증: `/images/thumbnails/thumb_elbow.jpg`
+     - 발목 / 발바닥 / 족저근막염 / 아킬레스건: `/images/thumbnails/thumb_ankle.jpg`
+     - 시니어 건강 / 노년기 관리 / 근감소증 / 낙상 예방: `/images/thumbnails/thumb_senior.jpg`
+     - 일반 스트레칭 / 부상 예방 / 바른 자세(전신) / 허벅지·내전근: `/images/thumbnails/thumb_exercise.jpg`
+  4. **수동 포스팅 보호**: 원장님이 직접 작성하신 `[센터장 브리핑]` 등 수동 지정된 썸네일은 고유성을 보호하여 절대 임의 변경하지 않습니다.
 <!-- END:thumbnail-uniqueness-policy -->
 
