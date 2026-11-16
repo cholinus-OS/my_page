@@ -321,7 +321,15 @@ thumbnail: "/images/thumbnails/..."
               }
 
               // 5. 썸네일 자동 배정 (누가 봐도 한눈에 주제를 명확히 알 수 있는 고품질 공식 3D 의료 일러스트 적용)
-              const bodyPart = detectBodyPart(filename, content, []);
+              let parsedMeta = {};
+              try {
+                parsedMeta = matter(content).data || {};
+              } catch (e) {}
+              const bodyPart = detectBodyPart(
+                parsedMeta.title || filename,
+                parsedMeta.summary || "",
+                Array.isArray(parsedMeta.tags) ? parsedMeta.tags : []
+              );
               const partToThumb = {
                 "무릎": "/images/thumbnails/thumb_knee.jpg",
                 "어깨/등": "/images/thumbnails/thumb_shoulder.jpg",
@@ -333,7 +341,11 @@ thumbnail: "/images/thumbnails/..."
                 "고관절/골반": "/images/thumbnails/thumb_spine.jpg",
                 "기타/전신": "/images/thumbnails/thumb_exercise.jpg"
               };
-              const assignedThumb = partToThumb[bodyPart] || "/images/thumbnails/thumb_exercise.jpg";
+              let assignedThumb = partToThumb[bodyPart] || "/images/thumbnails/thumb_exercise.jpg";
+              const metaText = `${parsedMeta.title || ""} ${parsedMeta.summary || ""}`;
+              if (bodyPart === "기타/전신" && /60대|노년|시니어|낙상|근감소|골다공증|골밀도/.test(metaText)) {
+                assignedThumb = "/images/thumbnails/thumb_senior.jpg";
+              }
 
               // 기존 image_prompt 제거 및 확실한 공식 썸네일 배정
               if (content.includes("image_prompt:")) {
