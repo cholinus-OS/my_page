@@ -57,11 +57,44 @@ thumbnail: "/images/thumbnails/thumb_senior.jpg"
 
 #### **3. 한눈에 보는 약제별 치과 시술(MRONJ) 안전 기준표**
 
-| 약제 계열<br/>(대표 성분) | 치과 시술 전<br/>휴지기 | 시술 후<br/>치유 기간 | 핵심 주의사항<br/>(실전 포인트) |
-| :--- | :--- | :--- | :--- |
-| **경구/정주<br/>비스포스포네이트**<br/>*(알렌드로네이트,<br/>리세드로네이트,<br/>이반드로네이트)* | <span style="white-space: nowrap;">**2-4개월**</span> 고려<br/>*(Class IIb, 장기 사용/<br/>위험인자 시)* | <span style="white-space: nowrap;">**6-8주**</span> | 골절 위험 vs 턱뼈괴사(MRONJ) 위험 개별화 |
-| **정주<br/>졸레드로네이트**<br/>*(연 1회 정맥주사)* | <span style="white-space: nowrap;">**6-12개월**</span> | <span style="white-space: nowrap;">**6-8주**</span> | 강력한 역가와 긴 골격 내 잔류 기간 고려 |
-| **데노수맙<br/>(프롤리아)**<br/>*(6개월 피하주사)* | **휴약기 비권고**<br/>*(Class I)* | <span style="white-space: nowrap;">**6-8주**</span> | **마지막 주사 후 <span style="white-space: nowrap;">3-4개월</span> 시점**에 시술 시행 (6개월 주기 내 치유 완료해 반동 척추 골절 방지) |
+<div style="overflow-x: auto; margin: 1.5rem 0; border: 1px solid #e2e8f0; border-radius: 0.875rem; background: #ffffff;">
+<table style="width: 100%; min-width: 580px; table-layout: fixed; margin: 0; border-collapse: collapse; text-align: left; word-break: keep-all; font-size: 0.875rem; line-height: 1.55;">
+<colgroup>
+  <col style="width: 31%;" />
+  <col style="width: 23%;" />
+  <col style="width: 14%;" />
+  <col style="width: 32%;" />
+</colgroup>
+<thead>
+<tr style="background-color: #f8fafc; border-bottom: 1px solid #cbd5e1; color: #0f172a;">
+  <th style="padding: 0.75rem 0.85rem; vertical-align: bottom; font-weight: 700;">약제 계열<br/><span style="font-weight: 500; color: #64748b; font-size: 0.8125rem;">(대표 성분)</span></th>
+  <th style="padding: 0.75rem 0.85rem; vertical-align: bottom; font-weight: 700;">치과 시술 전<br/>휴지기</th>
+  <th style="padding: 0.75rem 0.85rem; vertical-align: bottom; font-weight: 700;">시술 후<br/><span style="white-space: nowrap;">치유 기간</span></th>
+  <th style="padding: 0.75rem 0.85rem; vertical-align: bottom; font-weight: 700;">핵심 주의사항<br/><span style="font-weight: 500; color: #64748b; font-size: 0.8125rem;">(실전 포인트)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid #e2e8f0;">
+  <td style="padding: 0.85rem; vertical-align: top;"><strong>경구/정주 비스포스포네이트</strong><br/><span style="color: #64748b; font-style: italic;">(알렌드로네이트, 리세드로네이트, 이반드로네이트)</span></td>
+  <td style="padding: 0.85rem; vertical-align: top;"><span style="white-space: nowrap;"><strong>2-4개월</strong> 고려</span><br/><span style="color: #64748b; font-style: italic;">(Class IIb, 장기 사용/위험인자 시)</span></td>
+  <td style="padding: 0.85rem; vertical-align: top;"><span style="white-space: nowrap;"><strong>6-8주</strong></span></td>
+  <td style="padding: 0.85rem; vertical-align: top;">골절 위험 vs 턱뼈괴사(MRONJ) 위험 개별화</td>
+</tr>
+<tr style="border-bottom: 1px solid #e2e8f0;">
+  <td style="padding: 0.85rem; vertical-align: top;"><strong>정주 졸레드로네이트</strong><br/><span style="color: #64748b; font-style: italic;">(연 1회 정맥주사)</span></td>
+  <td style="padding: 0.85rem; vertical-align: top;"><span style="white-space: nowrap;"><strong>6-12개월</strong></span></td>
+  <td style="padding: 0.85rem; vertical-align: top;"><span style="white-space: nowrap;"><strong>6-8주</strong></span></td>
+  <td style="padding: 0.85rem; vertical-align: top;">강력한 역가와 긴 골격 내 잔류 기간 고려</td>
+</tr>
+<tr>
+  <td style="padding: 0.85rem; vertical-align: top;"><strong>데노수맙 (프롤리아)</strong><br/><span style="color: #64748b; font-style: italic;">(6개월 피하주사)</span></td>
+  <td style="padding: 0.85rem; vertical-align: top;"><strong>휴약기 비권고</strong><br/><span style="color: #64748b; font-style: italic;">(Class I)</span></td>
+  <td style="padding: 0.85rem; vertical-align: top;"><span style="white-space: nowrap;"><strong>6-8주</strong></span></td>
+  <td style="padding: 0.85rem; vertical-align: top;"><strong>마지막 주사 후 <span style="white-space: nowrap;">3-4개월</span> 시점</strong>에 시술 시행 (6개월 주기 내 치유 완료해 반동 척추 골절 방지)</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 > **💡 전문의 참고 (약물 변경 시 주의사항)**  
 > 만약 데노수맙(프롤리아) 투여 중 턱뼈괴사(MRONJ)가 발생하더라도, **<u>테리파라타이드(포스테오)로 바로 약을 바꾸면 오히려 골밀도가 급격히 빠질 수 있어</u>** 권고하지 않습니다. 치조골 회복이 더디거나 추가 시술이 필요한 폐경 여성이라면 SERM 계열로의 전환 등을 주치의와 신중히 상의해야 합니다.
