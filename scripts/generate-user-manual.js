@@ -68,61 +68,118 @@ const chapters = [
   }
 ];
 
+const ALL_JOINT_PARTS = ["목", "허리", "어깨", "팔꿈치", "손목", "고관절", "무릎", "발목", "전신"];
+
+const PART_TO_TOPIC_KEY = {
+  "목": "neck",
+  "허리": "waist",
+  "어깨": "shoulder",
+  "팔꿈치": "elbow",
+  "손목": "wrist",
+  "고관절": "hip",
+  "무릎": "knee",
+  "발목": "ankle",
+  "전신": "systemic"
+};
+
+const TOPIC_FALLBACK_THUMB = {
+  neck: "/images/thumbnails/thumb_neck.jpg",
+  waist: "/images/thumbnails/thumb_spine.jpg",
+  shoulder: "/images/thumbnails/thumb_shoulder.jpg",
+  elbow: "/images/thumbnails/thumb_elbow.jpg",
+  wrist: "/images/thumbnails/thumb_elbow.jpg",
+  hip: "/images/thumbnails/thumb_spine.jpg",
+  knee: "/images/thumbnails/thumb_knee.jpg",
+  ankle: "/images/thumbnails/thumb_ankle.jpg",
+  systemic: "/images/thumbnails/thumb_exercise.jpg",
+  chapter1: "/images/thumbnails/thumb_exercise.jpg",
+  chapter2: "/images/thumbnails/thumb_neck.jpg",
+  chapter3: "/images/thumbnails/thumb_senior.jpg"
+};
+
 function detectBodyPart(title, summary, tags) {
-  const text = `${title} ${summary} ${(tags || []).join(" ")}`;
-  if (/무릎|십자인대|연골판|슬개|반월상|러너스/.test(text)) return "무릎";
-  if (/발목|아킬레스|족저|발바닥|뒤꿈치/.test(text)) return "발목/발";
-  if (/어깨|회전근개|오십견|라운드숄더|견갑|익상/.test(text)) return "어깨/등";
-  if (/목|경추|거북목|일자목|텍스트\s*넥/.test(text)) return "목/경추";
-  if (/허리|요추|골반|척추|디스크|측만증/.test(text)) return "허리/척추/골반";
-  if (/팔꿈치|엘보|손목|수근관|방아쇠|TFCC|손가락/.test(text)) return "팔꿈치/손목";
-  if (/고관절|서혜부|둔근|엉덩이/.test(text)) return "고관절/골반";
-  if (/햄스트링|허벅지|대퇴|내전근|사타구니/.test(text)) return "허벅지/햄스트링";
-  return "기타/전신";
+  const text = `${title || ""} ${summary || ""} ${(Array.isArray(tags) ? tags.join(" ") : "")}`.toLowerCase();
+  if (/무릎|십자인대|연골판|슬개|반월상|러너스|오스굿|슬관절|knee/.test(text)) return "무릎";
+  if (/발목|아킬레스|족저|발바닥|뒤꿈치|평발|무지외반|종아리|ankle|foot/.test(text)) return "발목";
+  if (/어깨|회전근개|오십견|라운드숄더|견갑|익상|충돌증후군|견관절|shoulder/.test(text)) return "어깨";
+  if (/목|경추|거북목|일자목|텍스트\s*넥|두통|neck|cervical/.test(text)) return "목";
+  if (/팔꿈치|엘보|상과염|elbow/.test(text)) return "팔꿈치";
+  if (/손목|수근관|방아쇠|tfcc|손가락|건초염|터널증후군|wrist|finger/.test(text)) return "손목";
+  if (/고관절|서혜부|둔근|엉덩이|사타구니|이상근|내전근|햄스트링|허벅지|hip/.test(text)) return "고관절";
+  if (/허리|요추|골반|척추|허리디스크|협착|측만증|코어|요통|spine|lumbar/.test(text)) return "허리";
+  return "전신";
 }
 
-function analyzeExistingManuals(postsDir) {
-  if (!fs.existsSync(postsDir)) return { allTitles: [], chapterHistories: { 1: [], 2: [], 3: [] }, recentPosts: [] };
+function normalizeDateStr(val) {
+  if (val instanceof Date) return val.toISOString().slice(0, 10);
+  if (typeof val === "string") return val.slice(0, 10);
+  return "2026-01-01";
+}
+
+function analyzeExistingPosts(postsDir) {
+  const emptyCounts = Object.fromEntries(ALL_JOINT_PARTS.map(p => [p, 0]));
+  if (!fs.existsSync(postsDir)) {
+    return {
+      allTitles: [],
+      chapterHistories: { 1: [], 2: [], 3: [] },
+      recentSiteParts: [],
+      sitePartCounts: emptyCounts,
+      lowFreqParts: [...ALL_JOINT_PARTS],
+      thumbnailUsage: {}
+    };
+  }
 
   const files = fs.readdirSync(postsDir).filter(f => f.endsWith(".md"));
   const allTitles = [];
   const chapterHistories = { 1: [], 2: [], 3: [] };
-  const allManualPosts = [];
+  const sitePartCounts = { ...emptyCounts };
+  const recentPostsAll = [];
+  const thumbnailUsage = {};
+
+  const nowMs = Date.now();
+  const threeWeeksMs = 21 * 24 * 60 * 60 * 1000;
 
   for (const file of files) {
     try {
       const raw = fs.readFileSync(path.join(postsDir, file), "utf8");
       const { data } = matter(raw);
-      const isManual = data.category === "사용 설명서" || 
-                       file.includes("chapter") || 
-                       (data.title && (data.title.includes("사용 설명서") || data.title.includes("Chapter")));
+      const dateStr = normalizeDateStr(data.date);
+      const cleanTitle = (data.title || "").replace(/<[^>]+>/g, "").replace(/["']/g, "").trim();
+      const bodyPart = detectBodyPart(cleanTitle, data.summary, data.tags);
 
-      if (isManual && data.title) {
-        const cleanTitle = data.title.replace(/<[^>]+>/g, '').replace(/["']/g, '').trim();
+      // 1) 전체 사이트(사용설명서 + 니숄더이야기 브리핑 + 재활 블로그) 통합 부위 집계
+      sitePartCounts[bodyPart] = (sitePartCounts[bodyPart] || 0) + 1;
+
+      const postMs = Date.parse(dateStr);
+      if (!Number.isNaN(postMs) && (nowMs - postMs) <= threeWeeksMs) {
+        recentPostsAll.push({ date: dateStr, bodyPart, category: data.category || "", title: cleanTitle });
+      }
+
+      // 2) 전체 썸네일 사용 빈도 및 마지막 사용일 집계 (라운드 로빈 순환용)
+      if (data.thumbnail && typeof data.thumbnail === "string") {
+        const thumb = data.thumbnail.trim();
+        if (!thumbnailUsage[thumb]) {
+          thumbnailUsage[thumb] = { count: 0, lastDate: "1970-01-01" };
+        }
+        thumbnailUsage[thumb].count += 1;
+        if (dateStr > thumbnailUsage[thumb].lastDate) {
+          thumbnailUsage[thumb].lastDate = dateStr;
+        }
+      }
+
+      const isManual = data.category === "사용 설명서" ||
+                       file.includes("chapter") ||
+                       (cleanTitle && (cleanTitle.includes("사용 설명서") || cleanTitle.includes("Chapter")));
+
+      if (isManual && cleanTitle) {
         allTitles.push(cleanTitle);
-
-        const bodyPart = detectBodyPart(cleanTitle, data.summary, data.tags);
-
-        // Determine which chapter it belongs to
         let chNum = 0;
         if (file.includes("chapter1") || file.includes("chapter-1") || cleanTitle.includes("Chapter 1") || cleanTitle.includes("스포츠")) chNum = 1;
         else if (file.includes("chapter2") || file.includes("chapter-2") || cleanTitle.includes("Chapter 2") || cleanTitle.includes("자세")) chNum = 2;
         else if (file.includes("chapter3") || file.includes("chapter-3") || cleanTitle.includes("Chapter 3") || cleanTitle.includes("생애") || cleanTitle.includes("노화")) chNum = 3;
 
-        const postObj = {
-          file,
-          title: cleanTitle,
-          date: data.date || "2026-08-01",
-          summary: data.summary || "",
-          tags: data.tags || [],
-          bodyPart,
-          chNum
-        };
-
-        allManualPosts.push(postObj);
-
         if (chNum > 0) {
-          chapterHistories[chNum].push(postObj);
+          chapterHistories[chNum].push({ file, title: cleanTitle, date: dateStr, bodyPart, chNum });
         }
       }
     } catch (e) {
@@ -130,11 +187,54 @@ function analyzeExistingManuals(postsDir) {
     }
   }
 
-  // 날짜 내림차순 정렬
-  allManualPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-  const recentPosts = allManualPosts.slice(0, 6); // 최근 6개 글 (약 최근 2주 분량)
+  recentPostsAll.sort((a, b) => b.date.localeCompare(a.date));
+  const recentSiteParts = [...new Set(recentPostsAll.map(p => p.bodyPart))];
 
-  return { allTitles, chapterHistories, recentPosts };
+  // 누적 편수가 적은 부위 우선 정렬 (최근 3주에 니숄더이야기/블로그에서 다룬 부위는 뒤로 배치)
+  const lowFreqParts = [...ALL_JOINT_PARTS].sort((a, b) => {
+    const aRecent = recentSiteParts.includes(a) ? 1 : 0;
+    const bRecent = recentSiteParts.includes(b) ? 1 : 0;
+    if (aRecent !== bRecent) return aRecent - bRecent;
+    return (sitePartCounts[a] || 0) - (sitePartCounts[b] || 0);
+  });
+
+  return { allTitles, chapterHistories, recentSiteParts, sitePartCounts, lowFreqParts, thumbnailUsage };
+}
+
+function pickNextThumbnail(topicKey, chapterNum, thumbnailUsage, todayStr) {
+  const tryTopics = [topicKey];
+  if (topicKey === "systemic" && chapterNum >= 1 && chapterNum <= 3) {
+    tryTopics.unshift(`chapter${chapterNum}`);
+  } else if (chapterNum >= 1 && chapterNum <= 3) {
+    tryTopics.push(`chapter${chapterNum}`);
+  }
+
+  for (const key of tryTopics) {
+    const folder = path.join(process.cwd(), "public/images/thumbnails", key);
+    if (fs.existsSync(folder)) {
+      const imgs = fs.readdirSync(folder)
+        .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f))
+        .sort()
+        .map(f => `/images/thumbnails/${key}/${f}`);
+      if (imgs.length > 0) {
+        imgs.sort((a, b) => {
+          const uA = thumbnailUsage[a] || { count: 0, lastDate: "1970-01-01" };
+          const uB = thumbnailUsage[b] || { count: 0, lastDate: "1970-01-01" };
+          if (uA.count !== uB.count) return uA.count - uB.count;
+          if (uA.lastDate !== uB.lastDate) return uA.lastDate.localeCompare(uB.lastDate);
+          return a.localeCompare(b);
+        });
+        const chosen = imgs[0];
+        thumbnailUsage[chosen] = {
+          count: ((thumbnailUsage[chosen] && thumbnailUsage[chosen].count) || 0) + 1,
+          lastDate: todayStr
+        };
+        return chosen;
+      }
+    }
+  }
+
+  return TOPIC_FALLBACK_THUMB[topicKey] || TOPIC_FALLBACK_THUMB[`chapter${chapterNum}`] || "/images/thumbnails/thumb_exercise.jpg";
 }
 
 async function generateManuals() {
@@ -149,7 +249,14 @@ async function generateManuals() {
     fs.mkdirSync(postsDir, { recursive: true });
   }
 
-  const { allTitles, chapterHistories, recentPosts } = analyzeExistingManuals(postsDir);
+  const {
+    allTitles,
+    chapterHistories,
+    recentSiteParts,
+    sitePartCounts,
+    lowFreqParts,
+    thumbnailUsage
+  } = analyzeExistingPosts(postsDir);
 
   const now = new Date();
   const kstOffset = 9 * 60 * 60 * 1000;
@@ -164,6 +271,7 @@ async function generateManuals() {
   ];
 
   const generatedThisBatch = [];
+  const generatedPartsThisBatch = [];
   const failedChapters = [];
 
   for (const chapter of chapters) {
@@ -183,15 +291,24 @@ async function generateManuals() {
         const { data } = matter(raw);
         if (data.title) {
           generatedThisBatch.push(data.title);
+          generatedPartsThisBatch.push(detectBodyPart(data.title, data.summary, data.tags));
         }
       } catch (e) {}
       continue;
     }
 
-    const pastItems = chapterHistories[chapter.number] || [];
-    const pastChapterTitles = pastItems.map(item => `- ${item.title} (부위: ${item.bodyPart})`).join("\n");
     const allExistingTitlesStr = allTitles.map(t => `- ${t}`).join("\n");
-    const recentPartsList = [...new Set(recentPosts.map(p => p.bodyPart))].join(", ");
+    const recentPartsList = [...new Set([...recentSiteParts, ...generatedPartsThisBatch])].join(", ");
+    const priorityLowFreqList = lowFreqParts
+      .filter(p => !generatedPartsThisBatch.includes(p))
+      .slice(0, 5)
+      .map(p => `${p}(누적 ${sitePartCounts[p] || 0}편)`)
+      .join(", ");
+    const highFreqPartsList = [...ALL_JOINT_PARTS]
+      .sort((a, b) => (sitePartCounts[b] || 0) - (sitePartCounts[a] || 0))
+      .slice(0, 3)
+      .map(p => `${p}(누적 ${sitePartCounts[p] || 0}편)`)
+      .join(", ");
     const thisBatchTitlesStr = generatedThisBatch.map(t => `- [이번 주 타 챕터에서 이미 선정된 주제]: ${t}`).join("\n");
 
     const prompt = `# [System Role]
@@ -205,14 +322,14 @@ async function generateManuals() {
 # [관절 부위 풀(Body Parts Pool) - 참고용]
 ${chapter.bodyPartsPool.map(p => `- ${p}`).join("\n")}
 
-# [⚠️ 핵심 편집 지침: 관절 부위 쿨다운 & 재활 내용 차별화 원칙 (기본 설정)]
-1. **단기간 빈번 출현 방지 (쿨다운 원칙):**
-   - 최근 2-3주 내에 이미 다룬 관절 부위: **[ ${recentPartsList || "없음"} ]**
-   - 위 부위들은 짧은 시간에 너무 자주 연달아 나오는 것을 방지하기 위해, 이번 주에는 **가급적 최근에 다루지 않은 다른 관절 부위를 우선 선정**하라.
-   - 또한, 이번 주 같은 주차에 작성된 다른 챕터의 부위와도 겹치지 않게 완전히 다른 신체 부위를 선정하라!
+# [⚠️ 핵심 편집 지침: 전체 사이트 저빈도 우선 & 부위 쿨다운 원칙 (영구 기본 설정)]
+1. **저빈도 관절 부위 최우선 선정 (니숄더이야기·재활 블로그 통합 분석):**
+   - 현재 사이트 전체(사용설명서 + 니숄더이야기 + 재활 블로그) 기준 **가장 비중이 낮은 최우선 추천 부위**: **[ ${priorityLowFreqList || "손목, 고관절, 발목, 팔꿈치, 목"} ]**
+   - 현재 이미 글이 매우 많은 고빈도 부위(자동 생성 억제 대상): **[ ${highFreqPartsList} ]**
+   - 최근 3주 내 니숄더이야기(무릎·어깨 브리핑), 재활 블로그, 사용 설명서에서 이미 다룬 부위: **[ ${recentPartsList || "없음"} ]**
+   - **필수 지침:** 니숄더이야기에서 무릎과 어깨를 자주 다루므로, 이번 주 자동 생성에서는 **반드시 위 [최우선 추천 저빈도 부위] 중에서 챕터 성격에 맞는 부위를 가장 먼저 선택**하라. 최근 3주 이내에 다룬 부위나 이번 주 타 챕터에서 이미 선택한 부위는 겹치지 않게 피하라!
 2. **동일 관절 재방문 시 100% 차별화 원칙:**
-   - 관절이 같은 부위(예: 무릎, 어깨 등)라 하더라도, 충분한 시간 간격(쿨다운)을 둔 후 **재활의 내용, 타겟 세부 구조물, 손상 메커니즘, 운동 처방(신장성 수축, 고유수용성 감각, 관절 가동성 등)이 완전히 다르다면 언제든 훌륭한 설명서가 될 수 있다.**
-   - 단, 같은 부위를 다룰 때는 이전 글의 주제와 운동법을 절대 단순 반복하지 말고, **완전히 새로운 각도와 실천 팁**으로 접근해야 한다!
+   - 충분한 쿨다운 후 기존 부위를 다시 다룰 때는 이전 글의 주제와 운동법을 단순 반복하지 말고, **타겟 세부 구조물, 손상 메커니즘, 운동 처방이 완전히 다른 새로운 각도**로 작성하라.
 3. 제목(title) 규칙:
    - 형식: "[우리 몸 사용 설명서] Chapter ${chapter.number}. (여기에 훅이 들어간 매력적인 세부 제목)"
    - **중요: 제목(title)에는 <mark>, <u>, <b>, ** 등의 HTML 태그나 마크다운 서식을 절대 넣지 말고 오직 순수 텍스트(Plain Text)로만 작성하라.**
@@ -226,15 +343,7 @@ ${thisBatchTitlesStr ? `\n[이번 주차에 이미 선정된 부위/주제 (동�
 - 본문 내 강조 시에는 마크다운 볼드(**) 외에도 <u>밑줄</u> 이나 <mark>형광펜</mark> 태그를 적극 활용하여 가독성을 높여라.
 - 표(Table) 작성 시 모바일 가독성을 위해 항목명은 <br/>로 두 줄 줄바꿈하고, 수치/기간 등 줄바꿈되면 안 되는 텍스트는 <span style="white-space: nowrap;">...</span> 처리하라.
 - 구성:
-  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2", "우리몸사용설명서"]), thumbnail (아래의 지정된 공식 썸네일 경로 중 글의 주제에 가장 정확히 부합하는 단 1개만 선택):
-     - 무릎 관절 / 십자인대 / 연골판 / 슬개골 / 러너스니: "/images/thumbnails/thumb_knee.jpg"
-     - 어깨 관절 / 회전근개 / 오십견 / 라운드숄더 / 익상견갑: "/images/thumbnails/thumb_shoulder.jpg"
-     - 허리 / 척추 / 골반 / 허리디스크 / 고관절 / 엉덩이: "/images/thumbnails/thumb_spine.jpg"
-     - 목 / 경추 / 거북목 / 일자목 / 텍스트넥 / 자세성 두통: "/images/thumbnails/thumb_neck.jpg"
-     - 팔꿈치(엘보) / 손목 / 수근관 / 방아쇠수지 / 손가락: "/images/thumbnails/thumb_elbow.jpg"
-     - 발목 / 발바닥 / 족저근막염 / 아킬레스건 / 뒤꿈치: "/images/thumbnails/thumb_ankle.jpg"
-     - 시니어 건강 / 노년기 / 근감소증 / 낙상 예방: "/images/thumbnails/thumb_senior.jpg"
-     - 일반 스트레칭 / 부상예방 / 바른자세(전신) / 허벅지·내전근: "/images/thumbnails/thumb_exercise.jpg"
+  1. 프론트매터(Frontmatter): title, date, summary, category: "사용 설명서", tags (태그는 JSON 배열 형식: ["태그1", "태그2", "우리몸사용설명서"]), thumbnail (시스템이 12개 주제 × 7장 공식 3D 풀에서 자동 순환 배정하므로 기본값 "/images/thumbnails/thumb_exercise.jpg" 기입)
   2. 서론: 일상 속 특정 통증/부상 상황 공감 및 주제 선정 이유 (정형외과 전문의 조형준 원장 인사)
   3. 본론: 해부학적 발생 원인 분석 및 실생활에서 즉시 따라 할 수 있는 자가 운동/스트레칭 3가지 이상 상세 설명
   4. 결론: 요약, 따뜻한 응원 멘트 및 의학적 면책 조항(디스클레이머)
@@ -249,7 +358,7 @@ date: ...
 summary: ...
 category: "사용 설명서"
 tags: ...
-thumbnail: "/images/thumbnails/..."
+thumbnail: "/images/thumbnails/thumb_exercise.jpg"
 ---
 (본론 마크다운 내용)
 `;
@@ -320,7 +429,7 @@ thumbnail: "/images/thumbnails/..."
                 content = content.replace(/^category:\s*.*$/m, 'category: "사용 설명서"');
               }
 
-              // 5. 썸네일 자동 배정 (누가 봐도 한눈에 주제를 명확히 알 수 있는 고품질 공식 3D 의료 일러스트 적용)
+              // 5. 썸네일 자동 순환 배정 (12개 주제 × 7장 공식 3D 풀에서 최소 사용·최장 미사용 순으로 자동 선택)
               let parsedMeta = {};
               try {
                 parsedMeta = matter(content).data || {};
@@ -330,22 +439,10 @@ thumbnail: "/images/thumbnails/..."
                 parsedMeta.summary || "",
                 Array.isArray(parsedMeta.tags) ? parsedMeta.tags : []
               );
-              const partToThumb = {
-                "무릎": "/images/thumbnails/thumb_knee.jpg",
-                "어깨/등": "/images/thumbnails/thumb_shoulder.jpg",
-                "허리/척추/골반": "/images/thumbnails/thumb_spine.jpg",
-                "목/경추": "/images/thumbnails/thumb_neck.jpg",
-                "팔꿈치/손목": "/images/thumbnails/thumb_elbow.jpg",
-                "발목/발": "/images/thumbnails/thumb_ankle.jpg",
-                "허벅지/햄스트링": "/images/thumbnails/thumb_exercise.jpg",
-                "고관절/골반": "/images/thumbnails/thumb_spine.jpg",
-                "기타/전신": "/images/thumbnails/thumb_exercise.jpg"
-              };
-              let assignedThumb = partToThumb[bodyPart] || "/images/thumbnails/thumb_exercise.jpg";
-              const metaText = `${parsedMeta.title || ""} ${parsedMeta.summary || ""}`;
-              if (bodyPart === "기타/전신" && /60대|노년|시니어|낙상|근감소|골다공증|골밀도/.test(metaText)) {
-                assignedThumb = "/images/thumbnails/thumb_senior.jpg";
-              }
+              const topicKey = PART_TO_TOPIC_KEY[bodyPart] || `chapter${chapter.number}`;
+              const assignedThumb = pickNextThumbnail(topicKey, chapter.number, thumbnailUsage, todayStr);
+              generatedPartsThisBatch.push(bodyPart);
+              sitePartCounts[bodyPart] = (sitePartCounts[bodyPart] || 0) + 1;
 
               // 기존 image_prompt 제거 및 확실한 공식 썸네일 배정
               if (content.includes("image_prompt:")) {
