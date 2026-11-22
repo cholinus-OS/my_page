@@ -97,8 +97,8 @@ const TOPIC_FALLBACK_THUMB = {
   chapter3: "/images/thumbnails/thumb_senior.jpg"
 };
 
-function detectBodyPart(title, summary, tags) {
-  const text = `${title || ""} ${summary || ""} ${(Array.isArray(tags) ? tags.join(" ") : "")}`.toLowerCase();
+function matchBodyPartText(text) {
+  if (!text) return null;
   if (/무릎|십자인대|연골판|슬개|반월상|러너스|오스굿|슬관절|knee/.test(text)) return "무릎";
   if (/발목|아킬레스|족저|발바닥|뒤꿈치|평발|무지외반|종아리|ankle|foot/.test(text)) return "발목";
   if (/어깨|회전근개|오십견|라운드숄더|견갑|익상|충돌증후군|견관절|shoulder/.test(text)) return "어깨";
@@ -107,7 +107,15 @@ function detectBodyPart(title, summary, tags) {
   if (/손목|수근관|방아쇠|tfcc|손가락|건초염|터널증후군|wrist|finger/.test(text)) return "손목";
   if (/고관절|서혜부|둔근|엉덩이|사타구니|이상근|내전근|햄스트링|허벅지|hip/.test(text)) return "고관절";
   if (/허리|요추|골반|척추|허리디스크|협착|측만증|코어|요통|spine|lumbar/.test(text)) return "허리";
-  return "전신";
+  return null;
+}
+
+function detectBodyPart(title, summary, tags) {
+  const titleText = String(title || "").toLowerCase();
+  const fromTitle = matchBodyPartText(titleText);
+  if (fromTitle) return fromTitle;
+  const fallbackText = `${summary || ""} ${(Array.isArray(tags) ? tags.join(" ") : "")}`.toLowerCase();
+  return matchBodyPartText(fallbackText) || "전신";
 }
 
 function normalizeDateStr(val) {
