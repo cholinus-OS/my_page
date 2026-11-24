@@ -32,10 +32,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
   return {
-    title: `${disease.name} 정보 및 자가진단 | 재활 안내`,
+    title: `${disease.name} 정보 및 자가진단 | 바른관절 헬프센터 · 조형준 정형외과 전문의(cholinus)`,
     description: disease.summary,
     alternates: {
-      canonical: `/disease/${id}`,
+      canonical: `/disease/${id}/`,
     },
   };
 }
@@ -50,37 +50,84 @@ export default async function DiseasePage({ params }: PageProps) {
     notFound();
   }
 
+  const diseaseUrl = `https://cholinus-exerciseismedicine.com/disease/${id}/`;
+  const reviewerEntity = {
+    "@type": "Person",
+    "name": "조형준",
+    "alternateName": "cholinus",
+    "jobTitle": "정형외과 전문의",
+    "url": "https://cholinus-exerciseismedicine.com/about/"
+  };
+  const diseaseJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "name": `${disease.name} 정보 및 자가진단`,
+      "headline": `${disease.name} 정보 및 자가진단`,
+      "url": diseaseUrl,
+      "description": disease.summary,
+      "specialty": "Orthopedic",
+      "aspect": ["Diagnosis", "Symptoms"],
+      "lastReviewed": "2026-07-01",
+      "reviewedBy": reviewerEntity,
+      "about": {
+        "@type": "MedicalCondition",
+        "name": disease.name
+      },
+      "isBasedOn": [
+        "https://health.kdca.go.kr",
+        "https://pubmed.ncbi.nlm.nih.gov",
+        "https://www.koa.or.kr"
+      ],
+      "citation": [
+        "질병관리청 국가건강정보포털",
+        "대한정형외과학회(KOA)",
+        "PubMed (NCBI)"
+      ],
+      "audience": {
+        "@type": "MedicalAudience",
+        "audienceType": "Patients"
+      },
+      "author": reviewerEntity,
+      "publisher": {
+        "@type": "Organization",
+        "name": "바른관절 헬프센터",
+        "url": "https://cholinus-exerciseismedicine.com/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "홈",
+          "item": "https://cholinus-exerciseismedicine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "질환 사전",
+          "item": "https://cholinus-exerciseismedicine.com/disease/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": disease.name,
+          "item": diseaseUrl
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
       {/* 🧭 시각적 브레드크럼(Breadcrumb) 내비게이션 (구조적 SEO 강화) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "MedicalWebPage",
-            "headline": `${disease.name} 정보 및 자가진단`,
-            "description": disease.summary,
-            "aspect": ["Diagnosis", "Symptoms"],
-            "isBasedOn": [
-              "https://health.kdca.go.kr",
-              "https://pubmed.ncbi.nlm.nih.gov",
-              "https://www.koa.or.kr"
-            ],
-            "audience": {
-              "@type": "MedicalAudience",
-              "audienceType": "Patients"
-            },
-            "author": {
-              "@type": "Person",
-              "name": "조형준",
-              "jobTitle": "정형외과 전문의"
-            },
-            "publisher": {
-              "@type": "MedicalOrganization",
-              "name": "바른관절 헬프센터"
-            }
-          })
+          __html: JSON.stringify(diseaseJsonLd)
         }}
       />
       <nav aria-label="Breadcrumb" className="mb-6">
@@ -92,7 +139,13 @@ export default async function DiseasePage({ params }: PageProps) {
             <ChevronRight className="h-4 w-4 text-slate-400" />
           </li>
           <li>
-            <Link href="/" className="hover:text-teal-600 transition">통증 사전</Link>
+            <Link href="/disease/" className="hover:text-teal-600 transition">질환 사전</Link>
+          </li>
+          <li>
+            <ChevronRight className="h-4 w-4 text-slate-400" />
+          </li>
+          <li>
+            <span className="text-slate-500">{disease.partName}</span>
           </li>
           <li>
             <ChevronRight className="h-4 w-4 text-slate-400" />
@@ -117,10 +170,20 @@ export default async function DiseasePage({ params }: PageProps) {
           {disease.name}
         </h1>
         
-        {/* YMYL 최신성(Freshness) 뱃지 */}
-        <div className="mt-4 flex items-center gap-2 text-xs font-medium text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-100 max-w-fit">
-          <CheckCircle2 className="h-4 w-4 text-teal-600" />
-          <span>최종 의학적 감수: 2026. 07. (정형외과 전문의 조형준)</span>
+        {/* YMYL 최신성(Freshness) 및 전문의 감수 바이라인 */}
+        <div className="mt-4 flex flex-col gap-1.5 text-xs font-medium text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-100">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="h-4 w-4 text-teal-600 shrink-0" />
+            <span>
+              최종 의학적 감수: 2026. 07. ·{" "}
+              <Link href="/about/" className="text-teal-700 font-bold hover:underline">
+                조형준 정형외과 전문의 (cholinus)
+              </Link>
+            </span>
+          </div>
+          <p className="pl-6 text-[11px] text-slate-500">
+            경희의료원 정형외과학 석·박사 · 슬관절외과 전임의 · 경희대 의대 외래교수 · 대한정형외과학회 등 4대 학회 정회원 · 네이버 지식iN 공식 의료 상담 의사
+          </p>
         </div>
 
         {disease.id === "sarcopenia" && (

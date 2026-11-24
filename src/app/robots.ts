@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin"],
+        disallow: ["/admin", "/admin/"],
       },
       {
         userAgent: ["SemrushBot", "AhrefsBot", "MJ12bot", "DotBot", "Baiduspider", "YandexBot"],

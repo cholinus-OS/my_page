@@ -4,10 +4,10 @@ import type { Metadata } from "next";
 import ManualListWithSearch from "@/components/ManualListWithSearch";
 
 export const metadata: Metadata = {
-  title: "우리 몸 사용 설명서 | 바른관절 헬프센터",
+  title: "우리 몸 사용 설명서 | 바른관절 헬프센터 · 조형준 정형외과 전문의(cholinus)",
   description: "요람에서 무덤까지, 내 몸을 가장 완벽하게 쓰는 생애주기별 건강 관리 가이드입니다.",
   alternates: {
-    canonical: "/manual",
+    canonical: "/manual/",
   },
 };
 

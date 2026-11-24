@@ -5,10 +5,10 @@ import BlogListWithSearch from "@/components/BlogListWithSearch";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "자가 재활 블로그 | 재활 안내",
+  title: "자가 재활 블로그 | 바른관절 헬프센터 · 조형준 정형외과 전문의(cholinus)",
   description: "척추 및 관절 건강을 위해 업데이트되는 안전한 재활 및 건강 상식 리스트입니다.",
   alternates: {
-    canonical: "/blog",
+    canonical: "/blog/",
   },
 };
 

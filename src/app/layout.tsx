@@ -22,7 +22,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cholinus-exerciseismedicine.com"),
-  title: "바른관절 헬프센터 | 정형외과 전문의가 알려주는 척추·관절 재활 가이드",
+  title: "바른관절 헬프센터 · 조형준 정형외과 전문의(cholinus) | 척추·관절 재활 가이드",
   description: "우리 몸의 최적의 상태를 유지하기 위한 재활 운동에 대한 정보를 매일 업데이트합니다.",
   keywords: ["허리디스크 운동", "거북목 교정", "무릎 관절염 재활", "물리치료 스트레칭", "자세 교정"],
   icons: {
@@ -31,11 +31,11 @@ export const metadata: Metadata = {
     apple: "/logo.png",
   },
   openGraph: {
-    title: "바른관절 헬프센터 | 정형외과 전문의가 알려주는 척추·관절 재활 가이드",
+    title: "바른관절 헬프센터 · 조형준 정형외과 전문의(cholinus) | 척추·관절 재활 가이드",
     description: "우리 몸의 최적의 상태를 유지하기 위한 재활 운동에 대한 정보를 매일 업데이트합니다.",
     type: "website",
     locale: "ko_KR",
-    url: "https://cholinus-exerciseismedicine.com",
+    url: "https://cholinus-exerciseismedicine.com/",
   },
   verification: {
     other: {
@@ -56,39 +56,35 @@ export default function RootLayout({
   const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID || "ca-pub-6115967537685539";
   const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-Z0MJR1HV78";
 
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "홈",
-        "item": "https://cholinus-exerciseismedicine.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "재활 블로그",
-        "item": "https://cholinus-exerciseismedicine.com/blog"
-      }
-    ]
-  };
-
   const websiteJsonLd = [
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "바른관절 헬프센터",
-      "url": "https://cholinus-exerciseismedicine.com",
-      "description": "우리 몸의 최적의 상태를 유지하기 위한 재활 운동에 대한 정보"
+      "alternateName": "바른관절 헬프센터 · 조형준 정형외과 전문의(cholinus)",
+      "url": "https://cholinus-exerciseismedicine.com/",
+      "description": "정형외과 전문의 조형준이 검수하는 척추·관절 재활 운동 가이드"
     },
     {
       "@context": "https://schema.org",
-      "@type": "MedicalOrganization",
+      "@type": ["Organization", "MedicalOrganization"],
       "name": "바른관절 헬프센터",
-      "url": "https://cholinus-exerciseismedicine.com",
-      "logo": "https://cholinus-exerciseismedicine.com/logo.png",
+      "url": "https://cholinus-exerciseismedicine.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cholinus-exerciseismedicine.com/logo.png"
+      },
+      "email": "cholinus@naver.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "cholinus@naver.com",
+        "contactType": "customer service",
+        "availableLanguage": "Korean"
+      },
+      "sameAs": [
+        "https://www.youtube.com/channel/UCa2jZgxTKT8Uvs8M_edveng",
+        "https://blog.naver.com/cholinus"
+      ],
       "medicalSpecialty": ["Orthopedic", "Physiotherapy"],
       "description": "정형외과 전문의가 검수하는 관절 척추 재활 가이드"
     }
@@ -132,10 +128,6 @@ export default function RootLayout({
         )}
       </head>
       <body className={`flex min-h-full flex-col bg-slate-50 text-slate-900 ${notoSansKr.className}`}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}

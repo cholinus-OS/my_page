@@ -59,19 +59,6 @@ export default function Home() {
   const allPosts = getSortedPostsData();
   const latestPosts = allPosts.slice(0, 2);
   
-  const eventJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": "관절 척추 바른자세 재활 세미나",
-    "startDate": "2026-06-15T19:00:00+09:00",
-    "endDate": "2026-06-15T21:00:00+09:00",
-    "location": {
-      "@type": "Place",
-      "name": "온라인 생중계 (바른관절 헬프센터)"
-    },
-    "description": "허리디스크 및 무릎 관절염 예방을 위한 올바른 홈 스트레칭 강좌"
-  };
-
   const govServiceJsonLd = {
     "@context": "https://schema.org",
     "@type": "GovernmentService",
@@ -85,10 +72,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(govServiceJsonLd) }}

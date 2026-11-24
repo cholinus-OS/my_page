@@ -1,8 +1,32 @@
 import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
 
 export const dynamic = "force-static";
+
+const STATIC_REVIEW_DATE = new Date("2026-11-24T00:00:00+09:00");
+const DISEASE_REVIEW_DATE = new Date("2026-07-01T00:00:00+09:00");
+
+function parsePostLastModified(filePath: string, fallback: Date): Date {
+  try {
+    const content = fs.readFileSync(filePath, "utf8");
+    const { data } = matter(content);
+    const rawDate = data.dateModified || data.date;
+    if (rawDate instanceof Date && !Number.isNaN(rawDate.getTime())) {
+      return rawDate;
+    }
+    if (typeof rawDate === "string" && rawDate.trim()) {
+      const parsed = new Date(rawDate);
+      if (!Number.isNaN(parsed.getTime())) {
+        return parsed;
+      }
+    }
+  } catch {
+    // Fallback to file mtime if frontmatter parsing fails
+  }
+  return fallback;
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://cholinus-exerciseismedicine.com";
@@ -15,10 +39,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const files = fs.readdirSync(postsDir).filter((file) => file.endsWith(".md"));
     postUrls = files.map((file) => {
       const slug = file.replace(/\.md$/, "");
-      const stats = fs.statSync(path.join(postsDir, file));
+      const filePath = path.join(postsDir, file);
+      const stats = fs.statSync(filePath);
       return {
-        url: `${baseUrl}/blog/${slug}`,
-        lastModified: stats.mtime,
+        url: `${baseUrl}/blog/${slug}/`,
+        lastModified: parsePostLastModified(filePath, stats.mtime),
         changeFrequency: "weekly",
         priority: 0.7,
       };
@@ -33,8 +58,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const diseases = JSON.parse(fs.readFileSync(diseasesFile, "utf8"));
       diseaseUrls = diseases.map((d: { id: string }) => {
         return {
-          url: `${baseUrl}/disease/${d.id}`,
-          lastModified: new Date(),
+          url: `${baseUrl}/disease/${d.id}/`,
+          lastModified: DISEASE_REVIEW_DATE,
           changeFrequency: "monthly",
           priority: 0.6,
         };
@@ -46,50 +71,56 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: baseUrl,
-      lastModified: new Date(),
+      url: `${baseUrl}/`,
+      lastModified: STATIC_REVIEW_DATE,
       changeFrequency: "daily",
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      url: `${baseUrl}/blog/`,
+      lastModified: STATIC_REVIEW_DATE,
       changeFrequency: "daily",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/manual`,
-      lastModified: new Date(),
+      url: `${baseUrl}/disease/`,
+      lastModified: DISEASE_REVIEW_DATE,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/manual/`,
+      lastModified: STATIC_REVIEW_DATE,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/knee-story`,
-      lastModified: new Date(),
+      url: `${baseUrl}/knee-story/`,
+      lastModified: STATIC_REVIEW_DATE,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/shoulder-story`,
-      lastModified: new Date(),
+      url: `${baseUrl}/shoulder-story/`,
+      lastModified: STATIC_REVIEW_DATE,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
+      url: `${baseUrl}/about/`,
+      lastModified: STATIC_REVIEW_DATE,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/privacy/`,
+      lastModified: STATIC_REVIEW_DATE,
       changeFrequency: "monthly",
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
+      url: `${baseUrl}/terms/`,
+      lastModified: STATIC_REVIEW_DATE,
       changeFrequency: "monthly",
       priority: 0.3,
     },

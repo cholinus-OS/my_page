@@ -3,45 +3,71 @@ import { ChevronLeft, Info, Stethoscope, HeartPulse, Mail, UserCheck, Award } fr
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "바른관절 헬프센터 소개 | 재활 안내",
-  description: "정형외과 전문의가 대표 에디터로 검수하는 신뢰성 높은 관절 및 척추 재활 의학 가이드 플랫폼입니다.",
+  title: "소개 · 조형준 정형외과 전문의(cholinus) | 바른관절 헬프센터",
+  description: "정형외과 전문의 조형준 대표가 검수하는 신뢰성 높은 관절 및 척추 재활 의학 가이드 플랫폼입니다.",
   alternates: {
-    canonical: "/about",
+    canonical: "/about/",
   },
 };
 
 export default function AboutPage() {
-  const medicalWebPageJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "MedicalWebPage",
-    "name": "바른관절 헬프센터 소개",
-    "description": "정형외과 전문의 조형준 대표가 운영 및 감수하는 안전하고 체계적인 관절 재활 운동 가이드.",
-    "url": "https://cholinus-exerciseismedicine.com/about",
-    "aspect": [
-      "Rehabilitation",
-      "Orthopedics",
-      "Physical Therapy"
-    ],
-    "mainEntity": {
-      "@type": "MedicalCondition",
-      "name": "Musculoskeletal Disorders"
+  const aboutJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "url": "https://cholinus-exerciseismedicine.com/about/",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "조형준",
+        "alternateName": "cholinus",
+        "jobTitle": "정형외과 전문의",
+        "url": "https://cholinus-exerciseismedicine.com/about/",
+        "description": "보건복지부 공인 정형외과 전문의. 경희대학교 의과대학 졸업, 경희의료원 정형외과학 석사·박사, 경희의료원 슬관절외과 전임의, 경희대학교 의과대학 외래교수, 대한정형외과학회·대한스포츠의학회·대한슬관절학회·대한견주관절학회 정회원, 네이버 지식iN 공식 의료 상담 의사.",
+        "sameAs": [
+          "https://www.youtube.com/channel/UCa2jZgxTKT8Uvs8M_edveng",
+          "https://blog.naver.com/cholinus"
+        ],
+        "affiliation": {
+          "@type": "Organization",
+          "name": "바른관절 헬프센터",
+          "url": "https://cholinus-exerciseismedicine.com/"
+        }
+      }
     },
-    "audience": {
-      "@type": "MedicalAudience",
-      "audienceType": "Patients seeking joint rehabilitation"
-    },
-    "author": {
-      "@type": "Person",
-      "name": "조형준",
-      "jobTitle": "정형외과 전문의"
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "name": "바른관절 헬프센터 소개",
+      "description": "정형외과 전문의 조형준 대표가 운영 및 감수하는 안전하고 체계적인 관절 재활 운동 가이드.",
+      "url": "https://cholinus-exerciseismedicine.com/about/",
+      "specialty": "Orthopedic",
+      "aspect": [
+        "Rehabilitation",
+        "Orthopedics",
+        "Physical Therapy"
+      ],
+      "mainEntity": {
+        "@type": "MedicalCondition",
+        "name": "Musculoskeletal Disorders"
+      },
+      "audience": {
+        "@type": "MedicalAudience",
+        "audienceType": "Patients seeking joint rehabilitation"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "조형준",
+        "jobTitle": "정형외과 전문의",
+        "url": "https://cholinus-exerciseismedicine.com/about/"
+      }
     }
-  };
+  ];
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalWebPageJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
       />
       {/* 뒤로가기 */}
       <div className="mb-6">
