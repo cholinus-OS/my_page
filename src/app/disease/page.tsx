@@ -3,10 +3,10 @@ import DiseaseDictionary from "@/components/DiseaseDictionary";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "질환 사전 | 재활 안내",
+  title: "질환 사전 | 바른관절 헬프센터 · 조형준 정형외과 전문의",
   description: "척추, 상지, 하지 등 관절별 통증 원인과 주요 질환에 대한 자가진단 및 전문 지식을 제공합니다.",
   alternates: {
-    canonical: "/disease",
+    canonical: "https://cholinus-exerciseismedicine.com/disease/",
   },
 };
 

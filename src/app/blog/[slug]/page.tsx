@@ -37,16 +37,16 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
   }
 
   return {
-    title: `${post.title} | 재활 안내`,
+    title: `${post.title} | 바른관절 헬프센터 · 조형준 정형외과 전문의`,
     description: post.summary,
     alternates: {
-      canonical: `/blog/${slug}`,
+      canonical: `https://cholinus-exerciseismedicine.com/blog/${slug}/`,
     },
     openGraph: {
       title: post.title,
       description: post.summary,
       type: "article",
-      url: `https://cholinus-exerciseismedicine.com/blog/${slug}`,
+      url: `https://cholinus-exerciseismedicine.com/blog/${slug}/`,
       images: post.thumbnail ? [
         {
           url: post.thumbnail.startsWith('http') ? post.thumbnail : `https://cholinus-exerciseismedicine.com${post.thumbnail}`,
@@ -127,36 +127,63 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     })
     .slice(0, 3);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "MedicalWebPage",
-    "headline": post.title,
-    "datePublished": post.date,
-    "description": post.summary,
-    "aspect": ["Rehabilitation", "Physical Therapy"],
-    "isBasedOn": [
-      "https://health.kdca.go.kr",
-      "https://pubmed.ncbi.nlm.nih.gov",
-      "https://www.koa.or.kr"
-    ],
-    "audience": {
-      "@type": "MedicalAudience",
-      "audienceType": "Patients"
-    },
-    "author": {
-      "@type": "Person",
-      "name": "조형준",
-      "jobTitle": "정형외과 전문의"
-    },
-    "publisher": {
-      "@type": "MedicalOrganization",
-      "name": "바른관절 헬프센터",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://cholinus-exerciseismedicine.com/logo.png"
+  const postUrl = `https://cholinus-exerciseismedicine.com/blog/${slug}/`;
+  const postImage = post.thumbnail
+    ? (post.thumbnail.startsWith("http") ? post.thumbnail : `https://cholinus-exerciseismedicine.com${post.thumbnail}`)
+    : "https://cholinus-exerciseismedicine.com/hero-bg.jpg";
+
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": ["BlogPosting", "MedicalWebPage"],
+      "mainEntityOfPage": postUrl,
+      "url": postUrl,
+      "headline": post.title,
+      "image": [postImage],
+      "datePublished": post.date,
+      "dateModified": post.date,
+      "lastReviewed": post.date,
+      "description": post.summary,
+      "aspect": ["Rehabilitation", "Physical Therapy"],
+      "citation": [
+        "https://health.kdca.go.kr",
+        "https://pubmed.ncbi.nlm.nih.gov",
+        "https://www.koa.or.kr"
+      ],
+      "audience": {
+        "@type": "MedicalAudience",
+        "audienceType": "Patients"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "조형준",
+        "jobTitle": "정형외과 전문의",
+        "url": "https://cholinus-exerciseismedicine.com/about/"
+      },
+      "reviewedBy": {
+        "@type": "Person",
+        "name": "조형준",
+        "url": "https://cholinus-exerciseismedicine.com/about/"
+      },
+      "publisher": {
+        "@type": "MedicalOrganization",
+        "name": "바른관절 헬프센터",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cholinus-exerciseismedicine.com/logo.png"
+        }
       }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "홈", "item": "https://cholinus-exerciseismedicine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "재활 블로그", "item": "https://cholinus-exerciseismedicine.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": post.title, "item": postUrl }
+      ]
     }
-  };
+  ];
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">

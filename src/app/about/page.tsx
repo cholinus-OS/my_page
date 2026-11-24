@@ -3,39 +3,51 @@ import { ChevronLeft, Info, Stethoscope, HeartPulse, Mail, UserCheck, Award } fr
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "바른관절 헬프센터 소개 | 재활 안내",
+  title: "바른관절 헬프센터 소개 | 바른관절 헬프센터 · 조형준 정형외과 전문의",
   description: "정형외과 전문의가 대표 에디터로 검수하는 신뢰성 높은 관절 및 척추 재활 의학 가이드 플랫폼입니다.",
   alternates: {
-    canonical: "/about",
+    canonical: "https://cholinus-exerciseismedicine.com/about/",
   },
 };
 
 export default function AboutPage() {
-  const medicalWebPageJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "MedicalWebPage",
-    "name": "바른관절 헬프센터 소개",
-    "description": "정형외과 전문의 조형준 대표가 운영 및 감수하는 안전하고 체계적인 관절 재활 운동 가이드.",
-    "url": "https://cholinus-exerciseismedicine.com/about",
-    "aspect": [
-      "Rehabilitation",
-      "Orthopedics",
-      "Physical Therapy"
-    ],
-    "mainEntity": {
-      "@type": "MedicalCondition",
-      "name": "Musculoskeletal Disorders"
+  const medicalWebPageJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "url": "https://cholinus-exerciseismedicine.com/about/",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "조형준",
+        "alternateName": "cholinus",
+        "jobTitle": "정형외과 전문의",
+        "description": "경희의료원 정형외과학 석·박사, 슬관절외과 전임의, 경희대학교 의과대학 외래교수, 대한정형외과학회·대한슬관절학회·대한견주관절의학회·대한관절경학회 정회원, 네이버 지식iN 공식 의료 상담 의사",
+        "url": "https://cholinus-exerciseismedicine.com/about/",
+        "sameAs": [
+          "https://www.youtube.com/@cholinus-EIM",
+          "https://blog.naver.com/cholinus"
+        ]
+      }
     },
-    "audience": {
-      "@type": "MedicalAudience",
-      "audienceType": "Patients seeking joint rehabilitation"
-    },
-    "author": {
-      "@type": "Person",
-      "name": "조형준",
-      "jobTitle": "정형외과 전문의"
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "name": "바른관절 헬프센터 소개",
+      "description": "정형외과 전문의 조형준 대표가 운영 및 감수하는 안전하고 체계적인 관절 재활 운동 가이드.",
+      "url": "https://cholinus-exerciseismedicine.com/about/",
+      "lastReviewed": "2026-11-24",
+      "reviewedBy": {
+        "@type": "Person",
+        "name": "조형준",
+        "url": "https://cholinus-exerciseismedicine.com/about/"
+      },
+      "aspect": ["Rehabilitation", "Orthopedics", "Physical Therapy"],
+      "audience": {
+        "@type": "MedicalAudience",
+        "audienceType": "Patients seeking joint rehabilitation"
+      }
     }
-  };
+  ];
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">

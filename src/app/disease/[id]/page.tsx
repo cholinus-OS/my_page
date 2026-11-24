@@ -32,10 +32,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
   return {
-    title: `${disease.name} 정보 및 자가진단 | 재활 안내`,
+    title: `${disease.name} 정보 및 자가진단 | 바른관절 헬프센터 · 조형준 정형외과 전문의`,
     description: disease.summary,
     alternates: {
-      canonical: `/disease/${id}`,
+      canonical: `https://cholinus-exerciseismedicine.com/disease/${id}/`,
     },
   };
 }
@@ -56,31 +56,55 @@ export default async function DiseasePage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "MedicalWebPage",
-            "headline": `${disease.name} 정보 및 자가진단`,
-            "description": disease.summary,
-            "aspect": ["Diagnosis", "Symptoms"],
-            "isBasedOn": [
-              "https://health.kdca.go.kr",
-              "https://pubmed.ncbi.nlm.nih.gov",
-              "https://www.koa.or.kr"
-            ],
-            "audience": {
-              "@type": "MedicalAudience",
-              "audienceType": "Patients"
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "MedicalWebPage",
+              "url": `https://cholinus-exerciseismedicine.com/disease/${id}/`,
+              "headline": `${disease.name} 정보 및 자가진단`,
+              "description": disease.summary,
+              "specialty": "Orthopedic",
+              "about": {
+                "@type": "MedicalCondition",
+                "name": disease.name
+              },
+              "lastReviewed": "2026-11-24",
+              "aspect": ["Diagnosis", "Symptoms"],
+              "citation": [
+                "https://health.kdca.go.kr",
+                "https://pubmed.ncbi.nlm.nih.gov",
+                "https://www.koa.or.kr"
+              ],
+              "audience": {
+                "@type": "MedicalAudience",
+                "audienceType": "Patients"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "조형준",
+                "jobTitle": "정형외과 전문의",
+                "url": "https://cholinus-exerciseismedicine.com/about/"
+              },
+              "reviewedBy": {
+                "@type": "Person",
+                "name": "조형준",
+                "url": "https://cholinus-exerciseismedicine.com/about/"
+              },
+              "publisher": {
+                "@type": "MedicalOrganization",
+                "name": "바른관절 헬프센터"
+              }
             },
-            "author": {
-              "@type": "Person",
-              "name": "조형준",
-              "jobTitle": "정형외과 전문의"
-            },
-            "publisher": {
-              "@type": "MedicalOrganization",
-              "name": "바른관절 헬프센터"
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "홈", "item": "https://cholinus-exerciseismedicine.com/" },
+                { "@type": "ListItem", "position": 2, "name": "질환 사전", "item": "https://cholinus-exerciseismedicine.com/disease/" },
+                { "@type": "ListItem", "position": 3, "name": disease.name, "item": `https://cholinus-exerciseismedicine.com/disease/${id}/` }
+              ]
             }
-          })
+          ])
         }}
       />
       <nav aria-label="Breadcrumb" className="mb-6">

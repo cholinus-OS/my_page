@@ -5,10 +5,10 @@ import { ChevronRight, ArrowLeft, BookOpen, Activity, HeartPulse, Award } from "
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "어깨 이야기 - 어깨 질환 맞춤형 재활 칼럼 | 재활 안내",
+  title: "어깨 이야기 - 어깨 질환 맞춤형 재활 칼럼 | 바른관절 헬프센터 · 조형준 정형외과 전문의",
   description: "오십견, 회전근개 파열 등 만성 어깨 통증 질환의 예방법과 안전한 홈 재활 운동법 컬렉션입니다.",
   alternates: {
-    canonical: "/shoulder-story",
+    canonical: "https://cholinus-exerciseismedicine.com/shoulder-story/",
   },
 };
 
