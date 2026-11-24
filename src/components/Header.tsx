@@ -24,25 +24,46 @@ export default function Header() {
           <span className="inline">바른관절 <span className="text-teal-600 font-semibold">헬프센터</span></span>
         </Link>
         
-        <div className="hidden lg:block text-base md:text-lg font-black tracking-widest bg-gradient-to-r from-rose-500 via-purple-600 to-teal-500 bg-clip-text text-transparent select-none">
+        <div className="hidden xl:block text-base font-black tracking-widest bg-gradient-to-r from-rose-500 via-purple-600 to-teal-500 bg-clip-text text-transparent select-none whitespace-nowrap">
           Exercise Is Medicine..!
         </div>
         
-        {/* 데스크톱 네비게이션 */}
-        <nav className="hidden md:flex items-center gap-6">
-          <Link href="/manual" className="text-sm font-medium text-slate-600 transition hover:text-teal-600">
+        {/* 데스크톱 네비게이션 (공간 안배를 고려한 컴팩트 버튼형 메뉴) */}
+        <nav className="hidden md:flex items-center gap-1.5 lg:gap-2">
+          <Link
+            href="/diagnosis/"
+            className="rounded-full bg-teal-50 border border-teal-200 px-3 py-1.5 text-xs lg:text-sm font-bold text-teal-700 transition hover:bg-teal-600 hover:text-white hover:border-teal-600 whitespace-nowrap"
+          >
+            자가진단
+          </Link>
+          <Link
+            href="/manual/"
+            className="rounded-full bg-slate-100/80 border border-slate-200/80 px-3 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 hover:border-teal-200 whitespace-nowrap"
+          >
             사용 설명서
           </Link>
-          <Link href="/disease" className="text-sm font-medium text-slate-600 transition hover:text-teal-600">
+          <Link
+            href="/disease/"
+            className="rounded-full bg-slate-100/80 border border-slate-200/80 px-3 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 hover:border-teal-200 whitespace-nowrap"
+          >
             질환 사전
           </Link>
-          <Link href="/blog/" className="text-sm font-medium text-slate-600 transition hover:text-teal-600">
+          <Link
+            href="/blog/"
+            className="rounded-full bg-slate-100/80 border border-slate-200/80 px-3 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 hover:border-teal-200 whitespace-nowrap"
+          >
             재활 블로그
           </Link>
-          <Link href="/#knee-shoulder-banner" className="text-sm font-medium text-slate-600 transition hover:text-teal-600">
+          <Link
+            href="/#knee-shoulder-banner"
+            className="rounded-full bg-slate-100/80 border border-slate-200/80 px-3 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 hover:border-teal-200 whitespace-nowrap"
+          >
             니숄더이야기
           </Link>
-          <Link href="/about/" className="text-sm font-medium text-slate-600 transition hover:text-teal-600">
+          <Link
+            href="/about/"
+            className="rounded-full bg-slate-100/80 border border-slate-200/80 px-3 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 hover:border-teal-200 whitespace-nowrap"
+          >
             소개
           </Link>
         </nav>
@@ -62,7 +83,14 @@ export default function Header() {
         <div className="absolute top-16 left-0 w-full bg-white border-b border-slate-200 shadow-lg md:hidden animate-in slide-in-from-top-2 duration-200">
           <nav className="flex flex-col px-4 py-6 space-y-4">
             <Link 
-              href="/manual" 
+              href="/diagnosis/" 
+              onClick={closeMenu}
+              className="flex items-center h-12 px-4 rounded-xl text-base font-bold text-teal-700 bg-teal-50 border border-teal-200 hover:bg-teal-100 transition"
+            >
+              자가진단
+            </Link>
+            <Link 
+              href="/manual/" 
               onClick={closeMenu}
               className="flex items-center h-12 px-4 rounded-xl text-base font-semibold text-slate-700 bg-slate-50 hover:bg-teal-50 hover:text-teal-700 transition"
             >

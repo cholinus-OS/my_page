@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
+import { DIAGNOSIS_PARTS } from "@/lib/diagnosis";
 
 export const dynamic = "force-static";
 
@@ -44,12 +45,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  const diagnosisUrls: MetadataRoute.Sitemap = DIAGNOSIS_PARTS.map((item) => ({
+    url: `${baseUrl}/diagnosis/${item.part}/`,
+    lastModified: new Date("2026-11-24"),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
   return [
     {
       url: `${baseUrl}/`,
       lastModified: new Date("2026-11-24"),
       changeFrequency: "daily",
       priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/diagnosis/`,
+      lastModified: new Date("2026-11-24"),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/blog/`,
@@ -99,6 +113,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.3,
     },
+    ...diagnosisUrls,
     ...diseaseUrls,
     ...postUrls,
   ];
