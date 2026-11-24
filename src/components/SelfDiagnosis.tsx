@@ -25,12 +25,14 @@ interface Disease {
 
 interface SelfDiagnosisProps {
   diseases: Disease[];
+  initialPart?: string;
+  shareUrl?: string;
 }
 
-export default function SelfDiagnosis({ diseases }: SelfDiagnosisProps) {
+export default function SelfDiagnosis({ diseases, initialPart, shareUrl }: SelfDiagnosisProps) {
   // 1. 상태 및 Ref 정의
   const containerRef = useRef<HTMLDivElement>(null);
-  const [selectedPart, setSelectedPart] = useState<string | null>(null);
+  const [selectedPart, setSelectedPart] = useState<string | null>(initialPart ?? null);
   const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
   const [result, setResult] = useState<Disease | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -90,7 +92,7 @@ export default function SelfDiagnosis({ diseases }: SelfDiagnosisProps) {
 
   // 7. 초기화 함수
   const reset = () => {
-    setSelectedPart(null);
+    setSelectedPart(initialPart ?? null);
     setSelectedSymptoms([]);
     setResult(null);
     setIsSubmitted(false);
@@ -147,6 +149,18 @@ export default function SelfDiagnosis({ diseases }: SelfDiagnosisProps) {
                     </button>
                   ))}
                 </div>
+                {!initialPart && (
+                  <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
+                    <span>부위별 상세 안내와 함께 진단하려면 전용 페이지를 이용해 보세요.</span>
+                    <Link
+                      href="/diagnosis/"
+                      className="font-bold text-teal-700 hover:underline inline-flex items-center gap-0.5"
+                    >
+                      부위별 자가진단 전체 보기
+                      <ChevronRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                )}
               </div>
 
               {/* STEP 2: 세부 증상 선택 (부위가 선택되었을 때만 노출) */}
@@ -264,7 +278,7 @@ export default function SelfDiagnosis({ diseases }: SelfDiagnosisProps) {
                 <ShareButtons 
                   title="관절 자가진단 테스트 - 바른관절 헬프센터" 
                   text="내 관절 통증의 원인은 무엇일까? 1분 자가진단으로 확인해보세요!" 
-                  url="https://cholinus-exerciseismedicine.com/#self-diagnosis"
+                  url={shareUrl || "https://cholinus-exerciseismedicine.com/#self-diagnosis"}
                 />
               </div>
             </div>
