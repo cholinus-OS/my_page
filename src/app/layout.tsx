@@ -56,25 +56,6 @@ export default function RootLayout({
   const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID || "ca-pub-6115967537685539";
   const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-Z0MJR1HV78";
 
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "홈",
-        "item": "https://cholinus-exerciseismedicine.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "재활 블로그",
-        "item": "https://cholinus-exerciseismedicine.com/blog"
-      }
-    ]
-  };
-
   const websiteJsonLd = [
     {
       "@context": "https://schema.org",
@@ -85,12 +66,17 @@ export default function RootLayout({
     },
     {
       "@context": "https://schema.org",
-      "@type": "MedicalOrganization",
+      "@type": ["Organization", "MedicalOrganization"],
       "name": "바른관절 헬프센터",
-      "url": "https://cholinus-exerciseismedicine.com",
+      "url": "https://cholinus-exerciseismedicine.com/",
       "logo": "https://cholinus-exerciseismedicine.com/logo.png",
+      "email": "cholinus@naver.com",
       "medicalSpecialty": ["Orthopedic", "Physiotherapy"],
-      "description": "정형외과 전문의가 검수하는 관절 척추 재활 가이드"
+      "description": "정형외과 전문의 조형준 원장이 검수하는 관절 척추 재활 가이드",
+      "sameAs": [
+        "https://www.youtube.com/@cholinus-EIM",
+        "https://blog.naver.com/cholinus"
+      ]
     }
   ];
 
@@ -132,10 +118,6 @@ export default function RootLayout({
         )}
       </head>
       <body className={`flex min-h-full flex-col bg-slate-50 text-slate-900 ${notoSansKr.className}`}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}

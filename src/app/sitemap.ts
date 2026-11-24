@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const slug = file.replace(/\.md$/, "");
       const stats = fs.statSync(path.join(postsDir, file));
       return {
-        url: `${baseUrl}/blog/${slug}`,
+        url: `${baseUrl}/blog/${slug}/`,
         lastModified: stats.mtime,
         changeFrequency: "weekly",
         priority: 0.7,
@@ -33,8 +33,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const diseases = JSON.parse(fs.readFileSync(diseasesFile, "utf8"));
       diseaseUrls = diseases.map((d: { id: string }) => {
         return {
-          url: `${baseUrl}/disease/${d.id}`,
-          lastModified: new Date(),
+          url: `${baseUrl}/disease/${d.id}/`,
+          lastModified: new Date("2026-11-24"),
           changeFrequency: "monthly",
           priority: 0.6,
         };
@@ -46,50 +46,56 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: baseUrl,
-      lastModified: new Date(),
+      url: `${baseUrl}/`,
+      lastModified: new Date("2026-11-24"),
       changeFrequency: "daily",
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      url: `${baseUrl}/blog/`,
+      lastModified: new Date("2026-11-24"),
       changeFrequency: "daily",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/manual`,
-      lastModified: new Date(),
+      url: `${baseUrl}/disease/`,
+      lastModified: new Date("2026-11-24"),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/knee-story`,
-      lastModified: new Date(),
+      url: `${baseUrl}/manual/`,
+      lastModified: new Date("2026-11-24"),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/knee-story/`,
+      lastModified: new Date("2026-11-24"),
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/shoulder-story`,
-      lastModified: new Date(),
+      url: `${baseUrl}/shoulder-story/`,
+      lastModified: new Date("2026-11-24"),
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      url: `${baseUrl}/about/`,
+      lastModified: new Date("2026-11-24"),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
+      url: `${baseUrl}/privacy/`,
+      lastModified: new Date("2026-11-24"),
+      changeFrequency: "monthly",
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/terms/`,
+      lastModified: new Date("2026-11-24"),
       changeFrequency: "monthly",
       priority: 0.3,
     },

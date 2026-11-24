@@ -5,10 +5,10 @@ import { ChevronRight, ArrowLeft, BookOpen, Activity, HeartPulse, Award } from "
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "무릎 이야기 - 무릎 질환 맞춤형 재활 칼럼 | 재활 안내",
+  title: "무릎 이야기 - 무릎 질환 맞춤형 재활 칼럼 | 바른관절 헬프센터 · 조형준 정형외과 전문의",
   description: "퇴행성 무릎 관절염부터 십자인대 파열까지 무릎 부위 상세 질환 정보와 전문 재활 칼럼을 한데 모았습니다.",
   alternates: {
-    canonical: "/knee-story",
+    canonical: "https://cholinus-exerciseismedicine.com/knee-story/",
   },
 };
 
